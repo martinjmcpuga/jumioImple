@@ -1,10 +1,10 @@
 'use client';
 
 import JumioJsx from "./components/jumio/Jumio";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Pantalla2 from "./components/Pages/Pantalla2/Pantalla2";
 import Footer from "./components/Footer/Footer";
-import { getCpvCurpPais } from "./components/Api/getCpvCurpPais";
+import { getCpvCurpPaisJumio } from "./components/Api/getCpvCurpPaisJumio";
 import { mtfindCpv } from "./components/Api/mtfindCpv";
 import { validateCurp } from "./components/Api/validateCurp";
 import { useSearchParams } from 'next/navigation'
@@ -14,7 +14,7 @@ import { useAppContext } from './context/AppContext';
 
 export default function Home() {
 
-  
+
 
   const searchParams = useSearchParams()
   const isRunned = useRef(false);
@@ -28,17 +28,17 @@ export default function Home() {
   const { setCpvI } = useAppContext();
 
 
-    const onContinueModel = async () => {
+  const onContinueModel = async () => {
     setModalShow(false);
   };
 
 
 
 
-   useEffect(() => {
+  useEffect(() => {
 
-    localStorage.setItem('interName','Autenticación Personal');
-    localStorage.setItem('TitleMain','Enrolamiento');
+    localStorage.setItem('interName', 'Autenticación Personal');
+    localStorage.setItem('TitleMain', 'Enrolamiento');
 
     if (isRunned.current) return;
     isRunned.current = true;
@@ -66,7 +66,7 @@ export default function Home() {
         setCpvI(i);
         console.log(obj)
 
-        const response = await getCpvCurpPais(obj);
+        const response = await getCpvCurpPaisJumio(obj);
 
         if (response.status === 200) {
 
@@ -204,28 +204,28 @@ export default function Home() {
 
   return (
     < >
-              {loading ? (
-          <>
-            <div className="containerRender">
-              <div className="onContentExpands">
-                <Pantalla2 />
-              </div>
-
+      {loading ? (
+        <>
+          <div className="containerRender">
+            <div className="onContentExpands">
+              <Pantalla2 />
             </div>
-                <Footer direction={'/requerimientos'} enabled={true}/>
 
-          </>
-        ) : (
-          <>
-            <div className="containerRender">
-              <div className="spinner"></div>
-            </div>
-            
-          </>
+          </div>
+          <Footer direction={'/requerimientos'} enabled={true} />
 
-          
-        )}
-     <MyVerticallyCenteredModal  modalShow={modalShow} onHide={onContinueModel}/>
+        </>
+      ) : (
+        <>
+          <div className="containerRender">
+            <div className="spinner"></div>
+          </div>
+
+        </>
+
+
+      )}
+      <MyVerticallyCenteredModal modalShow={modalShow} onHide={onContinueModel} />
     </>
   );
 }

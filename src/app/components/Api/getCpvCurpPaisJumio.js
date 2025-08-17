@@ -1,8 +1,8 @@
 import { appGlobal } from './appGlobal';
 
-export async function getCpvCurpPais(obj) {
+export async function getCpvCurpPaisJumio(obj) {
     try {
-        const url = appGlobal.host + "getCpvCurpPais";
+        const url = appGlobal.host + "getCpvCurpPaisJumio";
         const params = {
             method: "POST",
             headers: {
