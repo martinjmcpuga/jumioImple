@@ -26,18 +26,27 @@ export default function JumioJsx() {
       return
     }
     const fetchSdkToken = async () => {
+
+
+      console.log(cpvI);
+
+      const obj = {
+        cpv: cpv,
+        documentType:cpvI
+      };
+
       if (tokenJumio) {
         setSdkToken(tokenJumio)
         return
       }
       try {
-        const tokenData = await FetchAccAWS(cpv)
+        const tokenData = await FetchAccAWS(obj)
         if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumio) {
           throw new Error('Invalid token data received')
-          
-        }else{
-        setIdJumio(tokenData.idJumio)  
-        setSdkToken(tokenData.sdk.token)
+
+        } else {
+          setIdJumio(tokenData.idJumio)
+          setSdkToken(tokenData.sdk.token)
         }
 
 
@@ -51,7 +60,7 @@ export default function JumioJsx() {
 
   if (!sdkToken) return <p>Loading Jumio...</p>
 
-  return(
+  return (
     <Suspense fallback={<div>Loading Jumio Component...</div>}>
       <JumioComponent token={sdkToken} />
     </Suspense>

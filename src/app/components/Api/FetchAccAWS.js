@@ -1,23 +1,24 @@
-export const FetchAccAWS = async(cpv) => {
-    const url = process.env.NEXT_PUBLIC_API_URL_TEST;
+import { appGlobal } from './appGlobal';
+
+export async function FetchAccAWS(obj) {
     try {
-        const response = await fetch(url, {
-            method: 'POST',
+        const url = appGlobal.host + "getTokenJumio";
+        const params = {
+            method: "POST",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
+                "charset": "UTF8"
             },
-            body: JSON.stringify({
-                "cpv": cpv
-            })
-        })
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            body: JSON.stringify(obj)
+        };
+        const response = await fetch(url, params);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        const objError = {
+            message: appGlobal.errorRequestServer,
+            status: appGlobal.codeErrorRequestServer,
         }
-        const data = await response.json();
-        return data;
-    } catch (err) {
-        console.error('Error in FetchAccAWS:', err);
-        throw err;
+        return objError;
     }
 }
