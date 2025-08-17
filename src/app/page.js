@@ -6,15 +6,12 @@ import Pantalla2 from "./components/Pages/Pantalla2/Pantalla2";
 import Footer from "./components/Footer/Footer";
 import { getCpvCurpPaisJumio } from "./components/Api/getCpvCurpPaisJumio";
 import { mtfindCpv } from "./components/Api/mtfindCpv";
-import { validateCurp } from "./components/Api/validateCurp";
+import { validateCurp_Jumio } from "./components/Api/validateCurp_Jumio";
 import { useSearchParams } from 'next/navigation'
 import MyVerticallyCenteredModal from "./components/Modals/ModalMain/ModalMain";
 import { useAppContext } from './context/AppContext';
 
-
 export default function Home() {
-
-
 
   const searchParams = useSearchParams()
   const isRunned = useRef(false);
@@ -31,8 +28,6 @@ export default function Home() {
   const onContinueModel = async () => {
     setModalShow(false);
   };
-
-
 
 
   useEffect(() => {
@@ -87,7 +82,7 @@ export default function Home() {
                   curp: response.curp
                 };
 
-                const responseValidate = await validateCurp(objValida);
+                const responseValidate = await validateCurp_Jumio(objValida);
 
                 if (responseValidate.status === 200) {
 

@@ -1,8 +1,8 @@
 import { appGlobal } from './appGlobal';
 
-export async function validateCurp(obj) {
+export async function validateCurp_Jumio(obj) {
     try {
-        const url = appGlobal.host + "validateCurp";
+        const url = appGlobal.host + "validateCurp_Jumio";
         const params = {
             method: "POST",
             headers: {
