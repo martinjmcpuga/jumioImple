@@ -14,12 +14,12 @@ const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 export default function JumioJsx() {
   const [sdkToken, setSdkToken] = useState('')
   const searchParams = useSearchParams()
-  const { setIdJumioSelfie } = useAppContext()
+  //const { setIdJumioSelfie } = useAppContext()
   const { cpvI } = useAppContext()
   const { tokenJumio } = useAppContext()
 
   useEffect(() => {
-    const cpv = localStorage.getItem('sCpv') || cpvI
+    const cpv = localStorage.getItem('sCpv');
     if (!cpv) {
       console.error('No cpv found in search params')
       return
@@ -27,8 +27,7 @@ export default function JumioJsx() {
     const fetchSdkToken = async () => {
 
       const obj = {
-        cpv: cpv,
-        documentType: cpvI
+        cpv: localStorage.getItem('sCpv')
       };
 
       if (tokenJumio) {
@@ -41,7 +40,7 @@ export default function JumioJsx() {
           throw new Error('Invalid token data received')
 
         } else {
-          setIdJumioSelfie(tokenData.idJumioSelfie)
+          // setIdJumioSelfie(tokenData.idJumioSelfie)
           setSdkToken(tokenData.sdk.token)
         }
 

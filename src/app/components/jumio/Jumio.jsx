@@ -19,7 +19,7 @@ export default function JumioJsx() {
   const { tokenJumio } = useAppContext()
 
   useEffect(() => {
-    const cpv = localStorage.getItem('sCpv') || cpvI
+    const cpv = localStorage.getItem('sCpv');
     if (!cpv) {
       console.error('No cpv found in search params')
       return
@@ -27,7 +27,7 @@ export default function JumioJsx() {
     const fetchSdkToken = async () => {
 
       const obj = {
-        cpv: cpv,
+        cpv: localStorage.getItem('sCpv'),
         documentType: cpvI
       };
 
