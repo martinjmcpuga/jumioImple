@@ -1,0 +1,31 @@
+/* [project]/src/app/components/Pages/Pantalla2/style.css [app-client] (css) */
+.txtDocReq_P2 {
+  padding-top: 6px;
+  font-weight: 500;
+}
+
+.imgFooter_P2 {
+  width: 150px;
+  height: 28px;
+  margin: 15px;
+}
+
+.container_data_operation {
+  height: 0;
+  overflow-x: auto;
+  padding-bottom: 25rem !important;
+}
+
+.containerDoc_P2 {
+  padding: 0 0 0 10px;
+}
+
+
+/* [project]/src/app/components/Modals/ModalMain/ModalMain.css [app-client] (css) */
+.ModalMain__shadow {
+  background: #d5d5d5ad;
+  box-shadow: 0 25px 50px -12px #00000040;
+}
+
+
+/*# sourceMappingURL=src_app_components_4922564c._.css.map*/

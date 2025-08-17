@@ -1,0 +1,12 @@
+{
+  "[project]/src/app/components/jumio/JumioComponent.jsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/app/components/jumio/JumioComponent.jsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_@jumio_websdk_385ab802._.js",
+      "static/chunks/node_modules_@jumio_websdk_index_DNVKyBAJ_75bf2a5d.js",
+      "static/chunks/node_modules_@jumio_websdk_index_3bb2c210.js",
+      "static/chunks/src_app_components_bbd620a9._.js",
+      "static/chunks/src_app_components_jumio_JumioComponent_jsx_1fdf71f6._.js"
+    ]
+  }
+}

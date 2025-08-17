@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///home/martin/git/jumioImple/src/app/components/Pages/Pantalla2/style.css"],"sourcesContent":[".txtDocReq_P2 {\n    font-weight: 500;\n    padding-top: 6px;\n}\n\n.imgFooter_P2 {\n    width: 150px;\n    height: 28px;\n    margin: 15px;\n}\n\n.container_data_operation {\n    height: 0px;\n    padding-bottom: 25rem !important;\n    overflow-x: auto;\n}\n\n.containerDoc_P2 {\n    padding: 0px 0px 0px 10px;\n}"],"names":[],"mappings":"AAAA;;;;;AAKA;;;;;;AAMA;;;;;;AAMA","debugId":null}},
+    {"offset": {"line": 24, "column": 0}, "map": {"version":3,"sources":["file:///home/martin/git/jumioImple/src/app/components/Modals/ModalMain/ModalMain.css"],"sourcesContent":[".ModalMain__shadow {\n    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);\n    background: #d5d5d5ad;\n}"],"names":[],"mappings":"AAAA","debugId":null}}]
+}

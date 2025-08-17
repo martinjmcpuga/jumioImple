@@ -1,0 +1,220 @@
+/* [project]/src/app/components/NavBar/style.css [app-client] (css) */
+.modal-red {
+  background-color: #fdf2f0;
+  border-radius: 8px 8px 0 0;
+}
+
+.title-body {
+  text-align: center;
+  height: 20px;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-16) / var(--unnamed-line-spacing-28) var(--unnamed-font-family-inter);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #1f1f1f;
+  letter-spacing: 0;
+  opacity: 1;
+  font: 600 16px / 28px Inter;
+  top: 318px;
+  left: 160px;
+}
+
+.message-body {
+  height: 29px;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14) / var(--unnamed-line-spacing-20) var(--unnamed-font-family-roboto);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #1f1f1f;
+  text-align: center;
+  letter-spacing: 0;
+  opacity: 1;
+  margin: 0 20px;
+  font: 14px / 20px Roboto;
+  top: 346px;
+  left: 114px;
+}
+
+.button-back {
+  opacity: 1;
+  background: #55ac68 no-repeat padding-box padding-box;
+  border: none;
+  border-radius: 8px;
+  width: 330px;
+  height: 48px;
+  top: 417px;
+  left: 30px;
+}
+
+.text-back {
+  width: 74px;
+  height: 20px;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-17) / var(--unnamed-line-spacing-36) var(--unnamed-font-family-inter);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0;
+  opacity: 1;
+  font: 600 17px / 36px Inter;
+  top: 431px;
+  left: 158px;
+}
+
+.button-confirm {
+  opacity: 1;
+  background: #f3f8fd no-repeat padding-box padding-box;
+  border: 1px solid #5e71d8;
+  border-radius: 8px;
+  width: 330px;
+  height: 48px;
+  top: 479px;
+  left: 30px;
+}
+
+.text-confirm {
+  width: 82px;
+  height: 20px;
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-17) / var(--unnamed-line-spacing-36) var(--unnamed-font-family-inter);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: #5972df;
+  text-align: center;
+  letter-spacing: 0;
+  opacity: 1;
+  font: 600 17px / 36px Inter;
+  top: 493px;
+  left: 154px;
+}
+
+.steep {
+  text-align: center;
+  background: #fff;
+}
+
+.life {
+  background: #fff;
+}
+
+#life-bar {
+  border-radius: 10px;
+  width: 100%;
+  height: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.filled10 {
+  background-color: #51b35e;
+  width: 10%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.filled25 {
+  background-color: #51b35e;
+  width: 25%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.filled50 {
+  background-color: #51b35e;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.filled75 {
+  background-color: #51b35e;
+  width: 75%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.filled100 {
+  background-color: #51b35e;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.filled {
+  background-color: #51b35e;
+  width: 20%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.filledLic {
+  background-color: #51b35e;
+  width: 40%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.empty10 {
+  background-color: #ccc;
+  inset: 0 0 0 10%;
+}
+
+.empty25 {
+  background-color: #ccc;
+  inset: 0 0 0 25%;
+}
+
+.empty50 {
+  background-color: #ccc;
+  position: absolute;
+  inset: 0 0 0 50%;
+}
+
+.empty75 {
+  background-color: #ccc;
+  position: absolute;
+  inset: 0 0 0 75%;
+}
+
+.empty100 {
+  background-color: #ccc;
+  position: absolute;
+  inset: 0 0 0 100%;
+}
+
+.logImg {
+  width: 75px;
+}
+
+.imgaicm {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.backIdenPersonal_P2--size {
+  background: #ededed;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  display: flex;
+  position: relative;
+}
+
+.backIdenPersonal_P2--size p {
+  text-align: center;
+  margin: 0;
+  font-family: Red Hat Display, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=src_app_components_NavBar_style_css_f9ee138c._.single.css.map*/

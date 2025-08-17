@@ -1,0 +1,23 @@
+/* [project]/src/app/components/Pages/Pantalla2/style.css [app-client] (css) */
+.txtDocReq_P2 {
+  padding-top: 6px;
+  font-weight: 500;
+}
+
+.imgFooter_P2 {
+  width: 150px;
+  height: 28px;
+  margin: 15px;
+}
+
+.container_data_operation {
+  height: 0;
+  overflow-x: auto;
+  padding-bottom: 25rem !important;
+}
+
+.containerDoc_P2 {
+  padding: 0 0 0 10px;
+}
+
+/*# sourceMappingURL=src_app_components_Pages_Pantalla2_style_css_f9ee138c._.single.css.map*/

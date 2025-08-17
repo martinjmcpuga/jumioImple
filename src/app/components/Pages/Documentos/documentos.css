@@ -1,0 +1,45 @@
+.containerIdent_P2 {
+  width: 100%;
+}
+
+.txtDocumentos {
+  font-family: Inter;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 15px;
+  line-height: 100%;
+  color: #000000;
+}
+
+
+.line {
+  border: none;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 0.8rem 0;
+}
+
+.button_P2 {
+  width: 100%;
+  height: 48px;
+  background: #55AC68 0% 0% no-repeat padding-box;
+  border: 1px solid #55AC68;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.txtButton_P2 {
+  color: white;
+}
+
+.button_P2:disabled {
+    opacity: 1;
+    background: #79a8750d no-repeat padding-box padding-box;
+    border: 1px solid #79a8750d;
+    border-radius: 8px;
+    width: 100%;
+    height: 48px;
+}
+

@@ -1,0 +1,20 @@
+.txtDocReq_P2 {
+    font-weight: 500;
+    padding-top: 6px;
+}
+
+.imgFooter_P2 {
+    width: 150px;
+    height: 28px;
+    margin: 15px;
+}
+
+.container_data_operation {
+    height: 0px;
+    padding-bottom: 25rem !important;
+    overflow-x: auto;
+}
+
+.containerDoc_P2 {
+    padding: 0px 0px 0px 10px;
+}
