@@ -6,8 +6,6 @@ function Pantalla2() {
 
     const { cpvI } = useAppContext();
 
-  
-
     return (
         <>
             <div className='containerInfo_P2'>
