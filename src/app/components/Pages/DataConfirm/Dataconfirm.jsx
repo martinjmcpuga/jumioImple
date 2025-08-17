@@ -153,7 +153,7 @@ const Dataconfirm = () => {
               </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
-            <Link href="/jumiocomponent" className="btnBack_P2">
+            <Link href="/jumiocomponentselfie" className="btnBack_P2">
               <section className="containerButtonOnExpands_P2 mt-4">
                 <button
                   className="btnVer_P14OK buttonExpandsBase"

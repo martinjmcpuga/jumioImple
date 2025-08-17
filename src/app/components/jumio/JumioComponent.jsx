@@ -28,21 +28,21 @@ const JumioComponent = ({token}) => {
     const handleStatus = async (event) => {
      // console.log(IdJumio)
      // console.log('Workflow status:', event.detail);
-      const response = await ApiJumioRetrieval(IdJumio)
-      if(tokenJumio){
-         console.log(response)
-         console.log(response.status)
+    //////////  const response = await ApiJumioRetrieval(IdJumio)
+    //  if(tokenJumio){
+     //    console.log(response)
+     //    console.log(response.status)
   
-        if(response.status === 200){
-            router.push('/bandeja');
-        }else{
-            router.push('/?i='+cpv);
-        }
-        return;
+    //    if(response.status === 200){
+    //        router.push('/bandeja');
+    //    }else{
+    //        router.push('/?i='+cpv);
+    //    }
+    //    return;
          
-      }else{
+   //   }else{
         router.push('/dataconfirm');
-      }
+   //   }
      
       //console.log('Jumio status:', response);
       
