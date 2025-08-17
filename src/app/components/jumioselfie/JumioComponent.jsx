@@ -19,10 +19,6 @@ const JumioComponent = ({ token }) => {
   const { cpvI } = useAppContext();
 
   useEffect(() => {
-    setCpv(localStorage.getItem('sCpv') || cpvI);
-  }, [])
-
-  useEffect(() => {
     //  const template = '<template  id="jumio-start-title">\n  <pre>You can see now projected content via <i><strong>jumio-start-title</strong></i> template</pre>\n</template>'
 
     if (jumioRef.current) {

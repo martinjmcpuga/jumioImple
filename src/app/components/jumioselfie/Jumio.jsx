@@ -12,48 +12,30 @@ import { useAppContext } from '../../context/AppContext'
 const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 
 export default function JumioJsx() {
+
+  const isRunned = useRef(false);
   const [sdkToken, setSdkToken] = useState('')
   const searchParams = useSearchParams()
   //const { setIdJumioSelfie } = useAppContext()
   const { cpvI } = useAppContext()
   const { tokenJumio } = useAppContext()
 
-  useEffect(() => {
-    const cpv = localStorage.getItem('sCpv');
-    if (!cpv) {
-      console.error('No cpv found in search params')
-      return
-    }
-    const fetchSdkToken = async () => {
 
+  useEffect(() => {
+    if (isRunned.current) return;
+    isRunned.current = true;
+
+    async function createSession() {
       const obj = {
         cpv: localStorage.getItem('sCpv')
       };
-
-      if (tokenJumio) {
-        setSdkToken(tokenJumio)
-        return
-      }
-      try {
-        const tokenData = await getTokenJumio10085(obj)
-        if (!tokenData || !tokenData.sdk || !tokenData.sdk.token) {
-          throw new Error('Invalid token data received')
-
-        } else {
-          // setIdJumioSelfie(tokenData.idJumioSelfie)
-          setSdkToken(tokenData.sdk.token)
-        }
-
-
-      } catch (error) {
-        alert('Error generating Jumio SDK token:', error)
-      }
+      const tokenData = await getTokenJumio10085(obj)
+      setSdkToken(tokenData.sdk.token)
     }
 
-    fetchSdkToken()
-  }, [])
+    createSession();
+  }, []);
 
-  if (!sdkToken) return <p>Loading Jumio...</p>
 
   return (
     <Suspense fallback={<div>Loading Jumio Component...</div>}>
