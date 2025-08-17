@@ -4,8 +4,7 @@ import Dataconfirm from '../components/Pages/DataConfirm/Dataconfirm'
 const Page = () => {
   return (
     <div>
-
-       <Dataconfirm/>
+      <Dataconfirm />
     </div>
   )
 }

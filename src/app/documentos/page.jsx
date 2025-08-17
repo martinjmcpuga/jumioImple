@@ -6,7 +6,7 @@ import Documentos from '../components/Pages/Documentos/Documentos'
 const Page = () => {
   return (
     <>
-            <Documentos />
+      <Documentos />
     </>
   )
 }

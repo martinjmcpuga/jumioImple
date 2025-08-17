@@ -60,38 +60,38 @@ const Documentos = () => {
           <p className="txtDocumentos">Documento de Identificación</p>
           <br />
 
-        <Select
+          <Select
             options={opciones}
             onChange={(option) => {
-                setSelectedDoc(option)
-                setCpvI(option.value) // Guardar en el contexto
+              setSelectedDoc(option)
+              setCpvI(option.value) // Guardar en el contexto
             }}
             styles={customStyles}
             placeholder="Seleccionar"
-        />
+          />
 
           <br />
           <hr className="line" />
 
           <section className="containerButtonOnExpands_P2" style={{ marginTop: '2rem' }}>
             <div className="btnContinue">
-                 {!selectedDoc  ? (
-                  <button className="btnVer_P3" disabled>
-                    <span className="txtVer_P3">Continuar</span>
-                  </button>
-                ) : (
-              <Link href={selectedDoc ? '/infocredencial' : '#'} passHref>
-                <button
-                  className="button_P2"
-                  disabled={!selectedDoc}
-                  style={{
-                    opacity: selectedDoc ? 1 : 0.6,
-                    cursor: selectedDoc ? 'pointer' : 'not-allowed'
-                  }}
-                >
-                  <span className="txtButton_P2">Continuar</span>
+              {!selectedDoc ? (
+                <button className="btnVer_P3" disabled>
+                  <span className="txtVer_P3">Continuar</span>
                 </button>
-              </Link>
+              ) : (
+                <Link href={selectedDoc ? '/infocredencial' : '#'} passHref>
+                  <button
+                    className="button_P2"
+                    disabled={!selectedDoc}
+                    style={{
+                      opacity: selectedDoc ? 1 : 0.6,
+                      cursor: selectedDoc ? 'pointer' : 'not-allowed'
+                    }}
+                  >
+                    <span className="txtButton_P2">Continuar</span>
+                  </button>
+                </Link>
               )}
             </div>
           </section>

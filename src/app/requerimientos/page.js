@@ -6,7 +6,7 @@ import Requerimientos from '../components/Pages/Requerimientos/Requerimientos'
 const Page = () => {
   return (
     <>
-            <Requerimientos />
+      <Requerimientos />
     </>
   )
 }

@@ -6,7 +6,7 @@ import ImgAnterior from '../components/Pages/ImgAnterior/ImgAnterior'
 const Page = () => {
   return (
     <>
-            <ImgAnterior />
+      <ImgAnterior />
     </>
   )
 }

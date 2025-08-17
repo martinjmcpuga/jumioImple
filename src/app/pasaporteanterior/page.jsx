@@ -6,7 +6,7 @@ import PasaporteAnterior from '../components/Pages/PasaporteAnterior/PasaporteAn
 const Page = () => {
   return (
     <>
-        <PasaporteAnterior />
+      <PasaporteAnterior />
     </>
   )
 }

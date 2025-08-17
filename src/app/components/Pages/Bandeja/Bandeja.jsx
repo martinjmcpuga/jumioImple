@@ -1,35 +1,32 @@
 'use client';
 
-import React, { useEffect,useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
 
 const Bandeja = () => {
 
-    const [loading, setLoading] = useState(false);
-    const [curpStr, setCurpStr] = useState('XXXX010101XXXXXX00');
-    const [telefonoAsociado, setTelefonoAsociado] = useState('55XXXXXX99');
-    const [auDomicilio, setAuDomicilio] = useState(true);
-    const [validateDomi, setValidateDomi] = useState(false);
-    const [auHistorial, setAuHistorial] = useState(true);
-    const [validateLab, setValidateLab] = useState(true);
-    const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
-    const [auDeclaratoria, setAuDeclaratoria] = useState(true);
-    const [validateSigInd, setValidateSigInd] = useState(true);
-    const [auCitaVer, setAuCitaVer] = useState(true);
-    const [auCita, setAuCita] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [curpStr, setCurpStr] = useState('XXXX010101XXXXXX00');
+  const [telefonoAsociado, setTelefonoAsociado] = useState('55XXXXXX99');
+  const [auDomicilio, setAuDomicilio] = useState(true);
+  const [validateDomi, setValidateDomi] = useState(false);
+  const [auHistorial, setAuHistorial] = useState(true);
+  const [validateLab, setValidateLab] = useState(true);
+  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
+  const [auDeclaratoria, setAuDeclaratoria] = useState(true);
+  const [validateSigInd, setValidateSigInd] = useState(true);
+  const [auCitaVer, setAuCitaVer] = useState(true);
+  const [auCita, setAuCita] = useState(false);
 
 
-    useEffect(() => {
-        setCurpStr(localStorage.getItem('curpValidate'))
-        setTelefonoAsociado(localStorage.getItem('telefono'))
+  useEffect(() => {
+    setCurpStr(localStorage.getItem('curpValidate'))
+    setTelefonoAsociado(localStorage.getItem('telefono'))
 
-    }, []);
+  }, []);
 
   return (
 
-    
-
-      <>
+    <>
       {loading ? (
 
         <div className="containerRender">
@@ -57,7 +54,7 @@ const Bandeja = () => {
                   <div className="txtVerificado">Verificado</div>
                 </div>
               </div>
-              <img src='assets/flecha_url.svg'  className="flecha_url" />
+              <img src='assets/flecha_url.svg' className="flecha_url" />
             </div>
           </div>
 
@@ -78,7 +75,7 @@ const Bandeja = () => {
                   <div className="txtVerificado">Verificado</div>
                 </div>
               </div>
-              <img src='assets/flecha_url.svg'  className="flecha_url" />
+              <img src='assets/flecha_url.svg' className="flecha_url" />
             </div>
           </div>
 
@@ -217,7 +214,7 @@ const Bandeja = () => {
                             <div className="txtVerificado">Verificado</div>
                           </div>
                         </div>
-                        <img src='assets/flecha_url.svg'  className="flecha_url" />
+                        <img src='assets/flecha_url.svg' className="flecha_url" />
                       </div>
                     </div>
                   </>
@@ -237,7 +234,7 @@ const Bandeja = () => {
                   <>
                     <div className="rcornersDes27"
                       style={{ marginTop: "12px" }}
-                      >
+                    >
                       <img src='assets/file_alt.svg' align="left" className="imgFol_P27_Img marginCustom" />
                       <img
                         src='assets/arrow_green.svg'
@@ -352,7 +349,7 @@ const Bandeja = () => {
         </div>
       )}
 
- 
+
 
     </>
   )

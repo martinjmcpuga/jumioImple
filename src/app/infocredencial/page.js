@@ -4,9 +4,9 @@ import React from 'react'
 import InfoCredencial from '../components/Pages/InfoCredencial/InfoCredencial'
 
 const Page = () => {
-   return (
+  return (
     <>
-            <InfoCredencial />
+      <InfoCredencial />
     </>
   )
 }

@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import './paises.css';
 import Footer from '../../Footer/Footer';
 import { Form, Spinner, Modal } from 'react-bootstrap';
-
 import { getPaisByIso } from '../../Api/getPaisByIso';
 import { mtfindCpv } from '../../Api/mtfindCpv';
 import { useAppContext } from '../../../context/AppContext';

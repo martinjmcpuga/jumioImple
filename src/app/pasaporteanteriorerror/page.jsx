@@ -6,7 +6,7 @@ import PasaporteAnteriorError from '../components/Pages/PasaporteAnteriorError/P
 const Page = () => {
   return (
     <>
-        <PasaporteAnteriorError />
+      <PasaporteAnteriorError />
     </>
   )
 }

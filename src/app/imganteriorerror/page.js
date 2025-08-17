@@ -4,9 +4,9 @@ import React from 'react'
 import ImgAnteriorError from '../components/Pages/ImgAnteriorError/ImgAnteriorError'
 
 const Page = () => {
-   return (
+  return (
     <>
-            <ImgAnteriorError />
+      <ImgAnteriorError />
     </>
   )
 }

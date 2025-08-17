@@ -9,59 +9,57 @@ import Link from 'next/link';
 
 const Dataconfirm = () => {
 
-      const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [firstName, setFirstName] = useState('');
+  const [paternalLastName, setPaternalLastName] = useState('');
+  const [maternalLastName, setMaternalLastName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [claveDeElector, setClaveDeElector] = useState('');
+  const [sexo, setSexo] = useState("");
+  const [nacionalidad, setNacionalidad] = useState("");
+  const [nacionalidadISO, setNacionalidadISO] = useState("");
+  const [show, setShow] = useState(false);
+  const [showStatus, setShowStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState('');
+  const [verNameFull, setverNameFull] = useState(false);
+  const { cpvI } = useAppContext();
+  const { setTokenJumio } = useAppContext();
+
+  useEffect(() => {
+    setFirstName(localStorage.getItem("nombre") || '');
+    setPaternalLastName(localStorage.getItem("paterno") || '');
+    setMaternalLastName(localStorage.getItem("materno") || '');
+    setBirthDate(localStorage.getItem("fechaNacimientoFront") || '');
+    setClaveDeElector(localStorage.getItem("curpValidate") || '');
+    setSexo(localStorage.getItem("sexo") || '');
+    setNacionalidad(localStorage.getItem("nacionalidad") || '');
+    setNacionalidadISO(localStorage.getItem("nacionalidadISO") || '');
+  }, []);
 
 
-        const [firstName, setFirstName] = useState('');
-        const [paternalLastName, setPaternalLastName] = useState('');
-        const [maternalLastName, setMaternalLastName] = useState('');
-        const [birthDate, setBirthDate] = useState('');
-        const [claveDeElector, setClaveDeElector] = useState('');
-        const [sexo, setSexo] = useState("");
-        const [nacionalidad, setNacionalidad] = useState("");
-        const [nacionalidadISO, setNacionalidadISO] = useState("");
-        const [show, setShow] = useState(false);
-        const [showStatus, setShowStatus] = useState(null);
-        const [showMessage, setShowMessage] = useState('');
-        const [verNameFull, setverNameFull] = useState(false);
-        const {cpvI} = useAppContext();
-        const {setTokenJumio} = useAppContext();
 
-        useEffect(() => {
-          setFirstName(localStorage.getItem("nombre") || '');
-          setPaternalLastName(localStorage.getItem("paterno") || '');
-          setMaternalLastName(localStorage.getItem("materno") || '');
-          setBirthDate(localStorage.getItem("fechaNacimientoFront") || '');
-          setClaveDeElector(localStorage.getItem("curpValidate") || '');
-          setSexo(localStorage.getItem("sexo") || '');
-          setNacionalidad(localStorage.getItem("nacionalidad") || '');
-          setNacionalidadISO(localStorage.getItem("nacionalidadISO") || '');
-        }, []);
+  const fetchData = async () => {
+    const data = await ApiJumioFaceMatchToken(cpvI || localStorage.getItem('sCpv'));
+    if (!data) {
+      console.error('No data found');
+      return;
+    }
+    if (data.status === 200) {
+      console.log('Data fetched successfully:', data);
+      setTokenJumio(data.sdk.token);
 
+    } else {
+      console.error('Error fetching data:', data.message);
+      throw new Error(data.message);
+    }
 
-        
-      const fetchData = async () => {
-        const data = await ApiJumioFaceMatchToken(cpvI || localStorage.getItem('sCpv'));
-        if (!data) {
-          console.error('No data found');
-          return;
-        }
-        if (data.status === 200) {
-          console.log('Data fetched successfully:', data);
-          setTokenJumio(data.sdk.token);
+  }
 
-        } else {
-          console.error('Error fetching data:', data.message);
-          throw new Error(data.message);
-        }
+  useEffect(() => {
 
-      }
-
-    useEffect(() => {
-    
     setTimeout(() => {
 
-    fetchData();
+      fetchData();
 
       setLoading(true);
     }, 6000);
@@ -118,8 +116,8 @@ const Dataconfirm = () => {
 
 
   return (
-   <>
-   
+    <>
+
       <div className="containerRender">
         {!loading ? (
           <div className="spinner"></div>
@@ -157,24 +155,21 @@ const Dataconfirm = () => {
             </div>
             <Link href="/jumiocomponent" className="btnBack_P2">
               <section className="containerButtonOnExpands_P2 mt-4">
-                  <button
-                    className="btnVer_P14OK buttonExpandsBase"
-                     >
-                    <span className="txtVer_P14OK">Continuar</span>
-                  </button>
-                  <br />
-                </section>
+                <button
+                  className="btnVer_P14OK buttonExpandsBase"
+                >
+                  <span className="txtVer_P14OK">Continuar</span>
+                </button>
+                <br />
+              </section>
             </Link>
           </div>
-          
+
         )}
 
-
-   
       </div>
 
-
-   </>
+    </>
   )
 }
 
