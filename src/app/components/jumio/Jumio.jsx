@@ -29,7 +29,7 @@ export default function JumioJsx() {
         cpv: localStorage.getItem('sCpv'),
         documentType: cpvI
       };
-      const tokenData = await getTokenJumio10085(obj)
+      const tokenData = await FetchAccAWS(obj)
       setIdJumio(tokenData.idJumio)
       setSdkToken(tokenData.sdk.token)
     }
