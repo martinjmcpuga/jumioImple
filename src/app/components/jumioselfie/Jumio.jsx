@@ -36,7 +36,7 @@ export default function JumioJsx() {
       }
       try {
         const tokenData = await getTokenJumio10085(obj)
-        if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumioSelfie) {
+        if (!tokenData || !tokenData.sdk || !tokenData.sdk.token) {
           throw new Error('Invalid token data received')
 
         } else {
