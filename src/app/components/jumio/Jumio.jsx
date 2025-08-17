@@ -3,7 +3,6 @@
 import { Suspense, use, useEffect, useState } from 'react'
 import { AccountCreation } from '../Api/AccountCreation'
 import { FetchToken } from '../Api/Fetch'
-
 import dynamic from 'next/dynamic'
 import { JumioAccountCreation } from '../Api/jumioAccountCreation'
 import { FetchAccAWS } from '../Api/FetchAccAWS'
@@ -27,12 +26,9 @@ export default function JumioJsx() {
     }
     const fetchSdkToken = async () => {
 
-
-      console.log(cpvI);
-
       const obj = {
         cpv: cpv,
-        documentType:cpvI
+        documentType: cpvI
       };
 
       if (tokenJumio) {
