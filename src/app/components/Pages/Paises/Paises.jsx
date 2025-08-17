@@ -36,9 +36,9 @@ const Paises = () => {
   const { cpvI } = useAppContext();
   const { curpValidate } = useAppContext();
   const [mounted, setMounted] = useState(false);
-  const { setPais } = useAppContext();
-  const { setPaisIso2 } = useAppContext();
-
+  const {setPais}= useAppContext();
+  const {setPaisIso2}= useAppContext();
+  
   const showModalError = (title, message) => {
     setShowStatus(title);
     setShowMessage(message);
@@ -68,9 +68,9 @@ const Paises = () => {
   }, []);
 
   useEffect(() => {
-    const sCpv = cpvI
-    if (sCpv) setRutaBackCpv('/?i=' + sCpv);
-    if (curpStr.length < caracteres) setBlContinueOp('1');
+      const sCpv = cpvI
+      if (sCpv) setRutaBackCpv('/?i=' + sCpv);
+      if (curpStr.length < caracteres) setBlContinueOp('1');
 
   }, [curpStr, caracteres]);
 
@@ -78,27 +78,27 @@ const Paises = () => {
     //console.log('Validar Face Match...');
   };
 
-  const onValidateCurp = async () => {
+const onValidateCurp = async () => {
     //console.log('Validar CURP:', curpStr);
-    setGame('2');
-    const curpVal = mounted ? curpValidate : null;
-    if (localStorage.getItem("curpValidate") === curpStr) {
-      const objPerson = { cpv: cpvI };
-      const responseIdPerson = await mtfindCpv(objPerson);
+  setGame('2');
+  const curpVal = mounted ? curpValidate : null;
+  if (localStorage.getItem("curpValidate") === curpStr) {
+    const objPerson = { cpv: cpvI };
+    const responseIdPerson = await mtfindCpv(objPerson);
       //console.log('Response ID Person:', responseIdPerson);
-      if (responseIdPerson.status === 400) {
-        setGame('3');
-        setBlContinueOp('3');
-      } else if (responseIdPerson.status === 200) {
-        setGame('3');
-        setBlContinueOp('4');
-      } else {
-        showModalError(`Error ${responseIdPerson.status}`, responseIdPerson.message);
-      }
+    if (responseIdPerson.status === 400) {
+      setGame('3');
+      setBlContinueOp('3');
+    } else if (responseIdPerson.status === 200) {
+      setGame('3');
+      setBlContinueOp('4');
     } else {
-      showModalError('Credenciales inválidas', 'El Número de Identificación Nacional no es correcto.');
+      showModalError(`Error ${responseIdPerson.status}`, responseIdPerson.message);
     }
-  };
+  } else {
+    showModalError('Credenciales inválidas', 'El Número de Identificación Nacional no es correcto.');
+  }
+};
 
   const handleClose = () => setShow(false);
   const onModalShow = () => setModalShow(true);
@@ -142,7 +142,7 @@ const Paises = () => {
 
   return (
     <>
-      <div className="containerInfo_P2 animate__animated animate__fadeIn containerNac">
+      <div className="containerInfo_P2 animate__animated animate__fadeIn">
         <div className="containerIdent_P2 onContentExpands">
           <p className="txtNat_P3">Nacionalidad</p>
           <br />
@@ -211,12 +211,12 @@ const Paises = () => {
                 )}
                 {blContinueOp === '2' && (
                   <>
-                    <br />
-                    <button className="btnVer_P3_Select" onClick={onValidateCurp}>
-                      <span className="txtVer_P3">Verificar</span>
-                    </button>
-
-                  </>
+                   <br />
+                  <button className="btnVer_P3_Select" onClick={onValidateCurp}>
+                    <span className="txtVer_P3">Verificar</span>
+                  </button>
+                 
+                </>
                 )}
                 {blContinueOp === '3' && (
                   <Link href={'/documentos'}>
@@ -236,7 +236,7 @@ const Paises = () => {
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
+    <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
         <Modal.Body>
           <div className="msjTitleModalDiv">{showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>
