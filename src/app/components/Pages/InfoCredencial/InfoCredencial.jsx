@@ -20,7 +20,7 @@ const InfoCredencial = () => {
 
   return (
     <>
-      <main className="containerRender onContentExpands animate__animated animate__fadeIn">
+      <main className=" onContentExpands animate__animated animate__fadeIn">
         <section className="containerInfo_P2">
           <div className="containerIdent_P2">
             <div className="txtOp_P2" style={{ color: '#2A67E1' }}>

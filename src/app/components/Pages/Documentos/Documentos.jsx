@@ -54,7 +54,7 @@ const Documentos = () => {
   }
 
   return (
-    <main className="containerRender onContentExpands animate__animated animate__fadeIn">
+    <main className="animate__animated animate__fadeIn">
       <section className="containerInfo_P2">
         <div className="containerIdent_P2 onContentExpands">
           <p className="txtDocumentos">Documento de Identificación</p>

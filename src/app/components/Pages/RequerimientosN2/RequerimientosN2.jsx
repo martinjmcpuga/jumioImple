@@ -37,7 +37,7 @@ const RequerimientosN2 = () => {
 
       if (responsePerfil.status === 200) {
 
-        /** -------------------------------------- */
+        /** --------------------------- */
 
         if (responsePerfil.n2_nss_rfc === true) {
 
@@ -57,7 +57,7 @@ const RequerimientosN2 = () => {
 
           }
 
-          /** -------------------------------------- */
+          /** ------------------------------------ */
 
           if (responsePerfil.n2_rfc === true) {
 

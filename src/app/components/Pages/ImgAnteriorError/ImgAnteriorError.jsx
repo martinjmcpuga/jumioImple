@@ -37,7 +37,7 @@ const ImgAnteriorError = () => {
                 <Link href={'/jumiocomponent'}>
                   <button
                     className="button_P2 animate__animated animate__fadeIn"
-                    onClick={handleButtonClick}
+                    
                   >
                     <span className="txtButton_P2">Continuar</span>
                   </button>
