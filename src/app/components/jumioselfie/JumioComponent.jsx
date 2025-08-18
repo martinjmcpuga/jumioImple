@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useEffect, useState } from 'react'
 import { JumioSdkComponent } from "@jumio/websdk";
 import { useRef } from 'react';

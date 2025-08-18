@@ -5,11 +5,13 @@ import { getPerfilAicmJumio } from '../../Api/getPerfilAicmJumio';
 import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
 
 const Bandeja = () => {
 
   const { IdJumio } = useAppContext();
   const isRunned = useRef(false);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [curpStr, setCurpStr] = useState('');
   const [telefonoAsociado, setTelefonoAsociado] = useState('');
@@ -50,7 +52,6 @@ const Bandeja = () => {
       const response = await getRetrievalByAccount(objJumio);
       if (response.status === 200) {
       }
-
 
       const obj = {
         id: IdJumio,
@@ -94,9 +95,9 @@ const Bandeja = () => {
       } else {
 
         setLoading(false);
-        setShow(true);
-        setShowStatus("Error " + responsePerfilCpv.status);
-        setShowMessage(responsePerfilCpv.message);
+        //setShow(true);
+        //setShowStatus("Error " + responsePerfilCpv.status);
+        //setShowMessage(responsePerfilCpv.message);
 
       }
 
@@ -106,8 +107,14 @@ const Bandeja = () => {
 
   }, []);
 
+  const getHomeDomPersonal = async (event) => {
 
-  const onDomComplete = async () => { };
+    router.push('/initdomicilio');
+  };
+
+  const onDomComplete = async () => {
+
+  };
 
   return (
 
@@ -172,7 +179,7 @@ const Bandeja = () => {
                 {!validateDomi ? (
                   <>
                     <div className="cards animate__animated animate__fadeIn">
-                      <div className="rcornersDes27" >
+                      <div className="rcornersDes27" onClick={getHomeDomPersonal}>
                         <img src='assets/file_alt.svg' align="left" className="imgFol_P27_Img marginCustom" />
                         <img
                           src='assets/arrow_green.svg'
