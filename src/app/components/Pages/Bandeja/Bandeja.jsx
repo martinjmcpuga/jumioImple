@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-
+import { getPerfilAicmJumio } from '../../Api/getPerfilAicmJumio';
+import { useRef } from 'react';
+import { useAppContext } from '@/app/context/AppContext';
 
 const Bandeja = () => {
 
+  const { IdJumio } = useAppContext();
+  const isRunned = useRef(false);
   const [loading, setLoading] = useState(false);
   const [curpStr, setCurpStr] = useState('XXXX010101XXXXXX00');
   const [telefonoAsociado, setTelefonoAsociado] = useState('55XXXXXX99');
@@ -29,6 +33,70 @@ const Bandeja = () => {
     setTelefonoAsociado(localStorage.getItem('telefono'))
 
   }, []);
+
+
+  useEffect(() => {
+    if (isRunned.current) return;
+    isRunned.current = true;
+
+    async function createSession() {
+
+      setLoading(true);
+
+      const obj = {
+        id: IdJumio,
+        cpv: localStorage.getItem("sCpv")
+      };
+
+      const responsePerfilCpv = await getPerfilAicmJumio(obj);
+
+      if (responsePerfilCpv.status === 200) {
+
+        if (responsePerfilCpv.auDomicilio === true) {
+          setAuDomicilio(true);
+        }
+
+        if (responsePerfilCpv.auHistorial === true) {
+          setAuHistorial(true);
+        }
+
+        if (responsePerfilCpv.auHistorialComprobate === true) {
+          setAuHistorialComprobate(true);
+        }
+
+        if (responsePerfilCpv.auDeclaratoria === true) {
+          setAuDeclaratoria(true);
+        }
+
+        if (responsePerfilCpv.n5BGC === true) {
+          getPalencaUsersAccounts(obj);
+        }
+
+        if (responsePerfilCpv.auCita === true) {
+
+          setAuCitaVer(true);
+
+        } else {
+
+          setAuCitaVer(false);
+
+        }
+
+      } else {
+
+        setLoading(false);
+        setShow(true);
+        setShowStatus("Error " + responsePerfilCpv.status);
+        setShowMessage(responsePerfilCpv.message);
+
+      }
+
+    }
+
+    createSession();
+
+  }, []);
+
 
   const onDomComplete = async () => { };
 
@@ -356,9 +424,6 @@ const Bandeja = () => {
 
         </div>
       )}
-
-
-
     </>
   )
 }
