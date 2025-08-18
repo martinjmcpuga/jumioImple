@@ -1,4 +1,4 @@
-export const JumioAccountCreation = async() => {
+export const JumioAccountCreation = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL;
 
     try {

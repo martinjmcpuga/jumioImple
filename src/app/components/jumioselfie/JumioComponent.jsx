@@ -21,6 +21,30 @@ const JumioComponent = ({ token }) => {
   useEffect(() => {
     //  const template = '<template  id="jumio-start-title">\n  <pre>You can see now projected content via <i><strong>jumio-start-title</strong></i> template</pre>\n</template>'
 
+    const handleStatus = async (event) => {
+      // console.log(IdJumio)
+      // console.log('Workflow status:', event.detail);
+      //////////  const response = await ApiJumioRetrieval(IdJumio)
+      //  if(tokenJumio){
+      //    console.log(response)
+      //    console.log(response.status)
+
+      //    if(response.status === 200){
+      //        router.push('/bandeja');
+      //    }else{
+      //        router.push('/?i='+cpv);
+      //    }
+      //    return;
+
+      //   }else{
+      router.push('/bandeja');
+      //   }
+
+      //console.log('Jumio status:', response);
+
+    }
+
+
     if (jumioRef.current) {
       //  jumioRef.current.innerHTML= template;
       jumioRef.current.addEventListener('workflow:success', handleStatus);

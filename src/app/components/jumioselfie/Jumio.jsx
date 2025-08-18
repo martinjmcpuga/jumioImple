@@ -1,6 +1,7 @@
 'use client'
 
-import { Suspense, use, useEffect, useState } from 'react'
+import { Suspense, use, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { AccountCreation } from '../Api/AccountCreation'
 import { FetchToken } from '../Api/Fetch'
 import dynamic from 'next/dynamic'
