@@ -12,6 +12,9 @@ const Bandeja = () => {
   const { IdJumio } = useAppContext();
   const isRunned = useRef(false);
   const router = useRouter();
+
+  /**----------------*/
+
   const [loading, setLoading] = useState(false);
   const [curpStr, setCurpStr] = useState('');
   const [telefonoAsociado, setTelefonoAsociado] = useState('');
@@ -23,6 +26,8 @@ const Bandeja = () => {
   const [validateLab, setValidateLab] = useState(false);
   const [validateCita, setValidateCita] = useState(false);
   const [validateSigInd, setValidateSigInd] = useState(false);
+
+  /**----------------*/
 
   const [auDomicilio, setAuDomicilio] = useState(false);
   const [auHistorial, setAuHistorial] = useState(false);
