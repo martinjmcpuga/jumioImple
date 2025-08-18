@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 import "./DomicilioPersonal.css";
 import './flags.css';
 import dynamic from 'next/dynamic';
@@ -41,9 +42,11 @@ const country = [
 const DomicilioPersonal = () => {
 
   const [isButtonEnabled, setButtonEnabled] = useState(true);
+  const router = useRouter();
 
   const handleButtonClick = async () => {
 
+    router.push('/comprobantedompersonal');
 
   };
 
