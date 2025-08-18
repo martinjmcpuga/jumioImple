@@ -1,4 +1,5 @@
 'use client';
+
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { getOcrPais } from '../../Api/getOcrPais';
@@ -9,6 +10,7 @@ import Link from 'next/link';
 const Dataconfirm = () => {
 
   const [loading, setLoading] = useState(true);
+  const isRunned = useRef(false);
   const [firstName, setFirstName] = useState('');
   const [paternalLastName, setPaternalLastName] = useState('');
   const [maternalLastName, setMaternalLastName] = useState('');
@@ -36,6 +38,7 @@ const Dataconfirm = () => {
   }, []);
 
 
+
   const fetchData = async () => {
     const data = await ApiJumioFaceMatchToken(cpvI || localStorage.getItem('sCpv'));
     if (!data) {
@@ -55,9 +58,14 @@ const Dataconfirm = () => {
 
   useEffect(() => {
 
+    if (isRunned.current) return;
+    isRunned.current = true;
+
     async function createSession() {
 
       setLoading(false);
+
+      /*
 
       const objIncode = {
         interviewId: localStorage.getItem("interviewIdINE"),
@@ -97,6 +105,7 @@ const Dataconfirm = () => {
         setShowMessage(response.message);
 
       }
+        */
 
     }
 
