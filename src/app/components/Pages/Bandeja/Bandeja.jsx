@@ -18,7 +18,7 @@ const Bandeja = () => {
 
   const [auDomicilio, setAuDomicilio] = useState(true);
   const [auHistorial, setAuHistorial] = useState(true);
-  const [auHistorialComprobate, setAuHistorialComprobate] = useState(true);
+  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
 
   const [auDeclaratoria, setAuDeclaratoria] = useState(true);
   const [auCita, setAuCita] = useState(true);
