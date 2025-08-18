@@ -2,11 +2,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getPerfilAicmJumio } from "../../Api/getPerfilAicmJumio";
 import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
 import "./requerimientos.css";
 
 const RequerimientosN2 = () => {
 
   const isRunned = useRef(false);
+  const router = useRouter();
   const { IdJumio } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [checketList, setChecketList] = useState([]);
@@ -31,8 +33,8 @@ const RequerimientosN2 = () => {
       const objCons = {
         id: IdJumio,
         cpv: localStorage.getItem("sCpv")
-
       }
+
       const responsePerfil = await getPerfilAicmJumio(objCons);
 
       if (responsePerfil.status === 200) {
@@ -100,8 +102,7 @@ const RequerimientosN2 = () => {
 
 
   const handleButtonClick = async () => {
-
-
+    router.push('/requerimientosselected');
   };
 
   useEffect(() => {
