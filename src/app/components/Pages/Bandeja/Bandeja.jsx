@@ -20,13 +20,12 @@ const Bandeja = () => {
   const [validateCita, setValidateCita] = useState(false);
   const [validateSigInd, setValidateSigInd] = useState(false);
 
-  const [auDomicilio, setAuDomicilio] = useState(true);
-  const [auHistorial, setAuHistorial] = useState(true);
-  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
-
-  const [auDeclaratoria, setAuDeclaratoria] = useState(true);
-  const [auCita, setAuCita] = useState(true);
-  const [auCitaVer, setAuCitaVer] = useState(true);
+  const [auDomicilio, setAuDomicilio] = useState(false);
+  const [auHistorial, setAuHistorial] = useState(false);
+  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);=
+  const [auDeclaratoria, setAuDeclaratoria] = useState(false);
+  const [auCita, setAuCita] = useState(false);
+  const [auCitaVer, setAuCitaVer] = useState(false);
 
   useEffect(() => {
     setCurpStr(localStorage.getItem('curpValidate'))
