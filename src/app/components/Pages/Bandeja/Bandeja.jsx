@@ -50,13 +50,13 @@ const Bandeja = () => {
 
       setLoading(true);
 
-      const objJumio = {
-        idJumio: IdJumio
-      };
+      //const objJumio = {
+      //  idJumio: IdJumio
+      //};
 
-      const response = await getRetrievalByAccount(objJumio);
-      if (response.status === 200) {
-      }
+      //const response = await getRetrievalByAccount(objJumio);
+      //if (response.status === 200) {
+      //}
 
       const obj = {
         id: IdJumio,
