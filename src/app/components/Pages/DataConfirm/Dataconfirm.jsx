@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { getOcrPais } from '../../Api/getOcrPais';
@@ -37,7 +36,6 @@ const Dataconfirm = () => {
   }, []);
 
 
-
   const fetchData = async () => {
     const data = await ApiJumioFaceMatchToken(cpvI || localStorage.getItem('sCpv'));
     if (!data) {
@@ -56,14 +54,6 @@ const Dataconfirm = () => {
   }
 
   useEffect(() => {
-
-    setTimeout(() => {
-
-      fetchData();
-
-      setLoading(true);
-    }, 6000);
-
 
     async function createSession() {
 
