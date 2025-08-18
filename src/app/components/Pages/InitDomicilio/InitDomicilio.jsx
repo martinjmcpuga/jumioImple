@@ -27,7 +27,7 @@ const InitDomicilio = () => {
   return (
     <>
       <div className="containerRender">
-        <div className='containerInfo_P2'>
+        <div className='containerInfo_P2 animate__animated animate__fadeIn'>
           <div className='containerIdent_P2'>
             <div className='txtOp_P2'>Operación/Operation</div>
             <div className='txtVer_P2'>Verificación de Domicilio Personal</div>
