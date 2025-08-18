@@ -19,7 +19,6 @@ const RequerimientosN2 = () => {
   const [verIdentificacionSocial, setVerIdentificacionSocial] = useState(true);
   const [verIdentificacionFiscal, setVerIdentificacionFiscal] = useState(true);
 
-
   useEffect(() => {
 
     if (isRunned.current) return;
