@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useRef, useState } from "react";
-import "./requerimientos.css";
 import { getPerfilAicmJumio } from "../../Api/getPerfilAicmJumio";
 import { useAppContext } from '@/app/context/AppContext';
+import "./requerimientos.css";
 
-function RequerimientosN2() {
+const RequerimientosN2 = () => {
 
   const isRunned = useRef(false);
   const { IdJumio } = useAppContext();
