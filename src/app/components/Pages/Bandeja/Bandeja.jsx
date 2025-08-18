@@ -14,6 +14,7 @@ const Bandeja = () => {
   const [telefonoAsociado, setTelefonoAsociado] = useState('55XXXXXX99');
 
   /**Varibles perfil */
+
   const [direccion, setDireccion] = useState("");
   const [validateDomi, setValidateDomi] = useState(false);
   const [validateLab, setValidateLab] = useState(false);
@@ -22,7 +23,7 @@ const Bandeja = () => {
 
   const [auDomicilio, setAuDomicilio] = useState(false);
   const [auHistorial, setAuHistorial] = useState(false);
-  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);=
+  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
   const [auDeclaratoria, setAuDeclaratoria] = useState(false);
   const [auCita, setAuCita] = useState(false);
   const [auCitaVer, setAuCitaVer] = useState(false);
