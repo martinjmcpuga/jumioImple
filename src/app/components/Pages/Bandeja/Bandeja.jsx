@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { getPerfilAicmJumio } from '../../Api/getPerfilAicmJumio';
+import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 
@@ -41,6 +42,15 @@ const Bandeja = () => {
     async function createSession() {
 
       setLoading(true);
+
+      const objJumio = {
+        idJumio: IdJumio
+      };
+
+      const response = await getRetrievalByAccount(objJumio);
+      if (response.status === 200) {
+      }
+
 
       const obj = {
         id: IdJumio,
