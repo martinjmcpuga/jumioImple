@@ -10,8 +10,8 @@ const Bandeja = () => {
   const { IdJumio } = useAppContext();
   const isRunned = useRef(false);
   const [loading, setLoading] = useState(false);
-  const [curpStr, setCurpStr] = useState('XXXX010101XXXXXX00');
-  const [telefonoAsociado, setTelefonoAsociado] = useState('55XXXXXX99');
+  const [curpStr, setCurpStr] = useState('');
+  const [telefonoAsociado, setTelefonoAsociado] = useState('');
 
   /**Varibles perfil */
 
@@ -31,7 +31,6 @@ const Bandeja = () => {
   useEffect(() => {
     setCurpStr(localStorage.getItem('curpValidate'))
     setTelefonoAsociado(localStorage.getItem('telefono'))
-
   }, []);
 
 
