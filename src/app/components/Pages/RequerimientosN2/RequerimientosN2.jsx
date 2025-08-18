@@ -99,11 +99,8 @@ const RequerimientosN2 = () => {
   }, [verIdentificacionFiscal, verIdentificacionSocial]);
 
 
-
-
   const handleButtonClick = async () => {
 
-    navigate("/Requerimientos_Selected");
 
   };
 
