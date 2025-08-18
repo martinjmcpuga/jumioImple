@@ -4,10 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import "./requerimientos.css";
 import { getPerfilAicmJumio } from "../../Api/getPerfilAicmJumio";
 import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
 
 const RequerimientosSelected = () => {
 
   const isRunned = useRef(false);
+  const router = useRouter();
   const { IdJumio } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
 
@@ -29,19 +31,19 @@ const RequerimientosSelected = () => {
   };
 
   const handleButtonClick = async () => {
-    navigate("/DomicilioParticular");
+    router.push('/domiciliopersonal');
   };
 
   const handleButtonRef = async () => {
-    navigate("/DirRefPersonal");
+
   }
 
   const handleButtonSocial = async () => {
-    navigate("/IdentificacionSocial");
+
   }
 
   const handleButtonFiscal = async () => {
-    navigate("/IdentificacionFiscal");
+
   }
 
   useEffect(() => {

@@ -1,0 +1,33 @@
+.containerNac {
+  display: flex;
+}
+
+.pais {
+  width: 80%;
+  float: left;
+  text-align: left;
+}
+
+.paisBandera {
+  width: 20%;
+  text-align: center;
+}
+
+.bandera {
+  height: 25px !important;
+  width: 45px !important;
+}
+
+.css-1jqq78o-placeholder {
+  text-align: left;
+}
+
+.css-art2ul-ValueContainer2 {
+  height: 53px !important;
+  }
+
+
+.css-12buang-control {
+  height: 53px !important;
+}
+
