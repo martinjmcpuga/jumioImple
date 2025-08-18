@@ -53,13 +53,10 @@ const RequerimientosSelected = () => {
 
       setLoading(true);
 
-
-
       const objCons = {
         id: IdJumio,
         cpv: localStorage.getItem("sCpv")
       }
-
 
       const responsePerfil = await getPerfilAicmJumio(objCons);
 
