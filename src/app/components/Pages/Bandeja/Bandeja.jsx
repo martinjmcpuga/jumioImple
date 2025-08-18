@@ -97,6 +97,8 @@ const Bandeja = () => {
 
         }
 
+        setLoading(false);
+
       } else {
 
         setLoading(false);
