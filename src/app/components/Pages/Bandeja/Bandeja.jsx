@@ -50,13 +50,13 @@ const Bandeja = () => {
 
       setLoading(true);
 
-      //const objJumio = {
-      //  idJumio: IdJumio
-      //};
+      const objJumio = {
+        idJumio: IdJumio
+      };
 
-      //const response = await getRetrievalByAccount(objJumio);
-      //if (response.status === 200) {
-      //}
+      const response = await getRetrievalByAccount(objJumio);
+      if (response.status === 200) {
+      }
 
       const obj = {
         id: IdJumio,
@@ -84,7 +84,7 @@ const Bandeja = () => {
         }
 
         if (responsePerfilCpv.n5BGC === true) {
-          getPalencaUsersAccounts(obj);
+          //getPalencaUsersAccounts(obj);
         }
 
         if (responsePerfilCpv.auCita === true) {
