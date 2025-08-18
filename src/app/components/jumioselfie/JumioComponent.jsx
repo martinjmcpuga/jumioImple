@@ -7,8 +7,6 @@ import { ApiJumioRetrieval } from '../Api/ApiJumioRetrieval';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 
-
-
 const JumioComponent = ({ token }) => {
 
   const { IdJumio } = useAppContext()

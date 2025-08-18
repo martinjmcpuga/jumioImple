@@ -1,28 +1,36 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+
 
 const Bandeja = () => {
 
   const [loading, setLoading] = useState(false);
   const [curpStr, setCurpStr] = useState('XXXX010101XXXXXX00');
   const [telefonoAsociado, setTelefonoAsociado] = useState('55XXXXXX99');
-  const [auDomicilio, setAuDomicilio] = useState(true);
-  const [validateDomi, setValidateDomi] = useState(false);
-  const [auHistorial, setAuHistorial] = useState(true);
-  const [validateLab, setValidateLab] = useState(true);
-  const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
-  const [auDeclaratoria, setAuDeclaratoria] = useState(true);
-  const [validateSigInd, setValidateSigInd] = useState(true);
-  const [auCitaVer, setAuCitaVer] = useState(true);
-  const [auCita, setAuCita] = useState(false);
 
+  /**Varibles perfil */
+  const [direccion, setDireccion] = useState("");
+  const [validateDomi, setValidateDomi] = useState(false);
+  const [validateLab, setValidateLab] = useState(false);
+  const [validateCita, setValidateCita] = useState(false);
+  const [validateSigInd, setValidateSigInd] = useState(false);
+
+  const [auDomicilio, setAuDomicilio] = useState(true);
+  const [auHistorial, setAuHistorial] = useState(true);
+  const [auHistorialComprobate, setAuHistorialComprobate] = useState(true);
+
+  const [auDeclaratoria, setAuDeclaratoria] = useState(true);
+  const [auCita, setAuCita] = useState(true);
+  const [auCitaVer, setAuCitaVer] = useState(true);
 
   useEffect(() => {
     setCurpStr(localStorage.getItem('curpValidate'))
     setTelefonoAsociado(localStorage.getItem('telefono'))
 
   }, []);
+
+  const onDomComplete = async () => { };
 
   return (
 
@@ -109,7 +117,7 @@ const Bandeja = () => {
                         style={{ display: "flex", justifyContent: "space-between" }}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <img src='assets/file_user.svg' align="left" className="imgFol_P27_Img" />
+                          <img src='assets/user_green.svg' align="left" className="imgFol_P27_Img" />
                           <div>
                             <div className="txtDocReq_P27">Domicilio Personal</div>
                             <div className="txtIdenOf_P27" align="left">
@@ -157,7 +165,7 @@ const Bandeja = () => {
                         style={{ display: "flex", justifyContent: "space-between" }}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <img src='assets/file_user.svg' align="left" className="imgFol_P27_Img" />
+                          <img src='assets/user_green.svg' align="left" className="imgFol_P27_Img" />
                           <div>
                             <div className="txtDocReq_P27">Autenticación Laboral</div>
                             <div className="txtIdenOf_P27" align="left">
@@ -205,7 +213,7 @@ const Bandeja = () => {
                         style={{ display: "flex", justifyContent: "space-between" }}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <img src='assets/file_user.svg' align="left" className="imgFol_P27_Img" />
+                          <img src='assets/user_green.svg' align="left" className="imgFol_P27_Img" />
                           <div>
                             <div className="txtDocReq_P27">Autenticación Laboral</div>
                             <div className="txtIdenOf_P27" align="left">
@@ -255,7 +263,7 @@ const Bandeja = () => {
                         style={{ display: "flex", justifyContent: "space-between" }}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <img src='assets/file_user.svg' align="left" className="imgFol_P27_Img" />
+                          <img src='assets/user_green.svg' align="left" className="imgFol_P27_Img" />
                           <div>
                             <div className="txtDocReq_P27">Firma de Documento</div>
                             <div className="txtIdenOf_P27" align="left">
@@ -287,7 +295,7 @@ const Bandeja = () => {
                         <div className="rcornersDes27"
                           style={{ marginTop: "12px" }}
                         >
-                          <img src='assets/generar_cita_disabled.svg' align="left" className="imgFol_P27_Img marginCustom" />
+                          <img src='assets/generarCitaDisabled.svg' align="left" className="imgFol_P27_Img marginCustom" />
                           <img
                             src='assets/arrow_green.svg'
                             align="right"
@@ -307,7 +315,7 @@ const Bandeja = () => {
                             style={{ display: "flex", justifyContent: "space-between" }}
                           >
                             <div style={{ display: "flex", alignItems: "center" }}>
-                              <img src='assets/file_user.svg' align="left" className="imgFol_P27_Img" />
+                              <img src='assets/user_green.svg' align="left" className="imgFol_P27_Img" />
                               <div>
                                 <div className="txtDocReq_P27">Generar cita</div>
                                 <div className="txtIdenOf_P27" align="left">
@@ -327,7 +335,7 @@ const Bandeja = () => {
                 <>
                   <div className="rcornersDes27"
                     style={{ marginTop: "12px" }}>
-                    <img src='assets/generar_cita_disabled.svg' align="left" className="imgFol_P27_Img marginCustom" />
+                    <img src='assets/generarCitaDisabled.svg' align="left" className="imgFol_P27_Img marginCustom" />
                     <img
                       src='assets/arrow_green.svg'
                       align="right"
