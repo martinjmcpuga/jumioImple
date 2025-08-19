@@ -1,0 +1,16 @@
+.textCheck {
+    color: #000;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.mainPicture {
+    width: 20%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}

@@ -1,0 +1,28 @@
+.containerEmisor {
+    display: flex;
+}
+
+.button_P2 {
+    width: 100%;
+    height: 48px;
+    background: #55AC68 0% 0% no-repeat padding-box;
+    border: 1px solid #55AC68;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+
+.txtSilver_P2 {
+    color: #C1C1C1;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 140%;
+}
+
+.textCheck {
+    color: #000;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
