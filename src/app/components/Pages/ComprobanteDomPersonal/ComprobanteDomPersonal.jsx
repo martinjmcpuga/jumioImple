@@ -4,14 +4,18 @@ import options from './options.json';
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 import "./styleDomPersonal.css";
+import { useRouter } from 'next/navigation';
 
 function ComprobanteDomPersonal() {
 
     const isRunned = useRef(false);
+    const router = useRouter();
     const [blContinue, setBlContinue] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
 
     const onTest = async () => {
+
+        router.push('/uploadcomprobante');
 
     };
 

@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect } from 'react'
-
 import './RequerimientosSelfie.css'
 import Link from 'next/link';
 import Footer from '../../Footer/Footer';
@@ -103,8 +102,6 @@ const RequerimientosSelfie = () => {
                 )}
               </div>
             </section>
-
-
           </div>
         </section>
         <Footer />
