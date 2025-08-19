@@ -13,17 +13,17 @@ const RequerimientosSelfie = () => {
   const [isButtonEnabled, setButtonEnabled] = useState(false);
 
 
-    const handleButtonClick = async () => {
+  const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
 
   };
 
-    useEffect(() => {
-      setButtonEnabled(isChecked && isChecked2);
-    }, [isChecked, isChecked2]);
+  useEffect(() => {
+    setButtonEnabled(isChecked && isChecked2);
+  }, [isChecked, isChecked2]);
 
   return (
-        <>
+    <>
       <main className="containerRender onContentExpands animate__animated animate__fadeIn">
         <section className="containerInfo_P2">
           <div className="containerIdent_P2">
@@ -53,6 +53,7 @@ const RequerimientosSelfie = () => {
                       </div>
                     </td>
                   </tr>
+                  <br></br>
                   <tr>
                     <td className="containerCheck_P28 spaceRadio">
                       <input
