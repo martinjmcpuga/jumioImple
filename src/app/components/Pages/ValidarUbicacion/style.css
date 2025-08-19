@@ -1,0 +1,56 @@
+.button_P2 {
+    width: 100%;
+    height: 48px;
+    background: #55AC68 0% 0% no-repeat padding-box;
+    border: 1px solid #55AC68;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+
+.spaceRadio {
+    padding-right: 12px;
+}
+
+
+.spaceBottom {
+    padding-bottom: 200px;
+}
+
+.scrollDataPersonal {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.scrollCompInf {
+    overflow-y: scroll;
+    height: 550px;
+}
+
+.spaceLeft {
+    padding-left: 10px;
+}
+
+
+.circulo {
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #5cb85c;
+    margin-top: 7px;
+    margin-right: 5px;
+    float: left;
+}
+
+.circuloRed {
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #f50303;
+    margin-top: 7px;
+    margin-right: 5px;
+    float: left;
+}
