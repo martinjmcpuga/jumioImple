@@ -1,9 +1,9 @@
 'use client'
 import React, { useState, useRef } from "react";
 import options from './options.json';
-import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
+import "./styleDomPersonal.css";
 
 function ComprobanteDomPersonal() {
 
@@ -18,12 +18,10 @@ function ComprobanteDomPersonal() {
     const handleSelectChange = (selectedOption) => {
 
         setSelectedOption(selectedOption);
-        
 
         setBlContinue(true);
 
     };
-
 
     const style = {
         control: base => ({
