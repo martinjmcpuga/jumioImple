@@ -2,14 +2,17 @@
 
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import { getCodigoPostalCpt_Jumio } from "../../Api/getCodigoPostalCpt_Jumio";
+import { getPointCoordenadas_Jumio } from "../../Api/getPointCoordenadas_Jumio";
+import { useRouter } from 'next/navigation';
 import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
-import { getCodigoPostalCpt_Jumio } from "../../Api/getCodigoPostalCpt_Jumio";
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 function DataRefPersonal() {
 
     const ref = useRef(null);
+    const router = useRouter();
     const isRunned = useRef(false);
     const [codigoPostal, setCodigoPostal] = useState("");
     const [colonia, setColonia] = useState("");
@@ -136,7 +139,7 @@ function DataRefPersonal() {
             direccion: direccion
         }
 
-        const geolocalizacion = await getPointCoordenadas(objCons);
+        const geolocalizacion = await getPointCoordenadas_Jumio(objCons);
 
         /** 3.- Obtiene las coordenadas de la dirección */
 
@@ -144,6 +147,8 @@ function DataRefPersonal() {
 
             const latitud_obtenida = geolocalizacion.latitud;
             const longitud_obtenida = geolocalizacion.longitud;
+
+            router.push('/validarubicacionreferencia');
 
             /*
             navigate("/ValidarRefUbicacion", {
@@ -311,8 +316,6 @@ function DataRefPersonal() {
                     </div>
                 </div>
             </div>
-
-
 
         </>
     );

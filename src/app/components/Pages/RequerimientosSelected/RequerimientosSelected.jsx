@@ -35,7 +35,7 @@ const RequerimientosSelected = () => {
   };
 
   const handleButtonRef = async () => {
-
+    router.push('/dirrefpersonal');
   }
 
   const handleButtonSocial = async () => {

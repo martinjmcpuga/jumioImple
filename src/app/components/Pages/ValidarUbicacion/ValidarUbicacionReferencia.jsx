@@ -15,7 +15,6 @@ import { mtUpdatePersonRef_Jumio } from "../../Api/mtUpdatePersonRef_Jumio";
 function ValidarUbicacionReferencia() {
 
     const isRunned = useRef(false);
-
     const cpRef = "54050";
     const coloniaRef = "Bosques de Mexico";
     const calleRef = "Bosques de chihuahua";
