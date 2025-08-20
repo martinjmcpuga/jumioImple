@@ -180,7 +180,7 @@ function UploadComprobante() {
 
           if (responseComprobanteByName.status === 200) {
 
-            const responseFechaPago = await validateFechaPagoN5(objAWS);
+            const responseFechaPago = await validateFechaPagoN5_Jumio(objAWS);
 
             if (responseFechaPago.status === 200) {
 
