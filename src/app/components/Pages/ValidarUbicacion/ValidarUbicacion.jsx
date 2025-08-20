@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import maplibregl from 'maplibre-gl';
 import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -17,17 +17,19 @@ function ValidarUbicacion() {
 
     const isRunned = useRef(false);
     const router = useRouter();
-    const documentType = "totalplay";
-    const documentTypeLabel = "Recibo de Teléfono";
-    const cpDom = "54050";
-    const coloniaDom = "Bosques de Mexico";
-    const calleDom = "Bosques de chihuahua";
-    const numExtDom = "87";
-    const numInteDom = "";
-    const edoDom = "Mexico";
-    const muniDom = "Tlalnepantla de Baz";
-    const latitud = "19.535325976818562";
-    const longitud = "-99.22885245646118";
+    const searchParams = useSearchParams();
+
+    const documentType = searchParams.get('documentType');
+    const documentTypeLabel = searchParams.get('documentTypeLabel');
+    const cpDom = searchParams.get('cpDom');
+    const coloniaDom = searchParams.get('coloniaDom');
+    const calleDom = searchParams.get('calleDom');
+    const numExtDom = searchParams.get('numExtDom');
+    const numInteDom = searchParams.get('numInteDom');
+    const edoDom = searchParams.get('edoDom');
+    const muniDom = searchParams.get('muniDom');
+    const latitud = searchParams.get('latitud');
+    const longitud = searchParams.get('longitud');
 
     const [latitud_obtenid, setLatitudObj] = useState(latitud);
     const [longitud_obtenid, setLongitudObj] = useState(longitud);

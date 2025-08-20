@@ -148,7 +148,20 @@ function DataRefPersonal() {
             const latitud_obtenida = geolocalizacion.latitud;
             const longitud_obtenida = geolocalizacion.longitud;
 
-            router.push('/validarubicacionreferencia');
+            const params = {
+                cpRef: codigoPostal,
+                coloniaRef: colonia,
+                calleRef: calle,
+                numExtRef: numExterior,
+                numInteRef: numInterior,
+                edoRef: edo,
+                muniRef: muni,
+                latitud_obtenida: latitud_obtenida,
+                longitud_obtenida: longitud_obtenida
+            };
+
+            const queryString = new URLSearchParams(params).toString();
+            router.push(`/validarubicacionreferencia?${queryString}`);
 
             /*
             navigate("/ValidarRefUbicacion", {

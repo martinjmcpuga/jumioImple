@@ -5,7 +5,7 @@ import { JumioSdkComponent } from "@jumio/websdk";
 import { useRef } from 'react';
 import { ApiJumioRetrieval } from '../Api/ApiJumioRetrieval';
 import { useAppContext } from '@/app/context/AppContext';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const JumioComponent = ({ token }) => {
 

@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import maplibregl from 'maplibre-gl';
 import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -17,16 +17,16 @@ function ValidarUbicacionReferencia() {
 
     const isRunned = useRef(false);
     const router = useRouter();
-    const cpRef = "54050";
-    const coloniaRef = "Bosques de Mexico";
-    const calleRef = "Bosques de chihuahua";
-    const numExtRef = "87";
-    const numInteRef = "";
-    const edoRef = "Mexico";
-    const muniRef = "Tlalnepantla de Baz";
-    const latitud = "19.535325976818562";
-    const longitud = "-99.22885245646118";
-
+    const searchParams = useSearchParams();
+    const cpRef = searchParams.get('cpRef');
+    const coloniaRef = searchParams.get('coloniaRef');
+    const calleRef = searchParams.get('calleRef');
+    const numExtRef = searchParams.get('numExterior');
+    const numInteRef = searchParams.get('numInterior');
+    const edoRef = searchParams.get('edoRef');
+    const muniRef = searchParams.get('muniRef');
+    const latitud = searchParams.get('latitud_obtenida');
+    const longitud = searchParams.get('longitud_obtenida');
 
     const [latitud_obtenid, setLatitudObj] = useState(latitud);
     const [longitud_obtenid, setLongitudObj] = useState(longitud);
