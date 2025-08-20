@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useRef, useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import "./requerimientos.css";
 import { getPerfilAicmJumio } from "../../Api/getPerfilAicmJumio";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
+import Modal from "react-bootstrap/Modal";
+import "./requerimientos.css";
 
 const RequerimientosSelected = () => {
 

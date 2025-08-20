@@ -13,13 +13,10 @@ const Requerimientos = () => {
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const { cpvI } = useAppContext();
 
-
-
   const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
 
   };
-
 
   const handleRadioChange = () => {
     const newCheckedStatus = !isChecked;
@@ -90,7 +87,6 @@ const Requerimientos = () => {
                 )}
               </div>
             </section>
-
 
           </div>
         </section>
