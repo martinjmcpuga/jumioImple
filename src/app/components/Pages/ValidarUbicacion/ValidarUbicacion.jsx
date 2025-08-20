@@ -1,5 +1,5 @@
 'use client'
-
+import { appGlobal } from "../../Api/appGlobal";
 import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
@@ -9,13 +9,11 @@ import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
-import { appGlobal } from "../../Api/appGlobal";
 import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
 
 function ValidarUbicacion() {
 
     const isRunned = useRef(false);
-
     const documentType = "totalplay";
     const documentTypeLabel = "Recibo de Teléfono";
     const cpDom = "54050";
