@@ -10,23 +10,22 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
 import { appGlobal } from "../../Api/appGlobal";
-import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
+import { mtUpdatePersonRef_Jumio } from "../../Api/mtUpdatePersonRef_Jumio";
 
-function ValidarUbicacion() {
+function ValidarUbicacionReferencia() {
 
     const isRunned = useRef(false);
 
-    const documentType = "totalplay";
-    const documentTypeLabel = "Recibo de Teléfono";
-    const cpDom = "54050";
-    const coloniaDom = "Bosques de Mexico";
-    const calleDom = "Bosques de chihuahua";
-    const numExtDom = "87";
-    const numInteDom = "";
-    const edoDom = "Mexico";
-    const muniDom = "Tlalnepantla de Baz";
+    const cpRef = "54050";
+    const coloniaRef = "Bosques de Mexico";
+    const calleRef = "Bosques de chihuahua";
+    const numExtRef = "87";
+    const numInteRef = "";
+    const edoRef = "Mexico";
+    const muniRef = "Tlalnepantla de Baz";
     const latitud = "19.535325976818562";
     const longitud = "-99.22885245646118";
+
 
     const [latitud_obtenid, setLatitudObj] = useState(latitud);
     const [longitud_obtenid, setLongitudObj] = useState(longitud);
@@ -103,7 +102,7 @@ function ValidarUbicacion() {
                         setLoading(true);
                         const formData = new FormData();
                         formData.append("file", file);
-                        formData.append("renombreFile", "Mapa1_");
+                        formData.append("renombreFile", "Mapa2_");
                         formData.append("cpv", localStorage.getItem("sCpv"));
                         const url = appGlobal.hostFile + "upload_2C_Jumio";
                         const params = {
@@ -130,30 +129,28 @@ function ValidarUbicacion() {
 
                             const objInsertDom = {
                                 id: localStorage.getItem('idPerson'),
-                                documentType: documentType,
-                                documentTypeLabel: documentTypeLabel,
-                                cpDom: cpDom,
-                                coloniaDom: coloniaDom,
-                                calleDom: calleDom,
-                                numExtDom: numExtDom,
-                                numInteDom: numInteDom,
-                                edoDom: edoDom,
-                                muniDom: muniDom,
-                                latDom: latitud,
-                                logDom: longitud,
-                                longitudDom: longitud_obtenid,
-                                latitudDom: latitud_obtenid,
-                                scoreDom: "0",
-                                distanciaDom: "0",
-                                userAgentDom: userAgent,
-                                codePaisDom: "MEX",
-                                privateIpDom: ip,
-                                publicIpDom: publicIp,
-                                domicilioParticular: true,
-                                imagenDom: "",
+                                cpRef: cpRef,
+                                coloniaRef: coloniaRef,
+                                calleRef: calleRef,
+                                numExtRef: numExtRef,
+                                numInteRef: numInteRef,
+                                edoRef: edoRef,
+                                muniRef: muniRef,
+                                latRef: "0",
+                                logRef: "0",
+                                longitudRef: longitud_obtenid,
+                                latitudRef: latitud_obtenid,
+                                scoreRef: "0",
+                                distanciaRef: "0",
+                                userAgentRef: userAgent,
+                                codePaisRef: "MEX",
+                                privateIpRef: ip,
+                                publicIpRef: publicIp,
+                                domicilioParticularRef: true,
+                                imagenRef: "",
                             };
 
-                            const response = await mtUpdatePersonDom_Jumio(objInsertDom);
+                            const response = await mtUpdatePersonRef_Jumio(objInsertDom);
 
                             if (response.status === 200) {
 
@@ -246,4 +243,4 @@ function ValidarUbicacion() {
     );
 }
 
-export default ValidarUbicacion;
+export default ValidarUbicacionReferencia;

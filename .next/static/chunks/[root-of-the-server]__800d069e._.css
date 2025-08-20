@@ -484,12 +484,58 @@
     z-index: 50;
   }
 
+  .col-12 {
+    grid-column: 12;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  @media (width >= 40rem) {
+    .container {
+      max-width: 40rem;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .container {
+      max-width: 48rem;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .container {
+      max-width: 64rem;
+    }
+  }
+
+  @media (width >= 80rem) {
+    .container {
+      max-width: 80rem;
+    }
+  }
+
+  @media (width >= 96rem) {
+    .container {
+      max-width: 96rem;
+    }
+  }
+
   .my-6 {
     margin-block: calc(var(--spacing) * 6);
   }
 
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
   }
 
   .ml-2 {
@@ -506,6 +552,10 @@
 
   .h-screen {
     height: 100vh;
+  }
+
+  .w-100 {
+    width: calc(var(--spacing) * 100);
   }
 
   .w-full {
@@ -5752,12 +5802,12 @@ input::placeholder {
   .containerButtonOnExpands_P2 {
     justify-content: center;
     align-items: end;
-    height: 60vh;
+    height: 40vh;
     display: flex;
   }
 
   .containerInfoOnExpands {
-    height: 60vh;
+    height: 40vh;
   }
 
   .btnRenderPercent {

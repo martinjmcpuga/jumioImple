@@ -10,7 +10,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 const ApiJumioRetrieval = async (idJumio)=>{
-    const url = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_JUMIO_TOKEN;
+    const url = ("TURBOPACK compile-time value", "https://80g0rex55b.execute-api.us-east-1.amazonaws.com/fileUp/getRetrievalByAccount");
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -72,29 +72,24 @@ const JumioComponent = ({ token })=>{
     const { cpvI } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$context$2f$AppContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "JumioComponent.useEffect": ()=>{
-            setCpv(localStorage.getItem('sCpv') || cpvI);
-        }
-    }["JumioComponent.useEffect"], []);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "JumioComponent.useEffect": ()=>{
             //  const template = '<template  id="jumio-start-title">\n  <pre>You can see now projected content via <i><strong>jumio-start-title</strong></i> template</pre>\n</template>'
             const handleStatus = {
                 "JumioComponent.useEffect.handleStatus": async (event)=>{
                     // console.log(IdJumio)
                     // console.log('Workflow status:', event.detail);
-                    const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$components$2f$Api$2f$ApiJumioRetrieval$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ApiJumioRetrieval"])(IdJumio);
-                    if (tokenJumio) {
-                        console.log(response);
-                        console.log(response.status);
-                        if (response.status === 200) {
-                            router.push('/bandeja');
-                        } else {
-                            router.push('/?i=' + cpv);
-                        }
-                        return;
-                    } else {
-                        router.push('/dataconfirm');
-                    }
+                    //////////  const response = await ApiJumioRetrieval(IdJumio)
+                    //  if(tokenJumio){
+                    //    console.log(response)
+                    //    console.log(response.status)
+                    //    if(response.status === 200){
+                    //        router.push('/bandeja');
+                    //    }else{
+                    //        router.push('/?i='+cpv);
+                    //    }
+                    //    return;
+                    //   }else{
+                    router.push('/requerimientoselfie');
+                //   }
                 //console.log('Jumio status:', response);
                 }
             }["JumioComponent.useEffect.handleStatus"];
@@ -115,16 +110,16 @@ const JumioComponent = ({ token })=>{
             ref: jumioRef
         }, void 0, false, {
             fileName: "[project]/src/app/components/jumio/JumioComponent.jsx",
-            lineNumber: 62,
-            columnNumber: 9
+            lineNumber: 58,
+            columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/components/jumio/JumioComponent.jsx",
-        lineNumber: 60,
+        lineNumber: 56,
         columnNumber: 5
     }, this);
 };
-_s(JumioComponent, "RLuwqpz93224W1b0ByxZX+ciBqI=", false, function() {
+_s(JumioComponent, "n3TwQXjSqg0FcRe/08x7ctJzedw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$context$2f$AppContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],

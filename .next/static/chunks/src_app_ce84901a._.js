@@ -78,11 +78,11 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 const FetchToken = async ()=>{
-    const url = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL;
+    const url = ("TURBOPACK compile-time value", "https://jumio-back.vercel.app/api/Fetch");
     const apiKey = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_KEY;
     const apiSecret = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_SECRET;
-    if (!url && !apiKey && !apiSecret) {
-        throw new Error('API is not defined in the environment variables');
+    if ("TURBOPACK compile-time falsy", 0) {
+        "TURBOPACK unreachable";
     }
     const basicAuth = btoa(`${apiKey}:${apiSecret}`);
     try {
@@ -123,7 +123,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 const JumioAccountCreation = async ()=>{
-    const url = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL;
+    const url = ("TURBOPACK compile-time value", "https://jumio-back.vercel.app/api/Fetch");
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -159,7 +159,7 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 const FetchAccAWS = async (cpv)=>{
-    const url = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL_TEST;
+    const url = ("TURBOPACK compile-time value", "https://jumio-back.vercel.app/api/Test");
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -337,7 +337,7 @@ function Pantalla2() {
                             children: "Operación/Operation"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 15,
+                            lineNumber: 13,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -345,7 +345,7 @@ function Pantalla2() {
                             children: "Verificación de Identificación Personal"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 16,
+                            lineNumber: 14,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -353,7 +353,7 @@ function Pantalla2() {
                             children: "CPV/PVC"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 17,
+                            lineNumber: 15,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -361,7 +361,7 @@ function Pantalla2() {
                             children: cpvI
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 18,
+                            lineNumber: 16,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -369,7 +369,7 @@ function Pantalla2() {
                             children: "Remitente/Sender"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 19,
+                            lineNumber: 17,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -377,13 +377,13 @@ function Pantalla2() {
                             children: "Business Prey"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 20,
+                            lineNumber: 18,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                    lineNumber: 14,
+                    lineNumber: 12,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -393,12 +393,12 @@ function Pantalla2() {
                         children: "Esta operación requiere:"
                     }, void 0, false, {
                         fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                        lineNumber: 23,
+                        lineNumber: 21,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                    lineNumber: 22,
+                    lineNumber: 20,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -410,7 +410,7 @@ function Pantalla2() {
                             className: "imgFol_P2"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 26,
+                            lineNumber: 24,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -418,7 +418,7 @@ function Pantalla2() {
                             children: "Documento de Identificación"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 27,
+                            lineNumber: 25,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -426,19 +426,19 @@ function Pantalla2() {
                             children: "Identificación oficial o Pasaporte"
                         }, void 0, false, {
                             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                            lineNumber: 28,
+                            lineNumber: 26,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-                    lineNumber: 25,
+                    lineNumber: 23,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/components/Pages/Pantalla2/Pantalla2.jsx",
-            lineNumber: 13,
+            lineNumber: 11,
             columnNumber: 13
         }, this)
     }, void 0, false);
@@ -1075,17 +1075,17 @@ function Home() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$components$2f$Pages$2f$Pantalla2$2f$Pantalla2$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                 fileName: "[project]/src/app/page.js",
                                 lineNumber: 211,
-                                columnNumber: 17
+                                columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.js",
                             lineNumber: 210,
-                            columnNumber: 15
+                            columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.js",
                         lineNumber: 209,
-                        columnNumber: 13
+                        columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$components$2f$Footer$2f$Footer$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         direction: '/requerimientos',
@@ -1093,7 +1093,7 @@ function Home() {
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.js",
                         lineNumber: 215,
-                        columnNumber: 17
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1104,12 +1104,12 @@ function Home() {
                     }, void 0, false, {
                         fileName: "[project]/src/app/page.js",
                         lineNumber: 221,
-                        columnNumber: 15
+                        columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/page.js",
                     lineNumber: 220,
-                    columnNumber: 13
+                    columnNumber: 11
                 }, this)
             }, void 0, false),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$components$2f$Modals$2f$ModalMain$2f$ModalMain$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1118,7 +1118,7 @@ function Home() {
             }, void 0, false, {
                 fileName: "[project]/src/app/page.js",
                 lineNumber: 228,
-                columnNumber: 6
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true);
