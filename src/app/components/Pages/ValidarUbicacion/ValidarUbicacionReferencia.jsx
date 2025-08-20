@@ -1,20 +1,22 @@
 'use client'
 
+import { appGlobal } from "../../Api/appGlobal";
+import { mtUpdatePersonRef_Jumio } from "../../Api/mtUpdatePersonRef_Jumio";
 import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
+import { useRouter } from 'next/navigation';
 import maplibregl from 'maplibre-gl';
 import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
-import { appGlobal } from "../../Api/appGlobal";
-import { mtUpdatePersonRef_Jumio } from "../../Api/mtUpdatePersonRef_Jumio";
 
 function ValidarUbicacionReferencia() {
 
     const isRunned = useRef(false);
+    const router = useRouter();
     const cpRef = "54050";
     const coloniaRef = "Bosques de Mexico";
     const calleRef = "Bosques de chihuahua";
@@ -153,7 +155,7 @@ function ValidarUbicacionReferencia() {
 
                             if (response.status === 200) {
 
-                                navigate("/Requerimientos_Selected");
+                                router.push('/requerimientosselected');
 
                             } else {
                                 setLoading(false);

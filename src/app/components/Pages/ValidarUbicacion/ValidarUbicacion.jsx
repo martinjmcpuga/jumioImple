@@ -1,19 +1,22 @@
 'use client'
+
+import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
 import { appGlobal } from "../../Api/appGlobal";
 import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
+import { useRouter } from 'next/navigation';
 import maplibregl from 'maplibre-gl';
 import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
-import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
 
 function ValidarUbicacion() {
 
     const isRunned = useRef(false);
+    const router = useRouter();
     const documentType = "totalplay";
     const documentTypeLabel = "Recibo de Teléfono";
     const cpDom = "54050";
@@ -155,7 +158,7 @@ function ValidarUbicacion() {
 
                             if (response.status === 200) {
 
-                                navigate("/Requerimientos_Selected");
+                                router.push('/requerimientosselected');
 
                             } else {
                                 setLoading(false);
