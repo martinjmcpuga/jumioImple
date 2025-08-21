@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, use } from "react";
 //import { Document, Page } from 'react-pdf';
 //import { pdfjs } from 'react-pdf';
 import Modal from "react-bootstrap/Modal";
@@ -11,10 +11,9 @@ import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR
 import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 import { uploadFilesServiceN5Archivo2_Jumio } from "../../Api/uploadFilesServiceN5Archivo2_Jumio";
 import { validateFechaPagoN5_Jumio } from "../../Api/validateFechaPagoN5_Jumio";
-import dynamic from 'next/dynamic';
-const Document = dynamic(() => import('react-pdf'), { ssr: false });
-const Page = dynamic(() => import('react-pdf'), { ssr: false });
-const pdfjs = dynamic(() => import('react-pdf'), { ssr: false });
+import { Document, Page, pdfjs } from 'react-pdf';
+
+
 
 function UploadComprobante() {
 
@@ -30,7 +29,6 @@ function UploadComprobante() {
   const isRunned = useRef(false);
   const [imageShare, setImageShare] = useState("");
   const [showErrorFile, setShowErrorFile] = useState(false);
-  //pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [filesImage, setFilesImage] = useState([]);
@@ -46,6 +44,11 @@ function UploadComprobante() {
     }
 
   }
+
+  useEffect(()=>{
+      pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`;
+
+  },[])
 
   const handleFileChange = (event) => {
     setShowErrorFile(false);

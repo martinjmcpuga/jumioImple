@@ -2,11 +2,15 @@
 
 import React, { useState,useEffect } from "react";
 import "./style.css";
+import { useAppContext } from "@/app/context/AppContext";
+import { useRouter } from 'next/navigation'
 
-function Header({ imgBack, imgBackRig, rutaBack, title, name,titleSizing }) {
+function Header({ imgBack, imgBackRig, title, name,titleSizing }) {
 
  const [interName, setInterName] = useState('Autenticación Personal');
  const [titleMain, setTitleMain] = useState('Enrolamiento');
+ const { rutaBack } = useAppContext();
+const router = useRouter();
 
  useEffect(() => {
 
@@ -25,11 +29,11 @@ function Header({ imgBack, imgBackRig, rutaBack, title, name,titleSizing }) {
 
 
   const onBackPage = async () => {
-    navigate(rutaBack);
+    router.push(rutaBack);
   };
 
   const onBackPageRih = async () => {
-    navigate(imgBackRig);
+    router.push(imgBackRig);
   };
 
   

@@ -14,6 +14,11 @@ const Select = dynamic(() => import('react-select'), { ssr: false });
 
 
 const Paises = () => {
+const { setRutaBack } = useAppContext();
+  useEffect(() => {
+  setRutaBack('/requerimientos');
+  }, []);
+
 
 
   const ref = useRef(null);

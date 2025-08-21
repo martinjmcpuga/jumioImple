@@ -20,6 +20,8 @@ export default function JumioJsx() {
   //const { setIdJumioSelfie } = useAppContext()
   const { cpvI } = useAppContext()
   const { tokenJumio } = useAppContext()
+  const { rutaBack } = useAppContext()
+  const { setRutaBack } = useAppContext()
 
 
   useEffect(() => {
