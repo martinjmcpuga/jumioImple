@@ -67,7 +67,7 @@ const Bandeja = () => {
       setLoading(true);
 
       const objJumio = {
-        idJumio: localStorage.getItem("id"),
+        idJumio: IdJumio,
         curpValidate: localStorage.getItem("curpValidate")
       };
 
