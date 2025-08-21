@@ -2,8 +2,6 @@
 
 import React from 'react'
 import { useState, useEffect, useRef } from 'react';
-import { getOcrPais } from '../../Api/getOcrPais';
-import { ApiJumioFaceMatchToken } from '../../Api/ApiJumioFaceMatchToken';
 import { useAppContext } from '../../../context/AppContext';
 import Link from 'next/link';
 
