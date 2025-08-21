@@ -6,6 +6,7 @@ import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
+import { Form, Spinner, Modal } from 'react-bootstrap';
 
 const Bandeja = () => {
 
@@ -18,6 +19,12 @@ const Bandeja = () => {
   const [loading, setLoading] = useState(false);
   const [curpStr, setCurpStr] = useState('');
   const [telefonoAsociado, setTelefonoAsociado] = useState('');
+
+  /**----------------*/
+
+  const [show, setShow] = useState(false);
+  const [showStatus, setShowStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState('');
 
   /**Varibles perfil */
 
@@ -41,6 +48,14 @@ const Bandeja = () => {
     setTelefonoAsociado(localStorage.getItem('telefono'))
   }, []);
 
+  const handleClose = () => { };
+
+  const showModalError = (title, message) => {
+    setShowStatus(title);
+    setShowMessage(message);
+    setShow(true);
+  };
+
 
   useEffect(() => {
     if (isRunned.current) return;
@@ -56,55 +71,60 @@ const Bandeja = () => {
 
       const response = await getRetrievalByAccount(objJumio);
       if (response.status === 200) {
-      }
 
-      const obj = {
-        id: IdJumio,
-        cpv: localStorage.getItem("sCpv")
-      };
 
-      const responsePerfilCpv = await getPerfilAicmJumio(obj);
+        const obj = {
+          id: IdJumio,
+          cpv: localStorage.getItem("sCpv")
+        };
 
-      if (responsePerfilCpv.status === 200) {
+        const responsePerfilCpv = await getPerfilAicmJumio(obj);
 
-        if (responsePerfilCpv.auDomicilio === true) {
-          setAuDomicilio(true);
-        }
+        if (responsePerfilCpv.status === 200) {
 
-        if (responsePerfilCpv.auHistorial === true) {
-          setAuHistorial(true);
-        }
+          if (responsePerfilCpv.auDomicilio === true) {
+            setAuDomicilio(true);
+          }
 
-        if (responsePerfilCpv.auHistorialComprobate === true) {
-          setAuHistorialComprobate(true);
-        }
+          if (responsePerfilCpv.auHistorial === true) {
+            setAuHistorial(true);
+          }
 
-        if (responsePerfilCpv.auDeclaratoria === true) {
-          setAuDeclaratoria(true);
-        }
+          if (responsePerfilCpv.auHistorialComprobate === true) {
+            setAuHistorialComprobate(true);
+          }
 
-        if (responsePerfilCpv.n5BGC === true) {
-          //getPalencaUsersAccounts(obj);
-        }
+          if (responsePerfilCpv.auDeclaratoria === true) {
+            setAuDeclaratoria(true);
+          }
 
-        if (responsePerfilCpv.auCita === true) {
+          if (responsePerfilCpv.n5BGC === true) {
+            //getPalencaUsersAccounts(obj);
+          }
 
-          setAuCitaVer(true);
+          if (responsePerfilCpv.auCita === true) {
+
+            setAuCitaVer(true);
+
+          } else {
+
+            setAuCitaVer(false);
+
+          }
+
+          setLoading(false);
 
         } else {
 
-          setAuCitaVer(false);
+          setLoading(false);
+          showModalError('Error', responsePerfilCpv.message);
 
         }
-
-        setLoading(false);
 
       } else {
 
         setLoading(false);
-        //setShow(true);
-        //setShowStatus("Error " + responsePerfilCpv.status);
-        //setShowMessage(responsePerfilCpv.message);
+        showModalError('Error', response.message);
 
       }
 
@@ -447,6 +467,19 @@ const Bandeja = () => {
 
         </div>
       )}
+
+      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
+        <Modal.Body>
+          <div className="msjTitleModalDiv">{showStatus}</div>
+          <div className="msjErrorModal">{showMessage}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="button_P2" onClick={handleClose}>
+            <span className="txtButton_P2">Regresar</span>
+          </button>
+        </Modal.Footer>
+      </Modal>
+
     </>
   )
 }

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Footer from '../../Footer/Footer'
 import './InfoSelfie.css'
 
-const handleButtonClick = () =>{
+const handleButtonClick = () => {
 
 }
 
@@ -22,7 +22,7 @@ const InfoSelfie = () => {
               <img className="animate__animated animate__fadeIn mainPicture"
                 src='assets/faceSelfie.png'
                 alt="check"
-                
+
               />
             </div>
             <hr className="line my-6" />
