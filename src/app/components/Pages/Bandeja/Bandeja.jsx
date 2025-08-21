@@ -66,6 +66,10 @@ const Bandeja = () => {
 
       setLoading(true);
 
+      //localStorage.setItem("curpValidate", "MACK991119HMCRMV09")
+      //localStorage.setItem("sCpv", "7B5696B8F0")
+      //localStorage.setItem("idJumioSelfie", "9424ebf8-3b0b-45c7-bb6a-4aa7893e27ea")
+
       const obj = {
         id: IdJumio,
         cpv: localStorage.getItem("sCpv")
@@ -91,7 +95,6 @@ const Bandeja = () => {
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
 
           if (responseSelfie.status === 200) {
-
 
             if (responsePerfilCpv.auDomicilio === true) {
               setAuDomicilio(true);
@@ -125,15 +128,12 @@ const Bandeja = () => {
 
             setLoading(false);
 
-
-
           } else {
 
             setLoading(false);
             showModalError('Error', responseSelfie.message);
 
           }
-
 
         } else {
 
@@ -148,7 +148,6 @@ const Bandeja = () => {
         showModalError('Error', responsePerfilCpv.message);
 
       }
-
 
     }
 
