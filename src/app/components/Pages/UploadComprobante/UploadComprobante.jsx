@@ -1,8 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect, use } from "react";
-//import { Document, Page } from 'react-pdf';
-//import { pdfjs } from 'react-pdf';
+import { useRef, useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
 import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
@@ -11,12 +9,23 @@ import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR
 import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 import { uploadFilesServiceN5Archivo2_Jumio } from "../../Api/uploadFilesServiceN5Archivo2_Jumio";
 import { validateFechaPagoN5_Jumio } from "../../Api/validateFechaPagoN5_Jumio";
-import { Document, Page, pdfjs } from 'react-pdf';
+import dynamic from 'next/dynamic';
+
+
+const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
+const PDFPage     = dynamic(() => import('react-pdf').then(m => m.Page),     { ssr: false });
+
 
 
 
 function UploadComprobante() {
+useEffect(() => {
+  (async () => {
+    const { pdfjs } = await import('react-pdf'); 
 
+    pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs'; 
+  })();
+}, [])
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -34,6 +43,8 @@ function UploadComprobante() {
   const [filesImage, setFilesImage] = useState([]);
   const [buttonDown, setButtonDown] = useState(false);
 
+
+
   const catchButton = (Validate) => {
 
     const button = document.getElementById("drop-zone");
@@ -44,11 +55,6 @@ function UploadComprobante() {
     }
 
   }
-
-  useEffect(()=>{
-      pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`;
-
-  },[])
 
   const handleFileChange = (event) => {
     setShowErrorFile(false);
@@ -464,9 +470,9 @@ function UploadComprobante() {
                       )}
                       {selectedFile.type === "application/pdf" && (
                         <div className="contextPdfUp">
-                          <Document file={(selectedFile)} onLoadSuccess={onDocumentLoadSuccess}>
-                            <Page pageNumber={1} />
-                          </Document>
+                          <PDFDocument file={(selectedFile)} onLoadSuccess={onDocumentLoadSuccess}>
+                            <PDFPage pageNumber={1} renderTextLayer={false} renderAnnotationLayer={false}/>
+                          </PDFDocument>
                         </div>
                       )}
 
