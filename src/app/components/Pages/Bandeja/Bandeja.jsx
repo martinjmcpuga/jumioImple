@@ -77,7 +77,10 @@ const Bandeja = () => {
 
         const objJumio = {
           idJumio: IdJumio,
-          curpValidate: localStorage.getItem("curpValidate")
+          curpValidate: localStorage.getItem("curpValidate"),
+          nombre: localStorage.getItem("nombre"),
+          paterno: localStorage.getItem("paterno"),
+          materno: localStorage.getItem("materno"),
         };
 
         const response = await getRetrievalByAccount(objJumio);
