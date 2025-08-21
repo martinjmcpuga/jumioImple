@@ -120,16 +120,6 @@ const Dataconfirm = () => {
                   </div>
                 </>
               )}
-
-              <div className="txtOp_P2">Fecha de nacimiento/Date of birth</div>
-              <div className="txtVer_P2">{birthDate}</div>
-              <div className="txtOp_P2">Sexo/Sex</div>
-              <div className="txtVer_P2">{sexo}</div>
-              <div className="txtOp_P2">Nacionalidad/Nationality</div>
-              <div className="txtVer_P2">{nacionalidadISO}  {nacionalidad}</div>
-              <div className="txtOp_P2">
-                Número de Identificación/Identity Number
-              </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
             <Link href="/bandeja" className="btnBack_P2">
