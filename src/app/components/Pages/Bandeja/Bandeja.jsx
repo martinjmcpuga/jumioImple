@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { Form, Spinner, Modal } from 'react-bootstrap';
+import { getRetrievalByAccountSelfie } from '../../Api/getRetrievalByAccountSelfie';
 
 const Bandeja = () => {
 
@@ -66,60 +67,78 @@ const Bandeja = () => {
       setLoading(true);
 
       const objJumio = {
-        idJumio: IdJumio,
+        idJumio: localStorage.getItem("id"),
         curpValidate: localStorage.getItem("curpValidate")
-
       };
 
       const response = await getRetrievalByAccount(objJumio);
+
       if (response.status === 200) {
 
-
-        const obj = {
-          id: IdJumio,
-          cpv: localStorage.getItem("sCpv")
+        const objJumioSelfie = {
+          idJumioSelfie: localStorage.getItem("idJumioSelfie"),
         };
 
-        const responsePerfilCpv = await getPerfilAicmJumio(obj);
+        const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
 
-        if (responsePerfilCpv.status === 200) {
+        if (responseSelfie.status === 200) {
 
-          if (responsePerfilCpv.auDomicilio === true) {
-            setAuDomicilio(true);
-          }
+          /*
+                  const obj = {
+                    id: localStorage.getItem("id"),
+                    cpv: localStorage.getItem("sCpv")
+                  };
+          
+                  const responsePerfilCpv = await getPerfilAicmJumio(obj);
+          
+                  if (responsePerfilCpv.status === 200) {
+          
+                    if (responsePerfilCpv.auDomicilio === true) {
+                      setAuDomicilio(true);
+                    }
+          
+                    if (responsePerfilCpv.auHistorial === true) {
+                      setAuHistorial(true);
+                    }
+          
+                    if (responsePerfilCpv.auHistorialComprobate === true) {
+                      setAuHistorialComprobate(true);
+                    }
+          
+                    if (responsePerfilCpv.auDeclaratoria === true) {
+                      setAuDeclaratoria(true);
+                    }
+          
+                    if (responsePerfilCpv.n5BGC === true) {
+                      //getPalencaUsersAccounts(obj);
+                    }
+          
+                    if (responsePerfilCpv.auCita === true) {
+          
+                      setAuCitaVer(true);
+          
+                    } else {
+          
+                      setAuCitaVer(false);
+          
+                    }
+          
+                    setLoading(false);
+          
+                  } else {
+          
+                    setLoading(false);
+                    showModalError('Error', responsePerfilCpv.message);
+          
+                  }
+                  */
 
-          if (responsePerfilCpv.auHistorial === true) {
-            setAuHistorial(true);
-          }
 
-          if (responsePerfilCpv.auHistorialComprobate === true) {
-            setAuHistorialComprobate(true);
-          }
-
-          if (responsePerfilCpv.auDeclaratoria === true) {
-            setAuDeclaratoria(true);
-          }
-
-          if (responsePerfilCpv.n5BGC === true) {
-            //getPalencaUsersAccounts(obj);
-          }
-
-          if (responsePerfilCpv.auCita === true) {
-
-            setAuCitaVer(true);
-
-          } else {
-
-            setAuCitaVer(false);
-
-          }
-
-          setLoading(false);
 
         } else {
 
           setLoading(false);
-          showModalError('Error', responsePerfilCpv.message);
+          showModalError('Error', responseSelfie.message);
 
         }
 

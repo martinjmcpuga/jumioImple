@@ -32,6 +32,7 @@ export default function JumioJsx() {
       };
       const tokenData = await getTokenJumio10085(obj)
       setSdkToken(tokenData.sdk.token)
+      localStorage.setItem('idJumioSelfie', tokenData.idJumioSelfie);
     }
 
     createSession();
