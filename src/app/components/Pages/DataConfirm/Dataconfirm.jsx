@@ -38,24 +38,6 @@ const Dataconfirm = () => {
   }, []);
 
 
-
-  const fetchData = async () => {
-    const data = await ApiJumioFaceMatchToken(cpvI || localStorage.getItem('sCpv'));
-    if (!data) {
-      console.error('No data found');
-      return;
-    }
-    if (data.status === 200) {
-      console.log('Data fetched successfully:', data);
-      setTokenJumio(data.sdk.token);
-
-    } else {
-      console.error('Error fetching data:', data.message);
-      throw new Error(data.message);
-    }
-
-  }
-
   useEffect(() => {
 
     if (isRunned.current) return;
