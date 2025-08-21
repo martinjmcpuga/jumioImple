@@ -163,23 +163,6 @@ function DataRefPersonal() {
             const queryString = new URLSearchParams(params).toString();
             router.push(`/validarubicacionreferencia?${queryString}`);
 
-            /*
-            navigate("/ValidarRefUbicacion", {
-                state: {
-                    cpRef: codigoPostal,
-                    coloniaRef: colonia,
-                    calleRef: calle,
-                    numExtRef: numExterior,
-                    numInteRef: numInterior,
-                    edoRef: edo,
-                    muniRef: muni,
-                    latitud_obtenida: latitud_obtenida,
-                    longitud_obtenida: longitud_obtenida
-                }
-            });
-
-            */
-
         } else {
 
             setShow(true);
@@ -203,7 +186,8 @@ function DataRefPersonal() {
     };
 
     const getRein = async () => {
-        //navigate("/DirRefPersonal");
+
+        router.push('/dirrefpersonal');
     };
 
     return (
