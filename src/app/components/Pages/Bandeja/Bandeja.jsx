@@ -75,6 +75,7 @@ const Bandeja = () => {
 
       if (response.status === 200) {
 
+        /*
         const objJumioSelfie = {
           idJumioSelfie: localStorage.getItem("idJumioSelfie"),
         };
@@ -83,7 +84,7 @@ const Bandeja = () => {
 
         if (responseSelfie.status === 200) {
 
-          /*
+          
                   const obj = {
                     id: localStorage.getItem("id"),
                     cpv: localStorage.getItem("sCpv")
@@ -131,7 +132,7 @@ const Bandeja = () => {
                     showModalError('Error', responsePerfilCpv.message);
           
                   }
-                  */
+                 
 
 
 
@@ -142,6 +143,7 @@ const Bandeja = () => {
 
         }
 
+         */
       } else {
 
         setLoading(false);
