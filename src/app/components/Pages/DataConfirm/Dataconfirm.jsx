@@ -20,7 +20,7 @@ const Dataconfirm = () => {
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
-  const [verNameFull, setverNameFull] = useState(false);
+  const [verNameFull, setverNameFull] = useState(true);
   const { cpvI } = useAppContext();
   const { setTokenJumio } = useAppContext();
 
@@ -132,7 +132,7 @@ const Dataconfirm = () => {
               </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
-            <Link href="/requerimientoselfie" className="btnBack_P2">
+            <Link href="/bandeja" className="btnBack_P2">
               <section className="containerButtonOnExpands_P2 mt-4">
                 <button
                   className="btnVer_P14OK buttonExpandsBase"

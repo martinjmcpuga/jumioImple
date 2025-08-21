@@ -34,7 +34,9 @@ const JumioComponent = ({ token }) => {
       //    return;
 
       //   }else{
-      router.push('/bandeja');
+
+      router.push('/dataconfirm');
+
       //   }
 
       //console.log('Jumio status:', response);
