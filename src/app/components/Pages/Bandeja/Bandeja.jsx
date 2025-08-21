@@ -66,7 +66,9 @@ const Bandeja = () => {
       setLoading(true);
 
       const objJumio = {
-        idJumio: IdJumio
+        idJumio: IdJumio,
+        curpValidate: localStorage.getItem("curpValidate")
+
       };
 
       const response = await getRetrievalByAccount(objJumio);
