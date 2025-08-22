@@ -43,6 +43,15 @@ const Dataconfirm = () => {
 
     async function createSession() {
 
+      setLoading(false);
+
+      setTimeout(() => {
+
+        setLoading(true);
+
+      }, 5000);
+
+
       // setLoading(false);
 
       /*
@@ -101,7 +110,7 @@ const Dataconfirm = () => {
         {!loading ? (
           <div className="spinner"></div>
         ) : (
-          <div className="containerInfo_P2">
+          <div className="containerInfo_P2 animate__animated animate__fadeIn">
             <div className="containerIdent_P2">
 
               {!verNameFull ? (
