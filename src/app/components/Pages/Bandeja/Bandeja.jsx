@@ -130,21 +130,21 @@ const Bandeja = () => {
           } else {
 
             setLoading(false);
-            showModalError('Error', responseSelfie.message);
+            showModalError('Error0', responseSelfie.message);
 
           }
 
         } else {
 
           setLoading(false);
-          showModalError('Error', response.message);
+          showModalError('Error1', response.message);
 
         }
 
       } else {
 
         setLoading(false);
-        showModalError('Error', responsePerfilCpv.message);
+        showModalError('Error2', responsePerfilCpv.message);
 
       }
 
