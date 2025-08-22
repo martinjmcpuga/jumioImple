@@ -130,21 +130,21 @@ const Bandeja = () => {
           } else {
 
             setLoading(false);
-            showModalError('Error0 ', responseSelfie.message + " -> " + localStorage.getItem("idJumioSelfie"));
+            showModalError('Error', responseSelfie.message);
 
           }
 
         } else {
 
           setLoading(false);
-          showModalError('Error1', response.message);
+          showModalError('Error', response.message);
 
         }
 
       } else {
 
         setLoading(false);
-        showModalError('Error2', responsePerfilCpv.message);
+        showModalError('Error', responsePerfilCpv.message);
 
       }
 
