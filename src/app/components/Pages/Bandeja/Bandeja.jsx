@@ -130,7 +130,7 @@ const Bandeja = () => {
           } else {
 
             setLoading(false);
-            showModalError('Error0', responseSelfie.message);
+            showModalError('Error0 ', responseSelfie.message + " -> " + localStorage.getItem("idJumioSelfie"));
 
           }
 
