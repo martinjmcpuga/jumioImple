@@ -120,6 +120,9 @@ const Dataconfirm = () => {
                   </div>
                 </>
               )}
+              <div className="txtOp_P2">
+                Número de Identificación/Identity Number
+              </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
             <Link href="/bandeja" className="btnBack_P2">
