@@ -161,7 +161,7 @@ function DataDomPersonal() {
             };
 
             const queryString = new URLSearchParams(params).toString();
-            router.push(`/validarubicacionreferencia?${queryString}`);
+            router.push(`/validarubicacion?${queryString}`);
 
         } else {
 
@@ -203,7 +203,7 @@ function DataDomPersonal() {
                             ) : (
 
                                 <div className="animate__animated animate__fadeIn heigthData1">
-                                    <div className="txtOp_P2">Dirección de referencia 1</div>
+                                    <div className="txtOp_P2">Domicilio Personal</div>
                                     <div className="subTitle">Dirección laboral o donde normalmente despeña su actividad diaria.</div>
                                     <hr className="separadorLine" />
                                     <div>
