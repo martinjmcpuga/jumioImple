@@ -1,24 +1,18 @@
 'use client'
 
 import { useRef, useState, useEffect } from "react";
+import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
-import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
-import { validateComprobanteByNameCPV_Jumio } from "../../Api/validateComprobanteByNameCPV_Jumio";
-import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
-import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
-import { uploadFilesServiceN5Archivo2_Jumio } from "../../Api/uploadFilesServiceN5Archivo2_Jumio";
-import { validateFechaPagoN5_Jumio } from "../../Api/validateFechaPagoN5_Jumio";
 import dynamic from 'next/dynamic';
-
+import { uploadFilesService } from "../../Api/uploadFilesService";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
 
-
-
-
 function UploadComprobante() {
+
   useEffect(() => {
     (async () => {
       const { pdfjs } = await import('react-pdf');
@@ -29,6 +23,8 @@ function UploadComprobante() {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { IdJumio } = useAppContext();
+  const router = useRouter();
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
@@ -42,8 +38,6 @@ function UploadComprobante() {
   const [pageNumber, setPageNumber] = useState(1);
   const [filesImage, setFilesImage] = useState([]);
   const [buttonDown, setButtonDown] = useState(false);
-
-
 
   const catchButton = (Validate) => {
 
@@ -83,12 +77,6 @@ function UploadComprobante() {
     }
   };
 
-  const handleNewImage = () => {
-
-    setShow2(false);
-    catchButton(false);
-
-  }
 
   const handleDrop = (event) => {
     setShowErrorFile(false);
@@ -130,12 +118,6 @@ function UploadComprobante() {
     setContinueWithOutFile(true);
   };
 
-  const handleClose2 = () => {
-    setShow2(false);
-    catchButton(true);
-    setContinueWithOutFile(false);
-  };
-
   const handleReloadImage2 = () => {
     setSelectedFile(null);
 
@@ -156,229 +138,108 @@ function UploadComprobante() {
 
   const handleReloadImage = async () => {
 
-    if ((filesImage.length > 0 && filesImage.length < 2) && continueWithOutFile) {
+    setLoading(true);
 
-      setButtonDown(true);
-      setLoading(true);
+    let responseVerificate = null;
 
-    } else {
+    if (selectedFile) {
 
-      setLoading(true);
+      responseVerificate = await uploadFilesService(
+        selectedFile, "Comprobante_", localStorage.getItem("sCpv"), IdJumio
+      );
 
-      let responseVerificate = null;
+      router.push('/datarefpersonal');
 
-      if (selectedFile) {
+      /*
 
-        responseVerificate = await uploadFilesServiceN5_Jumio(
-          selectedFile, "", localStorage.getItem("sCpv")
-        );
+      if (responseVerificate.status === 200) {
 
-        if (responseVerificate.status === 200) {
+        const objAWS = {
+          cpv: localStorage.getItem("sCpv"),
+          nombreUser: localStorage.getItem("nombre"),
+          paterno: localStorage.getItem("paterno"),
+          materno: localStorage.getItem("materno"),
+          nombreComprobante0: "",
+          nombreComprobante1: localStorage.getItem("sCpv"),
+          nombreComprobante2: "_1.png"
+        };
 
-          const objAWS = {
-            cpv: localStorage.getItem("sCpv"),
-            nombreUser: localStorage.getItem("nombre"),
-            paterno: localStorage.getItem("paterno"),
-            materno: localStorage.getItem("materno"),
-            nombreComprobante0: "",
-            nombreComprobante1: localStorage.getItem("sCpv"),
-            nombreComprobante2: "_1.png"
-          };
+        const responseComprobanteByName = await validateComprobanteByNameCPV_Jumio(objAWS);
 
-          const responseComprobanteByName = await validateComprobanteByNameCPV_Jumio(objAWS);
+        if (responseComprobanteByName.status === 200) {
 
-          if (responseComprobanteByName.status === 200) {
+          const responseFechaPago = await validateFechaPagoN5_Jumio(objAWS);
 
-            const responseFechaPago = await validateFechaPagoN5_Jumio(objAWS);
+          if (responseFechaPago.status === 200) {
 
-            if (responseFechaPago.status === 200) {
+            const objValidacionQR = {
+              cpv: localStorage.getItem("sCpv"),
+            };
 
-              const objValidacionQR = {
-                cpv: localStorage.getItem("sCpv"),
-              };
+            const responseValidacionQR = await validateComprobanteByQR_Jumio(objValidacionQR);
 
-              const responseValidacionQR = await validateComprobanteByQR_Jumio(objValidacionQR);
+            if (responseValidacionQR.status === 200) {
 
-              if (responseValidacionQR.status === 200) {
+              const objCons = {
+                id: localStorage.getItem('idPerson'),
+                nombreComprobante0: responseVerificate.re_name,
+              }
 
-                const objCons = {
-                  id: localStorage.getItem('idPerson'),
-                  nombreComprobante0: responseVerificate.re_name,
-                }
+              const responseHis0 = await mtUpdateComprobante0_Jumio(objCons);
 
-                const responseHis0 = await mtUpdateComprobante0_Jumio(objCons);
+              if (responseHis0.status === 200) {
 
-                if (responseHis0.status === 200) {
+                //navigate("/RequerimientosSelectedN5");
 
-                  //navigate("/RequerimientosSelectedN5");
-
-                } else {
-
-                  setShow(true);
-                  setShowStatus(responseHis0.status);
-                  setShowMessage(responseHis0.message);
-
-                }
+                setLoading(false);
 
               } else {
 
                 setShow(true);
-                setShowStatus(responseValidacionQR.status);
-                setShowMessage(responseValidacionQR.message);
+                setShowStatus(responseHis0.status);
+                setShowMessage(responseHis0.message);
 
               }
 
             } else {
 
               setShow(true);
-              setShowStatus(responseFechaPago.status);
-              setShowMessage(responseFechaPago.message);
+              setShowStatus(responseValidacionQR.status);
+              setShowMessage(responseValidacionQR.message);
 
             }
 
           } else {
 
             setShow(true);
-            setShowStatus(responseComprobanteByName.status);
-            setShowMessage(responseComprobanteByName.message);
+            setShowStatus(responseFechaPago.status);
+            setShowMessage(responseFechaPago.message);
 
           }
-
-        } else if (responseVerificate.status === 500) {
-
-          setShow(true);
-          setShowStatus("407");
-          setShowMessage("Tamaño del archivo incorrecto");
 
         } else {
 
           setShow(true);
-          setShowStatus(responseVerificate.status);
-          setShowMessage(responseVerificate.message);
+          setShowStatus(responseComprobanteByName.status);
+          setShowMessage(responseComprobanteByName.message);
 
         }
+
+      } else if (responseVerificate.status === 500) {
+
+        setShow(true);
+        setShowStatus("407");
+        setShowMessage("Tamaño del archivo incorrecto");
 
       } else {
 
-        /* Servicio de envio de archivo para el caso de que  se haya seleccionado multiples fotos
-        la variable se llama filesImage */
-
-        responseVerificate = await uploadFilesServiceN5_Jumio(
-          filesImage[0], "", localStorage.getItem("sCpv")
-        );
-
-        if (responseVerificate.status === 200) {
-
-          if (filesImage[1] !== undefined) {
-
-            responseVerificate = await uploadFilesServiceN5Archivo2_Jumio(
-              filesImage[1], "V2_", localStorage.getItem("sCpv")
-            );
-
-          }
-
-          if (responseVerificate.status === 200) {
-
-            const objAWS = {
-              cpv: localStorage.getItem("sCpv"),
-              nombreUser: localStorage.getItem("nombre"),
-              paterno: localStorage.getItem("paterno"),
-              materno: localStorage.getItem("materno"),
-              nombreComprobante0: "",
-              nombreComprobante1: localStorage.getItem("sCpv"),
-              nombreComprobante2: "_1.png"
-            };
-
-            const responseComprobanteByName = await validateComprobanteByNameCPV_Jumio(objAWS);
-
-            if (responseComprobanteByName.status === 200) {
-
-              const responseFechaPago = await validateFechaPagoN5_Jumio(objAWS);
-
-              if (responseFechaPago.status === 200) {
-
-                const objValidacionQR = {
-                  cpv: localStorage.getItem("sCpv"),
-                };
-
-                const responseValidacionQR = await validateComprobanteByQR_Jumio(objValidacionQR);
-
-                if (responseValidacionQR.status === 200) {
-
-                  const objCons = {
-                    id: localStorage.getItem('idPerson'),
-                    nombreComprobante0: responseVerificate.re_name,
-                  }
-
-                  const responseHis0 = await mtUpdateComprobante0_Jumio(objCons);
-
-                  if (responseHis0.status === 200) {
-
-                    // navigate("/RequerimientosSelectedN5");
-
-                  } else {
-
-                    setShow(true);
-                    setShowStatus(responseHis0.status);
-                    setShowMessage(responseHis0.message);
-
-                  }
-
-                } else {
-
-                  setShow(true);
-                  setShowStatus(responseValidacionQR.status);
-                  setShowMessage(responseValidacionQR.message);
-
-                }
-
-              } else {
-
-                setShow(true);
-                setShowStatus(responseFechaPago.status);
-                setShowMessage(responseFechaPago.message);
-
-              }
-
-            } else {
-
-              setShow(true);
-              setShowStatus(responseComprobanteByName.status);
-              setShowMessage(responseComprobanteByName.message);
-
-            }
-
-          } else if (responseVerificate.status === 500) {
-
-            setShow(true);
-            setShowStatus("407");
-            setShowMessage("Tamaño del archivo incorrecto");
-
-          } else {
-
-            setShow(true);
-            setShowStatus(responseVerificate.status);
-            setShowMessage(responseVerificate.message);
-
-          }
-
-        } else if (responseVerificate.status === 500) {
-
-          setShow(true);
-          setShowStatus("407");
-          setShowMessage("Tamaño del archivo incorrecto");
-
-        } else {
-
-          setShow(true);
-          setShowStatus(responseVerificate.status);
-          setShowMessage(responseVerificate.message);
-
-        }
+        setShow(true);
+        setShowStatus(responseVerificate.status);
+        setShowMessage(responseVerificate.message);
 
       }
 
-      setLoading(false);
+      */
 
     }
 
@@ -533,25 +394,6 @@ function UploadComprobante() {
           </div>
         </div>
       </div>
-
-      {/* Modal on NewImage */}
-
-      <Modal className="animate__animated animate__fadeIn" show={show2} onHide={handleClose2} animation={true} centered backdrop="static">
-        <Modal.Body className="backGroudModal">
-          <div className="msjTitleModalDiv">{showMessage2}</div>
-        </Modal.Body>
-        <Modal.Footer>
-
-          <button className="buttonRein_P2" onClick={handleNewImage}>
-            <span className="txtButtonRein_P14">Agregar nueva imagen</span>
-          </button>
-          <br />
-
-          <button className="button_P2" onClick={handleClose2}>
-            <span className="txtButton_P2">Continuar</span>
-          </button>
-        </Modal.Footer>
-      </Modal>
 
       {/* Mensaje de errores */}
 
