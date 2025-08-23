@@ -136,6 +136,12 @@ function UploadComprobante() {
     setShowMessage2("¿Deseas agregar otra imagen?");
   }
 
+  const showModalError = (title, message) => {
+    setShowStatus(title);
+    setShowMessage(message);
+    setShow(true);
+  };
+
   const handleReloadImage = async () => {
 
     setLoading(true);
@@ -147,8 +153,16 @@ function UploadComprobante() {
       responseVerificate = await uploadFilesService(
         selectedFile, "Comprobante_", localStorage.getItem("sCpv"), IdJumio
       );
+      if (responseVerificate.status === 200) {
 
-      router.push('/datadompersonal');
+        router.push('/datadompersonal');
+
+      } else {
+
+        setLoading(false);
+        showModalError('Error', responseVerificate.message);
+
+      }
 
       /*
 
