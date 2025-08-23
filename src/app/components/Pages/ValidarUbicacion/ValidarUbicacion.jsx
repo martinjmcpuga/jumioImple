@@ -27,13 +27,13 @@ function ValidarUbicacion() {
     const numInteDom = localStorage.getItem('numInteDom');
     const edoDom = localStorage.getItem('edoDom');
     const muniDom = localStorage.getItem('muniDom');
-    const latitud = localStorage.getItem('latitud_obtenida');
-    const longitud = localStorage.getItem('longitud_obtenida');
-    const [latitud_obtenid, setLatitudObj] = useState(latitud);
-    const [longitud_obtenid, setLongitudObj] = useState(longitud);
+    const latitud = localStorage.getItem('latitud');
+    const longitud = localStorage.getItem('longitud');
+    const [latitud_obtenid, setLatitudObj] = useState(localStorage.getItem('latitud_obtenida'));
+    const [longitud_obtenid, setLongitudObj] = useState(localStorage.getItem('longitud_obtenida'));
 
-    const [lat] = useState(latitud);
-    const [lng] = useState(longitud);
+    const [lat] = useState(localStorage.getItem('latitud_obtenida'));
+    const [lng] = useState(localStorage.getItem('longitud_obtenida'));
 
     const [loading, setLoading] = useState(false);
 
