@@ -148,7 +148,7 @@ function UploadComprobante() {
         selectedFile, "Comprobante_", localStorage.getItem("sCpv"), IdJumio
       );
 
-      router.push('/datarefpersonal');
+      router.push('/datadompersonal');
 
       /*
 
