@@ -180,22 +180,19 @@ function DataDomPersonal() {
             const latitud_obtenida = geolocalizacion.latitud;
             const longitud_obtenida = geolocalizacion.longitud;
 
-            const params = {
-                cpDom: codigoPostal,
-                coloniaDom: colonia,
-                calleDom: calle,
-                numExtDom: numExterior,
-                numInteDom: numInterior,
-                edoDom: edo,
-                muniDom: muni,
-                latitud: latitud,
-                longitud: longitud,
-                latitud_obtenida: latitud_obtenida,
-                longitud_obtenida: longitud_obtenida
-            };
+            localStorage.setItem("cpDom", codigoPostal);
+            localStorage.setItem("coloniaDom", colonia);
+            localStorage.setItem("calleDom", calle);
+            localStorage.setItem("numExtDom", numExterior);
+            localStorage.setItem("numInteDom", numInterior);
+            localStorage.setItem("edoDom", edo);
+            localStorage.setItem("muniDom", muni);
+            localStorage.setItem("latitud", latitud);
+            localStorage.setItem("longitud", longitud);
+            localStorage.setItem("latitud_obtenida", latitud_obtenida);
+            localStorage.setItem("longitud_obtenida", longitud_obtenida);
 
-            const queryString = new URLSearchParams(params).toString();
-            router.push(`/validarubicacion?${queryString}`);
+            router.push("/validarubicacion");
 
         } else {
 

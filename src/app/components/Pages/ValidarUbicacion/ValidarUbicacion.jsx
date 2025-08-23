@@ -17,20 +17,18 @@ function ValidarUbicacion() {
 
     const isRunned = useRef(false);
     const router = useRouter();
-    const searchParams = useSearchParams();
+    const documentType = localStorage.getItem('documentType');
+    const documentTypeLabel = localStorage.getItem('documentTypeLabel');
 
-    const documentType = searchParams.get('documentType');
-    const documentTypeLabel = searchParams.get('documentTypeLabel');
-    const cpDom = searchParams.get('cpDom');
-    const coloniaDom = searchParams.get('coloniaDom');
-    const calleDom = searchParams.get('calleDom');
-    const numExtDom = searchParams.get('numExtDom');
-    const numInteDom = searchParams.get('numInteDom');
-    const edoDom = searchParams.get('edoDom');
-    const muniDom = searchParams.get('muniDom');
-    const latitud = searchParams.get('latitud');
-    const longitud = searchParams.get('longitud');
-
+    const cpDom = localStorage.getItem("cpDom");
+    const coloniaDom = localStorage.getItem('coloniaDom');
+    const calleDom = localStorage.getItem('calleDom');
+    const numExtDom = localStorage.getItem('numExtDom');
+    const numInteDom = localStorage.getItem('numInteDom');
+    const edoDom = localStorage.getItem('edoDom');
+    const muniDom = localStorage.getItem('muniDom');
+    const latitud = localStorage.getItem('latitud_obtenida');
+    const longitud = localStorage.getItem('longitud_obtenida');
     const [latitud_obtenid, setLatitudObj] = useState(latitud);
     const [longitud_obtenid, setLongitudObj] = useState(longitud);
 
