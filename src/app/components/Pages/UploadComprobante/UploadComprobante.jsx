@@ -13,19 +13,19 @@ import dynamic from 'next/dynamic';
 
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
-const PDFPage     = dynamic(() => import('react-pdf').then(m => m.Page),     { ssr: false });
+const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
 
 
 
 
 function UploadComprobante() {
-useEffect(() => {
-  (async () => {
-    const { pdfjs } = await import('react-pdf'); 
+  useEffect(() => {
+    (async () => {
+      const { pdfjs } = await import('react-pdf');
 
-    pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs'; 
-  })();
-}, [])
+      pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+    })();
+  }, [])
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -471,7 +471,7 @@ useEffect(() => {
                       {selectedFile.type === "application/pdf" && (
                         <div className="contextPdfUp">
                           <PDFDocument file={(selectedFile)} onLoadSuccess={onDocumentLoadSuccess}>
-                            <PDFPage pageNumber={1} renderTextLayer={false} renderAnnotationLayer={false}/>
+                            <PDFPage pageNumber={1} renderTextLayer={false} renderAnnotationLayer={false} />
                           </PDFDocument>
                         </div>
                       )}
