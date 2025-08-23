@@ -7,7 +7,7 @@ import "./styleDomPersonal.css";
 import { useRouter } from 'next/navigation';
 
 function ComprobanteDomPersonal() {
-    
+
     const isRunned = useRef(false);
     const router = useRouter();
     const [blContinue, setBlContinue] = useState(false);
@@ -22,7 +22,6 @@ function ComprobanteDomPersonal() {
     const handleSelectChange = (selectedOption) => {
 
         setSelectedOption(selectedOption);
-
         setBlContinue(true);
 
     };

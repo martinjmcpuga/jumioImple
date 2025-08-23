@@ -197,7 +197,6 @@ const RequerimientosN2 = () => {
                         <></>
                       )}
 
-
                     </div>
                   </div>
 

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { getCodigoPostalCpt_Jumio } from "../../Api/getCodigoPostalCpt_Jumio";
 import { getPointCoordenadas_Jumio } from "../../Api/getPointCoordenadas_Jumio";
 import { useRouter } from 'next/navigation';
+import { Form, Spinner, Modal } from 'react-bootstrap';
 import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
@@ -28,6 +29,47 @@ function DataDomPersonal() {
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState('');
+
+    const [latitud, setLatitud] = useState(0.0);
+    const [longitud, setLongitud] = useState(0.0);
+
+    var config = {
+        enableHighAccuracy: true,
+        maximumAge: 30000,
+        timeout: 27000
+    };
+
+
+    /*se ejecuta si el permiso fue denegado o no se puede encontrar una ubicación*/
+    function onError() {
+        setShow(true);
+        setShowStatus(500);
+        setShowMessage('No se pudo encontrar tu ubicación.');
+        router.push("/datadompersonal");
+    }
+
+    /* se ejecuta si los permisos son concedidos y se encuentra una ubicación*/
+    function onSucccess(position) {
+        setLatitud(position.coords.latitude);
+        setLongitud(position.coords.longitude);
+
+    }
+
+    useEffect(() => {
+
+        async function getFuncionEstados() {
+            /*así llamamos la función getCurrentPosition*/
+
+            navigator.geolocation.getCurrentPosition(onSucccess, onError, config);
+        }
+        getFuncionEstados();
+
+    }, []);
+
+
+    const handleClose = (event) => {
+
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -93,17 +135,6 @@ function DataDomPersonal() {
 
     }
 
-    const handleCloseError = async () => {
-        setShow(false);
-        /*
-          navigate("/AppIncodeDocument", {
-              state: {
-                  rutaContinue: "/DataDomPersonal",
-              }
-          });
-          */
-    }
-
     const handkeOnKeyDown = async (event) => {
         if (
             event.code === "Enter" ||
@@ -131,6 +162,7 @@ function DataDomPersonal() {
     };
 
     const getContinue = async () => {
+
         setShowHeader(false);
         /**1.- Construye la direción con base a los datos ingresados por el usuario */
         const direccion = "" + calle + " " + numExterior + ", " + colonia + ", " + muni + ", " + codigoPostal + ", " + edo;
@@ -149,13 +181,15 @@ function DataDomPersonal() {
             const longitud_obtenida = geolocalizacion.longitud;
 
             const params = {
-                cpRef: codigoPostal,
-                coloniaRef: colonia,
-                calleRef: calle,
-                numExtRef: numExterior,
-                numInteRef: numInterior,
-                edoRef: edo,
-                muniRef: muni,
+                cpDom: codigoPostal,
+                coloniaDom: colonia,
+                calleDom: calle,
+                numExtDom: numExterior,
+                numInteDom: numInterior,
+                edoDom: edo,
+                muniDom: muni,
+                latitud: latitud,
+                longitud: longitud,
                 latitud_obtenida: latitud_obtenida,
                 longitud_obtenida: longitud_obtenida
             };
@@ -313,6 +347,18 @@ function DataDomPersonal() {
                     </div>
                 </div>
             </div>
+
+            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatus}</div>
+                    <div className="msjErrorModal">{showMessage}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );

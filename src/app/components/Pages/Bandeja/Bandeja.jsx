@@ -6,7 +6,7 @@ import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import { Form, Spinner, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { getRetrievalByAccountSelfie } from '../../Api/getRetrievalByAccountSelfie';
 
 const Bandeja = () => {
@@ -88,7 +88,7 @@ const Bandeja = () => {
         if (response.status === 200) {
 
           const objJumioSelfie = {
-            idJumioSelfie: localStorage.getItem("idJumioSelfie"),
+            idJumioSelfie: localStorage.getItem("idJumioSelfie")
           };
 
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
