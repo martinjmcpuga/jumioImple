@@ -18,8 +18,6 @@ function ValidarUbicacion() {
     const isRunned = useRef(false);
     const router = useRouter();
 
-    const [documentType, setDocumentType] = useState('');
-    const [documentTypeLabel, setDocumentTypeLabel] = useState('');
 
     const cpDom = localStorage.getItem("cpDom");
     const coloniaDom = localStorage.getItem('coloniaDom');
@@ -131,9 +129,9 @@ function ValidarUbicacion() {
                             let ip = "0.0.0.0";
 
                             const objInsertDom = {
-                                id: localStorage.getItem('idPerson'),
-                                documentType: documentType,
-                                documentTypeLabel: documentTypeLabel,
+                                id: "",
+                                documentType: "",
+                                documentTypeLabel: "",
                                 cpDom: cpDom,
                                 coloniaDom: coloniaDom,
                                 calleDom: calleDom,
