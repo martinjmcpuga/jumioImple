@@ -64,6 +64,7 @@ const Bandeja = () => {
 
     async function createSession() {
 
+      /*
       setLoading(true);
 
       const obj = {
@@ -73,80 +74,81 @@ const Bandeja = () => {
 
       const responsePerfilCpv = await getPerfilAicmJumio(obj);
 
-      //  if (responsePerfilCpv.status === 200) {
+      if (responsePerfilCpv.status === 200) {
 
-      const objJumio = {
-        idJumio: IdJumio,
-        curpValidate: localStorage.getItem("curpValidate"),
-        nombre: localStorage.getItem("nombre"),
-        paterno: localStorage.getItem("paterno"),
-        materno: localStorage.getItem("materno"),
-      };
-
-      const response = await getRetrievalByAccount(objJumio);
-
-      if (response.status === 200) {
-
-        const objJumioSelfie = {
-          idJumioSelfie: localStorage.getItem("idJumioSelfie")
+        const objJumio = {
+          idJumio: IdJumio,
+          curpValidate: localStorage.getItem("curpValidate"),
+          nombre: localStorage.getItem("nombre"),
+          paterno: localStorage.getItem("paterno"),
+          materno: localStorage.getItem("materno"),
         };
 
-        const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
+        const response = await getRetrievalByAccount(objJumio);
 
-        if (responseSelfie.status === 200) {
+        if (response.status === 200) {
 
-          if (responsePerfilCpv.auDomicilio === true) {
-            setAuDomicilio(true);
-          }
+          const objJumioSelfie = {
+            idJumioSelfie: localStorage.getItem("idJumioSelfie")
+          };
 
-          if (responsePerfilCpv.auHistorial === true) {
-            setAuHistorial(true);
-          }
+          const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
 
-          if (responsePerfilCpv.auHistorialComprobate === true) {
-            setAuHistorialComprobate(true);
-          }
+          if (responseSelfie.status === 200) {
 
-          if (responsePerfilCpv.auDeclaratoria === true) {
-            setAuDeclaratoria(true);
-          }
+            if (responsePerfilCpv.auDomicilio === true) {
+              setAuDomicilio(true);
+            }
 
-          if (responsePerfilCpv.n5BGC === true) {
-            //getPalencaUsersAccounts(obj);
-          }
+            if (responsePerfilCpv.auHistorial === true) {
+              setAuHistorial(true);
+            }
 
-          if (responsePerfilCpv.auCita === true) {
+            if (responsePerfilCpv.auHistorialComprobate === true) {
+              setAuHistorialComprobate(true);
+            }
 
-            setAuCitaVer(true);
+            if (responsePerfilCpv.auDeclaratoria === true) {
+              setAuDeclaratoria(true);
+            }
+
+            if (responsePerfilCpv.n5BGC === true) {
+              //getPalencaUsersAccounts(obj);
+            }
+
+            if (responsePerfilCpv.auCita === true) {
+
+              setAuCitaVer(true);
+
+            } else {
+
+              setAuCitaVer(false);
+
+            }
+
+            setLoading(false);
 
           } else {
 
-            setAuCitaVer(false);
+            setLoading(false);
+            showModalError('Error', responseSelfie.message);
 
           }
-
-          setLoading(false);
 
         } else {
 
           setLoading(false);
-          showModalError('Error', responseSelfie.message);
+          showModalError('Error', response.message);
 
         }
 
       } else {
 
         setLoading(false);
-        showModalError('Error', response.message);
+        showModalError('Error', responsePerfilCpv.message);
 
       }
-
-      // } else {
-
-      //setLoading(false);
-      //showModalError('Error', responsePerfilCpv.message);
-
-      //  }
+      */
 
     }
 
