@@ -3,6 +3,7 @@
 import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
 import { appGlobal } from "../../Api/appGlobal";
 import { useEffect } from "react";
+import { useAppContext } from '@/app/context/AppContext';
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
@@ -17,7 +18,7 @@ function ValidarUbicacion() {
 
     const isRunned = useRef(false);
     const router = useRouter();
-
+    const { IdJumio } = useAppContext();
     const [cpDom, setCpDom] = useState("");
     const [coloniaDom, setColoniaDom] = useState("");
     const [calleDom, setCalleDom] = useState("");
@@ -31,9 +32,6 @@ function ValidarUbicacion() {
     const [longitud_obtenid, setLongitudObj] = useState("");
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
-
-
-
 
 
     const [loading, setLoading] = useState(false);
@@ -120,9 +118,11 @@ function ValidarUbicacion() {
                     try {
                         setLoading(true);
                         const formData = new FormData();
+
                         formData.append("file", file);
                         formData.append("renombreFile", "Mapa1_");
                         formData.append("cpv", localStorage.getItem("sCpv"));
+                        formData.append("idJumio", IdJumio);
                         const url = appGlobal.hostFile + "upload_2C_Jumio";
                         const params = {
                             method: "POST",
@@ -147,7 +147,7 @@ function ValidarUbicacion() {
                             let ip = "0.0.0.0";
 
                             const objInsertDom = {
-                                id: "",
+                                id: IdJumio,
                                 documentType: "",
                                 documentTypeLabel: "",
                                 cpDom: cpDom,
