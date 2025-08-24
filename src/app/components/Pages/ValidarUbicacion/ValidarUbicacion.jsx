@@ -18,22 +18,43 @@ function ValidarUbicacion() {
     const isRunned = useRef(false);
     const router = useRouter();
 
-    const [cpDom, setCpDom] = useState(localStorage.getItem("cpDom"));
-    const [coloniaDom, setColoniaDom] = useState(localStorage.getItem("coloniaDom"));
-    const [calleDom, setCalleDom] = useState(localStorage.getItem("calleDom"));
-    const [numExtDom, setNumExtDom] = useState(localStorage.getItem("numExtDom"));
-    const [numInteDom, setNumInteDom] = useState(localStorage.getItem("numInteDom"));
-    const [edoDom, setEdoDom] = useState(localStorage.getItem("edoDom"));
-    const [muniDom, setMuniDom] = useState(localStorage.getItem("muniDom"));
-    const [latitud, setLatitud] = useState(localStorage.getItem("latitud"));
-    const [longitud, setLongitud] = useState(localStorage.getItem("longitud"));
+    const [cpDom, setCpDom] = useState("");
+    const [coloniaDom, setColoniaDom] = useState("");
+    const [calleDom, setCalleDom] = useState("");
+    const [numExtDom, setNumExtDom] = useState("");
+    const [numInteDom, setNumInteDom] = useState("");
+    const [edoDom, setEdoDom] = useState("");
+    const [muniDom, setMuniDom] = useState("");
+    const [latitud, setLatitud] = useState("");
+    const [longitud, setLongitud] = useState("");
+    const [latitud_obtenid, setLatitudObj] = useState("");
+    const [longitud_obtenid, setLongitudObj] = useState("");
+    const [lat, setLat] = useState("");
+    const [lng, setLng] = useState("");
+
+    useEffect(() => {
+
+        setCpDom(localStorage.getItem('cpDom'));
+        setColoniaDom(localStorage.getItem("coloniaDom"));
+        setCalleDom(localStorage.getItem("calleDom"));
+        setNumExtDom(localStorage.getItem("numExtDom"));
+        setNumInteDom(localStorage.getItem("numInteDom"));
+        setEdoDom(localStorage.getItem("edoDom"));
+        setMuniDom(localStorage.getItem("muniDom"));
+        setLatitud(localStorage.getItem("latitud"));
+        setLongitud(localStorage.getItem("longitud"));
+
+        setLatitudObj(localStorage.getItem("latitud_obtenida"));
+        setLongitudObj(localStorage.getItem('longitud_obtenida'));
+
+        setLat(localStorage.getItem("latitud_obtenida"));
+        setLng(localStorage.getItem('longitud_obtenida'));
+
+    }, []);
 
 
-    const [latitud_obtenid, setLatitudObj] = useState(localStorage.getItem('latitud_obtenida'));
-    const [longitud_obtenid, setLongitudObj] = useState(localStorage.getItem('longitud_obtenida'));
 
-    const [lat] = useState(localStorage.getItem('latitud_obtenida'));
-    const [lng] = useState(localStorage.getItem('longitud_obtenida'));
+
     const [loading, setLoading] = useState(false);
 
     /******************************************************************** */
