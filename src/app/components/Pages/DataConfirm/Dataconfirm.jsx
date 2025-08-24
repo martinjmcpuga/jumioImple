@@ -14,12 +14,6 @@ const Dataconfirm = () => {
   const [maternalLastName, setMaternalLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [claveDeElector, setClaveDeElector] = useState('');
-  const [sexo, setSexo] = useState("");
-  const [nacionalidad, setNacionalidad] = useState("");
-  const [nacionalidadISO, setNacionalidadISO] = useState("");
-  const [show, setShow] = useState(false);
-  const [showStatus, setShowStatus] = useState(null);
-  const [showMessage, setShowMessage] = useState('');
   const [verNameFull, setverNameFull] = useState(true);
   const { cpvI } = useAppContext();
   const { setTokenJumio } = useAppContext();
@@ -30,9 +24,7 @@ const Dataconfirm = () => {
     setMaternalLastName(localStorage.getItem("materno") || '');
     setBirthDate(localStorage.getItem("fechaNacimientoFront") || '');
     setClaveDeElector(localStorage.getItem("curpValidate") || '');
-    setSexo(localStorage.getItem("sexo") || '');
-    setNacionalidad(localStorage.getItem("nacionalidad") || '');
-    setNacionalidadISO(localStorage.getItem("nacionalidadISO") || '');
+
   }, []);
 
 
@@ -49,52 +41,7 @@ const Dataconfirm = () => {
 
         setLoading(true);
 
-      }, 5000);
-
-
-      // setLoading(false);
-
-      /*
-
-      const objIncode = {
-        interviewId: localStorage.getItem("interviewIdINE"),
-        tokenIncode: localStorage.getItem("tokenIncodeINE"),
-        curpValidate: localStorage.getItem("curpValidate"),
-        nombre: localStorage.getItem("nombre"),
-        paterno: localStorage.getItem("paterno"),
-        materno: localStorage.getItem("materno"),
-        fechaNacimientoFront: localStorage.getItem("fechaNacimientoFront"),
-        pais: localStorage.getItem("pais"),
-      }
-
-      const response = await getOcrPais(objIncode);
-
-      if (response.status === 200) {
-
-        setBirthDate(response.birthDateStr);
-        setFirstName(response.nombre);
-        setPaternalLastName(response.primerApellido);
-        setMaternalLastName(response.segundoApellido);
-
-        if (response.nameFullCompleto === true) {
-          setverNameFull(true);
-        }
-
-        setClaveDeElector(localStorage.getItem("curpValidate"));
-        setSexo(response.sexo);
-        setNacionalidad(response.nacionalidad);
-        setNacionalidadISO(response.nacionalidadISO);
-        setLoading(false);
-
-      } else {
-
-        setLoading(false);
-        setShow(true);
-        setShowStatus(response.status);
-        setShowMessage(response.message);
-
-      }
-        */
+      }, 3000);
 
     }
 
@@ -134,6 +81,7 @@ const Dataconfirm = () => {
               </div>
               <div className="txtVer_P2">{claveDeElector}</div>
             </div>
+
             <Link href="/bandeja" className="btnBack_P2">
               <section className="containerButtonOnExpands_P2 mt-4">
                 <button
