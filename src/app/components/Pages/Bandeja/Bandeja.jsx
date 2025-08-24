@@ -6,7 +6,7 @@ import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import { Modal } from 'react-bootstrap';
+import { Form, Spinner, Modal } from 'react-bootstrap';
 import { getRetrievalByAccountSelfie } from '../../Api/getRetrievalByAccountSelfie';
 
 const Bandeja = () => {
@@ -37,7 +37,7 @@ const Bandeja = () => {
 
   /**----------------*/
 
-  const [auDomicilio, setAuDomicilio] = useState(true);
+  const [auDomicilio, setAuDomicilio] = useState(false);
   const [auHistorial, setAuHistorial] = useState(false);
   const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
   const [auDeclaratoria, setAuDeclaratoria] = useState(false);
@@ -57,14 +57,12 @@ const Bandeja = () => {
     setShow(true);
   };
 
-
   useEffect(() => {
     if (isRunned.current) return;
     isRunned.current = true;
 
     async function createSession() {
 
-      /*
       setLoading(true);
 
       const obj = {
@@ -89,7 +87,7 @@ const Bandeja = () => {
         if (response.status === 200) {
 
           const objJumioSelfie = {
-            idJumioSelfie: localStorage.getItem("idJumioSelfie")
+            idJumioSelfie: localStorage.getItem("idJumioSelfie"),
           };
 
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
@@ -148,7 +146,6 @@ const Bandeja = () => {
         showModalError('Error', responsePerfilCpv.message);
 
       }
-      */
 
     }
 
