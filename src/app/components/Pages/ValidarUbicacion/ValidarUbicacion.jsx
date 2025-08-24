@@ -17,8 +17,9 @@ function ValidarUbicacion() {
 
     const isRunned = useRef(false);
     const router = useRouter();
-    const documentType = useState("");
-    const documentTypeLabel = useState("");
+
+    const [documentType, setDocumentType] = useState('');
+    const [documentTypeLabel, setDocumentTypeLabel] = useState('');
 
     const cpDom = localStorage.getItem("cpDom");
     const coloniaDom = localStorage.getItem('coloniaDom');
