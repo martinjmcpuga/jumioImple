@@ -77,7 +77,6 @@ function UploadComprobante() {
     }
   };
 
-
   const handleDrop = (event) => {
     setShowErrorFile(false);
     event.preventDefault();
