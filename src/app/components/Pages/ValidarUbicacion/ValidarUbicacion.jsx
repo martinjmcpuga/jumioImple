@@ -32,25 +32,6 @@ function ValidarUbicacion() {
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
 
-    useEffect(() => {
-
-        setCpDom(localStorage.getItem('cpDom'));
-        setColoniaDom(localStorage.getItem("coloniaDom"));
-        setCalleDom(localStorage.getItem("calleDom"));
-        setNumExtDom(localStorage.getItem("numExtDom"));
-        setNumInteDom(localStorage.getItem("numInteDom"));
-        setEdoDom(localStorage.getItem("edoDom"));
-        setMuniDom(localStorage.getItem("muniDom"));
-        setLatitud(localStorage.getItem("latitud"));
-        setLongitud(localStorage.getItem("longitud"));
-
-        setLatitudObj(localStorage.getItem("latitud_obtenida"));
-        setLongitudObj(localStorage.getItem('longitud_obtenida'));
-
-        setLat(localStorage.getItem("latitud_obtenida"));
-        setLng(localStorage.getItem('longitud_obtenida'));
-
-    }, []);
 
 
 
@@ -72,7 +53,6 @@ function ValidarUbicacion() {
     let marker = useRef(null);
     const [zoom] = useState(16);
 
-
     useEffect(() => {
 
         if (isRunned.current) return;
@@ -80,10 +60,27 @@ function ValidarUbicacion() {
 
         async function createSession() {
 
+            setCpDom(localStorage.getItem('cpDom'));
+            setColoniaDom(localStorage.getItem("coloniaDom"));
+            setCalleDom(localStorage.getItem("calleDom"));
+            setNumExtDom(localStorage.getItem("numExtDom"));
+            setNumInteDom(localStorage.getItem("numInteDom"));
+            setEdoDom(localStorage.getItem("edoDom"));
+            setMuniDom(localStorage.getItem("muniDom"));
+            setLatitud(localStorage.getItem("latitud"));
+            setLongitud(localStorage.getItem("longitud"));
+
+            setLatitudObj(localStorage.getItem("latitud_obtenida"));
+            setLongitudObj(localStorage.getItem('longitud_obtenida'));
+
+            setLat(localStorage.getItem("latitud_obtenida"));
+            setLng(localStorage.getItem('longitud_obtenida'));
+
+
             map.current = new maplibregl.Map({
                 container: mapContainer.current,
                 style: `https://maps.geo.${region}.amazonaws.com/maps/v0/maps/${mapName}/style-descriptor?key=${apiKey}`,
-                center: [lng, lat],
+                center: [localStorage.getItem('longitud_obtenida'), localStorage.getItem("latitud_obtenida")],
                 zoom: zoom,
                 preserveDrawingBuffer: true
             });
@@ -94,7 +91,7 @@ function ValidarUbicacion() {
                 className: "marker",
                 color: "#FF0000", draggable: true
             })
-                .setLngLat([longitud_obtenid, latitud_obtenid])
+                .setLngLat([localStorage.getItem('longitud_obtenida'), localStorage.getItem("latitud_obtenida")])
                 .addTo(map.current);
 
             marker.on('dragend', onDragEnd);
