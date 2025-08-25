@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './InfoCredencial.css'
 import Footer from '../../Footer/Footer'
 import Link from 'next/link'
