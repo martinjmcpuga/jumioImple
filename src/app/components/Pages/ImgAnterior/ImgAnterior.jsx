@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './ImgAnterior.css'
 import Footer from '../../Footer/Footer'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ const ImgAnterior = () => {
   useEffect(() => {
     setRutaBack('/infocredencial');
   }, []);
-  
+
   const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
   }
