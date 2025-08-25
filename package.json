@@ -13,6 +13,7 @@
         "@jumio/websdk": "^0.3.1",
         "animate.css": "^4.1.1",
         "bootstrap": "^5.3.7",
+        "face-api.js": "^0.22.2",
         "jspdf": "^3.0.1",
         "mapbox-gl": "^3.14.0",
         "maplibre-gl": "^5.6.2",
@@ -23,7 +24,8 @@
         "react-dom": "^19.0.0",
         "react-pdf": "^10.1.0",
         "react-select": "^5.10.2",
-        "react-to-print": "^3.1.1"
+        "react-to-print": "^3.1.1",
+        "react-webcam": "^7.2.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",

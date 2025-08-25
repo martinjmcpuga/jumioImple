@@ -1,0 +1,143 @@
+.camDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: white;
+  position: relative;
+}
+
+/* Estilización de botones */
+
+.camButtons {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 300px;
+}
+
+.camButtons__camMainButton {
+  cursor: pointer;
+  scale: 3.5;
+}
+
+.camButtons__camSwitchButton {
+  cursor: pointer;
+  scale: 3.5;
+}
+
+.camButtons__camSettingButton {
+  cursor: pointer;
+  scale: 3.5;
+}
+
+/* Webcam */
+
+.webCam {
+  border-radius: 12px;
+  padding-inline: 20px;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 60vw;
+  max-height: 80vh;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.justTest {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 200px;
+  height: 200px;
+}
+
+/* Mensaje sobre la cámara */
+
+.messageForCamContainer {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+}
+
+.messaseForCam {
+  font-size: clamp(12px, 4vw, 16px);
+  font-weight: bold;
+  color: #333;
+  background-color: #ececec;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.camButtons__camSettingButtonContainer {
+  padding: 0px !important;
+}
+
+/* Responsividad */
+
+@media (max-width: 1024px) {
+  .webCam {
+    max-width: 70vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .webCam {
+    max-width: 90vw;
+    padding-inline: 10px;
+  }
+  .camButtons {
+    bottom: 15%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .camDisplay {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+  .messageForCamContainer {
+    top: 35%;
+  }
+  .webCam {
+    max-width: 50vw;
+    max-height: 50vw;
+    padding-inline: 0px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .camButtons {
+    bottom: 30%;
+    max-width: 200px;
+    gap: 10px;
+  }
+  .camButtons__camMainButton {
+    scale: 2.5;
+  }
+  .camButtons__camSwitchButton {
+    scale: 2.5;
+  }
+  .camButtons__camSettingButton {
+    scale: 2.5;
+  }
+}
