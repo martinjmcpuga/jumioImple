@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './ImgAnteriorError.css'
 import Footer from '../../Footer/Footer'
 import Link from 'next/link'
@@ -8,7 +8,10 @@ import { useAppContext } from '../../../context/AppContext'
 
 const ImgAnteriorError = () => {
   const { cpvI } = useAppContext()
-
+  const { setRutaBack } = useAppContext();
+  useEffect(() => {
+    setRutaBack('/imganterior');
+  }, []);
   const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
   }
@@ -37,7 +40,7 @@ const ImgAnteriorError = () => {
                 <Link href={'/jumiocomponent'}>
                   <button
                     className="button_P2 animate__animated animate__fadeIn"
-                    
+
                   >
                     <span className="txtButton_P2">Continuar</span>
                   </button>

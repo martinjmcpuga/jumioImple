@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './pasaporteAnterior.css'
 import Footer from '../../Footer/Footer'
 import Link from 'next/link'
@@ -8,7 +8,10 @@ import { useAppContext } from '../../../context/AppContext'
 
 const ImgAnterior = () => {
   const { cpvI } = useAppContext()
-
+  const { setRutaBack } = useAppContext();
+  useEffect(() => {
+    setRutaBack('/infocredencial');
+  }, []);
   const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
   }

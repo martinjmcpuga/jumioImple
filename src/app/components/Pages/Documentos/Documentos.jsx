@@ -13,6 +13,11 @@ const Documentos = () => {
   const [isMounted, setIsMounted] = useState(false) // Evita el hydration mismatch
   const { setCpvI } = useAppContext() // aquí lo traes
 
+  const { setRutaBack } = useAppContext();
+  useEffect(() => {
+    setRutaBack('/paises');
+  }, []);
+
   useEffect(() => {
     setIsMounted(true)
   }, [])

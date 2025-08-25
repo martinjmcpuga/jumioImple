@@ -1,15 +1,20 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './RequerimientosSelfie.css'
 import Link from 'next/link';
 import Footer from '../../Footer/Footer';
-import { useState } from 'react';
+import { useAppContext } from '@/app/context/AppContext';
 
 const RequerimientosSelfie = () => {
   const [isChecked, setChecked] = useState(false);
   const [isChecked2, setChecked2] = useState(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
+
+  const { setRutaBack } = useAppContext();
+  useEffect(() => {
+    setRutaBack('/documentos');
+  }, []);
 
 
   const handleButtonClick = async () => {

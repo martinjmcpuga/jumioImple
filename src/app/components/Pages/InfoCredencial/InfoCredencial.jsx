@@ -12,6 +12,12 @@ const InfoCredencial = () => {
   const { cpvI } = useAppContext()
   const { setCpvI } = useAppContext() // aquí lo traes
 
+  const { setRutaBack } = useAppContext();
+  useEffect(() => {
+    setRutaBack('/documentos');
+  }, []);
+
+
   const handleButtonClick = async () => {
     // Lógica para manejar el clic del botón
   }
