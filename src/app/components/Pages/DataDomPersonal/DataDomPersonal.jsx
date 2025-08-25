@@ -225,7 +225,7 @@ function DataDomPersonal() {
         <>
             <div className="initBack_P2 animate__animated animate__fadeIn">
 
-                <div className="containerRenderForm">
+                <div className="containerRenderForm onContentExpands">
                     <div className="containerInfo_P2Form">
                         <div className="containerIdent_P2 scrollDataPersonal">
 

@@ -58,7 +58,7 @@ const Dataconfirm = () => {
   return (
     <>
 
-      <div className="containerRender">
+      <div className="containerRender onContentExpands">
         {!loading ? (
           <div className="spinner"></div>
         ) : (

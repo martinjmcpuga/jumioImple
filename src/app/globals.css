@@ -919,7 +919,12 @@ input::placeholder {
         align-items: end;
     }
     .btnContinue {
-        width: 50%;
+        width: 100%;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    .button_P2 {
+        width: 75%;
     }
     .line {
         margin-top: 2%;

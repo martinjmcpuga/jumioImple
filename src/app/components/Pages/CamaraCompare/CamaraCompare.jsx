@@ -33,6 +33,7 @@ const CamaraCompare = ({ loading }) => {
         SetDevices(devices.filter(({ kind }) => kind === "videoinput"))
     }, [])
 
+    
     useEffect(() => {
 
         const loadModels = async () => {

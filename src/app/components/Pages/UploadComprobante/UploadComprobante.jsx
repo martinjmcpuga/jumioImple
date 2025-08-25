@@ -185,7 +185,7 @@ function UploadComprobante() {
           ) : (
 
             <div className='animate__animated animate__fadeIn'>
-              <div className='containerInfo_P2'>
+              <div className='containerInfo_P2 onContentExpands'>
                 <div className="containerIdent_P2">
                   {filesImage.length > 0 ? (
                     <div>

@@ -26,7 +26,7 @@ const InitDomicilio = () => {
 
   return (
     <>
-      <div className="containerRender">
+      <div className="containerRender onContentExpands">
         <div className='containerInfo_P2 animate__animated animate__fadeIn'>
           <div className='containerIdent_P2'>
             <div className='txtOp_P2'>Operación/Operation</div>
@@ -63,7 +63,7 @@ const InitDomicilio = () => {
         </div>
       </div>
 
-      <div className="footer">
+      <div className="footer ">
         <div className="containerCont_P2">
 
           <>

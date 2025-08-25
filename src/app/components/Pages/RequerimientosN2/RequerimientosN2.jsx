@@ -118,7 +118,7 @@ const RequerimientosN2 = () => {
         {loading ? (
           <div className="spinner"></div>
         ) : (
-          <div className="containerRender">
+          <div className="containerRender onContentExpands">
             <div className="containerInfo_P2">
               <div className="containerIdent_P2">
                 <div className="txtOp_P2">Requerimientos</div>
