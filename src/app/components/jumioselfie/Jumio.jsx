@@ -29,12 +29,20 @@ export default function JumioJsx() {
     isRunned.current = true;
 
     async function createSession() {
+
       const obj = {
         cpv: localStorage.getItem('sCpv')
       };
       const tokenData = await getTokenJumio10085(obj)
-      setSdkToken(tokenData.sdk.token)
-      localStorage.setItem('idJumioSelfie', tokenData.idJumioSelfie);
+
+      if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumioSelfie) {
+        throw new Error('Invalid token data received')
+
+      } else {
+        setSdkToken(tokenData.sdk.token)
+        localStorage.setItem('idJumioSelfie', tokenData.idJumioSelfie);
+      }
+
     }
 
     createSession();

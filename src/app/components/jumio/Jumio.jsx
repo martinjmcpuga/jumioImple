@@ -31,8 +31,14 @@ export default function JumioJsx() {
         documentType: cpvI
       };
       const tokenData = await FetchAccAWS(obj)
-      setIdJumio(tokenData.idJumio)
-      setSdkToken(tokenData.sdk.token)
+      if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumio) {
+        throw new Error('Invalid token data received')
+
+      } else {
+        setIdJumio(tokenData.idJumio)
+        setSdkToken(tokenData.sdk.token)
+      }
+
     }
 
     createSession();
