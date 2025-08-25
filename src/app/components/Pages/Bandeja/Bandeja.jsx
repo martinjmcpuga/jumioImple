@@ -159,7 +159,6 @@ const Bandeja = () => {
   };
 
   const onDomComplete = async () => {
-
   };
 
   return (
