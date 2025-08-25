@@ -157,7 +157,6 @@ const CamaraCompare = ({ loading }) => {
 
                 <article className='camButtons'>
 
-
                     <img src="assets/cameraSwitchForMobile.svg" alt="" className='camButtons__camSwitchButton' onClick={() => switchButton.current.click()} />
                     <img src="assets/cameraMainButton2.svg" alt="" className='camButtons__camMainButton' onClick={() => mainButton.current.click()} />
                     <Dropdown show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)}>

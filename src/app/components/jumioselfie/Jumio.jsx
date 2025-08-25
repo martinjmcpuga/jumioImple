@@ -16,6 +16,7 @@ export default function JumioJsx() {
 
   const isRunned = useRef(false);
   const [sdkToken, setSdkToken] = useState('')
+  const { IdJumio } = useAppContext();
   const searchParams = useSearchParams()
   //const { setIdJumioSelfie } = useAppContext()
   const { cpvI } = useAppContext()
