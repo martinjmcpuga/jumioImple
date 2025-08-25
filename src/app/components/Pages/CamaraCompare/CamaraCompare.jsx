@@ -1,14 +1,13 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useAppContext } from '@/app/context/AppContext';
 import WebCam from 'react-webcam'
 import * as faceApi from 'face-api.js'
 import './CamaraCompare.css'
 import Modal from "react-bootstrap/Modal";
 import { Dropdown } from 'react-bootstrap';
 import { getSelfieToCamara } from '../../Api/getSelfieToCamara'
-import { getComparingFaces } from '../../Api/getComparingFaces'
-
 
 const CamaraCompare = ({ loading }) => {
 
@@ -16,6 +15,7 @@ const CamaraCompare = ({ loading }) => {
     const mainButton = useRef(null)
     const DropMenu = useRef(null)
     const switchButton = useRef(null)
+    const { IdJumio } = useAppContext();
     const [modelsLoaded, setModelsLoaded] = useState(false)
     const [imageSrc, setImageSrc] = useState(null)
     const [facingMode, setFacingMode] = useState("user")
@@ -108,7 +108,7 @@ const CamaraCompare = ({ loading }) => {
         setIsCapturing(true);
 
         const objIncode = {
-            cpv: localStorage.getItem("sCpv"),
+            id: IdJumio,
             documentoBase64: webCamRef.current.getScreenshot()
         }
 
@@ -116,19 +116,7 @@ const CamaraCompare = ({ loading }) => {
 
         if (response.status === 200) {
 
-            const responseComparingFaces = await getComparingFaces(objIncode);
-
-            if (responseComparingFaces.status === 200) {
-
-                //navigate("/PantallaBase27");
-
-            } else {
-
-                setShow(true);
-                setShowStatus(responseComparingFaces.status);
-                setShowMessage(responseComparingFaces.message);
-
-            }
+            //navigate("/PantallaBase27");
 
         } else {
             loading(false);

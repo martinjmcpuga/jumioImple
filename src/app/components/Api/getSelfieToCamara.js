@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function getSelfieToCamara(obj) {
     try {
-        const url = appGlobal.host + "getSelfieToCamara";
+        const url = appGlobal.host + "getSelfieToCamara_Jumio";
         const params = {
             method: "POST",
             headers: {
