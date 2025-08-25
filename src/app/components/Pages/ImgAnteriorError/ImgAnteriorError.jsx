@@ -16,7 +16,6 @@ const ImgAnteriorError = () => {
     // Lógica para manejar el clic del botón
   }
 
-
   return (
     <>
       <main className="containerRender onContentExpands animate__animated animate__fadeIn">
