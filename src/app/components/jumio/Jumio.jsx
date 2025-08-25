@@ -39,7 +39,6 @@ export default function JumioJsx() {
   }, []);
 
 
-
   return (
     <Suspense fallback={<div>Loading Jumio Component...</div>}>
       <JumioComponent token={sdkToken} />
