@@ -87,7 +87,7 @@ const Bandeja = () => {
         if (response.status === 200) {
 
           const objJumioSelfie = {
-            idJumioSelfie: localStorage.getItem("idJumioSelfie"),
+            idJumioSelfie: localStorage.getItem("idJumioSelfie")
           };
 
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);

@@ -7,6 +7,11 @@ import Link from 'next/link';
 
 const Dataconfirm = () => {
 
+  const { setRutaBack } = useAppContext();
+  useEffect(() => {
+    setRutaBack('/documentos');
+  }, []);
+
   const [loading, setLoading] = useState(true);
   const isRunned = useRef(false);
   const [firstName, setFirstName] = useState('');
