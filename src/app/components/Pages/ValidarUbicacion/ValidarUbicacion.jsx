@@ -2,6 +2,7 @@
 
 import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
 import { appGlobal } from "../../Api/appGlobal";
+import { Form, Spinner, Modal } from 'react-bootstrap';
 import { useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useReactToPrint } from 'react-to-print';
@@ -100,6 +101,8 @@ function ValidarUbicacion() {
 
     }, []);
 
+
+    const handleClose = () => setShowError(false);
 
     const handlePrint = useReactToPrint({
 
@@ -259,6 +262,18 @@ function ValidarUbicacion() {
                 )}
 
             </div>
+
+            <Modal show={showError} onHide={handleClose} centered backdrop="static" keyboard={false}>
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatusError}</div>
+                    <div className="msjErrorModal">{showMessageError}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );
