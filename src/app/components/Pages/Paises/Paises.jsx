@@ -14,9 +14,9 @@ const Select = dynamic(() => import('react-select'), { ssr: false });
 
 
 const Paises = () => {
-const { setRutaBack } = useAppContext();
+  const { setRutaBack } = useAppContext();
   useEffect(() => {
-  setRutaBack('/requerimientos');
+    setRutaBack('/requerimientos');
   }, []);
 
 
@@ -119,13 +119,11 @@ const { setRutaBack } = useAppContext();
     const setSelectedOption = selectedOption.claveIso3;
     setCaracteres(selectedOption.caracteres);
     setmsjnumeroNacional(selectedOption.numeroNacionalTxt);
-    if (mounted) {
-      //console.log(selectedOption)
-      setPais(setSelectedOption);
-      setPaisIso2(selectedOption.claveIso2);
-    }
+    localStorage.setItem("pais", setSelectedOption);
+    localStorage.setItem("paisIso2", selectedOption.claveIso2);
     setShowCurp(true);
   };
+
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') onValidateCurp();

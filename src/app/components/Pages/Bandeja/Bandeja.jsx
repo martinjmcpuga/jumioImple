@@ -111,7 +111,7 @@ const Bandeja = () => {
             }
 
             if (responsePerfilCpv.n5BGC === true) {
-              //getPalencaUsersAccounts(obj);
+              //getPalencaUsersAccounts_Jumio(obj);
             }
 
             if (responsePerfilCpv.auCita === true) {
