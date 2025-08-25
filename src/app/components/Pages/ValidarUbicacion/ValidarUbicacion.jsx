@@ -150,7 +150,7 @@ function ValidarUbicacion() {
                             let ip = "0.0.0.0";
 
                             const objInsertDom = {
-                                id: "e28086ab-03ec-4601-bcef-c066d0933906",
+                                id: IdJumio,
                                 documentType: "",
                                 documentTypeLabel: "",
                                 cpDom: cpDom,
