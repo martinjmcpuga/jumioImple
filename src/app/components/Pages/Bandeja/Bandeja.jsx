@@ -92,46 +92,46 @@ const Bandeja = () => {
 
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
 
-          //  if (responseSelfie.status === 200) {
+          if (responseSelfie.status === 200) {
 
-          if (responsePerfilCpv.auDomicilio === true) {
-            setAuDomicilio(true);
-          }
+            if (responsePerfilCpv.auDomicilio === true) {
+              setAuDomicilio(true);
+            }
 
-          if (responsePerfilCpv.auHistorial === true) {
-            setAuHistorial(true);
-          }
+            if (responsePerfilCpv.auHistorial === true) {
+              setAuHistorial(true);
+            }
 
-          if (responsePerfilCpv.auHistorialComprobate === true) {
-            setAuHistorialComprobate(true);
-          }
+            if (responsePerfilCpv.auHistorialComprobate === true) {
+              setAuHistorialComprobate(true);
+            }
 
-          if (responsePerfilCpv.auDeclaratoria === true) {
-            setAuDeclaratoria(true);
-          }
+            if (responsePerfilCpv.auDeclaratoria === true) {
+              setAuDeclaratoria(true);
+            }
 
-          if (responsePerfilCpv.n5BGC === true) {
-            //getPalencaUsersAccounts(obj);
-          }
+            if (responsePerfilCpv.n5BGC === true) {
+              //getPalencaUsersAccounts(obj);
+            }
 
-          if (responsePerfilCpv.auCita === true) {
+            if (responsePerfilCpv.auCita === true) {
 
-            setAuCitaVer(true);
+              setAuCitaVer(true);
+
+            } else {
+
+              setAuCitaVer(false);
+
+            }
+
+            setLoading(false);
 
           } else {
 
-            setAuCitaVer(false);
+            setLoading(false);
+            showModalError('Error', responseSelfie.message);
 
           }
-
-          setLoading(false);
-
-          //  } else {
-
-          //    setLoading(false);
-          //    showModalError('Error', responseSelfie.message);
-
-          //  }
 
         } else {
 
