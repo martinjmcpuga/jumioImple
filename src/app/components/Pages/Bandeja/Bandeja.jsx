@@ -8,6 +8,8 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { Form, Spinner, Modal } from 'react-bootstrap';
 import { getRetrievalByAccountSelfie } from '../../Api/getRetrievalByAccountSelfie';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Bandeja = () => {
 
