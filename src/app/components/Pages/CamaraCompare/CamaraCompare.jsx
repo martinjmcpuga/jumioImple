@@ -8,6 +8,7 @@ import './CamaraCompare.css'
 import Modal from "react-bootstrap/Modal";
 import { Dropdown } from 'react-bootstrap';
 import { getSelfieToCamara } from '../../Api/getSelfieToCamara'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CamaraCompare = ({ loading }) => {
 
@@ -194,7 +195,7 @@ const CamaraCompare = ({ loading }) => {
 
             </section>
 
-            <Modal show={show} onHide={handleClose} animation={false} centered>
+            <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn"> 
                 <Modal.Body className="backGroudModal">
                     <div className="msjTitleModalDiv">{showStatus}</div>
                     <div className="msjErrorModal">{showMessage}</div>

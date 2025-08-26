@@ -7,6 +7,7 @@ import { getPointCoordenadas_Jumio } from "../../Api/getPointCoordenadas_Jumio";
 import { useRouter } from 'next/navigation';
 import { Form, Spinner, Modal } from 'react-bootstrap';
 import "./styleDomPersonal.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
@@ -345,7 +346,7 @@ function DataDomPersonal() {
                 </div>
             </div>
 
-            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
+            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
                 <Modal.Body>
                     <div className="msjTitleModalDiv">{showStatus}</div>
                     <div className="msjErrorModal">{showMessage}</div>

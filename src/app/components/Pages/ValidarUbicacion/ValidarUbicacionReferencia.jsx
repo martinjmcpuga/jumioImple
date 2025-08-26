@@ -14,6 +14,7 @@ import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ValidarUbicacionReferencia() {
 
@@ -274,7 +275,7 @@ function ValidarUbicacionReferencia() {
 
             </div>
 
-            <Modal show={showError} onHide={handleClose} centered backdrop="static" keyboard={false}>
+            <Modal show={showError} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
                 <Modal.Body>
                     <div className="msjTitleModalDiv">{showStatusError}</div>
                     <div className="msjErrorModal">{showMessageError}</div>

@@ -276,7 +276,7 @@ function ValidarUbicacion() {
 
             </div>
 
-            <Modal show={showError} onHide={handleClose} centered backdrop="static" keyboard={false}>
+            <Modal show={showError} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
                 <Modal.Body>
                     <div className="msjTitleModalDiv">{showStatusError}</div>
                     <div className="msjErrorModal">{showMessageError}</div>

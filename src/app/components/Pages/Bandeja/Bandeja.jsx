@@ -487,7 +487,7 @@ const Bandeja = () => {
         </div>
       )}
 
-      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false}>
+      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
         <Modal.Body>
           <div className="msjTitleModalDiv">{showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>

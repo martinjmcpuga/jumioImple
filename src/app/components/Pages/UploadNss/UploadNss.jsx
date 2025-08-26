@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
 import dynamic from 'next/dynamic';
 import { uploadFilesService } from "../../Api/uploadFilesService";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -319,7 +320,7 @@ function UploadNss() {
 
       {/* Mensaje de errores */}
 
-      <Modal show={show} onHide={handleClose} animation={false} centered>
+      <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn">
         <Modal.Body className="backGroudModal">
           <div className="msjTitleModalDiv">Error {showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>
