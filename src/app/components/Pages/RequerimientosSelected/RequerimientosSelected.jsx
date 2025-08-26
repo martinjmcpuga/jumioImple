@@ -38,7 +38,11 @@ const RequerimientosSelected = () => {
     router.push('/dirrefpersonal');
   }
 
-  const handleButtonSocial = async () => { }
+  const handleButtonSocial = async () => {
+
+    router.push('/identificacionsocial');
+
+  }
 
   const handleButtonFiscal = async () => { }
 
@@ -52,7 +56,7 @@ const RequerimientosSelected = () => {
       setLoading(true);
 
       const objCons = {
-        id: IdJumio,
+        id: localStorage.getItem("id"),
         cpv: localStorage.getItem("sCpv")
       }
 

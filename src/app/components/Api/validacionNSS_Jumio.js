@@ -1,8 +1,8 @@
 import { appGlobal } from './appGlobal';
 
-export async function mtfindCpv(obj) {
+export async function validacionNSS_Jumio(obj) {
     try {
-        const url = appGlobal.host + "mtfindCpv";
+        const url = appGlobal.host + "validacionNSS_Jumio";
         const params = {
             method: "POST",
             headers: {
