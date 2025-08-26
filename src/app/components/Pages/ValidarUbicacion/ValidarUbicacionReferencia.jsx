@@ -1,7 +1,9 @@
 'use client'
 
 import { appGlobal } from "../../Api/appGlobal";
+import { Form, Spinner, Modal } from 'react-bootstrap';
 import { mtUpdatePersonRef_Jumio } from "../../Api/mtUpdatePersonRef_Jumio";
+import { useAppContext } from '@/app/context/AppContext';
 import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
@@ -18,21 +20,24 @@ function ValidarUbicacionReferencia() {
     const isRunned = useRef(false);
     const router = useRouter();
     const searchParams = useSearchParams();
-    const cpRef = searchParams.get('cpRef');
-    const coloniaRef = searchParams.get('coloniaRef');
-    const calleRef = searchParams.get('calleRef');
-    const numExtRef = searchParams.get('numExterior');
-    const numInteRef = searchParams.get('numInterior');
-    const edoRef = searchParams.get('edoRef');
-    const muniRef = searchParams.get('muniRef');
-    const latitud = searchParams.get('latitud_obtenida');
-    const longitud = searchParams.get('longitud_obtenida');
+    const { IdJumio } = useAppContext();
+    const [cpRef, setCpRef] = useState("");
+    const [coloniaRef, setColoniaRef] = useState("");
+    const [calleRef, setCalleRef] = useState("");
+    const [numExtRef, setNumExtRef] = useState("");
+    const [numInteRef, setNumInteRef] = useState("");
+    const [edoRef, setEdoRef] = useState("");
+    const [muniRef, setMuniRef] = useState("");
+    const [latitud, setLatitud] = useState("");
+    const [longitud, setLongitud] = useState("");
+    const [latitud_obtenid, setLatitudObj] = useState("");
+    const [longitud_obtenid, setLongitudObj] = useState("");
 
-    const [latitud_obtenid, setLatitudObj] = useState(latitud);
-    const [longitud_obtenid, setLongitudObj] = useState(longitud);
+    const [lat, setLat] = useState("");
+    const [lng, setLng] = useState("");
 
-    const [lat] = useState(latitud);
-    const [lng] = useState(longitud);
+    const [canvas, setCanvas] = useState(null);
+    const [dataUrl, setDataUrl] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
@@ -59,10 +64,24 @@ function ValidarUbicacionReferencia() {
 
         async function createSession() {
 
+            setCpRef(localStorage.getItem('cpRef'));
+            setColoniaRef(localStorage.getItem("coloniaRef"));
+            setCalleRef(localStorage.getItem("calleRef"));
+            setNumExtRef(localStorage.getItem("numExtRef"));
+            setNumInteRef(localStorage.getItem("numInteRef"));
+            setEdoRef(localStorage.getItem("edoRef"));
+            setMuniRef(localStorage.getItem("muniRef"));
+            setLatitud(localStorage.getItem("latitud_obtenidaRef"));
+            setLongitud(localStorage.getItem("latitud_obtenidaRef"));
+            setLatitudObj(localStorage.getItem("latitud_obtenidaRef"));
+            setLongitudObj(localStorage.getItem('longitud_obtenidaRef'));
+            setLat(localStorage.getItem("latitud_obtenidaRef"));
+            setLng(localStorage.getItem('latitud_obtenidaRef'));
+
             map.current = new maplibregl.Map({
                 container: mapContainer.current,
                 style: `https://maps.geo.${region}.amazonaws.com/maps/v0/maps/${mapName}/style-descriptor?key=${apiKey}`,
-                center: [lng, lat],
+                center: [localStorage.getItem('longitud_obtenidaRef'), localStorage.getItem("latitud_obtenidaRef")],
                 zoom: zoom,
                 preserveDrawingBuffer: true
             });
@@ -71,12 +90,19 @@ function ValidarUbicacionReferencia() {
 
             marker = new maplibregl.Marker({
                 className: "marker",
-                color: "#FF0000", draggable: true
+                color: "#FF0000", draggable: true,
+                element: document.createElement('div')
             })
-                .setLngLat([longitud_obtenid, latitud_obtenid])
+                .setLngLat([localStorage.getItem('longitud_obtenidaRef'), localStorage.getItem("latitud_obtenidaRef")])
                 .addTo(map.current);
 
             marker.on('dragend', onDragEnd);
+
+            map.current.on('load', () => {
+                setCanvas(map.current.getCanvas());
+                setDataUrl(map.current.getCanvas().toDataURL());
+
+            });
 
         }
 
@@ -84,12 +110,17 @@ function ValidarUbicacionReferencia() {
 
     }, []);
 
+    const handleClose = () => setShowError(false);
 
     const handlePrint = useReactToPrint({
 
-        content: () => mapContainer.current,
+        contentRef: mapContainer,
         print: async () => {
-            const doc = new jsPDF();
+            const doc = new jsPDF({
+                unit: "px",
+                format: [canvas.width / 2, canvas.height / 2]
+            });
+
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
@@ -102,9 +133,11 @@ function ValidarUbicacionReferencia() {
                     try {
                         setLoading(true);
                         const formData = new FormData();
+
                         formData.append("file", file);
                         formData.append("renombreFile", "Mapa2_");
                         formData.append("cpv", localStorage.getItem("sCpv"));
+                        formData.append("idJumio", IdJumio);
                         const url = appGlobal.hostFile + "upload_2C_Jumio";
                         const params = {
                             method: "POST",
@@ -128,8 +161,8 @@ function ValidarUbicacionReferencia() {
                             let userAgent = navigator_info.userAgent;
                             let ip = "0.0.0.0";
 
-                            const objInsertDom = {
-                                id: localStorage.getItem('idPerson'),
+                            const objInsertRef = {
+                                id: IdJumio,
                                 cpRef: cpRef,
                                 coloniaRef: coloniaRef,
                                 calleRef: calleRef,
@@ -151,7 +184,7 @@ function ValidarUbicacionReferencia() {
                                 imagenRef: "",
                             };
 
-                            const response = await mtUpdatePersonRef_Jumio(objInsertDom);
+                            const response = await mtUpdatePersonRef_Jumio(objInsertRef);
 
                             if (response.status === 200) {
 
@@ -180,6 +213,7 @@ function ValidarUbicacionReferencia() {
             });
         },
     });
+
 
     function onDragEnd() {
         const lngLat = marker.getLngLat();
@@ -239,6 +273,18 @@ function ValidarUbicacionReferencia() {
                 )}
 
             </div>
+
+            <Modal show={showError} onHide={handleClose} centered backdrop="static" keyboard={false}>
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatusError}</div>
+                    <div className="msjErrorModal">{showMessageError}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );

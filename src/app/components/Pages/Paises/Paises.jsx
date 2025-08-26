@@ -1,17 +1,16 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import './paises.css';
-import Footer from '../../Footer/Footer';
 import { Form, Spinner, Modal } from 'react-bootstrap';
 import { getPaisByIso } from '../../Api/getPaisByIso';
 import { mtfindCpv } from '../../Api/mtfindCpv';
 import { useAppContext } from '../../../context/AppContext';
+import Footer from '../../Footer/Footer';
 import Link from 'next/link';
+import './paises.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
-
 
 const Paises = () => {
   const { setRutaBack } = useAppContext();
@@ -20,10 +19,8 @@ const Paises = () => {
   }, []);
 
 
-
   const ref = useRef(null);
   const isRunned = useRef(false);
-
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
