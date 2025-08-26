@@ -131,7 +131,6 @@ const RequerimientosSelected = () => {
 
         //}
 
-
       } else {
         setLoading(false);
         setShow(true);
