@@ -33,6 +33,8 @@ function ValidarUbicacion() {
     const [longitud_obtenid, setLongitudObj] = useState("");
     const [lat, setLat] = useState("");
     const [lng, setLng] = useState("");
+    const [canvas, setCanvas] = useState(null);
+    const [dataUrl, setDataUrl] = useState(null);
 
 
     const [loading, setLoading] = useState(false);
@@ -88,12 +90,19 @@ function ValidarUbicacion() {
 
             marker = new maplibregl.Marker({
                 className: "marker",
-                color: "#FF0000", draggable: true
+                color: "#FF0000", draggable: true,
+                element: document.createElement('div')
             })
                 .setLngLat([localStorage.getItem('longitud_obtenida'), localStorage.getItem("latitud_obtenida")])
                 .addTo(map.current);
 
             marker.on('dragend', onDragEnd);
+
+            map.current.on('load', () => {
+                setCanvas(map.current.getCanvas());
+                setDataUrl(map.current.getCanvas().toDataURL());
+
+            });
 
         }
 
@@ -106,9 +115,13 @@ function ValidarUbicacion() {
 
     const handlePrint = useReactToPrint({
 
-        content: () => mapContainer.current,
+        contentRef: mapContainer,
         print: async () => {
-            const doc = new jsPDF();
+            const doc = new jsPDF({
+                unit: "px",
+                format: [canvas.width / 2, canvas.height / 2]
+            });
+
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
@@ -230,7 +243,7 @@ function ValidarUbicacion() {
                 ) : (
                     <>
 
-                        <div className="containerRender">
+                        <div className="containerRender onContentExpands">
                             <div className="containerInfo_P2">
                                 <div className="containerIdent_P2 scrollDataPersonal">
                                     <div>
