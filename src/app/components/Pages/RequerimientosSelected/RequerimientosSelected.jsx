@@ -5,6 +5,7 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
 import "./requerimientos.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const RequerimientosSelected = () => {
 

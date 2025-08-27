@@ -4,11 +4,14 @@ import React, { useEffect, useState, useRef } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import Form from "react-bootstrap/Form";
 import Modal from 'react-bootstrap/Modal';
+import { useRouter } from 'next/navigation';
 import { validacionNSS_Jumio } from "../../Api/validacionNSS_Jumio";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function IdentificacionSocial() {
 
   const isRunned = useRef(false);
+  const router = useRouter();
   const { IdJumio } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [socialStr, setSocialStr] = useState("");
@@ -56,7 +59,7 @@ function IdentificacionSocial() {
     setLoading(true);
 
     const objValida = {
-      id: localStorage.getItem('id'),
+      id: IdJumio,
       correo: localStorage.getItem('correo'),
       nss: socialStr,
     };
@@ -66,7 +69,8 @@ function IdentificacionSocial() {
     if (response.status === 200) {
       setLoading(false);
       localStorage.setItem('socialStr', '' + socialStr);
-      //navigate("/DataSocial");
+
+      router.push('/datasocial');
 
     } else {
       setLoading(false)
