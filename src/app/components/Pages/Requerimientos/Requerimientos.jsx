@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { useAppContext } from '../../../context/AppContext';
 import { useState } from 'react';
 import "./requerimientos.css";
 import Footer from '../../Footer/Footer';
 import Link from 'next/link';
-import { useAppContext } from '../../../context/AppContext';
 
 const Requerimientos = () => {
 

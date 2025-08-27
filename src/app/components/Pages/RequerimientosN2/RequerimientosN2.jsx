@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useEffect, useRef, useState } from "react";
 import { getPerfilAicmJumio } from "../../Api/getPerfilAicmJumio";
 import { useAppContext } from '@/app/context/AppContext';

@@ -20,6 +20,7 @@ function UploadNss() {
       const { pdfjs } = await import('react-pdf');
 
       pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+      
     })();
   }, [])
 

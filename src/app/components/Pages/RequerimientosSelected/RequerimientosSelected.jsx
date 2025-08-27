@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { getPerfilAicmJumio } from "../../Api/getPerfilAicmJumio";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
+import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
 import Modal from "react-bootstrap/Modal";
 import "./requerimientos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -68,76 +69,76 @@ const RequerimientosSelected = () => {
 
       if (responsePerfil.status === 200) {
 
-        //const responsePerson = await mtFindPerson(objCons);
+        const responsePerson = await mtFindPersonJumio(objCons);
 
-        //if (responsePerson.status === 200) {
-
-        /** -------------------------------------- */
-
-        if (responsePerfil.n2_nss_rfc === true) {
-
-          setVerIdentificacionSocial(true);
-          setVerIdentificacionFiscal(true);
-
-        } else {
+        if (responsePerson.status === 200) {
 
           /** -------------------------------------- */
 
-          if (responsePerfil.n2_nss === true) {
+          if (responsePerfil.n2_nss_rfc === true) {
 
             setVerIdentificacionSocial(true);
-
-          } else {
-
-            setIdentificacionSocial(true);
-            setVerIdentificacionSocial(false);
-
-          }
-
-          /** -------------------------------------- */
-
-          if (responsePerfil.n2_rfc === true) {
-
             setVerIdentificacionFiscal(true);
 
           } else {
 
-            setIdentificacionFiscal(true);
-            setVerIdentificacionFiscal(false);
+            /** -------------------------------------- */
+
+            if (responsePerfil.n2_nss === true) {
+
+              setVerIdentificacionSocial(true);
+
+            } else {
+
+              setIdentificacionSocial(true);
+              setVerIdentificacionSocial(false);
+
+            }
+
+            /** -------------------------------------- */
+
+            if (responsePerfil.n2_rfc === true) {
+
+              setVerIdentificacionFiscal(true);
+
+            } else {
+
+              setIdentificacionFiscal(true);
+              setVerIdentificacionFiscal(false);
+
+            }
 
           }
+          /** -------------------------------------- */
+
+          if (responsePerson.domicilioParticular === true) {
+            setDomicilioParticular(true);
+          }
+
+          if (responsePerson.domicilioParticularRef === true) {
+            setDomicilioParticularRef(true);
+          }
+
+          if (responsePerson.valRfc === true) {
+            setIdentificacionFiscal(true);
+          }
+
+          if (responsePerson.valNss === true) {
+            setIdentificacionSocial(true);
+          }
+
+          /** -------------------------------------- */
+
+          setLoading(false);
+
+        } else {
+
+          setLoading(false);
+          setShow(true);
+          setShowStatus(responsePerson.status);
+          setShowMessage(responsePerson.message);
 
         }
-        /** -------------------------------------- */
-
-        //  if (responsePerson.domicilioParticular === true) {
-        //setDomicilioParticular(true);
-        //  }
-
-        //if (responsePerson.domicilioParticularRef === true) {
-        //setDomicilioParticularRef(true);
-        //}
-
-        //if (responsePerson.valRfc === true) {
-        //setIdentificacionFiscal(true);
-        //}
-
-        //if (responsePerson.valNss === true) {
-        //setIdentificacionSocial(true);
-        //}
-
-        /** -------------------------------------- */
-
-        setLoading(false);
-
-        //} else {
-
-        //  setLoading(false);
-        //  setShow(true);
-        //  setShowStatus(responsePerson.status);
-        //  setShowMessage(responsePerson.message);
-
-        //}
 
       } else {
         setLoading(false);

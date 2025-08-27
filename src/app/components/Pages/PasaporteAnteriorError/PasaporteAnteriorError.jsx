@@ -7,16 +7,17 @@ import Link from 'next/link'
 import { useAppContext } from '../../../context/AppContext'
 
 const ImgAnteriorError = () => {
+
   const { cpvI } = useAppContext()
   const { setRutaBack } = useAppContext();
+
   useEffect(() => {
     setRutaBack('/pasaporteanterior');
   }, []);
 
   const handleButtonClick = async () => {
-    // Lógica para manejar el clic del botón
-  }
 
+  }
 
   return (
     <>
