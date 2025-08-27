@@ -194,15 +194,12 @@ function UploadNss() {
   return (
     <>
       <div className="initBack_P2 animate__animated animate__fadeIn">
-
         <div>
-
           {loading ? (
 
             <div className="spinner" />
 
           ) : (
-
             <div className='animate__animated animate__fadeIn'>
               <div className='containerInfo_P2 onContentExpands'>
                 <div className="containerIdent_P2">
@@ -228,14 +225,12 @@ function UploadNss() {
                           </div>
                         ))}
 
-
                         <div className="buttonCenterUp">
                           <div className="spaceButtonReloadUp">
                           </div>
                         </div>
                         <div className="space"></div>
                       </div>
-
 
                       <div className="space"></div>
                     </div>
