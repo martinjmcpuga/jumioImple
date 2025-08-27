@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { uploadFilesService } from "../../Api/uploadFilesService";
 import { mtUpdateNssJumio } from "../../Api/mtUpdateNssJumio";
 import Modal from "react-bootstrap/Modal";
-import "./styleUploadFile.css";
 import dynamic from 'next/dynamic';
+import "./styleUploadFile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
