@@ -3,11 +3,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
+import { uploadFilesService } from "../../Api/uploadFilesService";
+import { mtUpdateNssJumio } from "../../Api/mtUpdateNssJumio";
 import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
 import dynamic from 'next/dynamic';
-import { uploadFilesService } from "../../Api/uploadFilesService";
-import { mtUpdateNssJumio } from "../../Api/mtUpdateNssJumio";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });

@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useAppContext } from '@/app/context/AppContext';
-import Form from "react-bootstrap/Form";
-import Modal from 'react-bootstrap/Modal';
 import { useRouter } from 'next/navigation';
 import { validacionNSS_Jumio } from "../../Api/validacionNSS_Jumio";
+import Form from "react-bootstrap/Form";
+import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function IdentificacionSocial() {
