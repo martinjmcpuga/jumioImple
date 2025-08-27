@@ -13,16 +13,7 @@ function DataSocial() {
   const [firstName, setFirstName] = useState("");
   const [paternalLastName, setPaternalLastName] = useState("");
   const [maternalLastName, setMaternalLastName] = useState("");
-  const [typeClass, setTypeClass] = useState('');
-  const [issuingAuthority, setIssuingAuthority] = useState('');
-  const [issuingAuthorityISO, setIssuingAuthorityISO] = useState('');
-  const [expireAtStr, setExpireAtStr] = useState('');
-  const [numberLicStr, setNumberLicStr] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
-  const [showStatus, setShowStatus] = useState(null);
-  const [showMessage, setShowMessage] = useState('');
   const [userNss, setUserNss] = useState("");
   const [verNameFull, setverNameFull] = useState(true);
 
@@ -32,8 +23,6 @@ function DataSocial() {
     isRunned.current = true;
 
     async function createSession() {
-
-      //etLoading(true);
 
       setFirstName(localStorage.getItem("nombre") || '');
       setPaternalLastName(localStorage.getItem("paterno") || '');
@@ -53,7 +42,7 @@ function DataSocial() {
 
   const handleAceptar = () => {
     setShow2(false);
-    //navigate('/CargaNss');
+    router.push('/uploadnss');
   }
 
   return (

@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
 import dynamic from 'next/dynamic';
 import { uploadFilesService } from "../../Api/uploadFilesService";
+import { mtUpdateNssJumio } from "../../Api/mtUpdateNssJumio";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
@@ -155,7 +156,24 @@ function UploadNss() {
       );
       if (responseVerificate.status === 200) {
 
-        // router.push('/datadompersonal');
+        const objNss = {
+          id: IdJumio,
+          nss: localStorage.getItem('socialStr')
+        };
+
+        const response = await mtUpdateNssJumio(objNss);
+
+        if (response.status === 200) {
+
+          router.push('/requerimientosselected');
+
+        } else {
+
+          setLoading(false)
+          setShow(true);
+          setShowStatus(response.status);
+          setShowMessage(response.message);
+        }
 
       } else {
 

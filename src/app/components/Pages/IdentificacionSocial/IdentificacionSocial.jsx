@@ -67,9 +67,8 @@ function IdentificacionSocial() {
     const response = await validacionNSS_Jumio(objValida);
 
     if (response.status === 200) {
-      setLoading(false);
-      localStorage.setItem('socialStr', '' + socialStr);
 
+      localStorage.setItem('socialStr', '' + socialStr);
       router.push('/datasocial');
 
     } else {
