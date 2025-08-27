@@ -44,7 +44,10 @@ const RequerimientosSelected = () => {
 
   }
 
-  const handleButtonFiscal = async () => { }
+  const handleButtonFiscal = async () => { 
+
+    
+  }
 
   useEffect(() => {
 
@@ -56,7 +59,7 @@ const RequerimientosSelected = () => {
       setLoading(true);
 
       const objCons = {
-        id: localStorage.getItem("id"),
+        id: IdJumio,
         cpv: localStorage.getItem("sCpv")
       }
 
