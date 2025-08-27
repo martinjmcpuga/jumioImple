@@ -5,7 +5,6 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { mtUpdateRfcJumio } from "../../Api/mtUpdateRfcJumio";
 import { validacionRFC_Jumio } from "../../Api/validacionRFC_Jumio";
-import foodbrand from "../assets/foodbrand@2x.png";
 import Form from "react-bootstrap/Form";
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -170,7 +169,7 @@ const IdentificacionFisical = () => {
         </div>
         <div className="footer">
           <div className="imageContainer_P2">
-            <img src={foodbrand} className="imgFooter_P2" />
+            <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
           </div>
         </div>
       </div>
