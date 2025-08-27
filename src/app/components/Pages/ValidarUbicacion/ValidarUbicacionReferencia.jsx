@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import maplibregl from 'maplibre-gl';
 import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -20,7 +20,6 @@ function ValidarUbicacionReferencia() {
 
     const isRunned = useRef(false);
     const router = useRouter();
-    const searchParams = useSearchParams();
     const { IdJumio } = useAppContext();
     const [cpRef, setCpRef] = useState("");
     const [coloniaRef, setColoniaRef] = useState("");

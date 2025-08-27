@@ -8,7 +8,7 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useReactToPrint } from 'react-to-print';
 import { useRef, useState } from "react";
 import { jsPDF } from "jspdf";
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import maplibregl from 'maplibre-gl';
 import "./styleDomPersonal.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
