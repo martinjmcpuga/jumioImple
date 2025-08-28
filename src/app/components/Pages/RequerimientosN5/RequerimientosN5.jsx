@@ -57,7 +57,8 @@ function RequerimientosN5(props) {
   const handleRedirecNotComproante = () => {
 
     localStorage.setItem("n5com", "/RequerimientosSelectedN5Comprobante");
-    navigate("/RequerimientosSelectedN5Comprobante");
+    //navigate("/RequerimientosSelectedN5Comprobante");
+    
   };
 
   return (
