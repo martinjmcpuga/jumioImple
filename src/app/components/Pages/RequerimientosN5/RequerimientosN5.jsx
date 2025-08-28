@@ -55,7 +55,6 @@ function RequerimientosN5(props) {
 
   return (
     <>
-
       <div className="initBack_P2 animate__animated animate__fadeIn">
         <div className="containerRender">
           <div className="containerInfo_P2">
@@ -164,7 +163,6 @@ function RequerimientosN5(props) {
             className={`buttonCookies_P1 ${onehabilita ? "buttonEnabled" : ""}`}
             onClick={() => setOnehabilita(!onehabilita)}
           >
-
             <div className="txtCookies_P1">Acepto términos y condiciones</div>
           </button>
           <div className="spaceButtonModal" />
