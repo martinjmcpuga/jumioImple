@@ -697,6 +697,14 @@
     padding-block: calc(var(--spacing) * 2);
   }
 
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -5888,7 +5896,13 @@ input::placeholder {
   }
 
   .btnContinue {
-    width: 50%;
+    width: 100%;
+    justify-content: center !important;
+    display: flex !important;
+  }
+
+  .button_P2 {
+    width: 75%;
   }
 
   .line {

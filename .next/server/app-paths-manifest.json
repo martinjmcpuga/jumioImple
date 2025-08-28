@@ -1,1 +1,10 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/bandeja/page": "app/bandeja/page.js",
+  "/datafiscal/page": "app/datafiscal/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/identificacionfisical/page": "app/identificacionfisical/page.js",
+  "/initdomicilio/page": "app/initdomicilio/page.js",
+  "/requerimientosn2/page": "app/requerimientosn2/page.js",
+  "/requerimientosselected/page": "app/requerimientosselected/page.js"
+}
