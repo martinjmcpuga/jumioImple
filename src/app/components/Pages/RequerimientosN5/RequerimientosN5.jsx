@@ -6,6 +6,7 @@ import { useAppContext } from '@/app/context/AppContext';
 import Modal from 'react-bootstrap/Modal';
 import "./requerimientos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Image } from "react-bootstrap";
 
 function RequerimientosN5(props) {
 
@@ -17,8 +18,6 @@ function RequerimientosN5(props) {
   const [isButtonEnabledPerfil, setButtonEnabledPerfil] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [onehabilita, setOnehabilita] = useState(true);
-  const [checkDoneImage, setCheckDoneImage] = useState(new Image());
-  const [checkDefaultImage, setCheckDefaultImage] = useState(new Image());
 
   const handleButtonClick = async () => {
 
@@ -42,12 +41,6 @@ function RequerimientosN5(props) {
     }
   }, [checketComprobante]);
 
-  useEffect(() => {
-    checkDoneImage.src = "assets/ok_done.svg";
-    checkDefaultImage.src = "assets/ok_default.svg";
-  }, ["assets/ok_done.svg", "assets/ok_default.svg"]);
-
-  const ImageView = React.memo(({ src }) => <img align="left" src={src} />);
 
   const handleNotComprobanteChange = () => {
     setChecketNotComprobante([1]);
@@ -58,7 +51,7 @@ function RequerimientosN5(props) {
 
     localStorage.setItem("n5com", "/RequerimientosSelectedN5Comprobante");
     //navigate("/RequerimientosSelectedN5Comprobante");
-    
+
   };
 
   return (
@@ -172,7 +165,7 @@ function RequerimientosN5(props) {
             className={`buttonCookies_P1 ${onehabilita ? "buttonEnabled" : ""}`}
             onClick={() => setOnehabilita(!onehabilita)}
           >
-            <ImageView src={!onehabilita ? "assets/ok_done.svg" : "assets/ok_default.svg"} />
+
             <div className="txtCookies_P1">Acepto términos y condiciones</div>
           </button>
           <div className="spaceButtonModal" />
