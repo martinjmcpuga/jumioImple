@@ -6,10 +6,12 @@ import { useRouter } from 'next/navigation';
 import { uploadFilesService } from "../../Api/uploadFilesService";
 import { mtUpdateNssJumio } from "../../Api/mtUpdateNssJumio";
 import { validateComprobanteByName_2C_Jumio } from "../../Api/validateComprobanteByName_2C_Jumio";
+import { validateNombreImss_Jumio } from "../../Api/validateNombreImss_Jumio";
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import "./styleUploadFile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -36,7 +38,6 @@ function UploadNss() {
   const [showMessage2, setShowMessage2] = useState("");
   const [continueWithOutFile, setContinueWithOutFile] = useState(true);
   const isRunned = useRef(false);
-  const [imageShare, setImageShare] = useState("");
   const [showErrorFile, setShowErrorFile] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -123,7 +124,6 @@ function UploadNss() {
 
   const handleReloadImage2 = () => {
     setSelectedFile(null);
-
   };
 
   useEffect(() => {
@@ -171,21 +171,32 @@ function UploadNss() {
 
         if (responseComprobanteByName.status === 200) {
 
-          const objNss = {
-            id: IdJumio,
-            nss: localStorage.getItem('socialStr')
-          };
+          const responseComprobanteByNameImss = await validateNombreImss_Jumio(objJumio);
 
-          const response = await mtUpdateNssJumio(objNss);
+          if (responseComprobanteByNameImss.status === 200) {
 
-          if (response.status === 200) {
+            const objNss = {
+              id: IdJumio,
+              nss: localStorage.getItem('socialStr')
+            };
 
-            router.push('/requerimientosselected');
+            const response = await mtUpdateNssJumio(objNss);
+
+            if (response.status === 200) {
+
+              router.push('/requerimientosselected');
+
+            } else {
+
+              setLoading(false);
+              showModalError('Error ' + response.status, response.message);
+
+            }
 
           } else {
 
-            setLoading(false);
-            showModalError('Error ' + response.status, response.message);
+            setLoading(false)
+            showModalError('Error ' + responseComprobanteByNameImss.status, responseComprobanteByNameImss.message);
 
           }
 
