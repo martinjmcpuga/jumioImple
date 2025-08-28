@@ -6,7 +6,6 @@ import { useAppContext } from '@/app/context/AppContext';
 import Modal from 'react-bootstrap/Modal';
 import "./requerimientos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Image } from "react-bootstrap";
 
 function RequerimientosN5(props) {
 
