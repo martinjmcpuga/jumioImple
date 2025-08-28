@@ -1,1 +1,6 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/autenticacionlaboral/page": "app/autenticacionlaboral/page.js",
+  "/bandeja/page": "app/bandeja/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}

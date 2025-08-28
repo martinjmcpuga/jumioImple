@@ -34,6 +34,14 @@ const AutenticacionLaboral = () => {
 
   }, []);
 
+  const onContinue = async () => {
+
+    /** Validacion documento laboral  */
+
+    //navigate("/RequerimientosN5");
+
+  };
+
 
   return (
     <>
@@ -81,6 +89,21 @@ const AutenticacionLaboral = () => {
             </div>
 
           </div>
+        </div>
+      </div>
+
+      <div className="footer">
+        <div className="containerCont_P2">
+
+          <>
+            <button className="button_P2 buttonExpandsBase" onClick={onContinue}>
+              <span className="txtButton_P2">Aceptar</span>
+            </button>
+          </>
+
+        </div>
+        <div className="imageContainer_P2">
+          <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
         </div>
       </div>
     </>

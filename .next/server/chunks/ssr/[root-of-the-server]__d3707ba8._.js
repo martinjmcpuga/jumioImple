@@ -226,7 +226,7 @@ function RootLayout({ children }) {
             children: "Loading..."
         }, void 0, false, {
             fileName: "[project]/src/app/layout.js",
-            lineNumber: 21,
+            lineNumber: 19,
             columnNumber: 25
         }, void 0),
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$context$2f$AppContext$2e$jsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["AppProvider"], {
@@ -239,29 +239,29 @@ function RootLayout({ children }) {
                             imgBack: true
                         }, void 0, false, {
                             fileName: "[project]/src/app/layout.js",
-                            lineNumber: 28,
-                            columnNumber: 9
+                            lineNumber: 26,
+                            columnNumber: 13
                         }, this),
                         children
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/layout.js",
-                    lineNumber: 25,
-                    columnNumber: 7
+                    lineNumber: 23,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 23,
-                columnNumber: 5
+                lineNumber: 21,
+                columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/layout.js",
-            lineNumber: 22,
-            columnNumber: 5
+            lineNumber: 20,
+            columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.js",
-        lineNumber: 21,
+        lineNumber: 19,
         columnNumber: 5
     }, this);
 }
