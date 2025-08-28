@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useAppContext } from '@/app/context/AppContext';
 import './style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AutenticacionLaboral = () => {
 
@@ -38,7 +39,7 @@ const AutenticacionLaboral = () => {
 
     /** Validacion documento laboral  */
 
-    //navigate("/RequerimientosN5");
+    router.push('/requerimientosn5');
 
   };
 
@@ -94,13 +95,11 @@ const AutenticacionLaboral = () => {
 
       <div className="footer">
         <div className="containerCont_P2">
-
           <>
             <button className="button_P2 buttonExpandsBase" onClick={onContinue}>
               <span className="txtButton_P2">Aceptar</span>
             </button>
           </>
-
         </div>
         <div className="imageContainer_P2">
           <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
