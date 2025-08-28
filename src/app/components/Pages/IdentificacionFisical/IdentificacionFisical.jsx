@@ -34,7 +34,7 @@ const IdentificacionFisical = () => {
       rfc: fiscalStr,
     };
 
-    const response = await validacionRFC_Jumio(objValida);
+    const response = await validacionRFC_Jumio(objRfc);
 
     if (response.status === 200) {
 
@@ -42,7 +42,6 @@ const IdentificacionFisical = () => {
 
       if (responseRfcJumio.status === 200) {
 
-        setLoading(false);
         localStorage.setItem('userRfc', '' + fiscalStr);
         router.push('/datafiscal');
 

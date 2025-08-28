@@ -48,7 +48,7 @@ const RequerimientosSelected = () => {
 
   const handleButtonFiscal = async () => {
 
-
+    router.push('/identificacionfisical');
   }
 
   useEffect(() => {
