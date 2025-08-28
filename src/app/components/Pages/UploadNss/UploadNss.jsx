@@ -5,6 +5,7 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { uploadFilesService } from "../../Api/uploadFilesService";
 import { mtUpdateNssJumio } from "../../Api/mtUpdateNssJumio";
+import { validateComprobanteByName_2C_Jumio } from "../../Api/validateComprobanteByName_2C_Jumio";
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import "./styleUploadFile.css";
@@ -20,7 +21,7 @@ function UploadNss() {
       const { pdfjs } = await import('react-pdf');
 
       pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
-      
+
     })();
   }, [])
 
@@ -157,23 +158,42 @@ function UploadNss() {
       );
       if (responseVerificate.status === 200) {
 
-        const objNss = {
-          id: IdJumio,
-          nss: localStorage.getItem('socialStr')
+        const objJumio = {
+          nombreUser: localStorage.getItem("nombre"),
+          paterno: localStorage.getItem("paterno"),
+          materno: localStorage.getItem("materno"),
+          nombreComprobante0: "Nss_",
+          nombreComprobante1: localStorage.getItem("sCpv"),
+          nombreComprobante2: "_1.png"
         };
 
-        const response = await mtUpdateNssJumio(objNss);
+        const responseComprobanteByName = await validateComprobanteByName_2C_Jumio(objJumio);
 
-        if (response.status === 200) {
+        if (responseComprobanteByName.status === 200) {
 
-          router.push('/requerimientosselected');
+          const objNss = {
+            id: IdJumio,
+            nss: localStorage.getItem('socialStr')
+          };
+
+          const response = await mtUpdateNssJumio(objNss);
+
+          if (response.status === 200) {
+
+            router.push('/requerimientosselected');
+
+          } else {
+
+            setLoading(false);
+            showModalError('Error ' + response.status, response.message);
+
+          }
 
         } else {
 
           setLoading(false)
-          setShow(true);
-          setShowStatus(response.status);
-          setShowMessage(response.message);
+          showModalError('Error ' + responseComprobanteByName.status, responseComprobanteByName.message);
+
         }
 
       } else {
