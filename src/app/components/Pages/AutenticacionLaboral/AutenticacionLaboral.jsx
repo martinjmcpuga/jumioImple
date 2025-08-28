@@ -46,7 +46,7 @@ const AutenticacionLaboral = () => {
   return (
     <>
       <div className='containerInfo_P2'>
-        <div className='containerIdent_P2'>
+        <div className='containerIdent_P2 animate__animated animate__fadeIn'>
           <div className='txtOp_P2'>Operación/Operation</div>
           <div className='txtVer_P2'>Autenticación Laboral</div>
           <div className='txtCpv_P2'>CPV/PVC</div>
