@@ -29,7 +29,7 @@ const RequerimientosSelected = () => {
   const [showMessage, setShowMessage] = useState('');
 
   const handleClose = () => {
-    setShow(false);
+    //setShow(false);
   };
 
   const handleButtonClick = async () => {
