@@ -57,7 +57,11 @@ const RequerimientosSelfie = () => {
                       </div>
                     </td>
                   </tr>
-               
+                  <tr>
+                    <td>
+                      <br />
+                    </td>
+                  </tr>
                   <tr>
                     <td className="containerCheck_P28 spaceRadio">
                       <input

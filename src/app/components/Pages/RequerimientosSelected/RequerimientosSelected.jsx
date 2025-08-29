@@ -190,6 +190,7 @@ const RequerimientosSelected = () => {
                     <div className="container-fluid ">
                       <div className="row">
                         <div className="col-12">
+
                           {!domicilioParticular ? (
                             <>
                               <article className="d-flex  align-items-center">
@@ -223,6 +224,7 @@ const RequerimientosSelected = () => {
                               </article>
                             </>
                           )}
+
                           {!domicilioParticularRef ? (
                             <>
                               <hr className="line--Margin" />
