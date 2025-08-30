@@ -56,7 +56,22 @@ const ExperienciaLaboral = () => {
   const { IdJumio } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [option, setSelectedOption] = useState("");
-  const [urlBack, setUrlBack] = useState(localStorage.getItem("n5com"));
+  const [urlBack, setUrlBack] = useState("");
+
+  useEffect(() => {
+
+    if (isRunned.current) return;
+    isRunned.current = true;
+
+    async function createSession() {
+
+      setUrlBack(localStorage.getItem("n5com"));
+
+    }
+
+    createSession();
+
+  }, []);
 
   const handleButtonClick = async () => {
     router.push('/dataexperiencialaboral');
