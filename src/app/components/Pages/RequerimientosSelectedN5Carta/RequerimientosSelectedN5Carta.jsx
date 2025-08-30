@@ -121,12 +121,14 @@ const RequerimientosSelectedN5Carta = (props) => {
   };
 
   useEffect(() => {
+
     if (domicilioParticular === true && domicilioParticularRef === true &&
       cartaCompromiso === true) {
       setButtonEnabled(true);
     } else {
       setButtonEnabled(false);
     }
+    
   });
 
   const handleRedirecNotComproante = () => {
