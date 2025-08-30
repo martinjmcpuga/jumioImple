@@ -128,7 +128,7 @@ const RequerimientosSelectedN5Carta = (props) => {
     } else {
       setButtonEnabled(false);
     }
-    
+
   });
 
   const handleRedirecNotComproante = () => {
@@ -170,7 +170,7 @@ const RequerimientosSelectedN5Carta = (props) => {
                                     Experiencia Laboral
                                     <img
                                       onClick={handleButtonClick}
-                                      src={ArrowGreen}
+                                      src="assets/arrow_green.svg"
                                       alt=""
                                       className="Arrow__button--sizing"
                                     />
@@ -205,7 +205,7 @@ const RequerimientosSelectedN5Carta = (props) => {
                                     Historial Laboral
                                     <img
                                       onClick={handleButtonRef}
-                                      src={ArrowGreen}
+                                      src="assets/arrow_green.svg"
                                       alt=""
                                       className="Arrow__button--sizing"
                                     />
@@ -242,7 +242,7 @@ const RequerimientosSelectedN5Carta = (props) => {
                                     Carta compromiso
                                     <img
                                       onClick={() => handleButtonFiscal('carta')}
-                                      src={ArrowGreen}
+                                      src="assets/arrow_green.svg"
                                       alt=""
                                       className="Arrow__button--sizing"
                                     />
