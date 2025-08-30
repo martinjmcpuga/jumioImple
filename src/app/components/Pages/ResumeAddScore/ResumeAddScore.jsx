@@ -17,8 +17,6 @@ const ResumeAddScore = () => {
     const [strOperation, setStrOperation] = useState("");
     const [strStatus, setStrStatus] = useState("");
 
-
-
     useEffect(() => {
 
         if (isRunned.current) return;
