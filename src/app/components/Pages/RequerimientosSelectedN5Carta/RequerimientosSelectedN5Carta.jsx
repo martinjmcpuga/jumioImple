@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
-import ArrowGreen from "../../assets/arrow_green.svg";
 import Modal from "react-bootstrap/Modal";
 import "./requerimientos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
