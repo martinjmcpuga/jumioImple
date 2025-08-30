@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import Select from 'react-select';
 import './ExperienciaLaboral.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
