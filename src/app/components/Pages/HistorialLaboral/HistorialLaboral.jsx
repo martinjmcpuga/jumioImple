@@ -56,7 +56,7 @@ const country = [
 
 const HistorialLaboral = () => {
 
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [isButtonEnabled, setButtonEnabled] = useState(true);
   const [selectedDateInicio, setselectedDateInicio] = useState();
@@ -87,6 +87,11 @@ const HistorialLaboral = () => {
   const [showMessage, setShowMessage] = useState('');
 
   const [urlBack, setUrlBack] = useState("");
+
+  useEffect(() => {
+    setRutaBack('/requerimientosn5cartaselected');
+  }, []);
+
 
   useEffect(() => {
 
