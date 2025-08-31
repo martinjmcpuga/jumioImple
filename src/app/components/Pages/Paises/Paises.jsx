@@ -208,7 +208,6 @@ const Paises = () => {
                 )}
                 {blContinueOp === '2' && (
                   <>
-                    <br />
                     <button className="btnVer_P3_Select" onClick={onValidateCurp}>
                       <span className="txtVer_P3">Verificar</span>
                     </button>
