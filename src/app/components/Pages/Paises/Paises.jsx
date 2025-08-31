@@ -144,7 +144,6 @@ const Paises = () => {
       <div className="containerInfo_P2 animate__animated animate__fadeIn">
         <div className="containerIdent_P2 onContentExpands">
           <p className="txtNat_P3">Nacionalidad</p>
-          <br />
           <Select
             options={country}
             onChange={handleChangePais}
@@ -163,7 +162,6 @@ const Paises = () => {
           {showCurp && (
             <div className="containerInfoOnExpands">
               <p className="txtNum_P3">Número de Identificación Nacional</p>
-              <br />
               {['1', '2', '3'].includes(game) && (
                 <div className="Row_P3">
                   <div className="Column_P3">
