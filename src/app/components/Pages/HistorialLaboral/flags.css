@@ -30,7 +30,3 @@
 .css-12buang-control {
   height: 53px !important;
 }
-
-::ng-deep .ng-select.dropdown {
-border: 1px solid black;
-}

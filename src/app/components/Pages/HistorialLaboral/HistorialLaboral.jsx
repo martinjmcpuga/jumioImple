@@ -11,12 +11,48 @@ import { mtUpdateHistorial1Jumio } from "../../Api/mtUpdateHistorial1Jumio";
 import { mtUpdateHistorial2Jumio } from "../../Api/mtUpdateHistorial2Jumio";
 import { mtfindSaveLapJumio } from "../../Api/mtfindSaveLapJumio";
 
-import './HistorialLaboral.css';
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import './HistorialLaboral.css';
+import './flags.css';
+
+const country = [
+  {
+    "label": "Mexico",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1920px-Flag_of_Mexico.svg.png",
+    "value": "MX"
+  },
+  {
+    "label": "Argentina",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1920px-Flag_of_Argentina.svg.png",
+    "value": "AR"
+  },
+  {
+    "label": "Brasil",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1920px-Flag_of_Brazil.svg.png",
+    "value": "BR"
+  },
+  {
+    "label": "Chile",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/1920px-Flag_of_Chile.svg.png",
+    "value": "CL"
+  },
+  {
+    "label": "Japan",
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1920px-Flag_of_Japan.svg.png",
+    "value": "JP"
+  },
+  {
+    "label": "United States",
+    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png",
+    "value": "US"
+  }
+];
+
 
 const HistorialLaboral = () => {
 
@@ -323,6 +359,10 @@ const HistorialLaboral = () => {
     setEstado(setSelectedOption);
   };
 
+  const handleChange = (selectedOption) => {
+    const setSelectedOption = selectedOption.value;
+  };
+
   const handlePuestoChange = (event) => {
     setPuesto(event.target.value);
   };
@@ -441,12 +481,20 @@ const HistorialLaboral = () => {
                   <p className="txtNat_P3Hist">País</p>
 
 
-
-
-
-
-
-
+                  <Select
+                    options={country}
+                    onChange={handleChange}
+                    styles={style}
+                    formatOptionLabel={country => (
+                      <div className="containerNac">
+                        <div className="pais">{country.value} {country.label}</div>
+                        <div className="paisBandera">
+                          <img className="bandera" src={country.image} />
+                        </div>
+                      </div>
+                    )}
+                    placeholder="Seleccionar nacionalidad"
+                  />
 
                   <br />
                   <p className="txtNat_P3Hist">Estado</p>
