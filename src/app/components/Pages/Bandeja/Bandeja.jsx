@@ -6,10 +6,9 @@ import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import { Form, Spinner, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { getRetrievalByAccountSelfie } from '../../Api/getRetrievalByAccountSelfie';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 const Bandeja = () => {
 
@@ -64,6 +63,16 @@ const Bandeja = () => {
     isRunned.current = true;
 
     async function createSession() {
+
+      /*
+      localStorage.setItem("id", "25abdbea-0882-4f5e-b77d-9781e00e7e95");
+      localStorage.setItem("curpValidate", "PUCJ890306HGTGRN03");
+      localStorage.setItem("nombre", "JUAN MARTIN");
+      localStorage.setItem("paterno", "PUGA");
+      localStorage.setItem("materno", " CORONA");
+      localStorage.setItem("correo", "martin.puga@dpr.icu");
+      localStorage.setItem("sCpv", "99760FDD76");
+      */
 
       setLoading(true);
 
@@ -160,8 +169,14 @@ const Bandeja = () => {
     router.push('/initdomicilio');
   };
 
+  const getHomeDomLab = async () => {
+    router.push("/autenticacionlaboral");
+  };
+
+
   const onDomComplete = async () => {
   };
+
 
   return (
 
@@ -323,7 +338,7 @@ const Bandeja = () => {
               <>
                 {!validateLab ? (
                   <>
-                    <div className="rcornersDes27">
+                    <div className="rcornersDes27" onClick={getHomeDomLab}>
                       <img src='assets/file_alt.svg' align="left" className="imgFol_P27_Img marginCustom" />
                       <img
                         src='assets/arrow_green.svg'
