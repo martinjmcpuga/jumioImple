@@ -21,6 +21,7 @@
         "pdfjs-dist": "^5.3.93",
         "react": "^19.0.0",
         "react-bootstrap": "^2.10.10",
+        "react-datepicker": "^8.7.0",
         "react-dom": "^19.0.0",
         "react-pdf": "^10.1.0",
         "react-select": "^5.10.2",
