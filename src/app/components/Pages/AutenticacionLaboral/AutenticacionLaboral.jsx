@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const AutenticacionLaboral = () => {
 
   const isRunned = useRef(false);
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [paternalLastName, setPaternalLastName] = useState("");
@@ -17,6 +17,11 @@ const AutenticacionLaboral = () => {
   const [userRfc, setUserRfc] = useState('');
   const [verNameFull, setverNameFull] = useState(true);
   const [cpv, setCpv] = useState("");
+
+  useEffect(() => {
+    setRutaBack('/bandeja');
+  }, []);
+
 
   useEffect(() => {
     if (isRunned.current) return;
@@ -62,21 +67,21 @@ const AutenticacionLaboral = () => {
           <div className="container-fluid ">
             <div className="row">
               <div className="col-12 mb-2">
-                <img src="assets/folder_yellow.svg" align="left" className='imgFol_P2' />
+                <img src="assets/folder_yellow.svg" align="left" className='imgFol_P2 animate__animated animate__fadeIn' />
                 <div className='txtDocReq_P2'>Actividad Laboral</div>
                 <div className='txtIdenOf_P2 '>Haber realizado alguna actividad remunerada.</div>
               </div>
             </div>
             <div className="row">
               <div className="col-12 mb-2">
-                <img src="assets/folder_yellow.svg" align="left" className='imgFol_P2' />
+                <img src="assets/folder_yellow.svg" align="left" className='imgFol_P2 animate__animated animate__fadeIn' />
                 <div className='txtDocReq_P2'>Comprobante de Ingreso</div>
                 <div className='txtIdenOf_P2'>Recibo de nómina.</div>
               </div>
             </div>
             <div className="row">
               <div className="col-12 mb-2">
-                <img src="assets/folder_yellow.svg" align="left" className='imgFol_P2' />
+                <img src="assets/folder_yellow.svg" align="left" className='imgFol_P2 animate__animated animate__fadeIn' />
                 <div className='txtDocReq_P2'>Carta Compromiso</div>
                 <div className='txtIdenOf_P2'>Documento expedido</div>
               </div>
