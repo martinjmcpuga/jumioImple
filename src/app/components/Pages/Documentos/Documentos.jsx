@@ -9,6 +9,7 @@ import './documentos.css'
 import { getDocumentoByPais } from '../../Api/getDocumentoByPais'
 
 const Documentos = () => {
+
   const { cpvI } = useAppContext()
   const [selectedDoc, setSelectedDoc] = useState(null)
   const [isMounted, setIsMounted] = useState(false) // Evita el hydration mismatch
@@ -101,13 +102,11 @@ const Documentos = () => {
 
   };
 
-
   return (
     <main className="animate__animated animate__fadeIn">
       <section className="containerInfo_P2">
         <div className="containerIdent_P2 onContentExpands">
           <p className="txtDocumentos">Documento de Identificación</p>
-          <br />
 
           <Select
             styles={style}
