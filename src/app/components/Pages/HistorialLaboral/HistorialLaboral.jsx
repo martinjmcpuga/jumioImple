@@ -5,18 +5,18 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { getListEstadosJumio } from "../../Api/getListEstadosJumio";
 
-import dynamic from 'next/dynamic';
 import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
 import { mtUpdateHistorial0Jumio } from "../../Api/mtUpdateHistorial0Jumio";
 import { mtUpdateHistorial1Jumio } from "../../Api/mtUpdateHistorial1Jumio";
 import { mtUpdateHistorial2Jumio } from "../../Api/mtUpdateHistorial2Jumio";
 import { mtfindSaveLapJumio } from "../../Api/mtfindSaveLapJumio";
 
-import './HistorialLaboral.css'
+import './HistorialLaboral.css';
+import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; // Import the CSS
+import "react-datepicker/dist/react-datepicker.css";
 
 const HistorialLaboral = () => {
 
@@ -59,10 +59,10 @@ const HistorialLaboral = () => {
 
     async function createSession() {
 
+      setLoading(true);
+
       setUrlBack(localStorage.getItem("n5com"));
       setPais('México');
-
-      setLoading(true);
 
       const objCons = {
         id: IdJumio
@@ -340,7 +340,6 @@ const HistorialLaboral = () => {
       setButtonEnabled(false);
     }
   });
-
 
   return (
     <>

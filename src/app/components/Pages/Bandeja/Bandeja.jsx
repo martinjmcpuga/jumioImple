@@ -46,8 +46,10 @@ const Bandeja = () => {
   const [auCitaVer, setAuCitaVer] = useState(false);
 
   useEffect(() => {
-    setCurpStr(localStorage.getItem('curpValidate'))
-    setTelefonoAsociado(localStorage.getItem('telefono'))
+
+    setCurpStr(localStorage.getItem('curpValidate'));
+    setTelefonoAsociado(localStorage.getItem('telefono'));
+
   }, []);
 
   const handleClose = () => { };
