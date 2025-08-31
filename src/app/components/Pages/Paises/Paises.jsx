@@ -215,6 +215,7 @@ const Paises = () => {
 
                   </>
                 )}
+                <br />
                 {blContinueOp === '3' && (
                   <Link href={'/documentos'}>
                     <button className="button_P2 animate__animated animate__fadeIn" >
