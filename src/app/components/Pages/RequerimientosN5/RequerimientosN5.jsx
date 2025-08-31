@@ -27,7 +27,7 @@ function RequerimientosN5(props) {
 
   const handleButtonCarta = async () => {
 
-    localStorage.setItem("n5com", "/RequerimientosN5CartaSelected");
+    localStorage.setItem("n5com", "/requerimientosn5cartaselected");
     router.push("/requerimientosn5cartaselected");
 
   }

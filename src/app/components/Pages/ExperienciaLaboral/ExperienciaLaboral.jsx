@@ -53,6 +53,7 @@ const ExperienciaLaboral = () => {
 
   const router = useRouter();
   const { IdJumio } = useAppContext();
+  const isRunned = useRef(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [option, setSelectedOption] = useState("");
   const [urlBack, setUrlBack] = useState("");
