@@ -1,7 +1,7 @@
 'use client'
 
 import { appGlobal } from "../../Api/appGlobal";
-import { Form, Spinner, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { mtUpdatePersonRef_Jumio } from "../../Api/mtUpdatePersonRef_Jumio";
 import { useAppContext } from '@/app/context/AppContext';
 import { useEffect } from "react";

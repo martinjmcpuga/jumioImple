@@ -10,6 +10,7 @@ import { validateCurp_Jumio } from "./components/Api/validateCurp_Jumio";
 import { useSearchParams } from 'next/navigation'
 import MyVerticallyCenteredModal from "./components/Modals/ModalMain/ModalMain";
 import { useAppContext } from './context/AppContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
 
@@ -58,6 +59,7 @@ export default function Home() {
         const obj = {
           cpv: i
         };
+
         setCpvI(i);
         console.log(obj)
 

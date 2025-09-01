@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { getCodigoPostalCpt_Jumio } from "../../Api/getCodigoPostalCpt_Jumio";
 import { getPointCoordenadas_Jumio } from "../../Api/getPointCoordenadas_Jumio";
 import { useRouter } from 'next/navigation';
-import { Form, Spinner, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import "./styleDomPersonal.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';

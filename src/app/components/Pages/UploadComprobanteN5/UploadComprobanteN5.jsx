@@ -12,10 +12,6 @@ const UploadComprobanteN5 = () => {
     setEnabled(true);
   }
 
-  const videoRef = useRef(null)
-  const canvasRef = useRef(null)
-  const streamRef = useRef(null)
-
   return (
     <>
       <div className="initBack_P2 animate__animated animate__fadeIn">

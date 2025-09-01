@@ -15,10 +15,6 @@ const UploadComprobanteContrato = () => {
     setEnabled(true);
   }
 
-  const videoRef = useRef(null)
-  const canvasRef = useRef(null)
-  const streamRef = useRef(null)
-
   useEffect(() => {
     setModal(true)
   }, [])

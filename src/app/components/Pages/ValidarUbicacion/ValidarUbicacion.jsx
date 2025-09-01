@@ -2,7 +2,7 @@
 
 import { mtUpdatePersonDom_Jumio } from "../../Api/mtUpdatePersonDom_Jumio";
 import { appGlobal } from "../../Api/appGlobal";
-import { Form, Spinner, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useReactToPrint } from 'react-to-print';

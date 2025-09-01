@@ -67,7 +67,6 @@ const ComprobanteIngreso = () => {
     await mtUpdateComprobanteCompletoJumio(objConsComprobanteCompleto);
     setModal(false);
     router.push("/uploadcomprobanten5");
-
   }
 
   useEffect(() => {

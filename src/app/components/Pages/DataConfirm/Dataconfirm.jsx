@@ -8,6 +8,7 @@ import Link from 'next/link';
 const Dataconfirm = () => {
 
   const { setRutaBack } = useAppContext();
+
   useEffect(() => {
     setRutaBack('/documentos');
   }, []);
@@ -24,6 +25,7 @@ const Dataconfirm = () => {
   const { setTokenJumio } = useAppContext();
 
   useEffect(() => {
+    
     setFirstName(localStorage.getItem("nombre") || '');
     setPaternalLastName(localStorage.getItem("paterno") || '');
     setMaternalLastName(localStorage.getItem("materno") || '');
