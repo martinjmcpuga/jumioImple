@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from "react";
 //import { updateCartaCompromisoStatus } from "../../api/updateCartaCompromisoStatus";
 import { uploadCartaCompromiso_2C_Jumio } from "../../Api/uploadCartaCompromiso_2C_Jumio";
 import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
 import dynamic from 'next/dynamic';
@@ -25,6 +26,7 @@ function UploadFileCartaN5() {
   }, [])
 
   const { IdJumio } = useAppContext();
+  const router = useRouter();
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -99,7 +101,7 @@ function UploadFileCartaN5() {
     setLoading(true);
 
     const responseVerificate = await uploadCartaCompromiso_2C_Jumio(
-      selectedFile, "Carta_", localStorage.getItem("sCpv"), IdJumio
+      selectedFile, "Carta_", localStorage.getItem("sCpv"),  IdJumio
     );
 
     if (responseVerificate.status === 200) {
