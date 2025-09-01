@@ -29,6 +29,14 @@ const AutenticacionLaboral = () => {
 
     async function createSession() {
 
+      setLoading(false);
+
+      setTimeout(() => {
+
+        setLoading(true);
+
+      }, 2000);
+
       setFirstName(localStorage.getItem("nombre") || '');
       setPaternalLastName(localStorage.getItem("paterno") || '');
       setMaternalLastName(localStorage.getItem("materno") || '');
