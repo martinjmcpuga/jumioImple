@@ -12,7 +12,7 @@ const RequerimientosSelectedN5Carta = (props) => {
 
   const isRunned = useRef(false);
   const router = useRouter();
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
 
   const [domicilioParticular, setDomicilioParticular] = useState(false);
@@ -32,6 +32,11 @@ const RequerimientosSelectedN5Carta = (props) => {
   const handleClose = () => {
     setShow(false);
   };
+
+  useEffect(() => {
+    setRutaBack('/requerimientosn5');
+  }, []);
+
 
   const handleButtonClick = async () => {
     router.push('/experiencialaboral');
