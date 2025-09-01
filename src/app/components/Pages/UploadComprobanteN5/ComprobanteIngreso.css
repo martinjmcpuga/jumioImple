@@ -1,0 +1,88 @@
+.Typography__Modal {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin-bottom: 15px;
+}
+
+.Modal__List--style {
+    list-style-type: disc;
+}
+
+.Typography__Modal--sizing {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.modal-header {
+    padding: 0 !important;
+}
+
+.padMsj {
+    padding-left: 15px;
+}
+
+.containerRender {
+    height: 82vh;
+}
+
+.Typography__HeaderCard {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.Typography__CardContent {
+    color: rgba(0, 0, 0, 0.50);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.HiddenInput {
+    display: none;
+    width: 100%;
+}
+
+.loader {
+    border-radius: 4px;
+    background: #00B653;
+    margin-left: 15px;
+    transition: all;
+}
+
+.Loader__container {
+    width: 93%;
+}
+
+.Loader__label {
+    color: #385AED;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.Message__Files {
+    width: 500%;
+}
+
+.borderPaddingUp {
+    width: 100%;
+}
+
+.txtNat_P3Com {
+    width: 88px;
+    height: 17px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-28) var(--unnamed-font-family-inter);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-0c3c2c);
+    font: normal normal 600 14px/28px Inter;
+    letter-spacing: 0px;
+    color: #0C3C2C;
+}

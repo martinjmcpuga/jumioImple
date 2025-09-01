@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function validateComprobanteByNameCPV_Jumio(obj) {
     try {
-        const url = appGlobal.host + "validateComprobanteByNameCPV_Jumio";
+        const url = appGlobal.host + "validateComprobanteByNameCPV_2C_Jumio";
         const params = {
             method: "POST",
             headers: {

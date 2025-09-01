@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function validateComprobanteByQR_Jumio(obj) {
     try {
-        const url = appGlobal.host + "validateComprobanteByQR_Jumio";
+        const url = appGlobal.host + "validateComprobanteByQR_2C_Jumio";
         const params = {
             method: "POST",
             headers: {

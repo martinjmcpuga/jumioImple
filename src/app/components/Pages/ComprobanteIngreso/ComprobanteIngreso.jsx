@@ -65,10 +65,8 @@ const ComprobanteIngreso = () => {
     };
 
     await mtUpdateComprobanteCompletoJumio(objConsComprobanteCompleto);
-
-    // navigate("/UploadComprobante");
-
     setModal(false);
+    router.push("/uploadcomprobanten5");
 
   }
 
