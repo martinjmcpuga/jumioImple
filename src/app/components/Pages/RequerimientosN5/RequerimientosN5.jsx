@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RequerimientosN5(props) {
 
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [checketComprobante, setChecketComprobante] = useState([]);
@@ -17,6 +17,11 @@ function RequerimientosN5(props) {
   const [isButtonEnabledPerfil, setButtonEnabledPerfil] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [onehabilita, setOnehabilita] = useState(true);
+
+  useEffect(() => {
+    setRutaBack('/autenticacionlaboral');
+  }, []);
+
 
   const handleButtonClick = async () => {
 
