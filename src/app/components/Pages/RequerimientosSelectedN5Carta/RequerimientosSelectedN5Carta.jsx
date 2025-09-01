@@ -73,6 +73,7 @@ const RequerimientosSelectedN5Carta = (props) => {
           responsePerson.historial2 === true) {
 
           //const responseHistorialCompleto = await mtUpdateHistorialCompleto(objCons);
+
           setDomicilioParticularRef(true);
 
         }

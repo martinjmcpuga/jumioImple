@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import "./styleUploadFile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { updateContratoIndividualStatusJumio } from "../../Api/updateContratoIndividualStatusJumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -114,9 +115,19 @@ function UploadFileContratoIndividualN5() {
         id: IdJumio
       }
 
-      //await updateContratoIndividualStatus(objCons);
+      //const responseStatus = await updateContratoIndividualStatusJumio(objCons);
+
+      //if (responseStatus.status === 200) {
 
       router.push("/requerimientosn5cartaselected");
+
+      //} else {
+
+      //  setShow(true);
+      //  setShowStatus(responseStatus.status);
+      //  setShowMessage(responseStatus.message);
+
+      //}
 
 
     } else if (responseVerificate.status === 500) {
