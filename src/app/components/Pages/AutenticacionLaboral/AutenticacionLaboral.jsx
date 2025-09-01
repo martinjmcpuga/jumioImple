@@ -20,6 +20,10 @@ const AutenticacionLaboral = () => {
 
   useEffect(() => {
     setRutaBack('/bandeja');
+    setFirstName(localStorage.getItem("nombre") || '');
+    setPaternalLastName(localStorage.getItem("paterno") || '');
+    setMaternalLastName(localStorage.getItem("materno") || '');
+    setCpv(localStorage.getItem("sCpv") || '');
   }, []);
 
 
@@ -37,11 +41,7 @@ const AutenticacionLaboral = () => {
 
       }, 2000);
 
-      setFirstName(localStorage.getItem("nombre") || '');
-      setPaternalLastName(localStorage.getItem("paterno") || '');
-      setMaternalLastName(localStorage.getItem("materno") || '');
-      setUserRfc(localStorage.getItem("userRfc") || '');
-      setCpv(localStorage.getItem("sCpv") || '');
+
     }
 
     createSession();
