@@ -87,6 +87,7 @@ const RequerimientosSelfie = () => {
               <div></div>
 
               <br />
+              <br />
 
               <div className="btnContinue">
                 {!isButtonEnabled ? (
