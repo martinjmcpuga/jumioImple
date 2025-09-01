@@ -34,7 +34,6 @@ function UploadFileContratoIndividualN5() {
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState("");
   const isRunned = useRef(false);
-  const [imageShare, setImageShare] = useState("");
   const [showErrorFile, setShowErrorFile] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
