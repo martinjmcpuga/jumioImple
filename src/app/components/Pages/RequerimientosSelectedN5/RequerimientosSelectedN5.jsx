@@ -8,7 +8,7 @@ import Modal from "react-bootstrap/Modal";
 import "./requerimientos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const RequerimientosSelectedN5Carta = (props) => {
+const RequerimientosSelectedN5 = (props) => {
 
   const isRunned = useRef(false);
   const router = useRouter();
@@ -18,21 +18,21 @@ const RequerimientosSelectedN5Carta = (props) => {
   const [domicilioParticular, setDomicilioParticular] = useState(false);
   const [domicilioParticularRef, setDomicilioParticularRef] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [cartaCompromiso, setCartaCompromiso] = useState(false);
 
-  const [contratoIndividual, setContratoIndividual] = useState(false);
+  const [identificacionSocial, setIdentificacionSocial] = useState(false);
+  const [identificacionFiscal, setIdentificacionFiscal] = useState(false);
+
+  const [comprobanteIngreso, setComprobanteIngreso] = useState(false);
   const [onehabilita, setOnehabilita] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
-  const [openedBy, setOpenedBy] = useState('');
 
   useEffect(() => {
     setRutaBack('/requerimientosn5');
   }, []);
-
 
   const handleButtonClick = async () => {
     router.push('/experiencialaboral');
@@ -43,27 +43,18 @@ const RequerimientosSelectedN5Carta = (props) => {
   }
 
   const handleRedirecNotComproante = () => {
-
-    if (openedBy === 'carta') {
-
-      router.push('/uploadcomprobantecarta');
-
-    } else if (openedBy === 'contrato') {
-
-      router.push('/uploadcomprobantecontrato');
-
-    }
-
+    router.push('/comprobanteingreso');
   }
+
+  const handleButtonFiscal = async () => {
+    setShowModal(true)
+  }
+
 
   const handleClose = () => {
     setShow(false);
   };
 
-  const handleButtonFiscal = async (param) => {
-    setOpenedBy(param);
-    setShowModal(true);
-  }
 
   useEffect(() => {
 
@@ -75,37 +66,28 @@ const RequerimientosSelectedN5Carta = (props) => {
       setLoading(true);
 
       const objCons = {
-        id: IdJumio
+        id: IdJumio,
       }
 
       const responsePerson = await mtFindPersonJumio(objCons);
 
       if (responsePerson.status === 200) {
 
-        if (responsePerson.historial0 === true &&
-          responsePerson.historial1 === true &&
-          responsePerson.historial2 === true) {
-
-          //const responseHistorialCompleto = await mtUpdateHistorialCompleto(objCons);
-
-          setDomicilioParticularRef(true);
-
-        }
-
         if (responsePerson.aniosExperienciaBol === true) {
           setDomicilioParticular(true);
+        }
+
+        if (responsePerson.ingresoMensualBol === true) {
+          setIdentificacionSocial(true);
         }
 
         if (responsePerson.onHistorialCompleto === true) {
           setDomicilioParticularRef(true);
         }
 
-        if (responsePerson.cartaCompromiso === true) {
-          setCartaCompromiso(true);
-        }
-
-        if (responsePerson.contratoIndividual === true) {
-          setContratoIndividual(true);
+        if (responsePerson.comprobante0 === true) {
+          setIdentificacionFiscal(true);
+          setComprobanteIngreso(true);
         }
 
         setLoading(false);
@@ -135,20 +117,17 @@ const RequerimientosSelectedN5Carta = (props) => {
         typeCredential: "ine",
       },
     });
-
     */
 
   };
 
   useEffect(() => {
-
     if (domicilioParticular === true && domicilioParticularRef === true &&
-      cartaCompromiso === true) {
+      identificacionFiscal === true) {
       setButtonEnabled(true);
     } else {
       setButtonEnabled(false);
     }
-
   });
 
   return (
@@ -238,7 +217,7 @@ const RequerimientosSelectedN5Carta = (props) => {
                             </>
                           )}
 
-                          {!cartaCompromiso ? (
+                          {!comprobanteIngreso ? (
                             <>
 
                               <hr className="line--Margin" />
@@ -248,9 +227,9 @@ const RequerimientosSelectedN5Carta = (props) => {
                                     <input type="radio" className="rdnSize mt-1" disabled />
                                   </div>
                                   <div className="w-100  Spacing d-flex align-items-center">
-                                    Carta compromiso
+                                    Comprobante de Ingreso
                                     <img
-                                      onClick={() => handleButtonFiscal('carta')}
+                                      onClick={handleButtonFiscal}
                                       src="assets/arrow_green.svg"
                                       alt=""
                                       className="Arrow__button--sizing"
@@ -268,44 +247,7 @@ const RequerimientosSelectedN5Carta = (props) => {
                                     <input type="radio" className="rdnSize mt-1" checked />
                                   </div>
                                   <div className="w-100  Spacing d-flex align-items-center">
-                                    Carta compromiso
-                                  </div>
-                                </div>
-                              </article>
-                            </>
-                          )}
-
-                          {!contratoIndividual ? (
-                            <>
-
-                              <hr className="line--Margin" />
-                              <article className="d-flex  align-items-center">
-                                <div className="textCheck w-100  d-flex align-items-center">
-                                  <div className="containerCheck_P28 spaceRadio">
-                                    <input type="radio" className="rdnSize mt-1" disabled />
-                                  </div>
-                                  <div className="w-100  Spacing d-flex align-items-center">
-                                    Contrato individual
-                                    <img
-                                      onClick={() => handleButtonFiscal('contrato')}
-                                      src="assets/arrow_green.svg"
-                                      alt=""
-                                      className="Arrow__button--sizing"
-                                    />
-                                  </div>
-                                </div>
-                              </article>
-                            </>
-                          ) : (
-                            <>
-                              <hr className="line--Margin" />
-                              <article className="d-flex  align-items-center">
-                                <div className="textCheck w-100  d-flex align-items-center">
-                                  <div className="containerCheck_P28 spaceRadio">
-                                    <input type="radio" className="rdnSize mt-1" checked />
-                                  </div>
-                                  <div className="w-100  Spacing d-flex align-items-center">
-                                    Contrato individual
+                                    Comprobante de Ingreso
                                   </div>
                                 </div>
                               </article>
@@ -354,13 +296,20 @@ const RequerimientosSelectedN5Carta = (props) => {
         backdrop="static"
         className="animate__animated animate__fadeIn"
         show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header>
+          <Modal.Title>
+            <div className="txtHead_P1"> <br /></div>
+          </Modal.Title>
+          <div className="p1">
+            <button className="btn-close" onClick={() => setShowModal(false)}></button>
+          </div>
+        </Modal.Header>
         <Modal.Body>
           <p className="txtMsj_P1">Reconozco y declaro que las imágenes que procederé a cargar en la aplicación han sido previamente revisadas y testadas. Acepto toda responsabilidad legal y moral relacionada con el uso y la análisis de estas imágenes en la plataforma conforme a la Política de Privacidad previamente suscrita. Asimismo, el usuario libera a DPR y sus clientes de cualquier responsabilidad derivada del uso indebido o de la inobservancia de los lineamientos descritos. Declaro haber entendido, y estoy de acuerdo y conforme con los términos y condiciones establecidos por DPR para la carga de imágenes en la plataforma.</p>
           <button
             className={`buttonCookies_P1 ${onehabilita ? "buttonEnabled" : ""}`}
             onClick={() => setOnehabilita(!onehabilita)}
           >
-
             <div className="txtCookies_P1">Acepto términos y condiciones</div>
           </button>
           <div className="spaceButtonModal" />
@@ -381,7 +330,7 @@ const RequerimientosSelectedN5Carta = (props) => {
         </Modal.Body>
       </Modal>
 
-      <Modal show={show} onHide={handleClose} animation={false} className="animate__animated animate__fadeIn" centered>
+      <Modal className="animate__animated animate__fadeIn" show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className="backGroudModal">
           <div className="msjTitleModalDiv">Error {showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>
@@ -396,4 +345,4 @@ const RequerimientosSelectedN5Carta = (props) => {
   );
 };
 
-export default RequerimientosSelectedN5Carta;
+export default RequerimientosSelectedN5;

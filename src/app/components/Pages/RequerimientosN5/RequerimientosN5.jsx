@@ -26,7 +26,7 @@ function RequerimientosN5(props) {
   const handleButtonClick = async () => {
 
     localStorage.setItem("n5com", "/RequerimientosSelectedN5");
-    //navigate("/RequerimientosSelectedN5");
+    router.push("/requerimientosselectedn5");
 
   };
 
