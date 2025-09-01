@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
+//import { uploadCartaCompromiso } from "../../api/uploadCartaCompromiso";
+//import { updateContratoIndividualStatus } from "../../api/updateContratoIndividualStatus";
 import { uploadCartaCompromiso_2C_Jumio } from "../../Api/uploadCartaCompromiso_2C_Jumio";
-import { updateCartaCompromisoStatusJumio } from "../../Api/updateCartaCompromisoStatusJumio";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
@@ -13,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
 
-function UploadFileCartaN5() {
+function UploadFileContratoIndividualN5() {
 
   useEffect(() => {
     (async () => {
@@ -24,8 +25,9 @@ function UploadFileCartaN5() {
     })();
   }, [])
 
+
   const { IdJumio, setRutaBack } = useAppContext();
-  const router = useRouter();
+  const router = useRouter()
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -104,7 +106,7 @@ function UploadFileCartaN5() {
     setLoading(true);
 
     const responseVerificate = await uploadCartaCompromiso_2C_Jumio(
-      selectedFile, "Carta_", localStorage.getItem("sCpv"), IdJumio
+      selectedFile, "Contrato_", localStorage.getItem("sCpv"), IdJumio
     );
 
     if (responseVerificate.status === 200) {
@@ -113,19 +115,10 @@ function UploadFileCartaN5() {
         id: IdJumio
       }
 
-      const responseStatus = await updateCartaCompromisoStatusJumio(objCons);
+      //await updateContratoIndividualStatus(objCons);
 
-      if (responseStatus.status === 200) {
+      router.push("/requerimientosn5cartaselected");
 
-        router.push("/requerimientosn5cartaselected");
-
-      } else {
-
-        setShow(true);
-        setShowStatus(responseStatus.status);
-        setShowMessage(responseStatus.message);
-
-      }
 
     } else if (responseVerificate.status === 500) {
 
@@ -278,4 +271,4 @@ function UploadFileCartaN5() {
   );
 }
 
-export default UploadFileCartaN5;
+export default UploadFileContratoIndividualN5;

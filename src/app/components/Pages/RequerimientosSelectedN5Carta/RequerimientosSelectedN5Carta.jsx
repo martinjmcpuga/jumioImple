@@ -143,14 +143,15 @@ const RequerimientosSelectedN5Carta = (props) => {
       router.push('/uploadcomprobantecarta');
 
     } else if (openedBy === 'contrato') {
-      // navigate("/UploadComprobanteContrato");
+
+      router.push('/uploadcomprobantecontrato');
+
     }
 
   }
 
   return (
     <>
-
       <div className="initBack_P2 animate__animated animate__fadeIn">
         <div className="containerRender">
 
