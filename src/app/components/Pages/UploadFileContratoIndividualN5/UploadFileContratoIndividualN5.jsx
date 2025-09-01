@@ -1,16 +1,14 @@
 'use client'
 
 import React, { useRef, useState, useEffect } from "react";
-//import { uploadCartaCompromiso } from "../../api/uploadCartaCompromiso";
-//import { updateContratoIndividualStatus } from "../../api/updateContratoIndividualStatus";
 import { uploadCartaCompromiso_2C_Jumio } from "../../Api/uploadCartaCompromiso_2C_Jumio";
+import { updateContratoIndividualStatusJumio } from "../../Api/updateContratoIndividualStatusJumio";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import "./styleUploadFile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { updateContratoIndividualStatusJumio } from "../../Api/updateContratoIndividualStatusJumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
