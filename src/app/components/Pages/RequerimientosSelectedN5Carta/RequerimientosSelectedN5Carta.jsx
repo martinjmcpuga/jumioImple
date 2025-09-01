@@ -352,7 +352,6 @@ const RequerimientosSelectedN5Carta = (props) => {
         backdrop="static"
         className="animate__animated animate__fadeIn"
         show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header className=' py-3 ' />
         <Modal.Body>
           <p className="txtMsj_P1">Reconozco y declaro que las imágenes que procederé a cargar en la aplicación han sido previamente revisadas y testadas. Acepto toda responsabilidad legal y moral relacionada con el uso y la análisis de estas imágenes en la plataforma conforme a la Política de Privacidad previamente suscrita. Asimismo, el usuario libera a DPR y sus clientes de cualquier responsabilidad derivada del uso indebido o de la inobservancia de los lineamientos descritos. Declaro haber entendido, y estoy de acuerdo y conforme con los términos y condiciones establecidos por DPR para la carga de imágenes en la plataforma.</p>
           <button
