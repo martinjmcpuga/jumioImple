@@ -134,7 +134,9 @@ const RequerimientosSelectedN5Carta = (props) => {
   const handleRedirecNotComproante = () => {
 
     if (openedBy === 'carta') {
-      // navigate("/UploadComprobanteCarta");
+
+      router.push('/uploadcomprobantecarta');
+
     } else if (openedBy === 'contrato') {
       // navigate("/UploadComprobanteContrato");
     }
