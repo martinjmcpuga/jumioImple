@@ -39,16 +39,15 @@ const ResumeAddScore = () => {
         try {
 
             const objModel = {
-                id: IdJumio,
+                id: IdJumio
             }
 
             await getWsAddScoreJumio(objModel);
+            router.push('/bandeja');
 
         } catch (e) {
             console.log('Error')
         }
-
-        router.push('/bandeja');
 
     }
 

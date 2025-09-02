@@ -90,44 +90,93 @@ const Bandeja = () => {
         if (response.status === 200) {
 
           const objJumioSelfie = {
-            idJumio: IdJumio
+            id: IdJumio,
+            idJumio: IdJumio,
           };
 
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
 
           if (responseSelfie.status === 200) {
 
-            if (responsePerfilCpv.auDomicilio === true) {
-              setAuDomicilio(true);
-            }
 
-            if (responsePerfilCpv.auHistorial === true) {
-              setAuHistorial(true);
-            }
+            const responsePersonJumio = await mtFindPersonJumio(objJumioSelfie);
 
-            if (responsePerfilCpv.auHistorialComprobate === true) {
-              setAuHistorialComprobate(true);
-            }
+            /********************************************************************/
 
-            if (responsePerfilCpv.auDeclaratoria === true) {
-              setAuDeclaratoria(true);
-            }
 
-            if (responsePerfilCpv.n5BGC === true) {
-              //getPalencaUsersAccounts_Jumio(obj);
-            }
+            if (responsePersonJumio.status === 200) {
 
-            if (responsePerfilCpv.auCita === true) {
 
-              setAuCitaVer(true);
+              if (responsePerfilCpv.auDomicilio === true) {
+                setAuDomicilio(true);
+              }
+
+              if (responsePerfilCpv.auHistorial === true) {
+                setAuHistorial(true);
+              }
+
+              if (responsePerfilCpv.auHistorialComprobate === true) {
+                setAuHistorialComprobate(true);
+              }
+
+              if (responsePerfilCpv.auDeclaratoria === true) {
+                setAuDeclaratoria(true);
+              }
+
+              if (responsePerfilCpv.n5BGC === true) {
+                //getPalencaUsersAccounts_Jumio(obj);
+              }
+
+              if (responsePerfilCpv.auCita === true) {
+
+                setAuCitaVer(true);
+
+              } else {
+
+                setAuCitaVer(false);
+
+              }
+
+              /********************************************************************/
+
+              if (responsePersonJumio.datosDomicilioCompleto === true) {
+
+                const direccion =
+                  "" +
+                  responsePersonJumio.calleDom +
+                  " " +
+                  responsePersonJumio.numExtDom +
+                  ", " +
+                  responsePersonJumio.coloniaDom;
+
+                //setValidateDomi(true);
+
+                let cadenaAux = "";
+                if (direccion.length > 28) {
+                  let i = 0;
+                  while (i < 28) {
+                    cadenaAux = cadenaAux + direccion[i];
+                    i++;
+                  }
+                  cadenaAux = cadenaAux + ".";
+                } else {
+                  cadenaAux = direccion;
+                }
+
+                setDireccion(cadenaAux);
+
+              }
+
+
+              setLoading(false);
 
             } else {
 
-              setAuCitaVer(false);
+              setLoading(false);
+              showModalError('Error', responsePersonJumio.message);
 
             }
 
-            setLoading(false);
 
           } else {
 

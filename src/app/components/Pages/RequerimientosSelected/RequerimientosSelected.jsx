@@ -156,6 +156,8 @@ const RequerimientosSelected = () => {
 
   const getResumen = async () => {
 
+    router.push('/resumeaddscore');
+
   };
 
   useEffect(() => {
