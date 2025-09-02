@@ -128,6 +128,8 @@ const RequerimientosSelectedN5Carta = (props) => {
 
   const getResumen = async () => {
 
+    router.push('/bandeja');
+
     /*
     navigate("/FaceLoginPassaporte", {
       state: {
