@@ -24,7 +24,7 @@ function UploadComprobante() {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -39,6 +39,10 @@ function UploadComprobante() {
   const [pageNumber, setPageNumber] = useState(1);
   const [filesImage, setFilesImage] = useState([]);
   const [buttonDown, setButtonDown] = useState(false);
+
+  useEffect(() => {
+    setRutaBack('/comprobantedompersonal');
+  }, []);
 
   const catchButton = (Validate) => {
 
@@ -150,9 +154,14 @@ function UploadComprobante() {
 
     if (selectedFile) {
 
+      console.log(selectedFile);
+
       responseVerificate = await uploadFilesService(
         selectedFile, "Comprobante_", localStorage.getItem("sCpv"), IdJumio
       );
+
+      
+
       if (responseVerificate.status === 200) {
 
         router.push('/datadompersonal');
