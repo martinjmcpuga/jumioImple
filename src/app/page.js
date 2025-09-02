@@ -8,15 +8,15 @@ import { getCpvCurpPaisJumio } from "./components/Api/getCpvCurpPaisJumio";
 import { mtfindCpv } from "./components/Api/mtfindCpv";
 import { validateCurp_Jumio } from "./components/Api/validateCurp_Jumio";
 import { useSearchParams } from 'next/navigation'
-import MyVerticallyCenteredModal from "./components/Modals/ModalMain/ModalMain";
 import { useAppContext } from './context/AppContext';
+import Modal from "react-bootstrap/Modal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
 
   const searchParams = useSearchParams()
   const isRunned = useRef(false);
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState("");
@@ -24,9 +24,15 @@ export default function Home() {
   const [validateCurpCpv, setValidateCurpCpv] = useState(true);
   const i = searchParams.get('i')
   const { setCpvI, setIdJumio } = useAppContext();
+  const [onehabilita, setOnehabilita] = useState(true);
 
   const onContinueModel = async () => {
     setModalShow(false);
+  };
+
+  const handleClose = async () => {
+    setShow(false);
+    window.location.href = "https://midpr.icu/usuarioaicm/";
   };
 
 
@@ -220,9 +226,94 @@ export default function Home() {
 
         </>
 
-
       )}
-      <MyVerticallyCenteredModal modalShow={modalShow} onHide={onContinueModel} />
+
+      <Modal
+        show={modalShow}
+        onHide={onContinueModel}
+        size="sm"
+        animation={false}
+        centered
+        backdrop="static"
+        className="animate__animated animate__fadeIn"
+
+      >
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter">
+            <div className="txtHead_P1">Uso de Cookies</div>
+          </Modal.Title>
+          <div className="p1">
+            <div className="btn-close" >
+              <a href="https://midpr.icu/usuarioaicm/" role="button"></a>
+            </div>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <p className="txtMsj_P1">
+            Sistema de Confiabilidad DPR SAPI, requiere el consentimiento del Uso
+            de Cookies de todos los Usuarios de esta Aplicación Web. Las cookies
+            son pequeños fragmentos de texto que nuestra Aplicación Web envía al
+            navegador, permiten que las operaciones realizadas por Usuario
+            recuerden información sobre la sesión, lo que facilita realizar
+            verificaciones con fuentes externas y hacer que la secuencia de las
+            Operaciones Realizadas sea más ágil.Otras tecnologías, como los
+            identificadores únicos y geolocalización que se usan en el navegador,
+            aplicación o dispositivo, los píxeles y el almacenamiento local,
+            también se pueden usar para estos fines.
+          </p>
+          <button
+            className={`buttonCookies_P1 ${onehabilita ? "buttonEnabled" : ""}`}
+            onClick={() => setOnehabilita(!onehabilita)}
+          >
+            <div className="txtCookies_P1">Aceptar Uso de Cookies</div>
+          </button>
+          <div className="spaceButtonModal" />
+          <button
+            className={!onehabilita ? "buttonModal_P1" : "buttonModal_disable"}
+            onClick={onContinueModel}
+            disabled={onehabilita}
+          >
+            <div
+              className={
+                !onehabilita ? "txtButtonModal_P1" : "txtButtonModal_disable"
+              }
+            >
+              Confirmar
+            </div>
+          </button>
+        </Modal.Body>
+        <div className="foorterBackground_P1">
+          <Modal.Footer>
+            <span className="txtFooorter_P1">
+              IMPORTANTE: Consulte nuestro{" "}
+              <span className="txtCookiesFooorter_P1">
+                <a href="https://midpr.net/cookies.php" target="_blank">
+                  Uso de Cookies
+                </a>
+              </span>{" "}
+              para más detalles sobre la recolección y uso de datos.
+            </span>
+          </Modal.Footer>
+        </div>
+      </Modal>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        animation={false}
+        centered
+        backdrop="static"
+      >
+        <Modal.Body className="backGroudModal">
+          <div className="msjTitleModalDiv">{showStatus}</div>
+          <div className="msjErrorModal">{showMessage}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="button_P2" onClick={handleClose}>
+            <span className="txtButton_P2">Regresar</span>
+          </button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
