@@ -108,6 +108,8 @@ const RequerimientosSelectedN5 = (props) => {
 
   const getResumen = async () => {
 
+    router.push('/bandeja');
+
     /*
     navigate("/FaceLoginPassaporte", {
       state: {
