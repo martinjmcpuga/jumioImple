@@ -160,7 +160,7 @@ function UploadComprobante() {
         selectedFile, "Comprobante_", localStorage.getItem("sCpv"), IdJumio
       );
 
-      
+
 
       if (responseVerificate.status === 200) {
 

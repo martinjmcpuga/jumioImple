@@ -61,6 +61,8 @@ function ValidarUbicacion() {
 
         async function createSession() {
 
+            console.log(IdJumio)
+
             setCpDom(localStorage.getItem('cpDom'));
             setColoniaDom(localStorage.getItem("coloniaDom"));
             setCalleDom(localStorage.getItem("calleDom"));
@@ -146,7 +148,7 @@ function ValidarUbicacion() {
                         };
                         const response = await fetch(url, params);
                         const result = await response.json();
-                        console.log('Upload successful:', result);
+                        console.log('Upload successful:', formData);
 
                         const responseIp = await fetch('https://api.ipify.org?format=json');
                         const data = await responseIp.json();
@@ -187,7 +189,11 @@ function ValidarUbicacion() {
                                 imagenDom: "",
                             };
 
+                            console.log(objInsertDom)
+
                             const response = await mtUpdatePersonDom_Jumio(objInsertDom);
+
+                            console.log(response)
 
                             if (response.status === 200) {
 
