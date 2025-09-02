@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from "react";
 import Pantalla2 from "./components/Pages/Pantalla2/Pantalla2";
 import Footer from "./components/Footer/Footer";
 import { getCpvCurpPaisJumio } from "./components/Api/getCpvCurpPaisJumio";
-import { mtfindCpv } from "./components/Api/mtfindCpv";
 import { validateCurp_Jumio } from "./components/Api/validateCurp_Jumio";
+import { mtfindCpvIdJumio } from "./components/Api/mtfindCpvIdJumio";
 import { useSearchParams } from 'next/navigation'
 import { useAppContext } from './context/AppContext';
 import Modal from "react-bootstrap/Modal";
@@ -81,7 +81,7 @@ export default function Home() {
               localStorage.setItem("telefono", response.telefono);
               localStorage.setItem("correo", response.correo);
 
-              const responseIdPerson = await mtfindCpv(obj);
+              const responseIdPerson = await mtfindCpvIdJumio(obj);
 
               if (responseIdPerson.status === 400) {
 
@@ -121,8 +121,7 @@ export default function Home() {
 
                   setIdJumio(responseIdPerson.id);
                   localStorage.setItem("idPerson", "" + responseIdPerson.id);
-                  localStorage.setItem("uuid", "" + responseIdPerson.uuid);
-                  localStorage.setItem("curpValidate", "" + responseIdPerson.identificationNumberId);
+                  localStorage.setItem("curpValidate", "" + responseIdPerson.userReference);
                   localStorage.setItem("nombre", responseIdPerson.nombre);
                   localStorage.setItem("paterno", responseIdPerson.paterno);
                   localStorage.setItem("materno", responseIdPerson.materno);
@@ -155,7 +154,7 @@ export default function Home() {
                 cpv: i
               };
 
-              const responseIdPerson = await mtfindCpv(objPerson);
+              const responseIdPerson = await mtfindCpvIdJumio(objPerson);
 
               if (responseIdPerson.status === 400) {
 
