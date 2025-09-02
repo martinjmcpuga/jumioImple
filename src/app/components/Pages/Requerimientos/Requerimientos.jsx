@@ -14,6 +14,7 @@ const Requerimientos = () => {
   const { cpvI } = useAppContext();
 
   const handleButtonClick = async () => {
+
     // Lógica para manejar el clic del botón
 
   };

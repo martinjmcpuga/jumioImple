@@ -113,19 +113,19 @@ function UploadFileContratoIndividualN5() {
         id: IdJumio
       }
 
-      //const responseStatus = await updateContratoIndividualStatusJumio(objCons);
+      const responseStatus = await updateContratoIndividualStatusJumio(objCons);
 
-      //if (responseStatus.status === 200) {
+      if (responseStatus.status === 200) {
 
-      router.push("/requerimientosn5cartaselected");
+        router.push("/requerimientosn5cartaselected");
 
-      //} else {
+      } else {
 
-      //  setShow(true);
-      //  setShowStatus(responseStatus.status);
-      //  setShowMessage(responseStatus.message);
+        setShow(true);
+        setShowStatus(responseStatus.status);
+        setShowMessage(responseStatus.message);
 
-      //}
+      }
 
 
     } else if (responseVerificate.status === 500) {

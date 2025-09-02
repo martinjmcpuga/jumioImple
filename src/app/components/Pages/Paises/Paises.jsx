@@ -3,21 +3,22 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Form, Spinner, Modal } from 'react-bootstrap';
 import { getPaisByIso } from '../../Api/getPaisByIso';
-import { mtfindCpv } from '../../Api/mtfindCpv';
 import { useAppContext } from '../../../context/AppContext';
 import Footer from '../../Footer/Footer';
 import Link from 'next/link';
 import './paises.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
+import { mtfindCpvIdJumio } from '../../Api/mtfindCpvIdJumio';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Paises = () => {
+
   const { setRutaBack } = useAppContext();
+
   useEffect(() => {
     setRutaBack('/requerimientos');
   }, []);
-
 
   const ref = useRef(null);
   const isRunned = useRef(false);
@@ -85,7 +86,7 @@ const Paises = () => {
     const curpVal = mounted ? curpValidate : null;
     if (localStorage.getItem("curpValidate") === curpStr) {
       const objPerson = { cpv: cpvI };
-      const responseIdPerson = await mtfindCpv(objPerson);
+      const responseIdPerson = await mtfindCpvIdJumio(objPerson);
       //console.log('Response ID Person:', responseIdPerson);
       if (responseIdPerson.status === 400) {
         setGame('3');
