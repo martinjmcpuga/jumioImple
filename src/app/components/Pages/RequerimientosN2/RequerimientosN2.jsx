@@ -10,7 +10,7 @@ const RequerimientosN2 = () => {
 
   const isRunned = useRef(false);
   const router = useRouter();
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [checketList, setChecketList] = useState([]);
 
@@ -21,6 +21,11 @@ const RequerimientosN2 = () => {
 
   const [verIdentificacionSocial, setVerIdentificacionSocial] = useState(true);
   const [verIdentificacionFiscal, setVerIdentificacionFiscal] = useState(true);
+
+
+  useEffect(() => {
+    setRutaBack('/initdomicilio');
+  }, []);
 
   useEffect(() => {
 

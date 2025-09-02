@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import { useAppContext } from '@/app/context/AppContext';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import "./style.css";
@@ -7,6 +8,7 @@ import "./style.css";
 const InitDomicilio = () => {
 
   const isRunned = useRef(false);
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [modalShow, setModalShow] = useState(false);
   const [cpv, setCpv] = useState("");
@@ -18,6 +20,7 @@ const InitDomicilio = () => {
 
   useEffect(() => {
     setCpv(localStorage.getItem('sCpv'));
+    setRutaBack('/bandeja');
   }, []);
 
   const onTest = async () => {

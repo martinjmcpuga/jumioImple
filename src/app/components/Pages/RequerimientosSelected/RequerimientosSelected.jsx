@@ -12,7 +12,7 @@ const RequerimientosSelected = () => {
 
   const isRunned = useRef(false);
   const router = useRouter();
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
 
   const [domicilioParticular, setDomicilioParticular] = useState(false);
@@ -28,6 +28,10 @@ const RequerimientosSelected = () => {
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
 
+  useEffect(() => {
+    setRutaBack('/requerimientosn2');
+  }, []);
+
   const handleClose = () => {
     //setShow(false);
   };
@@ -41,13 +45,10 @@ const RequerimientosSelected = () => {
   }
 
   const handleButtonSocial = async () => {
-
     router.push('/identificacionsocial');
-
   }
 
   const handleButtonFiscal = async () => {
-
     router.push('/identificacionfisical');
   }
 
