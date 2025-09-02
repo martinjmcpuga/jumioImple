@@ -68,6 +68,7 @@ function UploadComprobante() {
       file.type === "image/png"
     ) {
       if (file.type === "image/jpeg" || file.type === "image/png") {
+        console.log(file)
         catchButton(true);
         setFilesImage([...filesImage, file]);
         setSelectedFile(null);
@@ -92,6 +93,7 @@ function UploadComprobante() {
       file.type === "image/png"
     ) {
       if (file.type === "image/jpeg" || file.type === "image/png") {
+        console.log(file)
         catchButton(true);
         setFilesImage([...filesImage, file]);
         setSelectedFile(null);
@@ -152,26 +154,29 @@ function UploadComprobante() {
 
     let responseVerificate = null;
 
-    if (selectedFile) {
+    if (filesImage.length > 0) {
+      console.log(filesImage);
+      responseVerificate = await uploadFilesService(
+        filesImage[0], "Comprobante_", localStorage.getItem("sCpv"), IdJumio
+      );
 
-      console.log(selectedFile);
+
+    } else if (selectedFile) {
+
 
       responseVerificate = await uploadFilesService(
         selectedFile, "Comprobante_", localStorage.getItem("sCpv"), IdJumio
       );
+    }
 
+    if (responseVerificate.status === 200) {
 
+      router.push('/datadompersonal');
 
-      if (responseVerificate.status === 200) {
+    } else {
 
-        router.push('/datadompersonal');
-
-      } else {
-
-        setLoading(false);
-        showModalError('Error', responseVerificate.message);
-
-      }
+      setLoading(false);
+      showModalError('Error', responseVerificate.message);
 
     }
 
