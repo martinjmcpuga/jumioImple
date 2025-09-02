@@ -229,14 +229,11 @@ export default function Home() {
       )}
 
       <Modal
-        show={modalShow}
+        show={modalShow} size="sm"
         onHide={onContinueModel}
-        size="sm"
-        animation={false}
-        centered
-        backdrop="static"
+        centered backdrop="static"
+        keyboard={false}
         className="animate__animated animate__fadeIn"
-
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter">
