@@ -66,16 +66,6 @@ const Bandeja = () => {
 
     async function createSession() {
 
-      /*
-      localStorage.setItem("id", "25abdbea-0882-4f5e-b77d-9781e00e7e95");
-      localStorage.setItem("curpValidate", "PUCJ890306HGTGRN03");
-      localStorage.setItem("nombre", "JUAN MARTIN");
-      localStorage.setItem("paterno", "PUGA");
-      localStorage.setItem("materno", " CORONA");
-      localStorage.setItem("correo", "martin.puga@dpr.icu");
-      localStorage.setItem("sCpv", "99760FDD76");
-      */
-
       setLoading(true);
 
       const obj = {

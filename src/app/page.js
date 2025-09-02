@@ -9,6 +9,7 @@ import { validateCurp_Jumio } from "./components/Api/validateCurp_Jumio";
 import { mtfindCpvIdJumio } from "./components/Api/mtfindCpvIdJumio";
 import { useSearchParams } from 'next/navigation'
 import { useAppContext } from './context/AppContext';
+import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,6 +17,7 @@ export default function Home() {
 
   const searchParams = useSearchParams()
   const isRunned = useRef(false);
+  const router = useRouter();
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
@@ -35,6 +37,15 @@ export default function Home() {
     window.location.href = "https://midpr.icu/usuarioaicm/";
   };
 
+
+  const onTest = async () => {
+    router.push("/requerimientos");
+  };
+
+
+  const onValidateFaceMach = async () => {
+    router.push("/bandeja");
+  };
 
   useEffect(() => {
 
@@ -116,6 +127,7 @@ export default function Home() {
                 }
 
               } else if (responseIdPerson.status === 200) {
+
 
                 if (responseIdPerson.id != null && responseIdPerson.id !== "") {
 
@@ -212,10 +224,27 @@ export default function Home() {
             <div className="onContentExpands">
               <Pantalla2 />
             </div>
-
           </div>
-          <Footer direction={'/requerimientos'} enabled={true} />
-
+          <div className="footer ">
+            <div className="containerCont_P2">
+              {validateCurpCpv ? (
+                <>
+                  <button className="button_P2 buttonExpandsBase " onClick={onTest}>
+                    <span className="txtButton_P2">Confirmar</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className="button_P2 buttonExpandsBase " onClick={onValidateFaceMach}>
+                    <span className="txtButton_P2">Confirmar</span>
+                  </button>
+                </>
+              )}
+            </div>
+            <div className="imageContainer_P2">
+              <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
+            </div>
+          </div>
         </>
       ) : (
         <>
