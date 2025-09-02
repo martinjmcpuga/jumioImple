@@ -23,8 +23,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [validateCurpCpv, setValidateCurpCpv] = useState(true);
   const i = searchParams.get('i')
-  const { setCpvI } = useAppContext();
-
+  const { setCpvI, setIdJumio } = useAppContext();
 
   const onContinueModel = async () => {
     setModalShow(false);
@@ -114,6 +113,7 @@ export default function Home() {
 
                 if (responseIdPerson.id != null && responseIdPerson.id !== "") {
 
+                  setIdJumio(responseIdPerson.id);
                   localStorage.setItem("idPerson", "" + responseIdPerson.id);
                   localStorage.setItem("uuid", "" + responseIdPerson.uuid);
                   localStorage.setItem("curpValidate", "" + responseIdPerson.identificationNumberId);
