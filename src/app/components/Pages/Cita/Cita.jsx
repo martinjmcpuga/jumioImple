@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
 import { useAppContext } from '@/app/context/AppContext';
 import './style.css';
@@ -111,6 +112,19 @@ function Cita() {
                     <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
                 </div>
             </div>
+
+            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatus}</div>
+                    <div className="msjErrorModal">{showMessage}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
+
         </>
     )
 }
