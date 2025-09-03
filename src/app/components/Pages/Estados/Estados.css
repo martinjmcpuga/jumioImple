@@ -1,0 +1,15 @@
+:root {
+    --bs-gutter-x: 0 !important;
+}
+
+.textState {
+    color: #000;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.estadoInit {
+    margin-right: 5px;
+}

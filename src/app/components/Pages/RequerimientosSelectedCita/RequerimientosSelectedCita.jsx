@@ -35,7 +35,7 @@ const RequerimientosSelectedCita = () => {
   };
 
   const handleButtonClick = async () => {
-    //navigate("/PantallaEstados");
+    router.push("/estados");
   };
 
   const handleButtonRef = async () => {
