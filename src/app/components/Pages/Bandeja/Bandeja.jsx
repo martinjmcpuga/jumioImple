@@ -217,6 +217,10 @@ const Bandeja = () => {
     router.push("/autenticacionlaboral");
   };
 
+  const getHomeCita = async () => {
+    router.push("/cita");
+  };
+
 
   const onDomComplete = async () => {
   };
@@ -484,7 +488,7 @@ const Bandeja = () => {
                       <>
                         <div className="rcornersDes27"
                           style={{ marginTop: "12px" }}
-                        >
+                          onClick={getHomeCita}>
                           <img src='assets/generarCitaDisabled.svg' align="left" className="imgFol_P27_Img marginCustom" />
                           <img
                             src='assets/arrow_green.svg'
