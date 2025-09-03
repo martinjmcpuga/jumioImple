@@ -42,7 +42,7 @@ const ResumeAddScore = () => {
                 id: IdJumio
             }
 
-            await getWsAddScoreJumio(objModel);
+            const responseAdd = await getWsAddScoreJumio(objModel);
             router.push('/bandeja');
 
         } catch (e) {
