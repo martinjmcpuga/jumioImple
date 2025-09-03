@@ -19,7 +19,6 @@ export default function MyVerticallyCenteredModal({ modalShow, onHide }) {
         <DialogPanel className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-xl space-y-4">
           <DialogTitle className="text-lg font-medium text-gray-900">
             Uso de Cookies
-            
           <div className='line_P2'/>
           </DialogTitle>
 

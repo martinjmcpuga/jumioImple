@@ -263,8 +263,8 @@ export default function Home() {
         keyboard={false}
         className="animate__animated animate__fadeIn"
       >
-        <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">
+        <Modal.Header id="contained-modal-title-vcenter">
+          <Modal.Title >
             <div className="txtHead_P1">Uso de Cookies</div>
           </Modal.Title>
           <div className="p1">

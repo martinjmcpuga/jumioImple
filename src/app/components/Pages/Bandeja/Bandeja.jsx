@@ -43,7 +43,7 @@ const Bandeja = () => {
   const [auHistorial, setAuHistorial] = useState(false);
   const [auHistorialComprobate, setAuHistorialComprobate] = useState(false);
   const [auDeclaratoria, setAuDeclaratoria] = useState(false);
-  const [auCita, setAuCita] = useState(false);
+  const [auCita, setAuCita] = useState(true);
   const [auCitaVer, setAuCitaVer] = useState(false);
 
   useEffect(() => {

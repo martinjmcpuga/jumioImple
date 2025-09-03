@@ -19,7 +19,6 @@ input:focus {
     color: #141429;
     position: relative;
     flex: 1 1 auto;
-    padding: var(--bs-modal-padding);
 }
 
 .txtMsj_P1 {
@@ -736,6 +735,26 @@ input:focus {
     width: 100%;
     /* table-layout: fixed; */
     position: relative;
+}
+
+.buttonModal_disable {
+    pointer-events: none;
+    background-color: #F9FBF8;
+    color: #51B35E;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100% !important;
+}
+
+#contained-modal-title-vcenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .Column_P3 {
