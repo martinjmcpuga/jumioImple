@@ -151,70 +151,77 @@ function UploadNss() {
 
     let responseVerificate = null;
 
-    if (selectedFile) {
+    if (filesImage.length > 0) {
+      responseVerificate = await uploadFilesService(
+        filesImage[0], "Nss_", localStorage.getItem("sCpv"), IdJumio
+      );
+
+
+    } else if (selectedFile) {
 
       responseVerificate = await uploadFilesService(
         selectedFile, "Nss_", localStorage.getItem("sCpv"), IdJumio
       );
-      if (responseVerificate.status === 200) {
+    }
 
-        const objJumio = {
-          nombreUser: localStorage.getItem("nombre"),
-          paterno: localStorage.getItem("paterno"),
-          materno: localStorage.getItem("materno"),
-          nombreComprobante0: "Nss_",
-          nombreComprobante1: localStorage.getItem("sCpv"),
-          nombreComprobante2: "_1.png"
-        };
+    if (responseVerificate.status === 200) {
 
-        const responseComprobanteByName = await validateComprobanteByName_2C_Jumio(objJumio);
+      const objJumio = {
+        nombreUser: localStorage.getItem("nombre"),
+        paterno: localStorage.getItem("paterno"),
+        materno: localStorage.getItem("materno"),
+        nombreComprobante0: "Nss_",
+        nombreComprobante1: localStorage.getItem("sCpv"),
+        nombreComprobante2: "_1.png"
+      };
 
-        if (responseComprobanteByName.status === 200) {
+      const responseComprobanteByName = await validateComprobanteByName_2C_Jumio(objJumio);
 
-          const responseComprobanteByNameImss = await validateNombreImss_Jumio(objJumio);
+      if (responseComprobanteByName.status === 200) {
 
-          if (responseComprobanteByNameImss.status === 200) {
+        const responseComprobanteByNameImss = await validateNombreImss_Jumio(objJumio);
 
-            const objNss = {
-              id: IdJumio,
-              nss: localStorage.getItem('socialStr')
-            };
+        if (responseComprobanteByNameImss.status === 200) {
 
-            const response = await mtUpdateNssJumio(objNss);
+          const objNss = {
+            id: IdJumio,
+            nss: localStorage.getItem('socialStr')
+          };
 
-            if (response.status === 200) {
+          const response = await mtUpdateNssJumio(objNss);
 
-              router.push('/requerimientosselected');
+          if (response.status === 200) {
 
-            } else {
-
-              setLoading(false);
-              showModalError('Error ' + response.status, response.message);
-
-            }
+            router.push('/requerimientosselected');
 
           } else {
 
-            setLoading(false)
-            showModalError('Error ' + responseComprobanteByNameImss.status, responseComprobanteByNameImss.message);
+            setLoading(false);
+            showModalError('Error ' + response.status, response.message);
 
           }
 
         } else {
 
           setLoading(false)
-          showModalError('Error ' + responseComprobanteByName.status, responseComprobanteByName.message);
+          showModalError('Error ' + responseComprobanteByNameImss.status, responseComprobanteByNameImss.message);
 
         }
 
       } else {
 
-        setLoading(false);
-        showModalError('Error', responseVerificate.message);
+        setLoading(false)
+        showModalError('Error ' + responseComprobanteByName.status, responseComprobanteByName.message);
 
       }
 
+    } else {
+
+      setLoading(false);
+      showModalError('Error', responseVerificate.message);
+
     }
+
 
   };
 
