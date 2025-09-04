@@ -44,7 +44,9 @@ export default function Home() {
 
 
   const onValidateFaceMach = async () => {
-    router.push("/bandeja");
+
+    router.push("/camaracompare");
+
   };
 
   useEffect(() => {

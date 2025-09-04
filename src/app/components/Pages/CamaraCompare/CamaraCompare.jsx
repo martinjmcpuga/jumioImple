@@ -11,7 +11,7 @@ import { Dropdown } from 'react-bootstrap';
 import { getSelfieToCamara } from '../../Api/getSelfieToCamara'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const CamComponent = ({ loading }) => {
+const CamComponent = ({ }) => {
 
 
     const { IdJumio } = useAppContext();
@@ -32,6 +32,7 @@ const CamComponent = ({ loading }) => {
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState("");
+    const [loading, setLoading] = useState(true);
 
     const handleFilterByVideoInputDevices = useCallback((devices) => {
         SetDevices(devices.filter(({ kind }) => kind === "videoinput"))
@@ -108,7 +109,7 @@ const CamComponent = ({ loading }) => {
 
 
         setImageSrc(webCamRef.current.getScreenshot())
-
+        setLoading(false);
 
         setTimeout(() => {
 
@@ -167,59 +168,72 @@ const CamComponent = ({ loading }) => {
 
     return (
         <>
-            <section className="camDisplay ">
-                <WebCam
-                    className='webCam'
-                    key={selectedDevice}
-                    audio={false}
-                    ref={webCamRef}
-                    screenshotFormat='image/png'
-                    videoConstraints={{
-                        height: 1100,
-                        width: 2000,
-                        facingMode: facingMode,
-                        deviceId: selectedDevice
-                    }}
 
-                />
-                <div className='messageForCamContainer'>
-                    <div className='messaseForCam'>{message}</div>
-                </div>
+            <div className="containerRender animate__animated animate__fadeIn">
+                {!loading ? (
+                    <div className="spinner"></div>
+                ) : (
+                    <div className="containerInfo_P2 animate__animated animate__fadeIn">
 
-                <article className='camButtons'>
+                        <section className="camDisplay ">
+                            <WebCam
+                                className='webCam'
+                                key={selectedDevice}
+                                audio={false}
+                                ref={webCamRef}
+                                screenshotFormat='image/png'
+                                videoConstraints={{
+                                    height: 1100,
+                                    width: 2000,
+                                    facingMode: facingMode,
+                                    deviceId: selectedDevice
+                                }}
 
-                    <img src="assets/cameraSwitchForMobile.svg" alt="" className='camButtons__camSwitchButton' onClick={() => switchButton.current.click()} />
-                    <img src="assets/cameraMainButton2.svg" alt="" className='camButtons__camMainButton' onClick={() => mainButton.current.click()} />
-                    <Dropdown show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)}>
-                        <Dropdown.Toggle variant="transparent" id="dropdown-basic" className='camButtons__camSettingButtonContainer'>
-                            <img src="assets/camaraSettings.svg" alt="Settings" className="camButtons__camSettingButton" />
-                        </Dropdown.Toggle>
+                            />
+                            <div className='messageForCamContainer'>
+                                <div className='messaseForCam'>{message}</div>
+                            </div>
 
-                        <Dropdown.Menu show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)} style={{ maxHeight: '60px', maxWidth: '60px', overflow: 'auto' }}>
-                            {devices.length > 0 && (
+                            <article className='camButtons'>
 
-                                devices.map((device, index) => (
-                                    <Dropdown.Item key={index} value={device.deviceId} onClick={() => setSelectedDevice(device.deviceId)}>{device.label}</Dropdown.Item>
-                                ))
-                            )}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                                <img src="assets/cameraSwitchForMobile.svg" alt="" className='camButtons__camSwitchButton' onClick={() => switchButton.current.click()} />
+                                <img src="assets/cameraMainButton2.svg" alt="" className='camButtons__camMainButton' onClick={() => mainButton.current.click()} />
+                                <Dropdown show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)}>
+                                    <Dropdown.Toggle variant="transparent" id="dropdown-basic" className='camButtons__camSettingButtonContainer'>
+                                        <img src="assets/camaraSettings.svg" alt="Settings" className="camButtons__camSettingButton" />
+                                    </Dropdown.Toggle>
 
-                    <button id="startbutton" onClick={camOnCapture} className='d-none' ref={mainButton}>Take photo</button>
-                    <button id="startbutton" ref={switchButton} className='d-none' onClick={() =>
-                        setFacingMode(facingMode === "user" ? "environment" : "user")
-                    }>Change Camera</button>
-                    {devices.length > 0 && (
-                        <select name="InputVideoDevices" className='d-none' onChange={(e) => setSelectedDevice(e.target.value)}>
-                            {devices.map((device, index) => (
-                                <option key={index} value={device.deviceId}>{device.label}</option>
-                            ))}
-                        </select>
-                    )}
-                </article>
+                                    <Dropdown.Menu show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)} style={{ maxHeight: '60px', maxWidth: '60px', overflow: 'auto' }}>
+                                        {devices.length > 0 && (
 
+                                            devices.map((device, index) => (
+                                                <Dropdown.Item key={index} value={device.deviceId} onClick={() => setSelectedDevice(device.deviceId)}>{device.label}</Dropdown.Item>
+                                            ))
+                                        )}
+                                    </Dropdown.Menu>
+                                </Dropdown>
 
-            </section>
+                                <button id="startbutton" onClick={camOnCapture} className='d-none' ref={mainButton}>Take photo</button>
+                                <button id="startbutton" ref={switchButton} className='d-none' onClick={() =>
+                                    setFacingMode(facingMode === "user" ? "environment" : "user")
+                                }>Change Camera</button>
+                                {devices.length > 0 && (
+                                    <select name="InputVideoDevices" className='d-none' onChange={(e) => setSelectedDevice(e.target.value)}>
+                                        {devices.map((device, index) => (
+                                            <option key={index} value={device.deviceId}>{device.label}</option>
+                                        ))}
+                                    </select>
+                                )}
+                            </article>
+
+                        </section>
+
+                    </div>
+
+                )}
+
+            </div>
+
 
             <Modal show={show} onHide={handleClose} animation={false} centered>
                 <Modal.Body className="backGroudModal">
