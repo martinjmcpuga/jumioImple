@@ -4,9 +4,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Footer from '../../Footer/Footer'
 import { useAppContext } from '../../../context/AppContext'
-import './documentos.css'
+import './paises.css'
 import { getDocumentoByPais } from '../../Api/getDocumentoByPais'
-
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
@@ -102,11 +101,6 @@ const Documentos = () => {
   };
 
 
-  const Padding = {
-    padding: '0px 0px 30px 0px',
-  }
-
-
   const handleChange = async (selectedOption) => {
 
     setSelectedOption(selectedOption);
@@ -127,16 +121,17 @@ const Documentos = () => {
   };
 
   return (
-    <main className="animate__animated animate__fadeIn">
-      <section className="containerInfo_P2">
+    <>
+      <div className="containerInfo_P2 animate__animated animate__fadeIn">
         <div className="containerIdent_P2 onContentExpands">
-          <p className="txtDocumentos" style={Padding}>Documento de Identificación</p>
+          <p className="txtDocumentos">Documento de Identificación</p>
 
           {isMounted && (
             <Select
               styles={customStyles}
               options={identificacion}
               onChange={handleChange}
+              value={selectedOption}
               formatOptionLabel={state => (
                 <div className="containerDom">
                   <div className="animate__animated animate__fadeIn pais">{state.descripcionTexto}</div>
@@ -171,9 +166,9 @@ const Documentos = () => {
             </div>
           </section>
         </div>
-      </section>
+      </div>
       <Footer />
-    </main>
+    </>
   )
 }
 

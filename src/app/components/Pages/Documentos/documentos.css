@@ -45,28 +45,3 @@
   color: #022500;
   text-align: left;
 }
-
-.custom-select-container {
-  position: relative;
-  width: 100%;
-}
-
-.custom-select {
-  width: 100%;
-  padding: 10px 40px 10px 15px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  appearance: none; 
-  background-color: #fff;
-  background-image: url('/images/arrow-down.svg');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  transition: all 0.2s ease;
-}
-
-.custom-select:focus {
-  border-color: #4caf50;
-  outline: none;
-}
-
