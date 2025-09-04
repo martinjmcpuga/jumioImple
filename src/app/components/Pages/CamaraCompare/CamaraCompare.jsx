@@ -109,7 +109,12 @@ const CamComponent = ({ loading }) => {
 
         setImageSrc(webCamRef.current.getScreenshot())
 
-         router.push("/bandeja");
+
+        setTimeout(() => {
+
+            router.push("/bandeja");
+
+        }, 2000);
 
         /*
         loading(true);
@@ -170,8 +175,8 @@ const CamComponent = ({ loading }) => {
                     ref={webCamRef}
                     screenshotFormat='image/png'
                     videoConstraints={{
-                        height: 1080,
-                        width: 1920,
+                        height: 1100,
+                        width: 2000,
                         facingMode: facingMode,
                         deviceId: selectedDevice
                     }}
@@ -213,9 +218,6 @@ const CamComponent = ({ loading }) => {
                     )}
                 </article>
 
-                {imageSrc && (
-                    <img src={imageSrc} alt="capturedImage" className='justTest' />
-                )}
 
             </section>
 
