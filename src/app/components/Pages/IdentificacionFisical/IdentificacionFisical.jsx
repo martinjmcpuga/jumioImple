@@ -61,7 +61,7 @@ const IdentificacionFisical = () => {
         setLoading(false)
         setButtonEnabled(false);
         setShow(true);
-        setShowStatus("Error 410");
+        setShowStatus("Error ");
         setShowMessage("" + response.mensaje + ". " + response.message);
 
       } else {
