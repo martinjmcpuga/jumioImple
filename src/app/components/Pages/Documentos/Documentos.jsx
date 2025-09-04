@@ -137,7 +137,6 @@ const Documentos = () => {
               styles={customStyles}
               options={identificacion}
               onChange={handleChange}
-              value={selectedOption}
               formatOptionLabel={state => (
                 <div className="containerDom">
                   <div className="animate__animated animate__fadeIn pais">{state.descripcionTexto}</div>
