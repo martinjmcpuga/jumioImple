@@ -146,8 +146,8 @@ const CamaraCompare = ({ loading }) => {
                     ref={webCamRef}
                     screenshotFormat='image/png'
                     videoConstraints={{
-                        height: 1080,
-                        width: 1920,
+                        height: 1090,
+                        width: 1950,
                         facingMode: facingMode,
                         deviceId: selectedDevice
                     }}
