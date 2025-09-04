@@ -205,16 +205,32 @@ function DataDomPersonal() {
     };
 
     const style = {
-        control: base => ({
+        control: (base) => ({
             ...base,
-            height: "52px !important",
-            borderRadius: "0.375rem !important",
-            boxShadow: "none !important",
-            borderColor: "#c4cbd1 !important",
-            "&:hover": {
-                borderColor: "#c4cbd1 !important"
-            }
-        })
+            height: 52,
+            borderRadius: 4,
+            boxShadow: 'none',
+            borderColor: '#c4cbd1',
+            '&:hover': {
+                borderColor: '#c4cbd1',
+            },
+        }),
+        option: (base, state) => ({
+            ...base,
+            backgroundColor: state.isSelected
+                ? '#0078ff26'
+                : state.isFocused
+                    ? '#f1f1f1'
+                    : 'white',
+            color: '#333',
+            cursor: 'pointer',
+        }),
+        singleValue: (base) => ({
+            ...base,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+        }),
     };
 
     const getRein = async () => {
