@@ -115,7 +115,7 @@ const CamComponent = ({ }) => {
 
             router.push("/bandeja");
 
-        }, 2000);
+        }, 1000);
 
         /*
         loading(true);
@@ -183,7 +183,7 @@ const CamComponent = ({ }) => {
                                 ref={webCamRef}
                                 screenshotFormat='image/png'
                                 videoConstraints={{
-                                    height: 1100,
+                                    height: 1200,
                                     width: 2000,
                                     facingMode: facingMode,
                                     deviceId: selectedDevice
