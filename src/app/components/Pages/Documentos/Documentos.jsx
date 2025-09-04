@@ -4,9 +4,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Footer from '../../Footer/Footer'
 import { useAppContext } from '../../../context/AppContext'
-import Select from 'react-select'
 import './documentos.css'
 import { getDocumentoByPais } from '../../Api/getDocumentoByPais'
+
+import dynamic from 'next/dynamic';
+const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Documentos = () => {
 
@@ -70,22 +72,38 @@ const Documentos = () => {
   }, []);
 
 
-  const style = {
+  const customStyles = {
     control: (base) => ({
       ...base,
-      height: "52px !important",
-      borderRadius: "0.375rem !important",
-      backgroundColor: "#f5f7fa !important",
-      boxShadow: "none !important",
-      borderColor: "#c4cbd1 !important",
-      "&:hover": {
-        borderColor: "#c4cbd1 !important"
-      }
+      height: 52,
+      borderRadius: 4,
+      boxShadow: 'none',
+      borderColor: '#c4cbd1',
+      '&:hover': {
+        borderColor: '#c4cbd1',
+      },
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? '#0078ff26'
+        : state.isFocused
+          ? '#f1f1f1'
+          : 'white',
+      color: '#333',
+      cursor: 'pointer',
+    }),
+    singleValue: (base) => ({
+      ...base,
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
     }),
   };
-  
+
+
   const Padding = {
-    padding: '0px 0px 30px 0px', 
+    padding: '0px 0px 30px 0px',
   }
 
 
@@ -114,9 +132,9 @@ const Documentos = () => {
         <div className="containerIdent_P2 onContentExpands">
           <p className="txtDocumentos" style={Padding}>Documento de Identificación</p>
 
-         {isMounted && (
+          {isMounted && (
             <Select
-              styles={style}
+              styles={customStyles}
               options={identificacion}
               onChange={handleChange}
               value={selectedOption}
