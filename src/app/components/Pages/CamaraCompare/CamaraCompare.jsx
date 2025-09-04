@@ -183,8 +183,8 @@ const CamComponent = ({ }) => {
                                 ref={webCamRef}
                                 screenshotFormat='image/png'
                                 videoConstraints={{
-                                    height: 1200,
-                                    width: 2000,
+                                    height: 1400,
+                                    width: 2200,
                                     facingMode: facingMode,
                                     deviceId: selectedDevice
                                 }}
