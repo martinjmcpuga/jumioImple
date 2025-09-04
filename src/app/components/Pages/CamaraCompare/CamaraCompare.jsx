@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAppContext } from '@/app/context/AppContext';
+import { useRouter } from 'next/navigation';
 import WebCam from 'react-webcam'
 import * as faceApi from 'face-api.js'
 import './CamaraCompare.css'
@@ -10,20 +11,22 @@ import { Dropdown } from 'react-bootstrap';
 import { getSelfieToCamara } from '../../Api/getSelfieToCamara'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const CamaraCompare = ({ loading }) => {
+const CamComponent = ({ loading }) => {
 
+
+    const { IdJumio } = useAppContext();
+    const router = useRouter();
     const webCamRef = useRef(null)
     const mainButton = useRef(null)
     const DropMenu = useRef(null)
     const switchButton = useRef(null)
-    const { IdJumio } = useAppContext();
     const [modelsLoaded, setModelsLoaded] = useState(false)
     const [imageSrc, setImageSrc] = useState(null)
     const [facingMode, setFacingMode] = useState("user")
     const [devices, SetDevices] = useState([])
     const [selectedDevice, setSelectedDevice] = useState("")
     const [countdown, setCountdown] = useState(null)
-    const [message, setMessage] = useState("Please look to the center of the circle and keep your face there")
+    const [message, setMessage] = useState("Por favor, mire al centro del círculo y mantenga su rostro allí")
     const [isCapturing, setIsCapturing] = useState(false) // Nuevo estado
     const [showDropMenu, setShowDropMenu] = useState(false)
     const [show, setShow] = useState(false);
@@ -34,7 +37,6 @@ const CamaraCompare = ({ loading }) => {
         SetDevices(devices.filter(({ kind }) => kind === "videoinput"))
     }, [])
 
-    
     useEffect(() => {
 
         const loadModels = async () => {
@@ -61,7 +63,7 @@ const CamaraCompare = ({ loading }) => {
 
     useEffect(() => {
         if (countdown === null) return;
-        setMessage("Face detected, taking photo in " + countdown + " seconds")
+        setMessage("Cara detectada tomando foto en... " + countdown + "segundos");
     }, [countdown])
 
     const detectFace = async () => {
@@ -71,20 +73,20 @@ const CamaraCompare = ({ loading }) => {
         const detection = await faceApi.detectSingleFace(video, new faceApi.TinyFaceDetectorOptions());
 
         if (detection && countdown === null) {
-            console.log("Rostro detectado ✅");
+            //console.log("Rostro detectado ✅");
             setIsCapturing(true) // Bloquear reconocimiento
             setCountdown(3)
-            setMessage("Face detected, taking photo in 3 seconds")
+            setMessage("Cara detectada, tomando foto en 3 segundos")
 
             const interval = setInterval(() => {
                 setCountdown((prev) => {
                     if (prev === 1) {
                         clearInterval(interval)
                         camOnCapture();
-                        setMessage("Photo taken")
+                        setMessage("Foto tomada, procesando...")
                         setTimeout(() => {
                             setIsCapturing(false) // Reanudar reconocimiento después de 3 segundos
-                            setMessage("Please look to the center of the circle and keep your face there")
+                            setMessage("Por favor, mire al centro del círculo y mantenga su rostro allí")
                         }, 3000)
                         return null
                     }
@@ -104,13 +106,17 @@ const CamaraCompare = ({ loading }) => {
 
     const camOnCapture = async () => {
 
+
         setImageSrc(webCamRef.current.getScreenshot())
 
+         router.push("/bandeja");
+
+        /*
         loading(true);
         setIsCapturing(true);
 
         const objIncode = {
-            id: IdJumio,
+            id: localStorage.getItem("sCpv"),
             documentoBase64: webCamRef.current.getScreenshot()
         }
 
@@ -118,15 +124,33 @@ const CamaraCompare = ({ loading }) => {
 
         if (response.status === 200) {
 
-            //navigate("/PantallaBase27");
+
+            //const responseComparingFaces = await getComparingFaces(objIncode);
+
+            //if (responseComparingFaces.status === 200) {
+
+            navigate("/PantallaBase27");
+            
+
+            //} else {
+
+
+            //  setShow(true);
+            //  setShowStatus(responseComparingFaces.status);
+            //  setShowMessage(responseComparingFaces.message);
+
+            //}
+
 
         } else {
+
             loading(false);
             setShow(true);
             setShowStatus(response.status);
-            setShowMessage(response.message);
+            //setShowMessage(response.message);
 
         }
+        */
 
     }
 
@@ -146,8 +170,8 @@ const CamaraCompare = ({ loading }) => {
                     ref={webCamRef}
                     screenshotFormat='image/png'
                     videoConstraints={{
-                        height: 1090,
-                        width: 1950,
+                        height: 1080,
+                        width: 1920,
                         facingMode: facingMode,
                         deviceId: selectedDevice
                     }}
@@ -195,7 +219,7 @@ const CamaraCompare = ({ loading }) => {
 
             </section>
 
-            <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn"> 
+            <Modal show={show} onHide={handleClose} animation={false} centered>
                 <Modal.Body className="backGroudModal">
                     <div className="msjTitleModalDiv">{showStatus}</div>
                     <div className="msjErrorModal">{showMessage}</div>
@@ -210,4 +234,4 @@ const CamaraCompare = ({ loading }) => {
     )
 }
 
-export default CamaraCompare
+export default CamComponent
