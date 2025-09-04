@@ -10,18 +10,14 @@ import './paises.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 import { mtfindCpvIdJumio } from '../../Api/mtfindCpvIdJumio';
+
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Paises = () => {
-
   const { setRutaBack } = useAppContext();
-
-  useEffect(() => {
-    setRutaBack('/requerimientos');
-  }, []);
-
   const ref = useRef(null);
   const isRunned = useRef(false);
+
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
@@ -35,11 +31,12 @@ const Paises = () => {
   const [loading, setLoading] = useState(false);
   const [caracteres, setCaracteres] = useState(0);
   const [country, setCountry] = useState([]);
-  const { cpvI } = useAppContext();
-  const { curpValidate } = useAppContext();
+  const { cpvI, curpValidate, setPais, setPaisIso2 } = useAppContext();
   const [mounted, setMounted] = useState(false);
-  const { setPais } = useAppContext();
-  const { setPaisIso2 } = useAppContext();
+
+  useEffect(() => {
+    setRutaBack('/requerimientos');
+  }, []);
 
   const showModalError = (title, message) => {
     setShowStatus(title);
@@ -57,7 +54,17 @@ const Paises = () => {
       setLoading(true);
       const response = await getPaisByIso({});
       if (response.status === 200) {
-        setCountry(response.listModelPais);
+        // 🔥 Normalizamos las opciones para React-Select
+        const options = response.listModelPais.map((p) => ({
+          value: p.claveIso3,
+          label: p.nombre,
+          claveIso2: p.claveIso2,
+          nombre: p.nombre,
+          ruta: p.ruta,
+          caracteres: p.caracteres,
+          numeroNacionalTxt: p.numeroNacionalTxt,
+        }));
+        setCountry(options);
       } else {
         setShow(true);
         setShowStatus(`Error ${response.status}`);
@@ -70,10 +77,9 @@ const Paises = () => {
   }, []);
 
   useEffect(() => {
-    const sCpv = cpvI
+    const sCpv = cpvI;
     if (sCpv) setRutaBackCpv('/?i=' + sCpv);
     if (curpStr.length < caracteres) setBlContinueOp('1');
-
   }, [curpStr, caracteres]);
 
   const onValidateFaceMach = async () => {
@@ -81,13 +87,11 @@ const Paises = () => {
   };
 
   const onValidateCurp = async () => {
-    //console.log('Validar CURP:', curpStr);
     setGame('2');
     const curpVal = mounted ? curpValidate : null;
-    if (localStorage.getItem("curpValidate") === curpStr) {
+    if (localStorage.getItem('curpValidate') === curpStr) {
       const objPerson = { cpv: cpvI };
       const responseIdPerson = await mtfindCpvIdJumio(objPerson);
-      //console.log('Response ID Person:', responseIdPerson);
       if (responseIdPerson.status === 400) {
         setGame('3');
         setBlContinueOp('3');
@@ -95,10 +99,16 @@ const Paises = () => {
         setGame('3');
         setBlContinueOp('4');
       } else {
-        showModalError(`Error ${responseIdPerson.status}`, responseIdPerson.message);
+        showModalError(
+          `Error ${responseIdPerson.status}`,
+          responseIdPerson.message
+        );
       }
     } else {
-      showModalError('Credenciales inválidas', 'El Número de Identificación Nacional no es correcto.');
+      showModalError(
+        'Credenciales inválidas',
+        'El Número de Identificación Nacional no es correcto.'
+      );
     }
   };
 
@@ -114,14 +124,14 @@ const Paises = () => {
   };
 
   const handleChangePais = (selectedOption) => {
-    const setSelectedOption = selectedOption.claveIso3;
     setCaracteres(selectedOption.caracteres);
     setmsjnumeroNacional(selectedOption.numeroNacionalTxt);
-    localStorage.setItem("pais", setSelectedOption);
-    localStorage.setItem("paisIso2", selectedOption.claveIso2);
+    localStorage.setItem('pais', selectedOption.value); // claveIso3
+    localStorage.setItem('paisIso2', selectedOption.claveIso2);
+    setPais(selectedOption.label);
+    setPaisIso2(selectedOption.claveIso2);
     setShowCurp(true);
   };
-
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') onValidateCurp();
@@ -138,6 +148,22 @@ const Paises = () => {
         borderColor: '#c4cbd1',
       },
     }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? '#0078ff26'
+        : state.isFocused
+        ? '#f1f1f1'
+        : 'white',
+      color: '#333',
+      cursor: 'pointer',
+    }),
+    singleValue: (base) => ({
+      ...base,
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    }),
   };
 
   return (
@@ -150,15 +176,22 @@ const Paises = () => {
             onChange={handleChangePais}
             styles={customStyles}
             formatOptionLabel={(country) => (
-              <div className="animate__animated animate__fadeIn containerNac">
-                <div className="pais">{country.claveIso2} {country.nombre}</div>
-                <div className="animate__animated animate__fadeIn paisBandera">
-                  <img className="bandera" src={country.ruta || '/images/default-flag.svg'} alt={country.nombre} />
+              <div className="containerNac animate__animated animate__fadeIn">
+                <div className="pais">
+                  {country.claveIso2} {country.label}
+                </div>
+                <div className="paisBandera animate__animated animate__fadeIn">
+                  <img
+                    className="bandera"
+                    src={country.ruta || '/images/default-flag.svg'}
+                    alt={country.label}
+                  />
                 </div>
               </div>
             )}
             placeholder="Seleccionar nacionalidad"
           />
+
           <br />
           {showCurp && (
             <div className="containerInfoOnExpands">
@@ -195,7 +228,7 @@ const Paises = () => {
                   {game === '3' && (
                     <div className="Column1_P3 animate__animated myDiv_P3">
                       <div className="myDiv_P3_3">
-                        <img src='assets/check.svg' alt="check" />
+                        <img src="assets/check.svg" alt="check" />
                       </div>
                     </div>
                   )}
@@ -205,25 +238,29 @@ const Paises = () => {
                 <br />
                 <hr className="line" />
                 {blContinueOp === '1' && (
-                  <button className="btnVer_P3"><span className="txtVer_P3">Verificar</span></button>
+                  <button className="btnVer_P3">
+                    <span className="txtVer_P3">Verificar</span>
+                  </button>
                 )}
                 {blContinueOp === '2' && (
                   <>
                     <button className="btnVer_P3_Select" onClick={onValidateCurp}>
                       <span className="txtVer_P3">Verificar</span>
                     </button>
-
                   </>
                 )}
                 {blContinueOp === '3' && (
                   <Link href={'/documentos'}>
-                    <button className="button_P2 animate__animated animate__fadeIn" >
+                    <button className="button_P2 animate__animated animate__fadeIn">
                       <span className="txtButton_P2">Continuar</span>
                     </button>
                   </Link>
                 )}
                 {blContinueOp === '4' && (
-                  <button className="button_P2 animate__animated animate__fadeIn" onClick={onValidateFaceMach}>
+                  <button
+                    className="button_P2 animate__animated animate__fadeIn"
+                    onClick={onValidateFaceMach}
+                  >
                     <span className="txtButton_P2">Continuar</span>
                   </button>
                 )}
@@ -233,7 +270,14 @@ const Paises = () => {
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        backdrop="static"
+        keyboard={false}
+        className="animate__animated animate__fadeIn"
+      >
         <Modal.Body>
           <div className="msjTitleModalDiv">{showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>

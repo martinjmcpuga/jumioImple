@@ -75,6 +75,7 @@ const Documentos = () => {
       ...base,
       height: "52px !important",
       borderRadius: "0.375rem !important",
+      backgroundColor: "#f5f7fa !important",
       boxShadow: "none !important",
       borderColor: "#c4cbd1 !important",
       "&:hover": {
@@ -82,6 +83,11 @@ const Documentos = () => {
       }
     }),
   };
+  
+  const Padding = {
+    padding: '0px 0px 30px 0px', 
+  }
+
 
   const handleChange = async (selectedOption) => {
 
@@ -106,20 +112,22 @@ const Documentos = () => {
     <main className="animate__animated animate__fadeIn">
       <section className="containerInfo_P2">
         <div className="containerIdent_P2 onContentExpands">
-          <p className="txtDocumentos">Documento de Identificación</p>
+          <p className="txtDocumentos" style={Padding}>Documento de Identificación</p>
 
-          <Select
-            styles={style}
-            options={identificacion}
-            onChange={handleChange}
-            value={selectedOption}
-            formatOptionLabel={state => (
-              <div className="containerDom">
-                <div className="animate__animated animate__fadeIn pais">{state.descripcionTexto}</div>
-              </div>
-            )}
-            placeholder="Seleccionar documento"
-          />
+         {isMounted && (
+            <Select
+              styles={style}
+              options={identificacion}
+              onChange={handleChange}
+              value={selectedOption}
+              formatOptionLabel={state => (
+                <div className="containerDom">
+                  <div className="animate__animated animate__fadeIn pais">{state.descripcionTexto}</div>
+                </div>
+              )}
+              placeholder="Seleccionar documento"
+            />
+          )}
 
           <hr className="line" />
 
