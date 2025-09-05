@@ -352,6 +352,10 @@
     margin-top: calc(var(--spacing) * 1);
   }
 
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -366,6 +370,10 @@
 
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
+  }
+
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
   }
 
   .ml-2 {
@@ -495,6 +503,10 @@
 
   .p-6 {
     padding: calc(var(--spacing) * 6);
+  }
+
+  .p-7 {
+    padding: calc(var(--spacing) * 7);
   }
 
   .py-1 {
@@ -4873,7 +4885,6 @@ textarea:focus, input:focus {
   color: #141429;
   text-align: left;
   letter-spacing: 0;
-  padding: var(--bs-modal-padding);
   flex: auto;
   font: 600 15px / 28px Inter;
   position: relative;
@@ -5527,6 +5538,26 @@ textarea:focus, input:focus {
   width: 100%;
   display: table;
   position: relative;
+}
+
+.buttonModal_disable {
+  pointer-events: none;
+  color: #51b35e;
+  background-color: #f9fbf8;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px;
+  width: 100% !important;
+}
+
+#contained-modal-title-vcenter {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
 
 .Column_P3 {
