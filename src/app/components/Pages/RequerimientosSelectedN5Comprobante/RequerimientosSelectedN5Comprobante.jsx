@@ -24,8 +24,6 @@ const RequerimientosSelectedN5Comprobante = (props) => {
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
-  const [checkDoneImage, setCheckDoneImage] = useState(new Image());
-  const [checkDefaultImage, setCheckDefaultImage] = useState(new Image());
 
   const handleClose = () => {
     setShow(false);
