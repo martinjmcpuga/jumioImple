@@ -44,6 +44,11 @@ const ComprobanteIngreso = () => {
   const [selectComprobante, setSelectComprobante] = useState("");
   const [selectEsquema, setSelectEsquema] = useState("");
 
+  const [show, setShow] = useState(false);
+  const [showStatus, setShowStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setRutaBack(localStorage.getItem("n5com"));
   }, []);
@@ -68,9 +73,22 @@ const ComprobanteIngreso = () => {
       esquema: selectEsquema
     };
 
-    await mtUpdateComprobanteCompletoJumio(objConsComprobanteCompleto);
-    setModal(false);
-    router.push("/uploadcomprobanten5");
+    const response = await mtUpdateComprobanteCompletoJumio(objConsComprobanteCompleto);
+
+    if (response.status === 200) {
+
+      setModal(false);
+      router.push("/uploadcomprobanten5");
+
+    } else {
+
+      setLoading(false);
+      setShow(true);
+      setShowStatus(response.status);
+      setShowMessage(response.message);
+
+
+    }
   }
 
   useEffect(() => {
