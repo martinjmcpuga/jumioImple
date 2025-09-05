@@ -25,7 +25,7 @@ function RequerimientosN5(props) {
 
   const handleButtonClick = async () => {
 
-    localStorage.setItem("n5com", "/RequerimientosSelectedN5");
+    localStorage.setItem("n5com", "/requerimientosselectedn5");
     router.push("/requerimientosselectedn5");
 
   };
@@ -53,7 +53,7 @@ function RequerimientosN5(props) {
 
   const handleRedirecNotComproante = () => {
 
-    localStorage.setItem("n5com", "/RequerimientosSelectedN5Comprobante");
+    localStorage.setItem("n5com", "/requerimientosselectedn5comprobante");
     //navigate("/RequerimientosSelectedN5Comprobante");
 
   };

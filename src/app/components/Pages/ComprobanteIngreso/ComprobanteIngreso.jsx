@@ -44,6 +44,10 @@ const ComprobanteIngreso = () => {
   const [selectComprobante, setSelectComprobante] = useState("");
   const [selectEsquema, setSelectEsquema] = useState("");
 
+  useEffect(() => {
+    setRutaBack(localStorage.getItem("n5com"));
+  }, []);
+
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     localStorage.setItem('selectComprobante', selectedOption.Data);

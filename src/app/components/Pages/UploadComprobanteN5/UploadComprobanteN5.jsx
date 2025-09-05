@@ -1,12 +1,21 @@
 'use client'
 
-import React, { useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useAppContext } from '@/app/context/AppContext';
 import UploadFile from "./UploadFile";
 import './ComprobanteIngreso.css'
 
 const UploadComprobanteN5 = () => {
 
   const [enabled, setEnabled] = useState(true)
+  const { IdJumio, setRutaBack } = useAppContext();
+
+
+  useEffect(() => {
+    setRutaBack('/comprobanteingreso');
+  }, []);
+
+
 
   const handleFiles = () => {
     setEnabled(true);

@@ -13,7 +13,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CamComponent = ({ }) => {
 
-
     const { IdJumio } = useAppContext();
     const router = useRouter();
     const webCamRef = useRef(null)

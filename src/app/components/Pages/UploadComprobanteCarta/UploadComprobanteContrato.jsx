@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useAppContext } from '@/app/context/AppContext';
 import UploadFileContratoIndividualN5 from "../UploadFileContratoIndividualN5/UploadFileContratoIndividualN5";
 import './ComprobanteIngreso.css'
 import Modal from 'react-bootstrap/Modal';
@@ -10,6 +11,13 @@ const UploadComprobanteContrato = () => {
 
   const [enabled, setEnabled] = useState(true)
   const [modal, setModal] = useState(false)
+
+  const { IdJumio, setRutaBack } = useAppContext();
+
+  useEffect(() => {
+    setRutaBack('/requerimientosn5cartaselected');
+  }, []);
+
 
   const handleFiles = () => {
     setEnabled(true);
