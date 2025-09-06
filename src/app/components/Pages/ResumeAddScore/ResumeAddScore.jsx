@@ -39,7 +39,7 @@ const ResumeAddScore = () => {
         try {
 
             const objModel = {
-                id: IdJumio
+                id: sessionStorage.getItem('id_jumio')
             }
 
             const responseAdd = await getWsAddScoreJumio(objModel);

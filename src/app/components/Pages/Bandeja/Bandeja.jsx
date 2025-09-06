@@ -70,7 +70,7 @@ const Bandeja = () => {
       setLoading(true);
 
       const obj = {
-        id: IdJumio,
+        id: sessionStorage.getItem('id_jumio'),
         cpv: localStorage.getItem("sCpv")
       };
 
@@ -79,7 +79,7 @@ const Bandeja = () => {
       if (responsePerfilCpv.status === 200) {
 
         const objJumio = {
-          idJumio: IdJumio,
+          idJumio: sessionStorage.getItem('id_jumio'),
           curpValidate: localStorage.getItem("curpValidate"),
           nombre: localStorage.getItem("nombre"),
           paterno: localStorage.getItem("paterno"),
@@ -91,8 +91,8 @@ const Bandeja = () => {
         if (response.status === 200) {
 
           const objJumioSelfie = {
-            id: IdJumio,
-            idJumio: IdJumio,
+            id: sessionStorage.getItem('id_jumio'),
+            idJumio: sessionStorage.getItem('id_jumio'),
           };
 
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);

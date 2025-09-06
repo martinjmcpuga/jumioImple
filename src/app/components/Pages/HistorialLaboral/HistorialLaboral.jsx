@@ -20,6 +20,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import './HistorialLaboral.css';
 import './flags.css';
 
+import { registerLocale } from "react-datepicker";
+import es from "date-fns/locale/es";
+registerLocale("es", es);
+
 const country = [
   {
     "label": "Mexico",
@@ -59,8 +63,8 @@ const HistorialLaboral = () => {
   const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [isButtonEnabled, setButtonEnabled] = useState(true);
-  const [selectedDateInicio, setselectedDateInicio] = useState();
-  const [selectedDateTermino, setselectedDateTermino] = useState();
+  const [selectedDateInicio, setselectedDateInicio] = useState(null);
+  const [selectedDateTermino, setselectedDateTermino] = useState(null);
   const [isEnabled, setIsEnabled] = useState(false);
   const [states, setStates] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -88,6 +92,7 @@ const HistorialLaboral = () => {
 
   const [urlBack, setUrlBack] = useState("");
 
+
   useEffect(() => {
     setRutaBack('/requerimientosn5cartaselected');
   }, []);
@@ -106,7 +111,7 @@ const HistorialLaboral = () => {
       setPais('México');
 
       const objCons = {
-        id: IdJumio
+        id: sessionStorage.getItem('id_jumio')
       }
 
       const responsePerson = await mtFindPersonJumio(objCons);
@@ -219,7 +224,7 @@ const HistorialLaboral = () => {
     }
 
     const objCons = {
-      id: IdJumio,
+      id: sessionStorage.getItem('id_jumio'),
     }
 
     if (blHistorial0Ruta === '0') {
@@ -268,7 +273,7 @@ const HistorialLaboral = () => {
       if (responseHis0.status === 200) {
 
         const objLab = {
-          id: IdJumio,
+          id: sessionStorage.getItem('id_jumio'),
           puesto: puesto,
           organizacion: organizacion,
           actual: isSubscribed,
@@ -307,7 +312,7 @@ const HistorialLaboral = () => {
       if (responseHis0.status === 200) {
 
         const objLab = {
-          id: IdJumio,
+          id: sessionStorage.getItem('id_jumio'),
           puesto: puesto,
           organizacion: organizacion,
           actual: isSubscribed,
@@ -359,10 +364,10 @@ const HistorialLaboral = () => {
 
 
   const handleChangeState = (selectedOption) => {
-    setstateOption(selectedOption);
-    const setSelectedOption = selectedOption.nombreEstado;
-    setEstado(setSelectedOption);
-  };
+  setstateOption(selectedOption); // 👈 guarda el objeto completo
+  setEstado(selectedOption.nombreEstado); // esto sigue guardando solo el string si lo necesitas
+};
+
 
   const handleChange = (selectedOption) => {
     const setSelectedOption = selectedOption.value;
@@ -427,7 +432,7 @@ const HistorialLaboral = () => {
                   {!blActual ? (
                     <>
                       <hr className="lineSimple" />
-                      <div className="TrabajoActual d-flex  container-fluid py-1" id="RadioSelected">
+                      <div className="TrabajoActual d-flex  container-fluid py-1" id="RadioSelected" style={{ backgroundColor: '#379bf321', borderRadius: '8px', borderColor: '#379bf3' }}>
                         <div className="row containerTrabajo">
                           <div className="col-1 d-flex justify-content-start ">
                             <input type="radio" className="RadioSpace" checked={onehabilita} onClick={handleDisabledTermino} onChange={handleDisabledTermino} />
@@ -445,46 +450,36 @@ const HistorialLaboral = () => {
                   )}
 
                   <p className="txtNat_P3Hist">Inicio</p>
-
                   <DatePicker
                     className="dateStyle mb-3"
                     selected={selectedDateInicio}
-                    onChange={handleDateChangeInicio}
-                    onCalendarClose={handleDatePickerClose}
+                    onChange={(date) => setselectedDateInicio(date)}
                     dateFormat="yyyy-MM-dd"
-                    showMonthDropdown={true}
-                    showYearDropdown={true}
+                    showMonthDropdown
+                    showYearDropdown
                     dropdownMode="select"
-                    disabled={isEnabled}
                     locale="es"
                     placeholderText="YYYY-MM-DD"
                   />
 
                   {!isSubscribed && (
-                    <div>
+                    <>
                       <p className="txtNat_P3Hist">Terminación</p>
-                      <div>
-                        <DatePicker
-                          className="dateStyle mb-3"
-                          selected={selectedDateTermino}
-                          onChange={handleDateChangeTermino}
-                          onCalendarClose={handleDatePickerCloseT}
-                          dateFormat="yyyy-MM-dd"
-                          showMonthDropdown={true}
-                          showYearDropdown={true}
-                          dropdownMode="select"
-                          disabled={isEnabled}
-                          locale="es"
-                          id="termino"
-                          placeholderText="YYYY-MM-DD"
-                        />
-                      </div>
-                    </div>
+                      <DatePicker
+                        className="dateStyle mb-3"
+                        selected={selectedDateTermino}
+                        onChange={(date) => setselectedDateTermino(date)}
+                        dateFormat="yyyy-MM-dd"
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        locale="es"
+                        placeholderText="YYYY-MM-DD"
+                        minDate={selectedDateInicio}
+                      />
+                    </>
                   )}
-
                   <p className="txtNat_P3Hist">País</p>
-
-
                   <Select
                     options={country}
                     onChange={handleChange}
@@ -506,7 +501,7 @@ const HistorialLaboral = () => {
                   <Select
                     options={states}
                     onChange={handleChangeState}
-                    value={stateOption}
+                    value={stateOption}  // ahora es el objeto completo
                     formatOptionLabel={State => (
                       <div className="containerDom">
                         <div className="animate__animated animate__fadeIn pais">{State.init} {State.nombreEstado}</div>
@@ -514,6 +509,8 @@ const HistorialLaboral = () => {
                     )}
                     placeholder="Seleccionar"
                   />
+
+
 
                   <hr className="lineSimple" />
 

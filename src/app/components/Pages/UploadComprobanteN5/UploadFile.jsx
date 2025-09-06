@@ -170,13 +170,13 @@ function UploadFile() {
       if (selectedFile) {
 
         responseVerificate = await uploadFilesServiceN5_Jumio(
-          selectedFile, "", localStorage.getItem("sCpv"), IdJumio
+          selectedFile, "", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
 
         if (responseVerificate.status === 200) {
 
           const objAWS = {
-            idJumio: IdJumio,
+            idJumio: sessionStorage.getItem('id_jumio'),
             nombreUser: localStorage.getItem("nombre"),
             paterno: localStorage.getItem("paterno"),
             materno: localStorage.getItem("materno"),
@@ -243,7 +243,7 @@ function UploadFile() {
         la variable se llama filesImage */
 
         responseVerificate = await uploadFilesServiceN5_Jumio(
-          filesImage[0], "", localStorage.getItem("sCpv"), IdJumio
+          filesImage[0], "", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
 
         if (responseVerificate.status === 200) {
@@ -251,7 +251,7 @@ function UploadFile() {
           if (filesImage[1] !== undefined) {
 
             responseVerificate = await uploadN5Archivo2_2C_Jumio(
-              filesImage[1], "V2_", localStorage.getItem("sCpv"), IdJumio
+              filesImage[1], "V2_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
             );
 
           }
@@ -259,7 +259,7 @@ function UploadFile() {
           if (responseVerificate.status === 200) {
 
             const objAWS = {
-              idJumio: IdJumio,
+              idJumio: sessionStorage.getItem('id_jumio'),
               nombreUser: localStorage.getItem("nombre"),
               paterno: localStorage.getItem("paterno"),
               materno: localStorage.getItem("materno"),

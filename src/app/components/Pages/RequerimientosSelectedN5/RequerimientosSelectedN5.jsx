@@ -64,7 +64,7 @@ const RequerimientosSelectedN5 = (props) => {
       setLoading(true);
 
       const objCons = {
-        id: IdJumio
+        id: sessionStorage.getItem('id_jumio')
       }
 
       const responsePerson = await mtFindPersonJumio(objCons);

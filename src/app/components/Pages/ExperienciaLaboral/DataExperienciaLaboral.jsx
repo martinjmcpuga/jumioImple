@@ -54,7 +54,7 @@ const DataExperienciaLaboral = () => {
   const handleAceptar = async () => {
 
     const objConsComprobanteCompleto = {
-      id: IdJumio,
+      id: sessionStorage.getItem('id_jumio'),
       aniosExperiencia: localStorage.getItem("experiencia")
     };
 

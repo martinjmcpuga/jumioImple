@@ -59,7 +59,7 @@ function IdentificacionSocial() {
     setLoading(true);
 
     const objValida = {
-      id: IdJumio,
+      id: sessionStorage.getItem('id_jumio'),
       correo: localStorage.getItem('correo'),
       nss: socialStr,
     };

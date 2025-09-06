@@ -32,7 +32,7 @@ export default function JumioJsx() {
     async function createSession() {
 
       const obj = {
-        id: IdJumio
+        id: sessionStorage.getItem('id_jumio')
       };
       const tokenData = await getTokenJumio10085(obj)
 

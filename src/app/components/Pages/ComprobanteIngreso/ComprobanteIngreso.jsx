@@ -68,7 +68,7 @@ const ComprobanteIngreso = () => {
   const handleClose = async () => {
 
     const objConsComprobanteCompleto = {
-      id: IdJumio,
+      id: sessionStorage.getItem('id_jumio'),
       comprobante: selectComprobante,
       esquema: selectEsquema
     };

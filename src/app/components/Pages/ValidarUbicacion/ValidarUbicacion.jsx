@@ -140,7 +140,7 @@ function ValidarUbicacion() {
                         formData.append("file", file);
                         formData.append("renombreFile", "Mapa1_");
                         formData.append("cpv", localStorage.getItem("sCpv"));
-                        formData.append("idJumio", IdJumio);
+                        formData.append("idJumio", sessionStorage.getItem('id_jumio'));
                         const url = appGlobal.hostFile + "upload_2C_Jumio";
                         const params = {
                             method: "POST",
@@ -165,7 +165,7 @@ function ValidarUbicacion() {
                             let ip = "0.0.0.0";
 
                             const objInsertDom = {
-                                id: IdJumio,
+                                id: sessionStorage.getItem('id_jumio'),
                                 documentType: "",
                                 documentTypeLabel: "",
                                 cpDom: cpDom,

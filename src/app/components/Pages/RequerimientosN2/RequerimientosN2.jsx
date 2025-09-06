@@ -37,7 +37,7 @@ const RequerimientosN2 = () => {
       setLoading(true);
 
       const objCons = {
-        id: IdJumio,
+        id: sessionStorage.getItem('id_jumio'),
         cpv: localStorage.getItem("sCpv")
       }
 

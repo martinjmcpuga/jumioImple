@@ -60,6 +60,7 @@ export default function Home() {
     async function createSession() {
 
       localStorage.clear();
+      sessionStorage.clear();
 
       if (!i) {
 
@@ -134,6 +135,7 @@ export default function Home() {
                 if (responseIdPerson.id != null && responseIdPerson.id !== "") {
 
                   setIdJumio(responseIdPerson.id);
+                  sessionStorage.setItem('id_jumio', responseIdPerson.id);
                   localStorage.setItem("idPerson", "" + responseIdPerson.id);
                   localStorage.setItem("curpValidate", "" + responseIdPerson.userReference);
                   localStorage.setItem("nombre", responseIdPerson.nombre);

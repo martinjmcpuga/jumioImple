@@ -104,13 +104,13 @@ function UploadFileContratoIndividualN5() {
     setLoading(true);
 
     const responseVerificate = await uploadCartaCompromiso_2C_Jumio(
-      selectedFile, "Contrato_", localStorage.getItem("sCpv"), IdJumio
+      selectedFile, "Contrato_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
     );
 
     if (responseVerificate.status === 200) {
 
       const objCons = {
-        id: IdJumio
+        id: sessionStorage.getItem('id_jumio')
       }
 
       const responseStatus = await updateContratoIndividualStatusJumio(objCons);

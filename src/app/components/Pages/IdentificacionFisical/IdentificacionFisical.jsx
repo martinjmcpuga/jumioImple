@@ -30,7 +30,7 @@ const IdentificacionFisical = () => {
     setLoading(true);
 
     const objRfc = {
-      id: IdJumio,
+      id: sessionStorage.getItem('id_jumio'),
       rfc: fiscalStr,
     };
 

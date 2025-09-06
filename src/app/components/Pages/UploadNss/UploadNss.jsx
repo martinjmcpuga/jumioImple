@@ -153,14 +153,14 @@ function UploadNss() {
 
     if (filesImage.length > 0) {
       responseVerificate = await uploadFilesService(
-        filesImage[0], "Nss_", localStorage.getItem("sCpv"), IdJumio
+        filesImage[0], "Nss_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
 
 
     } else if (selectedFile) {
 
       responseVerificate = await uploadFilesService(
-        selectedFile, "Nss_", localStorage.getItem("sCpv"), IdJumio
+        selectedFile, "Nss_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
     }
 
@@ -184,7 +184,7 @@ function UploadNss() {
         if (responseComprobanteByNameImss.status === 200) {
 
           const objNss = {
-            id: IdJumio,
+            id: sessionStorage.getItem('id_jumio'),
             nss: localStorage.getItem('socialStr')
           };
 
