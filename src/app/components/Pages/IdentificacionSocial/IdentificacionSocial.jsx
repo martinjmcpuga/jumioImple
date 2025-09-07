@@ -36,8 +36,8 @@ function IdentificacionSocial() {
 
       setLoading(true);
 
-      if (localStorage.getItem('correo') === null ||
-        localStorage.getItem('correo') === "") {
+      if (sessionStorage.getItem('correo') === null ||
+        sessionStorage.getItem('correo') === "") {
 
         setLoading(false);
         setShow(true);
@@ -60,7 +60,7 @@ function IdentificacionSocial() {
 
     const objValida = {
       id: sessionStorage.getItem('id_jumio'),
-      correo: localStorage.getItem('correo'),
+      correo: sessionStorage.getItem('correo'),
       nss: socialStr,
     };
 
@@ -68,7 +68,7 @@ function IdentificacionSocial() {
 
     if (response.status === 200) {
 
-      localStorage.setItem('socialStr', '' + socialStr);
+      sessionStorage.setItem('socialStr', '' + socialStr);
       router.push('/datasocial');
 
     } else {

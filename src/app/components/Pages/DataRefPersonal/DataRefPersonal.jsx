@@ -148,15 +148,15 @@ function DataRefPersonal() {
             const latitud_obtenida = geolocalizacion.latitud;
             const longitud_obtenida = geolocalizacion.longitud;
 
-            localStorage.setItem("cpRef", codigoPostal);
-            localStorage.setItem("coloniaRef", colonia);
-            localStorage.setItem("calleRef", calle);
-            localStorage.setItem("numExtRef", numExterior);
-            localStorage.setItem("numInteRef", numInterior);
-            localStorage.setItem("edoRef", edo);
-            localStorage.setItem("muniRef", muni);
-            localStorage.setItem("latitud_obtenidaRef", latitud_obtenida);
-            localStorage.setItem("longitud_obtenidaRef", longitud_obtenida);
+            sessionStorage.setItem("cpRef", codigoPostal);
+            sessionStorage.setItem("coloniaRef", colonia);
+            sessionStorage.setItem("calleRef", calle);
+            sessionStorage.setItem("numExtRef", numExterior);
+            sessionStorage.setItem("numInteRef", numInterior);
+            sessionStorage.setItem("edoRef", edo);
+            sessionStorage.setItem("muniRef", muni);
+            sessionStorage.setItem("latitud_obtenidaRef", latitud_obtenida);
+            sessionStorage.setItem("longitud_obtenidaRef", longitud_obtenida);
             router.push("/validarubicacionreferencia");
 
         } else {

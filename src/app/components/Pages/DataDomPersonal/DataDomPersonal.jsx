@@ -181,17 +181,17 @@ function DataDomPersonal() {
             const latitud_obtenida = geolocalizacion.latitud;
             const longitud_obtenida = geolocalizacion.longitud;
 
-            localStorage.setItem("cpDom", codigoPostal);
-            localStorage.setItem("coloniaDom", colonia);
-            localStorage.setItem("calleDom", calle);
-            localStorage.setItem("numExtDom", numExterior);
-            localStorage.setItem("numInteDom", numInterior);
-            localStorage.setItem("edoDom", edo);
-            localStorage.setItem("muniDom", muni);
-            localStorage.setItem("latitud", latitud);
-            localStorage.setItem("longitud", longitud);
-            localStorage.setItem("latitud_obtenida", latitud_obtenida);
-            localStorage.setItem("longitud_obtenida", longitud_obtenida);
+            sessionStorage.setItem("cpDom", codigoPostal);
+            sessionStorage.setItem("coloniaDom", colonia);
+            sessionStorage.setItem("calleDom", calle);
+            sessionStorage.setItem("numExtDom", numExterior);
+            sessionStorage.setItem("numInteDom", numInterior);
+            sessionStorage.setItem("edoDom", edo);
+            sessionStorage.setItem("muniDom", muni);
+            sessionStorage.setItem("latitud", latitud);
+            sessionStorage.setItem("longitud", longitud);
+            sessionStorage.setItem("latitud_obtenida", latitud_obtenida);
+            sessionStorage.setItem("longitud_obtenida", longitud_obtenida);
 
             router.push("/validarubicacion");
 

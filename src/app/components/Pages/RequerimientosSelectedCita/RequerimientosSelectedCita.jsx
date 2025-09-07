@@ -50,11 +50,11 @@ const RequerimientosSelectedCita = () => {
 
     async function createSession() {
 
-      if (localStorage.getItem("idestado") != null && localStorage.getItem("idUbicacion") != null) {
+      if (sessionStorage.getItem("idestado") != null && sessionStorage.getItem("idUbicacion") != null) {
         setDomicilioParticular(true);
       }
 
-      if (localStorage.getItem("horario") != null) {
+      if (sessionStorage.getItem("horario") != null) {
         setDomicilioParticularRef(true);
       }
 

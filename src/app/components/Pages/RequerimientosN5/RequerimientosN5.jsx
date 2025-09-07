@@ -25,14 +25,14 @@ function RequerimientosN5(props) {
 
   const handleButtonClick = async () => {
 
-    localStorage.setItem("n5com", "/requerimientosselectedn5");
+    sessionStorage.setItem("n5com", "/requerimientosselectedn5");
     router.push("/requerimientosselectedn5");
 
   };
 
   const handleButtonCarta = async () => {
 
-    localStorage.setItem("n5com", "/requerimientosn5cartaselected");
+    sessionStorage.setItem("n5com", "/requerimientosn5cartaselected");
     router.push("/requerimientosn5cartaselected");
 
   }
@@ -53,7 +53,7 @@ function RequerimientosN5(props) {
 
   const handleRedirecNotComproante = () => {
 
-    localStorage.setItem("n5com", "/requerimientosselectedn5comprobante");
+    sessionStorage.setItem("n5com", "/requerimientosselectedn5comprobante");
     router.push("/requerimientosselectedn5comprobante");
 
   };

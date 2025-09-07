@@ -45,7 +45,7 @@ const Documentos = () => {
       setLoading(true);
 
       const objIncode = {
-        pais: localStorage.getItem("paisIso2"),
+        pais: sessionStorage.getItem("paisIso2"),
       }
 
       const response = await getDocumentoByPais(objIncode);
@@ -105,7 +105,7 @@ const Documentos = () => {
 
     setSelectedOption(selectedOption);
     const valorAppIncode = selectedOption.valorAppIncode;
-    localStorage.setItem("idDocPais", selectedOption.id);
+    sessionStorage.setItem("idDocPais", selectedOption.id);
     setTxtSelect(valorAppIncode);
 
     //console.log(selectedOption);

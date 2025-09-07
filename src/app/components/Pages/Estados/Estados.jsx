@@ -76,7 +76,7 @@ const Estados = () => {
   const handleChange = (selectedOption) => {
     setButtonEnabled(true);
     setSelectedOption(selectedOption);
-    localStorage.setItem("idestado", selectedOption.idestado);
+    sessionStorage.setItem("idestado", selectedOption.idestado);
 
   };
 

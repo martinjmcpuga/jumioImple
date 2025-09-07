@@ -21,10 +21,10 @@ const AutenticacionLaboral = () => {
 
   useEffect(() => {
     setRutaBack('/bandeja');
-    setFirstName(localStorage.getItem("nombre") || '');
-    setPaternalLastName(localStorage.getItem("paterno") || '');
-    setMaternalLastName(localStorage.getItem("materno") || '');
-    setCpv(localStorage.getItem("sCpv") || '');
+    setFirstName(sessionStorage.getItem("nombre") || '');
+    setPaternalLastName(sessionStorage.getItem("paterno") || '');
+    setMaternalLastName(sessionStorage.getItem("materno") || '');
+    setCpv(sessionStorage.getItem("sCpv") || '');
   }, []);
 
 

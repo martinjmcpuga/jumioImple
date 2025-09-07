@@ -104,7 +104,7 @@ function UploadFileCartaN5() {
     setLoading(true);
 
     const responseVerificate = await uploadCartaCompromiso_2C_Jumio(
-      selectedFile, "Carta_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+      selectedFile, "Carta_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
     );
 
     if (responseVerificate.status === 200) {

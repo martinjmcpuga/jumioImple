@@ -42,7 +42,7 @@ const IdentificacionFisical = () => {
 
       if (responseRfcJumio.status === 200) {
 
-        localStorage.setItem('userRfc', '' + fiscalStr);
+        sessionStorage.setItem('userRfc', '' + fiscalStr);
         router.push('/datafiscal');
 
       } else {

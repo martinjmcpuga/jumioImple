@@ -63,27 +63,27 @@ function ValidarUbicacion() {
 
             console.log(IdJumio)
 
-            setCpDom(localStorage.getItem('cpDom'));
-            setColoniaDom(localStorage.getItem("coloniaDom"));
-            setCalleDom(localStorage.getItem("calleDom"));
-            setNumExtDom(localStorage.getItem("numExtDom"));
-            setNumInteDom(localStorage.getItem("numInteDom"));
-            setEdoDom(localStorage.getItem("edoDom"));
-            setMuniDom(localStorage.getItem("muniDom"));
-            setLatitud(localStorage.getItem("latitud"));
-            setLongitud(localStorage.getItem("longitud"));
+            setCpDom(sessionStorage.getItem('cpDom'));
+            setColoniaDom(sessionStorage.getItem("coloniaDom"));
+            setCalleDom(sessionStorage.getItem("calleDom"));
+            setNumExtDom(sessionStorage.getItem("numExtDom"));
+            setNumInteDom(sessionStorage.getItem("numInteDom"));
+            setEdoDom(sessionStorage.getItem("edoDom"));
+            setMuniDom(sessionStorage.getItem("muniDom"));
+            setLatitud(sessionStorage.getItem("latitud"));
+            setLongitud(sessionStorage.getItem("longitud"));
 
-            setLatitudObj(localStorage.getItem("latitud_obtenida"));
-            setLongitudObj(localStorage.getItem('longitud_obtenida'));
+            setLatitudObj(sessionStorage.getItem("latitud_obtenida"));
+            setLongitudObj(sessionStorage.getItem('longitud_obtenida'));
 
-            setLat(localStorage.getItem("latitud_obtenida"));
-            setLng(localStorage.getItem('longitud_obtenida'));
+            setLat(sessionStorage.getItem("latitud_obtenida"));
+            setLng(sessionStorage.getItem('longitud_obtenida'));
 
 
             map.current = new maplibregl.Map({
                 container: mapContainer.current,
                 style: `https://maps.geo.${region}.amazonaws.com/maps/v0/maps/${mapName}/style-descriptor?key=${apiKey}`,
-                center: [localStorage.getItem('longitud_obtenida'), localStorage.getItem("latitud_obtenida")],
+                center: [sessionStorage.getItem('longitud_obtenida'), sessionStorage.getItem("latitud_obtenida")],
                 zoom: zoom,
                 preserveDrawingBuffer: true
             });
@@ -95,7 +95,7 @@ function ValidarUbicacion() {
                 color: "#FF0000", draggable: true,
                 element: document.createElement('div')
             })
-                .setLngLat([localStorage.getItem('longitud_obtenida'), localStorage.getItem("latitud_obtenida")])
+                .setLngLat([sessionStorage.getItem('longitud_obtenida'), sessionStorage.getItem("latitud_obtenida")])
                 .addTo(map.current);
 
             marker.on('dragend', onDragEnd);
@@ -139,7 +139,7 @@ function ValidarUbicacion() {
 
                         formData.append("file", file);
                         formData.append("renombreFile", "Mapa1_");
-                        formData.append("cpv", localStorage.getItem("sCpv"));
+                        formData.append("cpv", sessionStorage.getItem("sCpv"));
                         formData.append("idJumio", sessionStorage.getItem('id_jumio'));
                         const url = appGlobal.hostFile + "upload_2C_Jumio";
                         const params = {

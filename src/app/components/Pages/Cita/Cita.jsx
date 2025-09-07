@@ -25,7 +25,7 @@ function Cita() {
 
     useEffect(() => {
 
-        setStrCPV(localStorage.getItem("sCpv") || '');
+        setStrCPV(sessionStorage.getItem("sCpv") || '');
 
     }, []);
 

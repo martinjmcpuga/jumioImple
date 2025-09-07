@@ -34,7 +34,7 @@ const ExperienciaLaboral = () => {
     isRunned.current = true;
 
     async function createSession() {
-      setUrlBack(localStorage.getItem("n5com"));
+      setUrlBack(sessionStorage.getItem("n5com"));
     }
 
     createSession();
@@ -47,8 +47,8 @@ const ExperienciaLaboral = () => {
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     setButtonEnabled(true);
-    localStorage.setItem("experiencia", selectedOption.value);
-    localStorage.setItem("experienciaLabel", selectedOption.label);
+    sessionStorage.setItem("experiencia", selectedOption.value);
+    sessionStorage.setItem("experienciaLabel", selectedOption.label);
   };
 
   const customStyles = {

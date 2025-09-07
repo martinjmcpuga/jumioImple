@@ -14,12 +14,12 @@ const router = useRouter();
 
  useEffect(() => {
 
-  if(localStorage.getItem('interName')){
-    setInterName(localStorage.getItem('interName'));
+  if(sessionStorage.getItem('interName')){
+    setInterName(sessionStorage.getItem('interName'));
   }
 
-  if(localStorage.getItem('TitleMain')){
-    setTitleMain(localStorage.getItem('TitleMain'));
+  if(sessionStorage.getItem('TitleMain')){
+    setTitleMain(sessionStorage.getItem('TitleMain'));
   
   }
  

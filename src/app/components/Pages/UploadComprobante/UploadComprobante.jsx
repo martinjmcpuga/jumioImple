@@ -157,7 +157,7 @@ function UploadComprobante() {
     if (filesImage.length > 0) {
       console.log(filesImage);
       responseVerificate = await uploadFilesService(
-        filesImage[0], "Comprobante_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+        filesImage[0], "Comprobante_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
 
 
@@ -165,7 +165,7 @@ function UploadComprobante() {
 
 
       responseVerificate = await uploadFilesService(
-        selectedFile, "Comprobante_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+        selectedFile, "Comprobante_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
     }
 

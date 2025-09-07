@@ -26,11 +26,11 @@ const Dataconfirm = () => {
 
   useEffect(() => {
     
-    setFirstName(localStorage.getItem("nombre") || '');
-    setPaternalLastName(localStorage.getItem("paterno") || '');
-    setMaternalLastName(localStorage.getItem("materno") || '');
-    setBirthDate(localStorage.getItem("fechaNacimientoFront") || '');
-    setClaveDeElector(localStorage.getItem("curpValidate") || '');
+    setFirstName(sessionStorage.getItem("nombre") || '');
+    setPaternalLastName(sessionStorage.getItem("paterno") || '');
+    setMaternalLastName(sessionStorage.getItem("materno") || '');
+    setBirthDate(sessionStorage.getItem("fechaNacimientoFront") || '');
+    setClaveDeElector(sessionStorage.getItem("curpValidate") || '');
 
   }, []);
 

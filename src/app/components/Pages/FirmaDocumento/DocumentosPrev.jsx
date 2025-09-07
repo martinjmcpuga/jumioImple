@@ -46,7 +46,7 @@ const DocumentosPrev = () => {
       setLoading(true);
 
       const objDoc = {
-        cpv: localStorage.getItem('sCpv'),
+        cpv: sessionStorage.getItem('sCpv'),
       }
 
       const responseDoc = await getGetDocIndividualWsaicm(objDoc);

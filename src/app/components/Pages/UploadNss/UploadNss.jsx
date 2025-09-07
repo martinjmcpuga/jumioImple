@@ -153,25 +153,25 @@ function UploadNss() {
 
     if (filesImage.length > 0) {
       responseVerificate = await uploadFilesService(
-        filesImage[0], "Nss_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+        filesImage[0], "Nss_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
 
 
     } else if (selectedFile) {
 
       responseVerificate = await uploadFilesService(
-        selectedFile, "Nss_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+        selectedFile, "Nss_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
     }
 
     if (responseVerificate.status === 200) {
 
       const objJumio = {
-        nombreUser: localStorage.getItem("nombre"),
-        paterno: localStorage.getItem("paterno"),
-        materno: localStorage.getItem("materno"),
+        nombreUser: sessionStorage.getItem("nombre"),
+        paterno: sessionStorage.getItem("paterno"),
+        materno: sessionStorage.getItem("materno"),
         nombreComprobante0: "Nss_",
-        nombreComprobante1: localStorage.getItem("sCpv"),
+        nombreComprobante1: sessionStorage.getItem("sCpv"),
         nombreComprobante2: "_1.png"
       };
 
@@ -185,7 +185,7 @@ function UploadNss() {
 
           const objNss = {
             id: sessionStorage.getItem('id_jumio'),
-            nss: localStorage.getItem('socialStr')
+            nss: sessionStorage.getItem('socialStr')
           };
 
           const response = await mtUpdateNssJumio(objNss);

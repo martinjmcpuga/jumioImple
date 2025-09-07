@@ -24,10 +24,10 @@ function DataSocial() {
 
     async function createSession() {
 
-      setFirstName(localStorage.getItem("nombre") || '');
-      setPaternalLastName(localStorage.getItem("paterno") || '');
-      setMaternalLastName(localStorage.getItem("materno") || '');
-      setUserNss(localStorage.getItem("socialStr") || '');
+      setFirstName(sessionStorage.getItem("nombre") || '');
+      setPaternalLastName(sessionStorage.getItem("paterno") || '');
+      setMaternalLastName(sessionStorage.getItem("materno") || '');
+      setUserNss(sessionStorage.getItem("socialStr") || '');
 
     }
 

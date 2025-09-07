@@ -89,7 +89,7 @@ const Paises = () => {
   const onValidateCurp = async () => {
     setGame('2');
     const curpVal = mounted ? curpValidate : null;
-    if (localStorage.getItem('curpValidate') === curpStr) {
+    if (sessionStorage.getItem('curpValidate') === curpStr) {
       const objPerson = { cpv: cpvI };
       const responseIdPerson = await mtfindCpvIdJumio(objPerson);
       if (responseIdPerson.status === 400) {
@@ -126,8 +126,8 @@ const Paises = () => {
   const handleChangePais = (selectedOption) => {
     setCaracteres(selectedOption.caracteres);
     setmsjnumeroNacional(selectedOption.numeroNacionalTxt);
-    localStorage.setItem('pais', selectedOption.value); // claveIso3
-    localStorage.setItem('paisIso2', selectedOption.claveIso2);
+    sessionStorage.setItem('pais', selectedOption.value); // claveIso3
+    sessionStorage.setItem('paisIso2', selectedOption.claveIso2);
     setPais(selectedOption.label);
     setPaisIso2(selectedOption.claveIso2);
     setShowCurp(true);

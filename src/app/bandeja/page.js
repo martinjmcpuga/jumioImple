@@ -7,8 +7,8 @@ import Footer from '../components/Footer/Footer';
 const Page = () => {
 
   useEffect(() => {
-    localStorage.setItem('interName', 'Operaciones');
-    localStorage.setItem('TitleMain', 'Bandeja');
+    sessionStorage.setItem('interName', 'Operaciones');
+    sessionStorage.setItem('TitleMain', 'Bandeja');
   }, []);
 
 

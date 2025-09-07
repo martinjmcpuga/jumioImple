@@ -27,7 +27,7 @@ export default function JumioJsx() {
 
     async function createSession() {
       const obj = {
-        cpv: localStorage.getItem('sCpv'),
+        cpv: sessionStorage.getItem('sCpv'),
         documentType: cpvI
       };
       const tokenData = await FetchAccAWS(obj)

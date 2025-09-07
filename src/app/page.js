@@ -1,9 +1,7 @@
 'use client';
 
-import JumioJsx from "./components/jumio/Jumio";
 import { useState, useEffect, useRef } from "react";
 import Pantalla2 from "./components/Pages/Pantalla2/Pantalla2";
-import Footer from "./components/Footer/Footer";
 import { getCpvCurpPaisJumio } from "./components/Api/getCpvCurpPaisJumio";
 import { validateCurp_Jumio } from "./components/Api/validateCurp_Jumio";
 import { mtfindCpvIdJumio } from "./components/Api/mtfindCpvIdJumio";
@@ -37,11 +35,9 @@ export default function Home() {
     window.location.href = "https://midpr.icu/usuarioaicm/";
   };
 
-
   const onTest = async () => {
     router.push("/requerimientos");
   };
-
 
   const onValidateFaceMach = async () => {
 
@@ -50,9 +46,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-
-    localStorage.setItem('interName', 'Autenticación Personal');
-    localStorage.setItem('TitleMain', 'Enrolamiento');
 
     if (isRunned.current) return;
     isRunned.current = true;
@@ -73,6 +66,9 @@ export default function Home() {
 
       } else {
 
+        sessionStorage.setItem('interName', 'Autenticación Personal');
+        sessionStorage.setItem('TitleMain', 'Enrolamiento');
+
         setLoading(false);
 
         const obj = {
@@ -90,10 +86,10 @@ export default function Home() {
 
             if (response.pais === 'MX') {
 
-              localStorage.setItem("sCpv", i);
-              localStorage.setItem("vigenciaCpv", response.vigencia);
-              localStorage.setItem("telefono", response.telefono);
-              localStorage.setItem("correo", response.correo);
+              sessionStorage.setItem("sCpv", i);
+              sessionStorage.setItem("vigenciaCpv", response.vigencia);
+              sessionStorage.setItem("telefono", response.telefono);
+              sessionStorage.setItem("correo", response.correo);
 
               const responseIdPerson = await mtfindCpvIdJumio(obj);
 
@@ -107,17 +103,17 @@ export default function Home() {
 
                 if (responseValidate.status === 200) {
 
-                  localStorage.setItem("nombreManual", "200");
-                  localStorage.setItem("curpValidate", "" + response.curp);
-                  localStorage.setItem("nombre", responseValidate.nombre);
-                  localStorage.setItem("paterno", responseValidate.paterno);
-                  localStorage.setItem("materno", responseValidate.materno);
+                  sessionStorage.setItem("nombreManual", "200");
+                  sessionStorage.setItem("curpValidate", "" + response.curp);
+                  sessionStorage.setItem("nombre", responseValidate.nombre);
+                  sessionStorage.setItem("paterno", responseValidate.paterno);
+                  sessionStorage.setItem("materno", responseValidate.materno);
                   setValidateCurpCpv(true);
 
                 } else if (responseValidate.status === 201) {
 
-                  localStorage.setItem("curpValidate", "" + response.curp);
-                  localStorage.setItem("nombreManual", "201");
+                  sessionStorage.setItem("curpValidate", "" + response.curp);
+                  sessionStorage.setItem("nombreManual", "201");
 
                 } else {
 
@@ -136,11 +132,11 @@ export default function Home() {
 
                   setIdJumio(responseIdPerson.id);
                   sessionStorage.setItem('id_jumio', responseIdPerson.id);
-                  localStorage.setItem("idPerson", "" + responseIdPerson.id);
-                  localStorage.setItem("curpValidate", "" + responseIdPerson.userReference);
-                  localStorage.setItem("nombre", responseIdPerson.nombre);
-                  localStorage.setItem("paterno", responseIdPerson.paterno);
-                  localStorage.setItem("materno", responseIdPerson.materno);
+                  sessionStorage.setItem("idPerson", "" + responseIdPerson.id);
+                  sessionStorage.setItem("curpValidate", "" + responseIdPerson.userReference);
+                  sessionStorage.setItem("nombre", responseIdPerson.nombre);
+                  sessionStorage.setItem("paterno", responseIdPerson.paterno);
+                  sessionStorage.setItem("materno", responseIdPerson.materno);
                   setValidateCurpCpv(false);
 
                 }
@@ -160,11 +156,11 @@ export default function Home() {
 
             } else {
 
-              localStorage.setItem("sCpv", i);
-              localStorage.setItem("curpValidate", "" + response.curp);
-              localStorage.setItem("vigenciaCpv", response.vigencia);
-              localStorage.setItem("telefono", response.telefono);
-              localStorage.setItem("correo", response.correo);
+              sessionStorage.setItem("sCpv", i);
+              sessionStorage.setItem("curpValidate", "" + response.curp);
+              sessionStorage.setItem("vigenciaCpv", response.vigencia);
+              sessionStorage.setItem("telefono", response.telefono);
+              sessionStorage.setItem("correo", response.correo);
 
               const objPerson = {
                 cpv: i
@@ -174,16 +170,16 @@ export default function Home() {
 
               if (responseIdPerson.status === 400) {
 
-                localStorage.setItem("curpValidate", "" + response.curp);
-                localStorage.setItem("nombreManual", "201");
+                sessionStorage.setItem("curpValidate", "" + response.curp);
+                sessionStorage.setItem("nombreManual", "201");
                 setValidateCurpCpv(true);
 
               }
 
               if (responseIdPerson.status === 200) {
                 if (responseIdPerson.id != null && responseIdPerson.id !== "") {
-                  localStorage.setItem("idPerson", "" + responseIdPerson.id);
-                  localStorage.setItem("uuid", "" + responseIdPerson.uuid);
+                  sessionStorage.setItem("idPerson", "" + responseIdPerson.id);
+                  sessionStorage.setItem("uuid", "" + responseIdPerson.uuid);
                   setValidateCurpCpv(false);
                 }
               }

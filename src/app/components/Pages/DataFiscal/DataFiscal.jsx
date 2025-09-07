@@ -23,10 +23,10 @@ const DataFiscal = () => {
 
     async function createSession() {
 
-      setFirstName(localStorage.getItem("nombre") || '');
-      setPaternalLastName(localStorage.getItem("paterno") || '');
-      setMaternalLastName(localStorage.getItem("materno") || '');
-      setUserRfc(localStorage.getItem("userRfc") || '');
+      setFirstName(sessionStorage.getItem("nombre") || '');
+      setPaternalLastName(sessionStorage.getItem("paterno") || '');
+      setMaternalLastName(sessionStorage.getItem("materno") || '');
+      setUserRfc(sessionStorage.getItem("userRfc") || '');
 
     }
 

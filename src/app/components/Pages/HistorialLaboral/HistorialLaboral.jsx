@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { getListEstadosJumio } from "../../Api/getListEstadosJumio";
-
 import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
 import { mtUpdateHistorial0Jumio } from "../../Api/mtUpdateHistorial0Jumio";
 import { mtUpdateHistorial1Jumio } from "../../Api/mtUpdateHistorial1Jumio";
@@ -44,11 +43,6 @@ const country = [
     "label": "Chile",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/1920px-Flag_of_Chile.svg.png",
     "value": "CL"
-  },
-  {
-    "label": "Japan",
-    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1920px-Flag_of_Japan.svg.png",
-    "value": "JP"
   },
   {
     "label": "United States",
@@ -94,7 +88,7 @@ const HistorialLaboral = () => {
 
 
   useEffect(() => {
-    setRutaBack('/requerimientosn5cartaselected');
+    setRutaBack(sessionStorage.getItem("n5com"));
   }, []);
 
 
@@ -107,7 +101,7 @@ const HistorialLaboral = () => {
 
       setLoading(true);
 
-      setUrlBack(localStorage.getItem("n5com"));
+      setUrlBack(sessionStorage.getItem("n5com"));
       setPais('México');
 
       const objCons = {
@@ -234,7 +228,7 @@ const HistorialLaboral = () => {
       if (responseHis0.status === 200) {
 
         const objLab = {
-          id: localStorage.getItem('idPerson'),
+          id: sessionStorage.getItem('idPerson'),
           puesto: puesto,
           organizacion: organizacion,
           actual: isSubscribed,
@@ -244,7 +238,7 @@ const HistorialLaboral = () => {
           estado: estado,
         }
 
-        const response = await mtguardarLaboral(objLab);
+        const response = await mtfindSaveLapJumio(objLab);
 
         if (response.status === 200) {
 
@@ -283,7 +277,7 @@ const HistorialLaboral = () => {
           estado: estado,
         }
 
-        const response = await mtguardarLaboral(objLab);
+        const response = await mtfindSaveLapJumio(objLab);
 
         if (response.status === 200) {
 
@@ -364,9 +358,9 @@ const HistorialLaboral = () => {
 
 
   const handleChangeState = (selectedOption) => {
-  setstateOption(selectedOption); // 👈 guarda el objeto completo
-  setEstado(selectedOption.nombreEstado); // esto sigue guardando solo el string si lo necesitas
-};
+    setstateOption(selectedOption); // 👈 guarda el objeto completo
+    setEstado(selectedOption.nombreEstado); // esto sigue guardando solo el string si lo necesitas
+  };
 
 
   const handleChange = (selectedOption) => {

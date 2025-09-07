@@ -170,18 +170,18 @@ function UploadFile() {
       if (selectedFile) {
 
         responseVerificate = await uploadFilesServiceN5_Jumio(
-          selectedFile, "", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+          selectedFile, "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
 
         if (responseVerificate.status === 200) {
 
           const objAWS = {
             idJumio: sessionStorage.getItem('id_jumio'),
-            nombreUser: localStorage.getItem("nombre"),
-            paterno: localStorage.getItem("paterno"),
-            materno: localStorage.getItem("materno"),
+            nombreUser: sessionStorage.getItem("nombre"),
+            paterno: sessionStorage.getItem("paterno"),
+            materno: sessionStorage.getItem("materno"),
             nombreComprobante0: "",
-            nombreComprobante1: localStorage.getItem("sCpv"),
+            nombreComprobante1: sessionStorage.getItem("sCpv"),
             nombreComprobante2: "_1.png"
           };
 
@@ -243,7 +243,7 @@ function UploadFile() {
         la variable se llama filesImage */
 
         responseVerificate = await uploadFilesServiceN5_Jumio(
-          filesImage[0], "", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+          filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
 
         if (responseVerificate.status === 200) {
@@ -251,7 +251,7 @@ function UploadFile() {
           if (filesImage[1] !== undefined) {
 
             responseVerificate = await uploadN5Archivo2_2C_Jumio(
-              filesImage[1], "V2_", localStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+              filesImage[1], "V2_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
             );
 
           }
@@ -260,11 +260,11 @@ function UploadFile() {
 
             const objAWS = {
               idJumio: sessionStorage.getItem('id_jumio'),
-              nombreUser: localStorage.getItem("nombre"),
-              paterno: localStorage.getItem("paterno"),
-              materno: localStorage.getItem("materno"),
+              nombreUser: sessionStorage.getItem("nombre"),
+              paterno: sessionStorage.getItem("paterno"),
+              materno: sessionStorage.getItem("materno"),
               nombreComprobante0: "",
-              nombreComprobante1: localStorage.getItem("sCpv"),
+              nombreComprobante1: sessionStorage.getItem("sCpv"),
               nombreComprobante2: "_1.png"
             };
 
@@ -278,7 +278,7 @@ function UploadFile() {
               if (responseValidacionQR.status === 200) {
 
                 // const objCons = {
-                // id: localStorage.getItem('idPerson'),
+                // id: sessionStorage.getItem('idPerson'),
                 //  nombreComprobante0: responseVerificate.re_name,
                 //}
 

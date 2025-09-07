@@ -19,7 +19,7 @@ const InitDomicilio = () => {
   const [validateCurpCpv, setValidateCurpCpv] = useState(true);
 
   useEffect(() => {
-    setCpv(localStorage.getItem('sCpv'));
+    setCpv(sessionStorage.getItem('sCpv'));
     setRutaBack('/bandeja');
   }, []);
 

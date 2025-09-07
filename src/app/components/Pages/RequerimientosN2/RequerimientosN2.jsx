@@ -38,7 +38,7 @@ const RequerimientosN2 = () => {
 
       const objCons = {
         id: sessionStorage.getItem('id_jumio'),
-        cpv: localStorage.getItem("sCpv")
+        cpv: sessionStorage.getItem("sCpv")
       }
 
       const responsePerfil = await getPerfilAicmJumio(objCons);

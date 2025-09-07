@@ -48,8 +48,8 @@ const Bandeja = () => {
 
   useEffect(() => {
 
-    setCurpStr(localStorage.getItem('curpValidate'));
-    setTelefonoAsociado(localStorage.getItem('telefono'));
+    setCurpStr(sessionStorage.getItem('curpValidate'));
+    setTelefonoAsociado(sessionStorage.getItem('telefono'));
 
   }, []);
 
@@ -71,7 +71,7 @@ const Bandeja = () => {
 
       const obj = {
         id: sessionStorage.getItem('id_jumio'),
-        cpv: localStorage.getItem("sCpv")
+        cpv: sessionStorage.getItem("sCpv")
       };
 
       const responsePerfilCpv = await getPerfilAicmJumio(obj);
@@ -80,10 +80,10 @@ const Bandeja = () => {
 
         const objJumio = {
           idJumio: sessionStorage.getItem('id_jumio'),
-          curpValidate: localStorage.getItem("curpValidate"),
-          nombre: localStorage.getItem("nombre"),
-          paterno: localStorage.getItem("paterno"),
-          materno: localStorage.getItem("materno"),
+          curpValidate: sessionStorage.getItem("curpValidate"),
+          nombre: sessionStorage.getItem("nombre"),
+          paterno: sessionStorage.getItem("paterno"),
+          materno: sessionStorage.getItem("materno"),
         };
 
         const response = await getRetrievalByAccount(objJumio);

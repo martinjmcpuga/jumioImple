@@ -31,10 +31,10 @@ const DataExperienciaLaboral = () => {
 
       // setLoading(true);
 
-      setUserExperience(localStorage.getItem("experienciaLabel"));
-      setFirstName(localStorage.getItem("nombre") || '');
-      setPaternalLastName(localStorage.getItem("paterno") || '');
-      setMaternalLastName(localStorage.getItem("materno") || '');
+      setUserExperience(sessionStorage.getItem("experienciaLabel"));
+      setFirstName(sessionStorage.getItem("nombre") || '');
+      setPaternalLastName(sessionStorage.getItem("paterno") || '');
+      setMaternalLastName(sessionStorage.getItem("materno") || '');
 
 
     }
@@ -55,14 +55,14 @@ const DataExperienciaLaboral = () => {
 
     const objConsComprobanteCompleto = {
       id: sessionStorage.getItem('id_jumio'),
-      aniosExperiencia: localStorage.getItem("experiencia")
+      aniosExperiencia: sessionStorage.getItem("experiencia")
     };
 
     const responseComprobanteCompleto = await mtUpdateComprobanteCompletoJumio(objConsComprobanteCompleto);
 
     if (responseComprobanteCompleto.status === 200) {
 
-      router.push(localStorage.getItem("n5com"));
+      router.push(sessionStorage.getItem("n5com"));
 
     } else {
 
