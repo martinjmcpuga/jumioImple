@@ -34,6 +34,8 @@ const CamComponent = ({ }) => {
     const [showMessage, setShowMessage] = useState("");
     const [loading, setLoading] = useState(true);
 
+    const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
+
     const handleFilterByVideoInputDevices = useCallback((devices) => {
         SetDevices(devices.filter(({ kind }) => kind === "videoinput"))
     }, [])
@@ -107,50 +109,35 @@ const CamComponent = ({ }) => {
 
     const camOnCapture = async () => {
 
-
-        setImageSrc(webCamRef.current.getScreenshot())
+        setShow(false);
         setLoading(false);
+        setImageSrc(webCamRef.current.getScreenshot())
         setIsCapturing(true);
 
         const objIncode = {
-           id: sessionStorage.getItem('id_jumio'),
+            id: sessionStorage.getItem('id_jumio'),
             documentoBase64: webCamRef.current.getScreenshot()
         }
 
         const response = await getSelfieToCamara_Jumio(objIncode);
 
-        router.push("/bandeja");
-
-        /*
         if (response.status === 200) {
 
+            router.push("/bandeja");
 
-            //const responseComparingFaces = await getComparingFaces(objIncode);
-
-            //if (responseComparingFaces.status === 200) {
-
-            navigate("/PantallaBase27");
-            
-
-            //} else {
-
-
-            //  setShow(true);
-            //  setShowStatus(responseComparingFaces.status);
-            //  setShowMessage(responseComparingFaces.message);
-
-            //}
-
-
+        } else if (response.status === 500) {
+            setLoading(true);
+            setShow(true);
+            setShowStatus("Error");
+            setShowMessage(showMsjUsu);
         } else {
 
-            loading(false);
+            setLoading(true);
             setShow(true);
-            setShowStatus(response.status);
-            //setShowMessage(response.message);
+            setShowStatus("Error");
+            setShowMessage(showMsjUsu);
 
         }
-        */
 
     }
 
@@ -228,8 +215,7 @@ const CamComponent = ({ }) => {
 
             </div>
 
-
-            <Modal show={show} onHide={handleClose} animation={false} centered>
+            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
                 <Modal.Body className="backGroudModal">
                     <div className="msjTitleModalDiv">{showStatus}</div>
                     <div className="msjErrorModal">{showMessage}</div>
