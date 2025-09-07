@@ -1,3 +1,76 @@
 {
-  "pages": {}
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/node_modules_next_dist_1a6ee436._.js",
+      "static/chunks/src_app_favicon_ico_mjs_65a2b8d0._.js",
+      "static/chunks/_b146bcc1._.js",
+      "static/chunks/[root-of-the-server]__800d069e._.css",
+      "static/chunks/src_app_layout_ea9287a8.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c20f642f._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_2ecbf5fa._.js",
+      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
+      "static/chunks/_e69f0d32._.js",
+      "static/chunks/_b581757f._.js"
+    ],
+    "/bandeja/page": [
+      "static/chunks/node_modules_next_dist_1a6ee436._.js",
+      "static/chunks/src_app_favicon_ico_mjs_65a2b8d0._.js",
+      "static/chunks/_b146bcc1._.js",
+      "static/chunks/[root-of-the-server]__800d069e._.css",
+      "static/chunks/src_app_layout_ea9287a8.js",
+      "static/chunks/src_app_2c98d42c._.js",
+      "static/chunks/node_modules_7a841fec._.js",
+      "static/chunks/node_modules_bootstrap_dist_css_bootstrap_min_104c2c84.css",
+      "static/chunks/src_app_bandeja_page_6bb330c3.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c20f642f._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_2ecbf5fa._.js",
+      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
+      "static/chunks/_e69f0d32._.js",
+      "static/chunks/_b581757f._.js"
+    ],
+    "/camaracompare/page": [
+      "static/chunks/node_modules_next_dist_1a6ee436._.js",
+      "static/chunks/src_app_favicon_ico_mjs_65a2b8d0._.js",
+      "static/chunks/_b146bcc1._.js",
+      "static/chunks/[root-of-the-server]__800d069e._.css",
+      "static/chunks/src_app_layout_ea9287a8.js",
+      "static/chunks/node_modules_@tensorflow_tfjs-core_dist_tf-core_esm_e127b7ab.js",
+      "static/chunks/node_modules_face-api_js_build_es6_690ea6ff._.js",
+      "static/chunks/node_modules_@restart_ui_esm_a082d4c7._.js",
+      "static/chunks/node_modules_@popperjs_core_lib_d14246d8._.js",
+      "static/chunks/node_modules_397e6054._.js",
+      "static/chunks/src_app_3ed530fb._.js",
+      "static/chunks/_283e9fd0._.css",
+      "static/chunks/src_app_camaracompare_page_6bb330c3.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c20f642f._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_2ecbf5fa._.js",
+      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
+      "static/chunks/_e69f0d32._.js",
+      "static/chunks/_b581757f._.js"
+    ],
+    "/page": [
+      "static/chunks/node_modules_next_dist_1a6ee436._.js",
+      "static/chunks/src_app_favicon_ico_mjs_65a2b8d0._.js",
+      "static/chunks/_b146bcc1._.js",
+      "static/chunks/[root-of-the-server]__800d069e._.css",
+      "static/chunks/src_app_layout_ea9287a8.js",
+      "static/chunks/_fb038b2e._.css",
+      "static/chunks/node_modules_a7745deb._.js",
+      "static/chunks/src_app_2451d5f7._.js",
+      "static/chunks/src_app_page_6bb330c3.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c20f642f._.js",
+      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
+      "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
+      "static/chunks/node_modules_next_dist_2ecbf5fa._.js",
+      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
+      "static/chunks/_e69f0d32._.js",
+      "static/chunks/_b581757f._.js"
+    ]
+  }
 }

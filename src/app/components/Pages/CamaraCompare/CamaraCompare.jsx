@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import { Dropdown } from 'react-bootstrap';
 import { getSelfieToCamara } from '../../Api/getSelfieToCamara'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
 
 const CamComponent = ({ }) => {
 
@@ -109,15 +110,6 @@ const CamComponent = ({ }) => {
 
         setImageSrc(webCamRef.current.getScreenshot())
         setLoading(false);
-
-        setTimeout(() => {
-
-            router.push("/bandeja");
-
-        }, 1000);
-
-        /*
-        loading(true);
         setIsCapturing(true);
 
         const objIncode = {
@@ -125,8 +117,11 @@ const CamComponent = ({ }) => {
             documentoBase64: webCamRef.current.getScreenshot()
         }
 
-        const response = await getSelfieToCamara(objIncode);
+        const response = await getSelfieToCamara_Jumio(objIncode);
 
+        router.push("/bandeja");
+
+        /*
         if (response.status === 200) {
 
 
