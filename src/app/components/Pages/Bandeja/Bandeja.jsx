@@ -102,8 +102,6 @@ const Bandeja = () => {
 
             const responsePersonJumio = await mtFindPersonJumio(objJumioSelfie);
 
-            console.log(responsePersonJumio)
-
             /********************************************************************/
 
 

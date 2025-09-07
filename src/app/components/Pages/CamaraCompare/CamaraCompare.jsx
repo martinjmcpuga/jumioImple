@@ -113,7 +113,7 @@ const CamComponent = ({ }) => {
         setIsCapturing(true);
 
         const objIncode = {
-            id: sessionStorage.getItem("sCpv"),
+           id: sessionStorage.getItem('id_jumio'),
             documentoBase64: webCamRef.current.getScreenshot()
         }
 
