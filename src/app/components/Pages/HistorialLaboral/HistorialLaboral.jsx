@@ -9,16 +9,13 @@ import { mtUpdateHistorial0Jumio } from "../../Api/mtUpdateHistorial0Jumio";
 import { mtUpdateHistorial1Jumio } from "../../Api/mtUpdateHistorial1Jumio";
 import { mtUpdateHistorial2Jumio } from "../../Api/mtUpdateHistorial2Jumio";
 import { mtfindSaveLapJumio } from "../../Api/mtfindSaveLapJumio";
-
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import './HistorialLaboral.css';
 import './flags.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 registerLocale("es", es);
@@ -341,14 +338,33 @@ const HistorialLaboral = () => {
   };
 
   const style = {
-    position: "absolute",
-    right: 'calc(10% + 8px)',
-    top: '7px',
-    bottom: '7px',
-    width: '1px',
-    background: '#ccc',
-    content: "''",
-  }
+    control: (base) => ({
+      ...base,
+      height: 52,
+      borderRadius: 4,
+      boxShadow: 'none',
+      borderColor: '#c4cbd1',
+      '&:hover': {
+        borderColor: '#c4cbd1',
+      },
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? '#0078ff26'
+        : state.isFocused
+          ? '#f1f1f1'
+          : 'white',
+      color: '#333',
+      cursor: 'pointer',
+    }),
+    singleValue: (base) => ({
+      ...base,
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    }),
+  };
 
   useEffect(() => {
     getListEstadosJumio().then(item => {
