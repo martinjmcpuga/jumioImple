@@ -132,7 +132,6 @@ export default function Home() {
 
                   setIdJumio(responseIdPerson.id);
                   sessionStorage.setItem('id_jumio', responseIdPerson.id);
-                  sessionStorage.setItem("idPerson", "" + responseIdPerson.id);
                   sessionStorage.setItem("curpValidate", "" + responseIdPerson.userReference);
                   sessionStorage.setItem("nombre", responseIdPerson.nombre);
                   sessionStorage.setItem("paterno", responseIdPerson.paterno);
@@ -178,8 +177,8 @@ export default function Home() {
 
               if (responseIdPerson.status === 200) {
                 if (responseIdPerson.id != null && responseIdPerson.id !== "") {
-                  sessionStorage.setItem("idPerson", "" + responseIdPerson.id);
-                  sessionStorage.setItem("uuid", "" + responseIdPerson.uuid);
+                  setIdJumio(responseIdPerson.id);
+                  sessionStorage.setItem("id_jumio", responseIdPerson.id);
                   setValidateCurpCpv(false);
                 }
               }
