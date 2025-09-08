@@ -520,7 +520,7 @@ function UploadFile() {
 
       {/* Mensaje de errores */}
 
-      <Modal show={show} onHide={handleClose} animation={false} centered>
+      <Modal show={show} onHide={handleClose} animation={false} centered  className="animate__animated animate__fadeIn">
         <Modal.Body className="backGroudModal">
           <div className="msjTitleModalDiv">Error {showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>

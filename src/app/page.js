@@ -327,6 +327,7 @@ export default function Home() {
         animation={false}
         centered
         backdrop="static"
+        className="animate__animated animate__fadeIn"
       >
         <Modal.Body className="backGroudModal">
           <div className="msjTitleModalDiv">{showStatus}</div>

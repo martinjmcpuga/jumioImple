@@ -94,7 +94,7 @@ function DataSocial() {
       </div>
 
 
-      <Modal show={show2} animation={false} centered>
+      <Modal show={show2} animation={false} centered  className="animate__animated animate__fadeIn">
         <Modal.Body className="backGroudModal">
           <div className="msjTitleModalDiv pb-2">Atención</div>
           <div className="msjErrorModal">La documentación que deberá subir en el siguiente apartado es:
