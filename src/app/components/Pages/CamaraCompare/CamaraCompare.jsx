@@ -178,20 +178,7 @@ const CamComponent = ({ }) => {
 
                                 <img src="assets/cameraSwitchForMobile.svg" alt="" className='camButtons__camSwitchButton' onClick={() => switchButton.current.click()} />
                                 <img src="assets/cameraMainButton2.svg" alt="" className='camButtons__camMainButton' onClick={() => mainButton.current.click()} />
-                                <Dropdown show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)}>
-                                    <Dropdown.Toggle variant="transparent" id="dropdown-basic" className='camButtons__camSettingButtonContainer'>
-                                        <img src="assets/camaraSettings.svg" alt="Settings" className="camButtons__camSettingButton" />
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu show={showDropMenu} onClick={() => setShowDropMenu(!showDropMenu)} style={{ maxHeight: '60px', maxWidth: '60px', overflow: 'auto' }}>
-                                        {devices.length > 0 && (
-
-                                            devices.map((device, index) => (
-                                                <Dropdown.Item key={index} value={device.deviceId} onClick={() => setSelectedDevice(device.deviceId)}>{device.label}</Dropdown.Item>
-                                            ))
-                                        )}
-                                    </Dropdown.Menu>
-                                </Dropdown>
+         
 
                                 <button id="startbutton" onClick={camOnCapture} className='d-none' ref={mainButton}>Take photo</button>
                                 <button id="startbutton" ref={switchButton} className='d-none' onClick={() =>
