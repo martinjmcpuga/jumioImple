@@ -3,15 +3,14 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-
 import dynamic from 'next/dynamic';
 import Modal from "react-bootstrap/Modal";
 import "./styleUploadFile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
-import { validateComprobanteByNameCPV_Jumio } from "../../Api/validateComprobanteByNameCPV_Jumio";
 import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
 import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
+import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
+import { uploadFilesService } from "../../Api/uploadFilesService";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -167,195 +166,97 @@ function UploadFile() {
 
       let responseVerificate = null;
 
-      if (selectedFile) {
+      if (filesImage.length > 0) {
+        responseVerificate = await uploadFilesService(
+          filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+        );
 
-        /****************************************************************************/
-
-        if (filesImage.length > 0) {
-          responseVerificate = await uploadFilesServiceN5_Jumio(
-            filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
-          );
-        }
-
-        /****************************************************************************/
 
         if (filesImage[1] != null && filesImage[1] !== undefined) {
 
-          await uploadN5Archivo2_2C_Jumio(
+          responseVerificate = await uploadN5Archivo2_2C_Jumio(
             filesImage[1], "V2_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
           );
 
         }
 
-        if (responseVerificate.status === 200) {
 
-          const objAWS = {
-            idJumio: sessionStorage.getItem('id_jumio'),
-            nombreUser: sessionStorage.getItem("nombre"),
-            paterno: sessionStorage.getItem("paterno"),
-            materno: sessionStorage.getItem("materno"),
-            nombreComprobante0: "",
-            nombreComprobante1: sessionStorage.getItem("sCpv"),
-            nombreComprobante2: "_1.png"
-          };
+      } else if (selectedFile) {
 
-          const responseComprobanteByName = await validateComprobanteByNameCPV_Jumio(objAWS);
+        responseVerificate = await uploadFilesService(
+          selectedFile, "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+        );
+      }
 
-          if (responseComprobanteByName.status === 200) {
+      if (responseVerificate.status === 200) {
 
-            const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
+        const objAWS = {
+          idJumio: sessionStorage.getItem('id_jumio'),
+          nombreUser: sessionStorage.getItem("nombre"),
+          paterno: sessionStorage.getItem("paterno"),
+          materno: sessionStorage.getItem("materno"),
+          nombreComprobante0: "",
+          nombreComprobante1: sessionStorage.getItem("sCpv"),
+          nombreComprobante2: "_1.png"
+        };
 
-            if (responseValidacionQR.status === 200) {
+        const responseComprobanteByName = await validateComprobanteByNameCPV_2C_JumioN5(objAWS);
 
-              // const responseHis0 = await mtUpdateComprobante0(objCons);
+        if (responseComprobanteByName.status === 200) {
 
-              // if (responseHis0.status === 200) {
+          const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
 
-              router.push("/requerimientosselectedn5");
+          if (responseValidacionQR.status === 200) {
 
-              // } else {
+            // const responseHis0 = await mtUpdateComprobante0(objCons);
 
-              //   setShow(true);
-              //   setShowStatus(responseHis0.status);
-              //   setShowMessage(responseHis0.message);
+            // if (responseHis0.status === 200) {
 
-              // }
+            router.push("/requerimientosselectedn5");
 
-            } else {
+            // } else {
 
-              setShow(true);
-              setShowStatus(responseValidacionQR.status);
-              setShowMessage(responseValidacionQR.message);
+            //   setShow(true);
+            //   setShowStatus(responseHis0.status);
+            //   setShowMessage(responseHis0.message);
 
-            }
+            // }
 
           } else {
 
+            setLoading(false);
             setShow(true);
-            setShowStatus(responseComprobanteByName.status);
-            setShowMessage(responseComprobanteByName.message);
+            setShowStatus(responseValidacionQR.status);
+            setShowMessage(responseValidacionQR.message);
 
           }
 
-        } else if (responseVerificate.status === 500) {
-
-          setShow(true);
-          setShowStatus("407");
-          setShowMessage("Tamaño del archivo incorrecto");
-
         } else {
 
+          setLoading(false);
           setShow(true);
-          setShowStatus(responseVerificate.status);
-          setShowMessage(responseVerificate.message);
+          setShowStatus(responseComprobanteByName.status);
+          setShowMessage(responseComprobanteByName.message);
 
         }
+
+      } else if (responseVerificate.status === 500) {
+
+        setLoading(false);
+        setShow(true);
+        setShowStatus("407");
+        setShowMessage("Tamaño del archivo incorrecto");
 
       } else {
 
-        /* Servicio de envio de archivo para el caso de que  se haya seleccionado multiples fotos
-        la variable se llama filesImage */
-
-        responseVerificate = await uploadFilesServiceN5_Jumio(
-          filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
-        );
-
-        if (responseVerificate.status === 200) {
-
-          if (filesImage[1] !== undefined) {
-
-            responseVerificate = await uploadN5Archivo2_2C_Jumio(
-              filesImage[1], "V2_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
-            );
-
-          }
-
-          if (responseVerificate.status === 200) {
-
-            const objAWS = {
-              idJumio: sessionStorage.getItem('id_jumio'),
-              nombreUser: sessionStorage.getItem("nombre"),
-              paterno: sessionStorage.getItem("paterno"),
-              materno: sessionStorage.getItem("materno"),
-              nombreComprobante0: "",
-              nombreComprobante1: sessionStorage.getItem("sCpv"),
-              nombreComprobante2: "_1.png"
-            };
-
-            const responseComprobanteByName = await validateComprobanteByNameCPV_Jumio(objAWS);
-
-            if (responseComprobanteByName.status === 200) {
-
-
-              const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
-
-              if (responseValidacionQR.status === 200) {
-
-                // const objCons = {
-                // id: sessionStorage.getItem('idPerson'),
-                //  nombreComprobante0: responseVerificate.re_name,
-                //}
-
-                // const responseHis0 = await mtUpdateComprobante0(objCons);
-
-                // if (responseHis0.status === 200) {
-
-                router.push("/requerimientosselectedn5");
-
-                //} else {
-
-                //  setShow(true);
-                //  setShowStatus(responseHis0.status);
-                //  setShowMessage(responseHis0.message);
-
-                //}
-
-              } else {
-
-                setShow(true);
-                setShowStatus(responseValidacionQR.status);
-                setShowMessage(responseValidacionQR.message);
-
-              }
-
-
-            } else {
-
-              setShow(true);
-              setShowStatus(responseComprobanteByName.status);
-              setShowMessage(responseComprobanteByName.message);
-
-            }
-
-          } else if (responseVerificate.status === 500) {
-
-            setShow(true);
-            setShowStatus("407");
-            setShowMessage("Tamaño del archivo incorrecto");
-
-          } else {
-
-            setShow(true);
-            setShowStatus(responseVerificate.status);
-            setShowMessage(responseVerificate.message);
-
-          }
-
-        } else if (responseVerificate.status === 500) {
-
-          setShow(true);
-          setShowStatus("407");
-          setShowMessage("Tamaño del archivo incorrecto");
-
-        } else {
-
-          setShow(true);
-          setShowStatus(responseVerificate.status);
-          setShowMessage(responseVerificate.message);
-
-        }
+        setLoading(false);
+        setShow(true);
+        setShowStatus(responseVerificate.status);
+        setShowMessage(responseVerificate.message);
 
       }
+
+
 
       setLoading(false);
 
