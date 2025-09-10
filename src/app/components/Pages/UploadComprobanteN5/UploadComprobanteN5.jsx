@@ -10,12 +10,9 @@ const UploadComprobanteN5 = () => {
   const [enabled, setEnabled] = useState(true)
   const { IdJumio, setRutaBack } = useAppContext();
 
-
   useEffect(() => {
     setRutaBack('/comprobanteingreso');
   }, []);
-
-
 
   const handleFiles = () => {
     setEnabled(true);

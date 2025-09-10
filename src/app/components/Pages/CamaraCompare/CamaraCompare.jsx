@@ -125,10 +125,12 @@ const CamComponent = ({ }) => {
             router.push("/bandeja");
 
         } else if (response.status === 500) {
+
             setLoading(true);
             setShow(true);
             setShowStatus("Error");
             setShowMessage(showMsjUsu);
+            
         } else {
 
             setLoading(true);
@@ -178,7 +180,7 @@ const CamComponent = ({ }) => {
 
                                 <img src="assets/cameraSwitchForMobile.svg" alt="" className='camButtons__camSwitchButton' onClick={() => switchButton.current.click()} />
                                 <img src="assets/cameraMainButton2.svg" alt="" className='camButtons__camMainButton' onClick={() => mainButton.current.click()} />
-         
+
 
                                 <button id="startbutton" onClick={camOnCapture} className='d-none' ref={mainButton}>Take photo</button>
                                 <button id="startbutton" ref={switchButton} className='d-none' onClick={() =>
