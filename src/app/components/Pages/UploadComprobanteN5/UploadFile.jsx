@@ -174,7 +174,6 @@ function UploadFile() {
           filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
 
-
         if (filesImage[1] != null && filesImage[1] !== undefined) {
           responseVerificate = await uploadN5Archivo2_2C_Jumio(
             filesImage[1], "V2_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
