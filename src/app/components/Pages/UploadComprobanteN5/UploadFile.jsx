@@ -205,8 +205,6 @@ function UploadFile() {
 
         if (responseComprobanteByName.status === 200) {
 
-
-
           //const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
 
           //if (responseValidacionQR.status === 200) {
