@@ -36,7 +36,7 @@ export default function JumioJsx() {
 
       } else {
         setIdJumio(tokenData.idJumio)
-        sessionStorage.setItem('id_jumio', idJumio);
+        sessionStorage.setItem('id_jumio', tokenData.idJumio);
         setSdkToken(tokenData.sdk.token)
       }
 
