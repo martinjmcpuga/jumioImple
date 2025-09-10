@@ -12,6 +12,7 @@ import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
 import { uploadFilesService } from "../../Api/uploadFilesService";
 import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
+import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -171,7 +172,7 @@ function UploadFile() {
 
         console.log('1')
 
-        responseVerificate = await uploadFilesService(
+        responseVerificate = await uploadFilesServiceN5_Jumio(
           filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
 
@@ -184,7 +185,7 @@ function UploadFile() {
 
       } else if (selectedFile) {
 
-        responseVerificate = await uploadFilesService(
+        responseVerificate = await uploadFilesServiceN5_Jumio(
           selectedFile, "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
       }
@@ -263,8 +264,6 @@ function UploadFile() {
         setShowMessage(responseVerificate.message);
 
       }
-
-
 
       setLoading(false);
 
