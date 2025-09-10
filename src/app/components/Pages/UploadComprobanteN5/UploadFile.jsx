@@ -235,7 +235,6 @@ function UploadFile() {
 
           }
 
-
         } else {
 
           setLoading(false);
@@ -309,14 +308,12 @@ function UploadFile() {
                           </div>
                         ))}
 
-
                         <div className="buttonCenterUp">
                           <div className="spaceButtonReloadUp">
                           </div>
                         </div>
                         <div className="space"></div>
                       </div>
-
 
                       <div className="space"></div>
                     </div>
