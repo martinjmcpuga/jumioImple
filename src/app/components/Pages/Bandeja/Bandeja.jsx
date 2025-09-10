@@ -168,6 +168,46 @@ const Bandeja = () => {
 
               }
 
+              if (response.valRfc === true) {
+                setRfc(response.rfc);
+              }
+
+              if (response.valNss === true) {
+                setValidateNss(true);
+                setNss(response.nss);
+              }
+
+              if (response.onHistorialCompleto === true && response.comprobante0 === true) {
+
+                setValidateLab(true);
+
+              }
+
+              if (response.onHistorialCompleto === true && response.cartaCompromiso === true &&
+                response.contratoIndividual === true) {
+
+                setValidateLab(true);
+
+              }
+
+              if (response.valSigDocIndiv === true) {
+                setValidateSigInd(true);
+              }
+
+              if (response.valGenerarCita === true) {
+                setValidateCita(true);
+              }
+
+              if (response.completarRequermientosAICM === true) {
+
+                setAuCita(true);
+
+              } else {
+
+                setAuCita(false);
+
+              }
+
 
               setLoading(false);
 
