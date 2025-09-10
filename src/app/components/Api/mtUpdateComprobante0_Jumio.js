@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function mtUpdateComprobante0_Jumio(obj) {
     try {
-        const url = appGlobal.host + "mtUpdateComprobante0_Jumio";
+        const url = appGlobal.host + "mtUpdateComprobante0Jumio";
         const params = {
             method: "POST",
             headers: {

@@ -11,6 +11,7 @@ import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR
 import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
 import { uploadFilesService } from "../../Api/uploadFilesService";
+import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -168,6 +169,8 @@ function UploadFile() {
 
       if (filesImage.length > 0) {
 
+        console.log('1')
+
         responseVerificate = await uploadFilesService(
           filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
@@ -202,32 +205,41 @@ function UploadFile() {
 
         if (responseComprobanteByName.status === 200) {
 
-          const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
 
-          if (responseValidacionQR.status === 200) {
 
-            // const responseHis0 = await mtUpdateComprobante0(objCons);
+          //const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
 
-            // if (responseHis0.status === 200) {
+          //if (responseValidacionQR.status === 200) {
+
+
+          const objAWS = {
+            id: sessionStorage.getItem('id_jumio')
+          };
+
+
+          const responseHis0 = await mtUpdateComprobante0_Jumio(objAWS);
+
+          if (responseHis0.status === 200) {
 
             router.push("/requerimientosselectedn5");
 
-            // } else {
-
-            //   setShow(true);
-            //   setShowStatus(responseHis0.status);
-            //   setShowMessage(responseHis0.message);
-
-            // }
-
           } else {
 
-            setLoading(false);
             setShow(true);
-            setShowStatus(responseValidacionQR.status);
-            setShowMessage(responseValidacionQR.message);
+            setShowStatus(responseHis0.status);
+            setShowMessage(responseHis0.message);
 
           }
+
+          //} else {
+
+          // setLoading(false);
+          // setShow(true);
+          // setShowStatus(responseValidacionQR.status);
+          // setShowMessage(responseValidacionQR.message);
+
+          //}
+
 
         } else {
 
