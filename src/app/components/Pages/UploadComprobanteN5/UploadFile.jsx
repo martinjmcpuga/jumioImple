@@ -170,8 +170,6 @@ function UploadFile() {
 
       if (filesImage.length > 0) {
 
-        console.log('1')
-
         responseVerificate = await uploadFilesServiceN5_Jumio(
           filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
         );
@@ -206,38 +204,36 @@ function UploadFile() {
 
         if (responseComprobanteByName.status === 200) {
 
-          //const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
+          const responseValidacionQR = await validateComprobanteByQR_Jumio(objAWS);
 
-          //if (responseValidacionQR.status === 200) {
+          if (responseValidacionQR.status === 200) {
 
+            const objAWS = {
+              id: sessionStorage.getItem('id_jumio')
+            };
 
-          const objAWS = {
-            id: sessionStorage.getItem('id_jumio')
-          };
+            const responseHis0 = await mtUpdateComprobante0_Jumio(objAWS);
 
+            if (responseHis0.status === 200) {
 
-          const responseHis0 = await mtUpdateComprobante0_Jumio(objAWS);
+              router.push("/requerimientosselectedn5");
 
-          if (responseHis0.status === 200) {
+            } else {
 
-            router.push("/requerimientosselectedn5");
+              setShow(true);
+              setShowStatus(responseHis0.status);
+              setShowMessage(responseHis0.message);
+
+            }
 
           } else {
 
+            setLoading(false);
             setShow(true);
-            setShowStatus(responseHis0.status);
-            setShowMessage(responseHis0.message);
+            setShowStatus(responseValidacionQR.status);
+            setShowMessage(responseValidacionQR.message);
 
           }
-
-          //} else {
-
-          // setLoading(false);
-          // setShow(true);
-          // setShowStatus(responseValidacionQR.status);
-          // setShowMessage(responseValidacionQR.message);
-
-          //}
 
 
         } else {
