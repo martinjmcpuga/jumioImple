@@ -219,6 +219,7 @@ function UploadFile() {
 
             } else {
 
+              setLoading(false);
               setShow(true);
               setShowStatus(responseHis0.status);
               setShowMessage(responseHis0.message);
