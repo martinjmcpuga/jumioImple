@@ -44,7 +44,6 @@ input {
 
 .txtNat_P3Hist {
     width: 300px;
-    height: 17px;
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-28) var(--unnamed-font-family-inter);
     letter-spacing: var(--unnamed-character-spacing-0);
     color: var(--unnamed-color-0c3c2c);

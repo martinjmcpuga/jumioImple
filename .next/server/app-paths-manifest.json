@@ -1,6 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/bandeja/page": "app/bandeja/page.js",
-  "/camaracompare/page": "app/camaracompare/page.js",
-  "/page": "app/page.js"
+  "/documentos/page": "app/documentos/page.js",
+  "/imganterior/page": "app/imganterior/page.js",
+  "/imganteriorerror/page": "app/imganteriorerror/page.js",
+  "/infocredencial/page": "app/infocredencial/page.js",
+  "/jumiocomponent/page": "app/jumiocomponent/page.js",
+  "/page": "app/page.js",
+  "/paises/page": "app/paises/page.js",
+  "/requerimientos/page": "app/requerimientos/page.js"
 }
