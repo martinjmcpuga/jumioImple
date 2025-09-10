@@ -169,9 +169,23 @@ function UploadFile() {
 
       if (selectedFile) {
 
-        responseVerificate = await uploadFilesServiceN5_Jumio(
-          selectedFile, "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
-        );
+        /****************************************************************************/
+
+        if (filesImage.length > 0) {
+          responseVerificate = await uploadFilesServiceN5_Jumio(
+            filesImage[0], "", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+          );
+        }
+
+        /****************************************************************************/
+
+        if (filesImage[1] != null && filesImage[1] !== undefined) {
+
+          await uploadN5Archivo2_2C_Jumio(
+            filesImage[1], "V2_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
+          );
+
+        }
 
         if (responseVerificate.status === 200) {
 
@@ -520,7 +534,7 @@ function UploadFile() {
 
       {/* Mensaje de errores */}
 
-      <Modal show={show} onHide={handleClose} animation={false} centered  className="animate__animated animate__fadeIn">
+      <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn">
         <Modal.Body className="backGroudModal">
           <div className="msjTitleModalDiv">Error {showStatus}</div>
           <div className="msjErrorModal">{showMessage}</div>
