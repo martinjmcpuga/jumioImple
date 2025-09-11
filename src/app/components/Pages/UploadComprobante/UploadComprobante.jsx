@@ -8,6 +8,7 @@ import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styleUploadFile.css";
+import { validacionTipoComprobanteJumio } from "../../Api/validacionTipoComprobanteJumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -163,7 +164,6 @@ function UploadComprobante() {
 
     } else if (selectedFile) {
 
-
       responseVerificate = await uploadFilesService(
         selectedFile, "Comprobante_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
@@ -171,12 +171,31 @@ function UploadComprobante() {
 
     if (responseVerificate.status === 200) {
 
-      router.push('/datadompersonal');
+      const obj = {
+        idJumio: sessionStorage.getItem('id_jumio'),
+        nombreComprobante0: "Comprobante_",
+        nombreComprobante1: sessionStorage.getItem("sCpv"),
+        nombreComprobante2: "_1.png",
+        tipoComprobante: sessionStorage.getItem('tipo_comprobante')
+      };
+
+      const responseComprobante = await validacionTipoComprobanteJumio(obj);
+
+      if (responseComprobante.status === 200) {
+
+        router.push('/datadompersonal');
+
+      } else {
+
+        setLoading(false);
+        showModalError(responseComprobante.status, responseComprobante.message);
+
+      }
 
     } else {
 
       setLoading(false);
-      showModalError('Error', responseVerificate.message);
+      showModalError(responseVerificate.status, responseVerificate.message);
 
     }
 
@@ -336,7 +355,7 @@ function UploadComprobante() {
 
       <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn">
         <Modal.Body className="backGroudModal">
-          <div className="msjTitleModalDiv">Error {showStatus}</div>
+          <div className="msjTitleModalDiv">Error</div>
           <div className="msjErrorModal">{showMessage}</div>
         </Modal.Body>
         <Modal.Footer>
