@@ -7,23 +7,9 @@ import { useRouter } from 'next/navigation'
 
 function Header({ imgBack, imgBackRig, title, name,titleSizing }) {
 
- const [interName, setInterName] = useState('Autenticación Personal');
- const [titleMain, setTitleMain] = useState('Enrolamiento');
- const { rutaBack } = useAppContext();
+
+ const { rutaBack, interName, Title  } = useAppContext();
 const router = useRouter();
-
- useEffect(() => {
-
-  if(sessionStorage.getItem('interName')){
-    setInterName(sessionStorage.getItem('interName'));
-  }
-
-  if(sessionStorage.getItem('TitleMain')){
-    setTitleMain(sessionStorage.getItem('TitleMain'));
-  
-  }
- 
- }, []);
 
 
 
@@ -70,7 +56,7 @@ const router = useRouter();
             <img src='/assets/aicm.svg' />
           </div>
           <div>
-            <p className='txtTitleDem_P2' >{titleMain}</p>
+            <p className='txtTitleDem_P2' >{Title}</p>
           </div>
         </div>
 

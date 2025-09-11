@@ -28,6 +28,8 @@
 }
 
 .line--Margin {
-    color: #cfcfcf;
+    border: none;
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 0.8rem 0;
 }
-

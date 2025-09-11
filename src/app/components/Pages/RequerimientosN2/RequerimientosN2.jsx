@@ -131,13 +131,13 @@ const RequerimientosN2 = () => {
                 <div className="txtSilver_P2">
                   Antes de iniciar, por favor confirma lo siguiente:
                 </div>
-                <hr className="line" />
+                <hr className="line--Margin" />
                 <div className="container-fluid ">
 
                   <div className="row">
                     <div className="col-12">
 
-                      <article className="d-flex  align-items-center">
+                      <article className="flex  items-center">
                         <div className="containerCheck_P28 spaceRadio">
                           <input
                             type="radio"
@@ -158,7 +158,7 @@ const RequerimientosN2 = () => {
                       {verIdentificacionSocial ? (
                         <>
                           <hr className="line--Margin" />
-                          <article className="d-flex  align-items-center">
+                          <article className="flex   items-center">
                             <div className="containerCheck_P28 spaceRadio">
                               <input
                                 type="radio"
@@ -183,7 +183,7 @@ const RequerimientosN2 = () => {
                       {verIdentificacionFiscal ? (
                         <>
                           <hr className="line--Margin" />
-                          <article className="d-flex  align-items-center">
+                          <article className="flex  items-center ">
                             <div className="containerCheck_P28 spaceRadio">
                               <input
                                 type="radio"

@@ -3,14 +3,18 @@
 import React, { use, useEffect, useState } from 'react'
 import Bandeja from '../components/Pages/Bandeja/Bandeja'
 import Footer from '../components/Footer/Footer';
+import { useAppContext } from '../context/AppContext';
 
 const Page = () => {
 
-  useEffect(() => {
-    sessionStorage.setItem('interName', 'Operaciones');
-    sessionStorage.setItem('TitleMain', 'Bandeja');
-  }, []);
+  const{setInterName,setTitle}=useAppContext();
 
+  useEffect(() => {
+    setInterName('Operaciones');
+    setTitle('Bandeja');
+    sessionStorage.setItem('interName','Operaciones');
+    sessionStorage.setItem('Title','Bandeja');
+  }, []);
 
   const handleback = () => setShow(false);
   const handleShow = () => setShow(true);
