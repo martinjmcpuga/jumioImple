@@ -17,8 +17,6 @@ const UploadComprobanteCarta = () => {
     setRutaBack('/requerimientosn5cartaselected');
   }, []);
 
-
-
   const handleFiles = () => {
     setEnabled(true);
   }
