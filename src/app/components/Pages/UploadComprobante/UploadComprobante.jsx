@@ -4,11 +4,11 @@ import { useRef, useState, useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { uploadFilesService } from "../../Api/uploadFilesService";
+import { validacionTipoComprobanteJumio } from "../../Api/validacionTipoComprobanteJumio";
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styleUploadFile.css";
-import { validacionTipoComprobanteJumio } from "../../Api/validacionTipoComprobanteJumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -156,11 +156,10 @@ function UploadComprobante() {
     let responseVerificate = null;
 
     if (filesImage.length > 0) {
-      console.log(filesImage);
+
       responseVerificate = await uploadFilesService(
         filesImage[0], "Comprobante_", sessionStorage.getItem("sCpv"), sessionStorage.getItem('id_jumio')
       );
-
 
     } else if (selectedFile) {
 
