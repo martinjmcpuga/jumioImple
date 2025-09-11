@@ -62,6 +62,7 @@ const Bandeja = () => {
   };
 
   useEffect(() => {
+
     if (isRunned.current) return;
     isRunned.current = true;
 
@@ -103,7 +104,6 @@ const Bandeja = () => {
             const responsePersonJumio = await mtFindPersonJumio(objJumioSelfie);
 
             /********************************************************************/
-
 
             if (responsePersonJumio.status === 200) {
 
@@ -191,11 +191,15 @@ const Bandeja = () => {
               }
 
               if (response.valSigDocIndiv === true) {
+
                 setValidateSigInd(true);
+
               }
 
               if (response.valGenerarCita === true) {
+
                 setValidateCita(true);
+
               }
 
               if (response.completarRequermientosAICM === true) {
@@ -207,7 +211,6 @@ const Bandeja = () => {
                 setAuCita(false);
 
               }
-
 
               setLoading(false);
 
