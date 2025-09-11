@@ -127,7 +127,6 @@ function UploadFileContratoIndividualN5() {
 
       }
 
-
     } else if (responseVerificate.status === 500) {
 
       setShow(true);
@@ -147,22 +146,21 @@ function UploadFileContratoIndividualN5() {
   };
 
   function onDocumentLoadSuccess({ numPages }) {
+
     setNumPages(numPages);
     setPageNumber(1);
+
   }
 
   return (
     <>
       <div className="initBack_P2 animate__animated animate__fadeIn">
-
         <div>
-
           {loading ? (
 
             <div className="spinner" />
 
           ) : (
-
             <div className='animate__animated animate__fadeIn'>
               <div className='containerInfo_P2'>
                 <div className="containerIdent_P2">

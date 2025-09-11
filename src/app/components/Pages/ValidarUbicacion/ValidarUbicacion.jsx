@@ -35,8 +35,6 @@ function ValidarUbicacion() {
     const [lng, setLng] = useState("");
     const [canvas, setCanvas] = useState(null);
     const [dataUrl, setDataUrl] = useState(null);
-
-
     const [loading, setLoading] = useState(false);
 
     /******************************************************************** */
@@ -72,10 +70,8 @@ function ValidarUbicacion() {
             setMuniDom(sessionStorage.getItem("muniDom"));
             setLatitud(sessionStorage.getItem("latitud"));
             setLongitud(sessionStorage.getItem("longitud"));
-
             setLatitudObj(sessionStorage.getItem("latitud_obtenida"));
             setLongitudObj(sessionStorage.getItem('longitud_obtenida'));
-
             setLat(sessionStorage.getItem("latitud_obtenida"));
             setLng(sessionStorage.getItem('longitud_obtenida'));
 

@@ -64,7 +64,6 @@ const UploadComprobanteN5 = () => {
           </div>
           {enabled ? (<UploadFile />)
             : null}
-
         </div>
       </div>
     </>
