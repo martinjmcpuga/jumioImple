@@ -60,7 +60,7 @@ const CamComponent = ({ }) => {
 
     //Sugerencia de uso de useEffect para envio de imagen
     useEffect(() => {
-        console.log(imageSrc);
+        // console.log(imageSrc);
     }, [imageSrc])
 
     useEffect(() => {
