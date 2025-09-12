@@ -262,6 +262,10 @@ const Bandeja = () => {
     router.push("/cita");
   };
 
+  const getHomeFirma = async () => {
+    router.push("/firmadoc");
+  };
+
 
   const onDomComplete = async () => {
   };
@@ -477,6 +481,7 @@ const Bandeja = () => {
                   <>
                     <div className="rcornersDes27"
                       style={{ marginTop: "12px" }}
+                      onClick={getHomeFirma}
                     >
                       <img src='assets/file_alt.svg' align="left" className="imgFol_P27_Img marginCustom" />
                       <img

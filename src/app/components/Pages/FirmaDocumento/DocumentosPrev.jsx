@@ -1,6 +1,8 @@
 'use client'
 
+
 import React from 'react';
+import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useRef, useState } from "react";
 import { getGetDocIndividualWsaicm } from '../../Api/getGetDocIndividualWsaicm';
 import { useRouter } from 'next/navigation';
@@ -12,21 +14,19 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 import './DataCss.css'
 
 const Viewer = dynamic(
-    () => import('@react-pdf-viewer/core').then((mod) => mod.Viewer),
-    { ssr: false }
+  () => import('@react-pdf-viewer/core').then((mod) => mod.Viewer),
+  { ssr: false }
 );
 
 const Worker = dynamic(
-    () => import('@react-pdf-viewer/core').then((mod) => mod.Worker),
-    { ssr: false }
+  () => import('@react-pdf-viewer/core').then((mod) => mod.Worker),
+  { ssr: false }
 );
-
-
 
 const DocumentosPrev = () => {
 
-
-
+  const { setRutaBack } = useAppContext();
+  const router = useRouter();
   const isRunned = useRef(false);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -36,6 +36,11 @@ const DocumentosPrev = () => {
   const [showError, setShowError] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
   const [validacionDoc, setValidacionDoc] = useState(false);
+
+  useEffect(() => {
+    setRutaBack('/bandeja');
+  }, []);
+
 
   useEffect(() => {
     if (isRunned.current) return;
@@ -72,26 +77,26 @@ const DocumentosPrev = () => {
   }, []);
 
   const handleAceptar = async () => {
-    navigate('/PantallaBase27');
+
+    router.push('/bandeja');
+
   }
 
   const handleClose = () => {
     setShow(false);
-    navigate('/PantallaBase27');
+    router.push('/bandeja');
   }
 
   const handleCloseError = () => {
     setShowError(false);
-    navigate('/PantallaBase27');
+    router.push('/bandeja');
+
   }
 
   const handleConfirmar = () => {
-    navigate("/FlujoIncodeSigDoc", {
-      state: {
-        rutaContinue: "/PantallaBase26N5",
-        typeCredential: "ine"
-      }
-    });
+
+    setShow(false);
+
   }
 
   const newplugin = defaultLayoutPlugin();
@@ -111,21 +116,21 @@ const DocumentosPrev = () => {
             <div className='d-flex justify-content-between align-items-center '>
               <p className="title-body mb-5 mt-0 d-flex align-items-center">Firma de Documento</p>
               <p className="mb-0 mt-0">
-                <img  alt="" onClick={handleClose} />
+                <img alt="" onClick={handleClose} />
               </p>
             </div>
-           <div className='newModal'  style={{ height: '43vh', '--scale-factor': 1 }}>
+            <div className='newModal' style={{ height: '43vh', '--scale-factor': 1 }}>
               <Worker workerUrl='https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js'  >
                 <Viewer defaultScale={.9} fileUrl={pdfUrl} plugins={[newplugin]} httpHeaders={{
                   "Content-Type": "application/json",
 
                 }} />
               </Worker>
-           </div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <button className='p-7 mt-3 rounded-pill Button__autorizar w-full d-flex align-items-center justify-content-evenly' onClick={handleConfirmar}>
-              <img   srcSet="" />
+              <img srcSet="" />
               Autorizar Documento
             </button>
           </Modal.Footer>
@@ -172,7 +177,7 @@ const DocumentosPrev = () => {
               <div className="spaceButton14" />
             </div>
             <div className="imageContainer_P2">
-              <img src='/assets/foodbrand@2x.png'  className="imgFooter_P2" />
+              <img src='/assets/foodbrand@2x.png' className="imgFooter_P2" />
             </div>
           </div>
         </div>
