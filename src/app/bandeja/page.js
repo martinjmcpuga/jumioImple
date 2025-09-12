@@ -7,13 +7,13 @@ import { useAppContext } from '../context/AppContext';
 
 const Page = () => {
 
-  const{setInterName,setTitle}=useAppContext();
+  const { setInterName, setTitle } = useAppContext();
 
   useEffect(() => {
     setInterName('Operaciones');
     setTitle('Bandeja');
-    sessionStorage.setItem('interName','Operaciones');
-    sessionStorage.setItem('Title','Bandeja');
+    sessionStorage.setItem('interName', 'Operaciones');
+    sessionStorage.setItem('Title', 'Bandeja');
   }, []);
 
   const handleback = () => setShow(false);
