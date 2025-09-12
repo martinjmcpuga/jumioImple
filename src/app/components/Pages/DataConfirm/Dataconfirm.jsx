@@ -25,7 +25,7 @@ const Dataconfirm = () => {
   const { setTokenJumio } = useAppContext();
 
   useEffect(() => {
-    
+
     setFirstName(sessionStorage.getItem("nombre") || '');
     setPaternalLastName(sessionStorage.getItem("paterno") || '');
     setMaternalLastName(sessionStorage.getItem("materno") || '');
