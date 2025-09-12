@@ -34,6 +34,47 @@ function DataDomPersonal() {
     const [latitud, setLatitud] = useState(0.0);
     const [longitud, setLongitud] = useState(0.0);
 
+    useEffect(() => {
+
+
+        async function createSession1() {
+
+            setTipoColonia([]);
+
+            if (sessionStorage.getItem('cp_comprobante') != null &&
+                sessionStorage.getItem('cp_comprobante') != undefined &&
+                sessionStorage.getItem('cp_comprobante') != 0) {
+
+                setCodigoPostal(sessionStorage.getItem('cp_comprobante'));
+
+                const modelCodigoPostal = {
+                    cp: sessionStorage.getItem('cp_comprobante')
+                }
+
+                const response = await getCodigoPostalCpt_Jumio(modelCodigoPostal);
+
+                if (response.status === 200) {
+
+                    setEdo(response.listRest[0].nomestado);
+                    setMuni(response.listRest[0].municipio);
+                    setTipoColonia(response.listRest);
+
+                } else {
+
+                    setTipoColonia([]);
+
+                }
+            }
+
+            setLoading(false);
+        }
+
+        createSession1();
+
+    }, []);
+
+
+
     var config = {
         enableHighAccuracy: true,
         maximumAge: 30000,
