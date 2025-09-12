@@ -32,7 +32,6 @@ const DocumentosPrev = () => {
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
-  const navigate = useRouter();
   const [showError, setShowError] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
   const [validacionDoc, setValidacionDoc] = useState(false);
