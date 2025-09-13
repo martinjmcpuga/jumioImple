@@ -42,7 +42,7 @@ const ResumeAddScore = () => {
                 id: sessionStorage.getItem('id_jumio')
             }
 
-            const responseAdd = await getWsAddScoreJumio(objModel);
+            getWsAddScoreJumio(objModel);
             router.push('/bandeja');
 
         } catch (e) {
