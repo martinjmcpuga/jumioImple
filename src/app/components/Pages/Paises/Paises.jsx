@@ -308,6 +308,7 @@ const Paises = () => {
         </Modal.Header>
 
         <Modal.Body>
+
           <p className="txtMsj_P1">
             Sistema de Confiabilidad DPR SAPI, requiere el consentimiento y aceptación de las
             Políticas de Privacidad de todos los Usuarios de esta Aplicación Web.
@@ -377,6 +378,7 @@ const Paises = () => {
       </Modal>
 
       <Footer />
+
     </>
   );
 };
