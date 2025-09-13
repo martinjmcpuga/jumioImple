@@ -320,7 +320,7 @@ const Paises = () => {
             className={`buttonCookies_P1 ${onehabilita ? "buttonEnabled" : ""}`}
             onClick={() => setOnehabilita(!onehabilita)}
           >
-            <div className="txtCookies_P1">Aceptar Uso de Cookies</div>
+            <div className="txtCookies_P1">Aceptar Política de Privacidad</div>
           </button>
           <div className="spaceButtonModal" />
           <button

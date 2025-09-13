@@ -107,6 +107,8 @@ const HistorialLaboral = () => {
 
       const responsePerson = await mtFindPersonJumio(objCons);
 
+      console.log(responsePerson);
+
       if (responsePerson.status === 200) {
 
         if (responsePerson.onActividad === true) {
@@ -218,14 +220,18 @@ const HistorialLaboral = () => {
       id: sessionStorage.getItem('id_jumio'),
     }
 
+    console.log('blHistorial0Ruta -> ' + blHistorial0Ruta);
+
     if (blHistorial0Ruta === '0') {
 
       const responseHis0 = await mtUpdateHistorial0Jumio(objCons);
 
+      console.log(responseHis0);
+
       if (responseHis0.status === 200) {
 
         const objLab = {
-          id: sessionStorage.getItem('idPerson'),
+          id: sessionStorage.getItem('id_jumio'),
           puesto: puesto,
           organizacion: organizacion,
           actual: isSubscribed,
@@ -236,6 +242,8 @@ const HistorialLaboral = () => {
         }
 
         const response = await mtfindSaveLapJumio(objLab);
+
+        console.log(response);
 
         if (response.status === 200) {
 
