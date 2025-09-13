@@ -459,42 +459,42 @@ const HistorialLaboral = () => {
                     <></>
                   )}
                   <div>
-                      <p className="txtNat_P3Hist">Inicio</p>
-                      <DatePicker
-                        className="dateStyle mb-3"
-                        selected={selectedDateInicio}
-                        onChange={(date) => setselectedDateInicio(date)}
-                        dateFormat="yyyy-MM-dd"
-                        showMonthDropdown
-                        showYearDropdown
-                        dropdownMode="scroll"
-                        yearDropdownItemNumber={100} // muestra 100 años en el scroll
-                        locale="es"
-                        placeholderText="YYYY-MM-DD"
-                        minDate={new Date(1950, 0, 1)}
-                        maxDate={new Date(new Date().getFullYear(), 11, 31)}
-                      />
+                    <p className="txtNat_P3Hist">Inicio</p>
+                    <DatePicker
+                      className="dateStyle mb-3"
+                      selected={selectedDateInicio}
+                      onChange={(date) => setselectedDateInicio(date)}
+                      dateFormat="yyyy-MM-dd"
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="scroll"
+                      yearDropdownItemNumber={100} // muestra 100 años en el scroll
+                      locale="es"
+                      placeholderText="YYYY-MM-DD"
+                      minDate={new Date(1950, 0, 1)}
+                      maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                    />
 
-                      {!isSubscribed && (
-                        <>
-                          <p className="txtNat_P3Hist">Terminación</p>
-                          <DatePicker
-                            className="dateStyle mb-3"
-                            selected={selectedDateTermino}
-                            onChange={(date) => setselectedDateTermino(date)}
-                            dateFormat="yyyy-MM-dd"
-                            showMonthDropdown
-                            showYearDropdown
-                            dropdownMode="scroll"
-                            yearDropdownItemNumber={100}
-                            locale="es"
-                            placeholderText="YYYY-MM-DD"
-                            minDate={selectedDateInicio || new Date(1950, 0, 1)}
-                            maxDate={new Date(new Date().getFullYear(), 11, 31)}
-                          />
-                        </>
-                      )}
-                    </div>
+                    {!isSubscribed && (
+                      <>
+                        <p className="txtNat_P3Hist">Terminación</p>
+                        <DatePicker
+                          className="dateStyle mb-3"
+                          selected={selectedDateTermino}
+                          onChange={(date) => setselectedDateTermino(date)}
+                          dateFormat="yyyy-MM-dd"
+                          showMonthDropdown
+                          showYearDropdown
+                          dropdownMode="scroll"
+                          yearDropdownItemNumber={100}
+                          locale="es"
+                          placeholderText="YYYY-MM-DD"
+                          minDate={selectedDateInicio || new Date(1950, 0, 1)}
+                          maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                        />
+                      </>
+                    )}
+                  </div>
 
                   <p className="txtNat_P3Hist">País</p>
                   <Select

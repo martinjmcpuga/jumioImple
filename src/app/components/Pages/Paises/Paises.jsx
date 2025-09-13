@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { Form, Spinner, Modal } from 'react-bootstrap';
 import { getPaisByIso } from '../../Api/getPaisByIso';
 import { useAppContext } from '../../../context/AppContext';
 import Footer from '../../Footer/Footer';
-import Link from 'next/link';
 import './paises.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
@@ -14,11 +14,13 @@ import { mtfindCpvIdJumio } from '../../Api/mtfindCpvIdJumio';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Paises = () => {
+
   const { setRutaBack } = useAppContext();
   const ref = useRef(null);
   const isRunned = useRef(false);
-
+  const router = useRouter();
   const [modalShow, setModalShow] = useState(false);
+  const [showPolitica, setShowPolitica] = useState(false);
   const [show, setShow] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
@@ -33,6 +35,7 @@ const Paises = () => {
   const [country, setCountry] = useState([]);
   const { cpvI, curpValidate, setPais, setPaisIso2 } = useAppContext();
   const [mounted, setMounted] = useState(false);
+  const [onehabilita, setOnehabilita] = useState(true);
 
   useEffect(() => {
     setRutaBack('/requerimientos');
@@ -153,8 +156,8 @@ const Paises = () => {
       backgroundColor: state.isSelected
         ? '#0078ff26'
         : state.isFocused
-        ? '#f1f1f1'
-        : 'white',
+          ? '#f1f1f1'
+          : 'white',
       color: '#333',
       cursor: 'pointer',
     }),
@@ -165,6 +168,21 @@ const Paises = () => {
       gap: '8px',
     }),
   };
+
+  const onPoliticas = () => {
+
+    setShowPolitica(true);
+
+  };
+
+  const onContinueClose = async () => {
+    router.push("/documentos");
+  };
+
+  const onContinueModel = async () => {
+    router.push("/documentos");
+  };
+
 
   return (
     <>
@@ -250,11 +268,11 @@ const Paises = () => {
                   </>
                 )}
                 {blContinueOp === '3' && (
-                  <Link href={'/documentos'}>
-                    <button className="button_P2 animate__animated animate__fadeIn">
-                      <span className="txtButton_P2">Continuar</span>
-                    </button>
-                  </Link>
+
+                  <button className="button_P2 animate__animated animate__fadeIn" onClick={onPoliticas}>
+                    <span className="txtButton_P2">Continuar</span>
+                  </button>
+
                 )}
                 {blContinueOp === '4' && (
                   <button
@@ -269,6 +287,72 @@ const Paises = () => {
           )}
         </div>
       </div>
+
+      <Modal
+        show={showPolitica} size="sm"
+        onHide={onContinueModel}
+        centered backdrop="static"
+        keyboard={false}
+        className="animate__animated animate__fadeIn"
+      >
+
+        <Modal.Header id="contained-modal-title-vcenter">
+          <Modal.Title >
+            <div className="txtHead_P1">Política de Privacidad</div>
+          </Modal.Title>
+          <div className="p1">
+          </div>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p className="txtMsj_P1">
+            Sistema de Confiabilidad DPR SAPI, requiere el consentimiento y aceptación de las
+            Políticas de Privacidad de todos los Usuarios de esta Aplicación Web.
+            Nuestros Procesos de Certificación recaban Datos Personales para proporcionar los mejores servicios a
+            todos nuestros Clientes.
+            El tipo de datos que se recaban y se utilizan depende de las Operaciones Realizadas por el Usuario. Adicionalmente recabamos
+            información sobre las aplicaciones, los navegadores y los dispositivos
+            utilizados, esto permite asegurar la autenticidad, veracidad, y legitimidad
+            de los datos, así como incrementar la seguridad y ofrecer funciones avanzadas.
+          </p>
+
+          <button
+            className={`buttonCookies_P1 ${onehabilita ? "buttonEnabled" : ""}`}
+            onClick={() => setOnehabilita(!onehabilita)}
+          >
+            <div className="txtCookies_P1">Aceptar Uso de Cookies</div>
+          </button>
+          <div className="spaceButtonModal" />
+          <button
+            className={!onehabilita ? "buttonModal_P1" : "buttonModal_disable"}
+            onClick={onContinueModel}
+            disabled={onehabilita}
+          >
+            <div
+              className={
+                !onehabilita ? "txtButtonModal_P1" : "txtButtonModal_disable"
+              }
+            >
+              Confirmar
+            </div>
+          </button>
+          <br />
+        </Modal.Body>
+        <div className="foorterBackground_P1">
+          <Modal.Footer>
+            <span className="txtFooorter_P1">
+              IMPORTANTE: Consulte nuestra{" "}
+              <span className="txtCookiesFooorter_P1">
+                {" "}
+                <a href="https://midpr.net/privacidad.php" target="_blank">
+                  Política de Privacidad
+                </a>
+              </span>{" "}
+              para más detalles sobre la protección de datos.
+            </span>
+          </Modal.Footer>
+        </div>
+      </Modal>
 
       <Modal
         show={show}
