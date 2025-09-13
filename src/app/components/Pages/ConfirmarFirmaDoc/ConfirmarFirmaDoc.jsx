@@ -36,8 +36,6 @@ function ConfirmarFirmaDoc() {
         router.push('/bandeja');
     }
 
-
-
     return (
         <>
             <div className='containerInfo_P2 animate__animated animate__fadeIn'>
