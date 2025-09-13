@@ -77,7 +77,7 @@ const DocumentosPrev = () => {
 
   const handleAceptar = async () => {
 
-    router.push('/bandeja');
+    router.push('/camaracomparefirma');
 
   }
 
@@ -95,7 +95,7 @@ const DocumentosPrev = () => {
   const handleConfirmar = () => {
 
     setShow(false);
-
+    router.push('/camaracomparefirma');
   }
 
   const newplugin = defaultLayoutPlugin();
@@ -104,12 +104,11 @@ const DocumentosPrev = () => {
     <>
       <>
         <Modal
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-          backdrop="static"
-          show={show}
+          show={show} size="sm"
           onHide={handleClose}
-          className='Modal_Styled'
+          centered backdrop="static"
+          keyboard={false}
+          className="animate__animated animate__fadeIn"
         >
           <Modal.Body >
             <div className='d-flex justify-content-between align-items-center '>
@@ -134,8 +133,6 @@ const DocumentosPrev = () => {
             </button>
           </Modal.Footer>
         </Modal>
-
-
 
       </>
 
