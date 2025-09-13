@@ -43,6 +43,7 @@ function DataDomPersonal() {
 
             if (sessionStorage.getItem('cp_comprobante') != null &&
                 sessionStorage.getItem('cp_comprobante') != undefined &&
+                sessionStorage.getItem('cp_comprobante') != "null" &&
                 sessionStorage.getItem('cp_comprobante') != 0) {
 
                 setCodigoPostal(sessionStorage.getItem('cp_comprobante'));
