@@ -301,6 +301,9 @@ const Paises = () => {
             <div className="txtHead_P1">Política de Privacidad</div>
           </Modal.Title>
           <div className="p1">
+            <div className="btn-close" >
+              <a href="https://midpr.icu/usuarioaicm/" role="button"></a>
+            </div>
           </div>
         </Modal.Header>
 

@@ -2,8 +2,6 @@
 import React from 'react';
 import Paises from '../components/Pages/Paises/Paises';
 
-
-
 const Page = () => {
   return (
     <>
