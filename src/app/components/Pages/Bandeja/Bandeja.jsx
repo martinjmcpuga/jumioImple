@@ -168,41 +168,41 @@ const Bandeja = () => {
 
               }
 
-              if (response.valRfc === true) {
-                setRfc(response.rfc);
+              if (responsePersonJumio.valRfc === true) {
+                setRfc(responsePersonJumio.rfc);
               }
 
-              if (response.valNss === true) {
+              if (responsePersonJumio.valNss === true) {
                 setValidateNss(true);
                 setNss(response.nss);
               }
 
-              if (response.onHistorialCompleto === true && response.comprobante0 === true) {
+              if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.comprobante0 === true) {
 
                 setValidateLab(true);
 
               }
 
-              if (response.onHistorialCompleto === true && response.cartaCompromiso === true &&
-                response.contratoIndividual === true) {
+              if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.cartaCompromiso === true &&
+                responsePersonJumio.contratoIndividual === true) {
 
                 setValidateLab(true);
 
               }
 
-              if (response.valSigDocIndiv === true) {
+              if (responsePersonJumio.valSigDocIndiv === true) {
 
                 setValidateSigInd(true);
 
               }
 
-              if (response.valGenerarCita === true) {
+              if (responsePersonJumio.valGenerarCita === true) {
 
                 setValidateCita(true);
 
               }
 
-              if (response.completarRequermientosAICM === true) {
+              if (responsePersonJumio.completarRequermientosAICM === true) {
 
                 setAuCita(true);
 
