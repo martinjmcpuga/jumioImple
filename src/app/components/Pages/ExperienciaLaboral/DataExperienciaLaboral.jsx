@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const DataExperienciaLaboral = () => {
 
   const isRunned = useRef(false);
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [paternalLastName, setPaternalLastName] = useState("");
@@ -22,6 +22,10 @@ const DataExperienciaLaboral = () => {
   const [loading, setLoading] = useState(false);
   const [userExperience, setUserExperience] = useState("");
   const [verNameFull, setverNameFull] = useState(true);
+
+  useEffect(() => {
+    setRutaBack('/experiencialaboral');
+  }, []);
 
   useEffect(() => {
     if (isRunned.current) return;

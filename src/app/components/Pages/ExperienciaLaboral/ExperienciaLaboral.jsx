@@ -23,11 +23,16 @@ const ExperienciaLaboral = () => {
   ];
 
   const router = useRouter();
-  const { IdJumio } = useAppContext();
+  const { IdJumio, setRutaBack } = useAppContext();
   const isRunned = useRef(false);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [option, setSelectedOption] = useState(null);
   const [urlBack, setUrlBack] = useState("");
+
+  useEffect(() => {
+    setRutaBack(sessionStorage.getItem("n5com"));
+  }, []);
+
 
   useEffect(() => {
     if (isRunned.current) return;

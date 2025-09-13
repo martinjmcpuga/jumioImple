@@ -8,11 +8,6 @@ import Link from 'next/link';
 const Dataconfirm = () => {
 
   const { setRutaBack } = useAppContext();
-
-  useEffect(() => {
-    setRutaBack('/documentos');
-  }, []);
-
   const [loading, setLoading] = useState(true);
   const isRunned = useRef(false);
   const [firstName, setFirstName] = useState('');
@@ -23,6 +18,10 @@ const Dataconfirm = () => {
   const [verNameFull, setverNameFull] = useState(true);
   const { cpvI } = useAppContext();
   const { setTokenJumio } = useAppContext();
+
+  useEffect(() => {
+    setRutaBack('/documentos');
+  }, []);
 
   useEffect(() => {
 
