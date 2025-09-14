@@ -1,1 +1,22 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/autenticacionlaboral/page": "app/autenticacionlaboral/page.js",
+  "/bandeja/page": "app/bandeja/page.js",
+  "/camaracompare/page": "app/camaracompare/page.js",
+  "/camaracomparefirma/page": "app/camaracomparefirma/page.js",
+  "/comprobantedompersonal/page": "app/comprobantedompersonal/page.js",
+  "/confirmarfirmadoc/page": "app/confirmarfirmadoc/page.js",
+  "/datadompersonal/page": "app/datadompersonal/page.js",
+  "/domiciliopersonal/page": "app/domiciliopersonal/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/firmadoc/page": "app/firmadoc/page.js",
+  "/initdomicilio/page": "app/initdomicilio/page.js",
+  "/page": "app/page.js",
+  "/requerimientosn2/page": "app/requerimientosn2/page.js",
+  "/requerimientosn5/page": "app/requerimientosn5/page.js",
+  "/requerimientosn5cartaselected/page": "app/requerimientosn5cartaselected/page.js",
+  "/requerimientosselected/page": "app/requerimientosselected/page.js",
+  "/requerimientosselectedn5/page": "app/requerimientosselectedn5/page.js",
+  "/resumeaddscore/page": "app/resumeaddscore/page.js",
+  "/uploadcomprobante/page": "app/uploadcomprobante/page.js"
+}

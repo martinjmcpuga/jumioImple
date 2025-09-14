@@ -76,7 +76,6 @@ export default function Home() {
         };
 
         setCpvI(i);
-        console.log(obj)
 
         const response = await getCpvCurpPaisJumio(obj);
 

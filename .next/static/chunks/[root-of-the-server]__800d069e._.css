@@ -5819,8 +5819,8 @@ input::placeholder {
 }
 
 .lineSimple {
-  color: #cfcfcf;
-  margin-top: 20px;
+  color: #e5e7eb;
+  margin-top: .8rem;
   margin-bottom: 20px;
 }
 
