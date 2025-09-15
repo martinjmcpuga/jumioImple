@@ -52,10 +52,7 @@ const Estados = () => {
 
   const handleButtonClick = async () => {
 
-    //
-    //navigate("/Ubicacion", {
-    //  state: { user: "userTest" },
-    //});
+    router.push("/ubicacion");
 
   };
 
