@@ -4,11 +4,11 @@ import React, { useEffect, useState, useRef } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
-import "./FechaCIta.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 import { getHorariosWsaicm } from "../../Api/getHorariosWsaicm";
 const Select = dynamic(() => import('react-select'), { ssr: false });
+import "./FechaCIta.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FechaCita = () => {
 
