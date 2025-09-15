@@ -21,6 +21,10 @@ function RequerimientosN5Recibo() {
   const [cpv, setCpv] = useState(false);
 
   useEffect(() => {
+    setRutaBack('/bandeja');
+  }, []);
+
+  useEffect(() => {
 
     setCpv(sessionStorage.getItem('sCpv'));
 
@@ -30,7 +34,7 @@ function RequerimientosN5Recibo() {
 
     /** Validacion documento laboral  */
 
-    //navigate("/RequerimientosSelectedN5Recibo");
+    router.push("/requerimientosselectedn5recibo");
 
   };
 
