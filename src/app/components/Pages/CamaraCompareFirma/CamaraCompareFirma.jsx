@@ -194,15 +194,22 @@ const CamaraCompareFirma = ({ }) => {
 
                         </section>
 
-                        <div className="btnContinue">
-                            <>
-                                <button
-                                    className="button_P2 animate__animated animate__fadeIn"
-                                    onClick={camOnCapture}
-                                >
-                                    <span className="txtButton_P2">Tomar foto</span>
-                                </button>
-                            </>
+                        <div className="footer ">
+                            <div className="containerCont_P2">
+                                <div className="btnContinue">
+                                    <>
+                                        <button
+                                            className="button_P2 animate__animated animate__fadeIn"
+                                            onClick={camOnCapture}
+                                        >
+                                            <span className="txtButton_P2">Tomar foto</span>
+                                        </button>
+                                    </>
+                                </div>
+                            </div>
+                            <div className="imageContainer_P2">
+                                <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
+                            </div>
                         </div>
 
                     </div>
