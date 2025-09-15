@@ -178,7 +178,6 @@ const CamComponent = ({ }) => {
                     <div className="spinner"></div>
                 ) : (
                     <div className="containerInfo_P2 animate__animated animate__fadeIn">
-
                         <section className="camDisplay ">
                             <WebCam
                                 className='webCam'
@@ -197,10 +196,7 @@ const CamComponent = ({ }) => {
                             <div className='messageForCamContainer'>
                                 <div className='messaseForCam'>{message}</div>
                             </div>
-
-
                         </section>
-
                         <div className="footer ">
                             <div className="containerCont_P2">
 
@@ -214,9 +210,7 @@ const CamComponent = ({ }) => {
                             </div>
                         </div>
                     </div>
-
                 )}
-
             </div>
 
             <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">

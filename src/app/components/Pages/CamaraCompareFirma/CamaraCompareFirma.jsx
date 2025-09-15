@@ -15,6 +15,7 @@ import { mtUpdateSignDocIndivJumio } from '../../Api/mtUpdateSignDocIndivJumio';
 const CamaraCompareFirma = ({ }) => {
 
     const { IdJumio } = useAppContext();
+    const isRunned = useRef(false);
     const router = useRouter();
     const webCamRef = useRef(null)
     const mainButton = useRef(null)
@@ -32,9 +33,31 @@ const CamaraCompareFirma = ({ }) => {
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState("");
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
+
+
+    useEffect(() => {
+
+        if (isRunned.current) return;
+        isRunned.current = true;
+
+        async function createSession() {
+
+            setTimeout(() => {
+
+                setLoading(true);
+
+            }, 1500);
+
+        }
+
+        createSession();
+
+    }, []);
+
+
 
     const handleFilterByVideoInputDevices = useCallback((devices) => {
         SetDevices(devices.filter(({ kind }) => kind === "videoinput"))
@@ -190,10 +213,7 @@ const CamaraCompareFirma = ({ }) => {
                             <div className='messageForCamContainer'>
                                 <div className='messaseForCam'>{message}</div>
                             </div>
-
-
                         </section>
-
                         <div className="footer ">
                             <div className="containerCont_P2">
                                 <div className="btnContinue">
@@ -211,11 +231,8 @@ const CamaraCompareFirma = ({ }) => {
                                 <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
                             </div>
                         </div>
-
                     </div>
-
                 )}
-
             </div>
 
             <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
