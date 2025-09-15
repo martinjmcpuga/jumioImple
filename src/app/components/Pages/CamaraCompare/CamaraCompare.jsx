@@ -14,6 +14,7 @@ import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
 const CamComponent = ({ }) => {
 
     const { IdJumio } = useAppContext();
+    const isRunned = useRef(false);
     const router = useRouter();
     const webCamRef = useRef(null)
     const mainButton = useRef(null)
@@ -31,9 +32,29 @@ const CamComponent = ({ }) => {
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState("");
-    const [loading, setLoading] = useState(true);
-
+    const [loading, setLoading] = useState(false);
+    const [validateCurpCpv, setValidateCurpCpv] = useState(false);
     const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
+
+    useEffect(() => {
+
+        if (isRunned.current) return;
+        isRunned.current = true;
+
+        async function createSession() {
+
+            setTimeout(() => {
+
+                setLoading(true);
+
+            }, 1500);
+
+        }
+
+        createSession();
+
+    }, []);
+
 
     const handleFilterByVideoInputDevices = useCallback((devices) => {
         SetDevices(devices.filter(({ kind }) => kind === "videoinput"))
@@ -182,16 +203,11 @@ const CamComponent = ({ }) => {
 
                         <div className="footer ">
                             <div className="containerCont_P2">
-                                <div className="btnContinue">
-                                    <>
-                                        <button
-                                            className="button_P2 animate__animated animate__fadeIn"
-                                            onClick={camOnCapture}
-                                        >
-                                            <span className="txtButton_P2">Tomar foto</span>
-                                        </button>
-                                    </>
-                                </div>
+
+                                <button className="button_P2 buttonExpandsBase " onClick={camOnCapture}>
+                                    <span className="txtButton_P2">Tomar foto</span>
+                                </button>
+
                             </div>
                             <div className="imageContainer_P2">
                                 <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
