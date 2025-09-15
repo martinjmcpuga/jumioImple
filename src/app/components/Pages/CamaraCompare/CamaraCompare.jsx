@@ -140,6 +140,7 @@ const CamComponent = ({ }) => {
 
         }
 
+
     }
 
     useEffect(() => {
@@ -176,27 +177,19 @@ const CamComponent = ({ }) => {
                                 <div className='messaseForCam'>{message}</div>
                             </div>
 
-                            <article className='camButtons'>
-
-                                <img src="assets/cameraSwitchForMobile.svg" alt="" className='camButtons__camSwitchButton' onClick={() => switchButton.current.click()} />
-                                <img src="assets/cameraMainButton2.svg" alt="" className='camButtons__camMainButton' onClick={() => mainButton.current.click()} />
-
-
-                                <button id="startbutton" onClick={camOnCapture} className='d-none' ref={mainButton}>Take photo</button>
-                                <button id="startbutton" ref={switchButton} className='d-none' onClick={() =>
-                                    setFacingMode(facingMode === "user" ? "environment" : "user")
-                                }>Change Camera</button>
-                                {devices.length > 0 && (
-                                    <select name="InputVideoDevices" className='d-none' onChange={(e) => setSelectedDevice(e.target.value)}>
-                                        {devices.map((device, index) => (
-                                            <option key={index} value={device.deviceId}>{device.label}</option>
-                                        ))}
-                                    </select>
-                                )}
-                            </article>
 
                         </section>
 
+                        <div className="btnContinue">
+                            <>
+                                <button
+                                    className="button_P2 animate__animated animate__fadeIn"
+                                    onClick={camOnCapture}
+                                >
+                                    <span className="txtButton_P2">Tomar foto</span>
+                                </button>
+                            </>
+                        </div>
                     </div>
 
                 )}
