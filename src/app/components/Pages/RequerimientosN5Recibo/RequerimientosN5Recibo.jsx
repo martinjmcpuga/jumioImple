@@ -45,7 +45,6 @@ function RequerimientosN5Recibo() {
 
   return (
     <>
-
       <div className="containerRender onContentExpands">
         {!loading ? (
           <div className="spinner"></div>
@@ -75,7 +74,6 @@ function RequerimientosN5Recibo() {
                 </div>
               </div>
             </div>
-
             <div className="footer">
               <div className="containerCont_P2">
                 <>
@@ -90,7 +88,6 @@ function RequerimientosN5Recibo() {
             </div>
           </>
         )}
-
       </div>
 
 
