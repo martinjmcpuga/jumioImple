@@ -1,0 +1,29 @@
+.Card__fontType {
+    color: #C1C1C1;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.Card__fontType:hover {
+    color: #FFF;
+}
+
+.Card__container {
+    border-radius: 8px;
+    background: #FFF;
+    padding: 5px;
+}
+
+.Card__container:hover {
+    background: #385AED;
+}
+
+.line__custom {
+    color: #cfcfcf;
+}
+
+.line__margin--custom {
+    margin: 0.5rem 0 !important;
+}

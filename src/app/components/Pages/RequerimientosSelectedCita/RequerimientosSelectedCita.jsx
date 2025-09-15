@@ -39,7 +39,7 @@ const RequerimientosSelectedCita = () => {
   };
 
   const handleButtonRef = async () => {
-    // navigate("/FechaCita");
+    router.push("/fechacita");
   }
 
   const getResumen = async () => {
