@@ -107,7 +107,6 @@ const Bandeja = () => {
 
             if (responsePersonJumio.status === 200) {
 
-
               if (responsePerfilCpv.auDomicilio === true) {
                 setAuDomicilio(true);
               }
@@ -254,6 +253,10 @@ const Bandeja = () => {
     router.push('/initdomicilio');
   };
 
+  const onAuHistorial = async () => {
+    router.push("/requerimientosn5recibo");
+  };
+
   const getHomeDomLab = async () => {
     router.push("/autenticacionlaboral");
   };
@@ -266,10 +269,8 @@ const Bandeja = () => {
     router.push("/firmadoc");
   };
 
-
   const onDomComplete = async () => {
   };
-
 
   return (
 
@@ -383,7 +384,7 @@ const Bandeja = () => {
               <>
                 {!validateLab ? (
                   <>
-                    <div className="rcornersDes27" >
+                    <div className="rcornersDes27" onClick={onAuHistorial}>
                       <img src='assets/file_alt.svg' align="left" className="imgFol_P27_Img marginCustom" />
                       <img
                         src='assets/arrow_green.svg'
