@@ -269,8 +269,6 @@ const Bandeja = () => {
     router.push("/firmadoc");
   };
 
-  const onDomComplete = async () => {
-  };
 
   return (
 
@@ -366,7 +364,7 @@ const Bandeja = () => {
                             <div className="txtVerificado">Verificado</div>
                           </div>
                         </div>
-                        <img src='assets/flecha_url.svg' onClick={onDomComplete} className="flecha_url" />
+                        <img src='assets/flecha_url.svg' className="flecha_url" />
                       </div>
                     </div>
                   </>
@@ -533,9 +531,8 @@ const Bandeja = () => {
                   <>
                     {!validateCita ? (
                       <>
-                        <div className="rcornersDes27"
-                          style={{ marginTop: "12px" }}
-                          onClick={getHomeCita}>
+                        <div className="rcornersDes27" onClick={getHomeCita}
+                          style={{ marginTop: "12px" }}>
                           <img src='assets/generarCitaDisabled.svg' align="left" className="imgFol_P27_Img marginCustom" />
                           <img
                             src='assets/arrow_green.svg'
