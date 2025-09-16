@@ -23,6 +23,7 @@ const IneFormulario = () => {
     sexo: "",
   });
 
+  const { IdJumio, setRutaBack } = useAppContext();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const router = useRouter();
   const [nombre, setNombre] = useState("");
