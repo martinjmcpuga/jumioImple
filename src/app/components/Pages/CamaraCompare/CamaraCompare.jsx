@@ -7,7 +7,6 @@ import WebCam from 'react-webcam'
 import * as faceApi from 'face-api.js'
 import './CamaraCompare.css'
 import Modal from "react-bootstrap/Modal";
-import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
 
@@ -160,8 +159,6 @@ const CamComponent = ({ }) => {
             setShowMessage(showMsjUsu);
 
         }
-
-
     }
 
     useEffect(() => {

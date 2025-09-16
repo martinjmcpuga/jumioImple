@@ -2,7 +2,12 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/bandeja/page": "app/bandeja/page.js",
   "/camaracompare/page": "app/camaracompare/page.js",
+  "/cita/page": "app/cita/page.js",
+  "/estados/page": "app/estados/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/fechacita/page": "app/fechacita/page.js",
+  "/ineformulario/page": "app/ineformulario/page.js",
   "/page": "app/page.js",
-  "/requerimientosn5recibo/page": "app/requerimientosn5recibo/page.js"
+  "/requerimientosselectedcita/page": "app/requerimientosselectedcita/page.js",
+  "/ubicacion/page": "app/ubicacion/page.js"
 }

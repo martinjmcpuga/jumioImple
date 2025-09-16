@@ -176,11 +176,16 @@ const Paises = () => {
   };
 
   const onContinueClose = async () => {
+
     router.push("/documentos");
+
   };
 
   const onContinueModel = async () => {
+
     router.push("/documentos");
+
+
   };
 
 
