@@ -36,13 +36,11 @@ const IneFormulario = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
-
     if (nombre !== "" && apellidoPaterno !== "" || nombre !== "" && apellidoMaterno !== "") {
       setButtonEnabled(true);
     } else {
       setButtonEnabled(false);
     }
-
   });
 
   const handleButtonClick = async () => {
