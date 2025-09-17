@@ -10,6 +10,7 @@ import subYears from "date-fns/subYears";
 import es from "date-fns/locale/es";
 import "./style.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "../../Footer/Footer";
 
 const IneFormulario = () => {
 
@@ -144,11 +145,10 @@ const IneFormulario = () => {
                           className="form-control" />
                       </div>
                       <br />
-                      <div className="form-group">
-                        <p className="txtNat_P3Hist">Fecha de Nacimiento:</p>
+                      <div  className="form-group w-full">
+                        <p className="txtNat_P3Hist mb-2">Fecha de Nacimiento:</p>
                         <div>
                           <DatePicker
-                            className="dateStyle"
                             selected={selectedDate}
                             onChange={handleDateChange}
                             onCalendarClose={handleDatePickerClose}
@@ -160,7 +160,7 @@ const IneFormulario = () => {
                             maxDate={today}
                             disabled={isEnabled}
                             locale="es"
-                          />
+                            className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"/>
                         </div>
                       </div>
                       <br />
@@ -196,6 +196,9 @@ const IneFormulario = () => {
           </>
         )}
       </div>
+
+      <Footer />
+
     </>
   );
 }

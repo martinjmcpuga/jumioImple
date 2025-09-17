@@ -43,7 +43,6 @@ input {
 }
 
 .txtNat_P3Hist {
-    width: 300px;
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-28) var(--unnamed-font-family-inter);
     letter-spacing: var(--unnamed-character-spacing-0);
     color: var(--unnamed-color-0c3c2c);
@@ -78,8 +77,18 @@ input {
   overflow-y: scroll !important;
 }
 /* Apunta al input dentro de react-datepicker */
+/* Aplica borde a los inputs del DatePicker */
+
+.dateStyle {
+  width: 100%; /* hace que ocupe todo el ancho disponible */
+  padding-bottom: 10px;
+}
+
+/* Input interno del DatePicker */
 .dateStyle input {
+  width: 100%;        /* que ocupe todo el ancho del contenedor */
   border: 1px solid #000;
   border-radius: 4px;
-  padding: 5px;
+  padding: 6px 10px;
+  box-sizing: border-box;
 }

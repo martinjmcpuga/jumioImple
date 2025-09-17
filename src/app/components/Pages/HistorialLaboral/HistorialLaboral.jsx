@@ -449,7 +449,6 @@ const HistorialLaboral = () => {
 
                   {!blActual ? (
                     <>
-                      <hr className="lineSimple" />
                       <div className="TrabajoActual d-flex  container-fluid py-1" id="RadioSelected" style={{ backgroundColor: '#379bf321', borderRadius: '8px', borderColor: '#379bf3' }}>
                         <div className="row containerTrabajo">
                           <div className="col-1 d-flex justify-content-start ">
@@ -465,29 +464,27 @@ const HistorialLaboral = () => {
                     </>
                   ) : (
                     <></>
-                  )}
-                  <div>
-                    <p className="txtNat_P3Hist">Inicio</p>
-                    <DatePicker
-                      className="dateStyle mb-3"
-                      selected={selectedDateInicio}
-                      onChange={(date) => setselectedDateInicio(date)}
-                      dateFormat="yyyy-MM-dd"
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="scroll"
-                      yearDropdownItemNumber={100} // muestra 100 años en el scroll
-                      locale="es"
-                      placeholderText="YYYY-MM-DD"
-                      minDate={new Date(1950, 0, 1)}
-                      maxDate={new Date(new Date().getFullYear(), 11, 31)}
-                    />
-
+                  )}  
+                  <p className="txtNat_P3Hist">Inicio</p>
+                  <DatePicker
+                    className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"
+                    selected={selectedDateInicio}
+                    onChange={(date) => setselectedDateInicio(date)}
+                    dateFormat="yyyy-MM-dd"
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="scroll"
+                    yearDropdownItemNumber={100} // muestra 100 años en el scroll
+                    locale="es"
+                    placeholderText="YYYY-MM-DD"
+                    minDate={new Date(1950, 0, 1)}
+                    maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                  />
                     {!isSubscribed && (
                       <>
                         <p className="txtNat_P3Hist">Terminación</p>
                         <DatePicker
-                          className="dateStyle mb-3"
+                          className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"
                           selected={selectedDateTermino}
                           onChange={(date) => setselectedDateTermino(date)}
                           dateFormat="yyyy-MM-dd"
@@ -502,7 +499,6 @@ const HistorialLaboral = () => {
                         />
                       </>
                     )}
-                  </div>
 
                   <p className="txtNat_P3Hist">País</p>
                   <Select
@@ -522,7 +518,6 @@ const HistorialLaboral = () => {
 
                   <br />
                   <p className="txtNat_P3Hist">Estado</p>
-
                   <Select
                     options={states}
                     onChange={handleChangeState}
@@ -534,8 +529,6 @@ const HistorialLaboral = () => {
                     )}
                     placeholder="Seleccionar"
                   />
-
-
 
                   <hr className="lineSimple" />
 
