@@ -143,10 +143,7 @@ const CamaraCompareN2 = ({ }) => {
 
         if (response.status === 200) {
 
-
             router.push("/resumeaddscore");
-
-
 
         } else if (response.status === 500) {
 
