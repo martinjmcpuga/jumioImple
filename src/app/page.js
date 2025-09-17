@@ -102,7 +102,7 @@ export default function Home() {
 
                 if (responseValidate.status === 200) {
 
-                  sessionStorage.setItem("nombreManual", "201");
+                  sessionStorage.setItem("nombreManual", "200");
                   sessionStorage.setItem("curpValidate", "" + response.curp);
                   sessionStorage.setItem("nombre", responseValidate.nombre);
                   sessionStorage.setItem("paterno", responseValidate.paterno);
@@ -112,7 +112,7 @@ export default function Home() {
                 } else if (responseValidate.status === 201) {
 
                   sessionStorage.setItem("curpValidate", "" + response.curp);
-                  sessionStorage.setItem("nombreManual", "200");
+                  sessionStorage.setItem("nombreManual", "201");
 
                 } else {
 
