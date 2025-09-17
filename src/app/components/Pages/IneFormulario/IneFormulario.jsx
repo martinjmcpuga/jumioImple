@@ -66,8 +66,7 @@ const IneFormulario = () => {
 
     let dateStr = "" + selectedDate.getFullYear() + "-" + (monthStr) + "-" + darStr;
     sessionStorage.setItem("fechaNacimientoFront", dateStr);
-    //navigate("/PantallaBase14");
-
+    router.push("/documentos");
   };
 
   const handleDateChange = (date) => {

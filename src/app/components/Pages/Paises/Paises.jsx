@@ -183,8 +183,15 @@ const Paises = () => {
 
   const onContinueModel = async () => {
 
-    router.push("/documentos");
+    if (sessionStorage.getItem("nombreManual") === "200") {
 
+      router.push("/documentos");
+
+    } else {
+
+      router.push("/ineformulario");
+
+    }
 
   };
 
