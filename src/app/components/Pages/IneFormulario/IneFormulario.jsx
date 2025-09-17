@@ -133,6 +133,7 @@ const IneFormulario = () => {
                       />
                     </div>
                   </div>
+                  <br />
                 </form>
               </div>
               <hr className="lineSimple" />
