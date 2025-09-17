@@ -115,7 +115,7 @@ const IneFormulario = () => {
           <div className="spinner"></div>
         ) : (
           <>
-            <div className="containerRender">
+            <div className="containerRender animate__animated animate__fadeIn">
               <div className="containerInfo_P2">
                 <div className="containerIdent_P2">
                   <div>
