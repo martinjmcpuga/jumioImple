@@ -24,6 +24,8 @@ const IneFormulario = () => {
   });
 
   const { IdJumio, setRutaBack } = useAppContext();
+  const isRunned = useRef(false);
+  const [loading, setLoading] = useState(true);
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const router = useRouter();
   const [nombre, setNombre] = useState("");
@@ -43,6 +45,30 @@ const IneFormulario = () => {
       setButtonEnabled(false);
     }
   });
+
+
+  useEffect(() => {
+
+    if (isRunned.current) return;
+    isRunned.current = true;
+
+    async function createSession() {
+
+      setLoading(false);
+
+      setTimeout(() => {
+
+        setLoading(true);
+
+      }, 1500);
+
+    }
+
+    createSession();
+
+  }, []);
+
+
 
   const handleButtonClick = async () => {
 
@@ -83,86 +109,92 @@ const IneFormulario = () => {
 
   return (
     <>
-
       <div className="initBack_P2 animate__animated animate__fadeIn">
-        <div className="containerRender">
-          <div className="containerInfo_P2">
-            <div className="containerIdent_P2">
-              <div>
-                <form>
-                  <div className="form-group">
-                    <p className="txtNat_P3Hist">Nombre</p>
-                    <input type="text"
-                      value={nombre || ''}
-                      onChange={(event) => setNombre(event.target.value.toUpperCase())}
-                      className="form-control" />
+
+        {!loading ? (
+          <div className="spinner"></div>
+        ) : (
+          <>
+            <div className="containerRender">
+              <div className="containerInfo_P2">
+                <div className="containerIdent_P2">
+                  <div>
+                    <form>
+                      <div className="form-group">
+                        <p className="txtNat_P3Hist">Nombre</p>
+                        <input type="text"
+                          value={nombre || ''}
+                          onChange={(event) => setNombre(event.target.value.toUpperCase())}
+                          className="form-control" />
+                      </div>
+                      <br />
+                      <div className="form-group">
+                        <p className="txtNat_P3Hist">Apellido Paterno:</p>
+                        <input type="text"
+                          value={apellidoPaterno || ''}
+                          onChange={(event) => setApellidoPaterno(event.target.value.toUpperCase())}
+                          className="form-control" />
+                      </div>
+                      <br />
+                      <div className="form-group">
+                        <p className="txtNat_P3Hist">Apellido Materno:</p>
+                        <input type="text"
+                          value={apellidoMaterno || ''}
+                          onChange={(event) => setApellidoMaterno(event.target.value.toUpperCase())}
+                          className="form-control" />
+                      </div>
+                      <br />
+                      <div className="form-group">
+                        <p className="txtNat_P3Hist">Fecha de Nacimiento:</p>
+                        <div>
+                          <DatePicker
+                            className="dateStyle"
+                            selected={selectedDate}
+                            onChange={handleDateChange}
+                            onCalendarClose={handleDatePickerClose}
+                            dateFormat="yyyy-MM-dd"
+                            showMonthDropdown={true}
+                            showYearDropdown={true}
+                            dropdownMode="select"
+                            minDate={tenYearsAgo}
+                            maxDate={today}
+                            disabled={isEnabled}
+                            locale="es"
+                          />
+                        </div>
+                      </div>
+                      <br />
+                    </form>
                   </div>
-                  <br />
-                  <div className="form-group">
-                    <p className="txtNat_P3Hist">Apellido Paterno:</p>
-                    <input type="text"
-                      value={apellidoPaterno || ''}
-                      onChange={(event) => setApellidoPaterno(event.target.value.toUpperCase())}
-                      className="form-control" />
+                  <hr className="lineSimple" />
+                  <div className="btnContinue">
+                    {!isButtonEnabled ? (
+                      <>
+                        <button className="btnVer_P3">
+                          <span className="txtVer_P3">Continuar</span>
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className="button_P2 animate__animated animate__fadeIn"
+                          onClick={handleButtonClick}
+                        >
+                          <span className="txtButton_P2">Continuar</span>
+                        </button>
+                      </>
+                    )}
                   </div>
-                  <br />
-                  <div className="form-group">
-                    <p className="txtNat_P3Hist">Apellido Materno:</p>
-                    <input type="text"
-                      value={apellidoMaterno || ''}
-                      onChange={(event) => setApellidoMaterno(event.target.value.toUpperCase())}
-                      className="form-control" />
-                  </div>
-                  <br />
-                  <div className="form-group">
-                    <p className="txtNat_P3Hist">Fecha de Nacimiento:</p>
-                    <div>
-                      <DatePicker
-                        className="dateStyle"
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        onCalendarClose={handleDatePickerClose}
-                        dateFormat="yyyy-MM-dd"
-                        showMonthDropdown={true}
-                        showYearDropdown={true}
-                        dropdownMode="select"
-                        minDate={tenYearsAgo}
-                        maxDate={today}
-                        disabled={isEnabled}
-                        locale="es"
-                      />
-                    </div>
-                  </div>
-                  <br />
-                </form>
-              </div>
-              <hr className="lineSimple" />
-              <div className="btnContinue">
-                {!isButtonEnabled ? (
-                  <>
-                    <button className="btnVer_P3">
-                      <span className="txtVer_P3">Continuar</span>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="button_P2 animate__animated animate__fadeIn"
-                      onClick={handleButtonClick}
-                    >
-                      <span className="txtButton_P2">Continuar</span>
-                    </button>
-                  </>
-                )}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="footer">
-          <div className="imageContainer_P2">
-            <img src="assets/foodbrand@2x.png" className="imgFooter_P2" alt="Brand Logo" />
-          </div>
-        </div>
+            <div className="footer">
+              <div className="imageContainer_P2">
+                <img src="assets/foodbrand@2x.png" className="imgFooter_P2" alt="Brand Logo" />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
