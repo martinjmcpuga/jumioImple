@@ -97,6 +97,7 @@ const IneFormulario = () => {
                       onChange={(event) => setNombre(event.target.value.toUpperCase())}
                       className="form-control" />
                   </div>
+                  <br />
                   <div className="form-group">
                     <p className="txtNat_P3Hist">Apellido Paterno:</p>
                     <input type="text"
@@ -104,6 +105,7 @@ const IneFormulario = () => {
                       onChange={(event) => setApellidoPaterno(event.target.value.toUpperCase())}
                       className="form-control" />
                   </div>
+                  <br />
                   <div className="form-group">
                     <p className="txtNat_P3Hist">Apellido Materno:</p>
                     <input type="text"
@@ -111,6 +113,7 @@ const IneFormulario = () => {
                       onChange={(event) => setApellidoMaterno(event.target.value.toUpperCase())}
                       className="form-control" />
                   </div>
+                  <br />
                   <div className="form-group">
                     <p className="txtNat_P3Hist">Fecha de Nacimiento:</p>
                     <div>
