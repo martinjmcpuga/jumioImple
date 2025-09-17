@@ -157,7 +157,7 @@ const RequerimientosSelected = () => {
 
   const getResumen = async () => {
 
-    router.push('/resumeaddscore');
+    router.push('/camaracomparen2');
 
   };
 
