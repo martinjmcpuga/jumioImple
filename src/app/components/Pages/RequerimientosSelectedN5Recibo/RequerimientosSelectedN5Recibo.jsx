@@ -89,8 +89,7 @@ const RequerimientosSelectedN5Recibo = () => {
 
   const getResumen = async () => {
 
-    router.push('/camaracompare');
-
+   router.push('/camaracompare');
 
   };
 
