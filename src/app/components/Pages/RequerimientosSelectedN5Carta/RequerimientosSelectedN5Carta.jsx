@@ -128,7 +128,7 @@ const RequerimientosSelectedN5Carta = (props) => {
 
   const getResumen = async () => {
 
-    router.push('/bandeja');
+    router.push('/camaracompare');
 
     /*
     navigate("/FaceLoginPassaporte", {
