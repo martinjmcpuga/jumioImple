@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
+import { Modal } from 'react-bootstrap';
 
 const country = [
   {
