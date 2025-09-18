@@ -6,10 +6,10 @@ import { getCodigoPostalCpt_Jumio } from "../../Api/getCodigoPostalCpt_Jumio";
 import { getPointCoordenadas_Jumio } from "../../Api/getPointCoordenadas_Jumio";
 import { useRouter } from 'next/navigation';
 import "./styleDomPersonal.css";
-import { Modal } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
+import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DataRefPersonal = () => {
 
