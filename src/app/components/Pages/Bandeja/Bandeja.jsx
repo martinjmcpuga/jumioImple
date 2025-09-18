@@ -53,7 +53,11 @@ const Bandeja = () => {
 
   }, []);
 
-  const handleClose = () => { };
+  const handleClose = () => {
+
+    router.push("/?i=" + sessionStorage.getItem("sCpv"));
+
+  };
 
   const showModalError = (title, message) => {
     setShowStatus(title);
