@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useAppContext } from '@/app/context/AppContext';
 import './style.css';
+import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AutenticacionLaboral = () => {
@@ -15,6 +16,9 @@ const AutenticacionLaboral = () => {
   const [userRfc, setUserRfc] = useState('');
   const [verNameFull, setverNameFull] = useState(true);
   const [cpv, setCpv] = useState("");
+  const [show, setShow] = useState(false);
+  const [showStatus, setShowStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState('');
 
   useEffect(() => {
     setRutaBack('/bandeja');
@@ -34,7 +38,7 @@ const AutenticacionLaboral = () => {
 
         setLoading(true);
 
-      }, 2000);
+      }, 1500);
 
 
     }
@@ -51,6 +55,9 @@ const AutenticacionLaboral = () => {
 
   };
 
+  const handleClose = () => {
+    setShow(false);
+  };
 
   return (
     <>
@@ -60,7 +67,6 @@ const AutenticacionLaboral = () => {
           <div className="spinner"></div>
         ) : (
           <>
-
             <div className='containerInfo_P2'>
               <div className='containerIdent_P2 animate__animated animate__fadeIn'>
                 <div className='txtOp_P2'>Operación/Operation</div>
@@ -124,6 +130,18 @@ const AutenticacionLaboral = () => {
         )}
 
       </div>
+
+      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+        <Modal.Body>
+          <div className="msjTitleModalDiv">{showStatus}</div>
+          <div className="msjErrorModal">{showMessage}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="button_P2" onClick={handleClose}>
+            <span className="txtButton_P2">Regresar</span>
+          </button>
+        </Modal.Footer>
+      </Modal>
 
     </>
   )

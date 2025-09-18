@@ -6,6 +6,8 @@ import { useAppContext } from '@/app/context/AppContext';
 import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
 import { mtUpdateHistorialCompletoJumio } from "../../Api/mtUpdateHistorialCompletoJumio";
 import './HistorialLaboral.css';
+import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ActividadesLaborales = () => {
 
@@ -63,6 +65,7 @@ const ActividadesLaborales = () => {
   }
 
   useEffect(() => {
+
     if (isRunned.current) return;
     isRunned.current = true;
 
@@ -127,6 +130,10 @@ const ActividadesLaborales = () => {
 
   const onAddNuevaAct = async () => {
     router.push('/historiallaboral');
+  };
+
+  const handleClose = () => {
+    setShow(false);
   };
 
   return (
@@ -372,10 +379,7 @@ const ActividadesLaborales = () => {
 
               </div>
             </div>
-
           )}
-
-
         </div>
         <div className="footer">
           <div className="imageContainer_P2">
@@ -383,6 +387,19 @@ const ActividadesLaborales = () => {
           </div>
         </div>
       </div>
+
+      <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+        <Modal.Body>
+          <div className="msjTitleModalDiv">{showStatus}</div>
+          <div className="msjErrorModal">{showMessage}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="button_P2" onClick={handleClose}>
+            <span className="txtButton_P2">Regresar</span>
+          </button>
+        </Modal.Footer>
+      </Modal>
+      
     </>
   )
 }
