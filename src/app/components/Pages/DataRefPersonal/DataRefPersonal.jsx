@@ -1,21 +1,19 @@
 'use client'
 
-import React from "react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { getCodigoPostalCpt_Jumio } from "../../Api/getCodigoPostalCpt_Jumio";
 import { getPointCoordenadas_Jumio } from "../../Api/getPointCoordenadas_Jumio";
 import { useRouter } from 'next/navigation';
 import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
-const Select = dynamic(() => import('react-select'), { ssr: false });
-import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const DataRefPersonal = () => {
 
+    const isRunned = useRef(false);
     const ref = useRef(null);
     const router = useRouter();
-    const isRunned = useRef(false);
     const [codigoPostal, setCodigoPostal] = useState("");
     const [colonia, setColonia] = useState("");
     const [calle, setCalle] = useState("");
@@ -315,18 +313,6 @@ const DataRefPersonal = () => {
                     </div>
                 </div>
             </div>
-
-            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
-                <Modal.Body>
-                    <div className="msjTitleModalDiv">{showStatus}</div>
-                    <div className="msjErrorModal">{showMessage}</div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <button className="button_P2" onClick={handleClose}>
-                        <span className="txtButton_P2">Regresar</span>
-                    </button>
-                </Modal.Footer>
-            </Modal>
 
         </>
     );
