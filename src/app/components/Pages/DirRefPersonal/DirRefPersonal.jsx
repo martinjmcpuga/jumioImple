@@ -18,6 +18,13 @@ const country = [
 function DirRefPersonal() {
 
   const router = useRouter();
+  const [show2, setShow2] = useState(false);
+  const [showStatus, setShowStatus] = useState(null);
+  const [showMessage, setShowMessage] = useState('');
+
+  const handleClose = () => {
+    setShow2(false);
+  };
 
   const onTest = async () => {
     router.push('/datarefpersonal');
@@ -111,6 +118,18 @@ function DirRefPersonal() {
           </div>
         </div>
       </div>
+
+      <Modal show={show2} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+        <Modal.Body>
+          <div className="msjTitleModalDiv">{showStatus}</div>
+          <div className="msjErrorModal">{showMessage}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="button_P2" onClick={handleClose}>
+            <span className="txtButton_P2">Regresar</span>
+          </button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

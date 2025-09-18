@@ -116,11 +116,8 @@ const Dataconfirm = () => {
               </section>
             </Link>
           </div>
-
         )}
-
       </div>
-
 
       <Modal show={show2} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
         <Modal.Body>

@@ -29,6 +29,10 @@ function DataRefPersonal() {
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState('');
 
+    const handleClose = () => {
+        setShow(false);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
     };
@@ -309,6 +313,18 @@ function DataRefPersonal() {
                     </div>
                 </div>
             </div>
+
+            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatus}</div>
+                    <div className="msjErrorModal">{showMessage}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );

@@ -30,7 +30,6 @@ function DataDomPersonal() {
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState('');
-
     const [latitud, setLatitud] = useState(0.0);
     const [longitud, setLongitud] = useState(0.0);
 

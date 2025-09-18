@@ -35,7 +35,6 @@ const DataSocial = ({ }) => {
 
     async function createSession() {
 
-
       const objJumioSelfie = {
         id: sessionStorage.getItem('id_jumio'),
         idJumio: sessionStorage.getItem('id_jumio')
