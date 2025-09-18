@@ -68,7 +68,6 @@ const FechaCita = () => {
 
   }, []);
 
-
   const style = {
     control: (base) => ({
       ...base,

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { mtUpdateComprobanteCompletoJumio } from '../../Api/mtUpdateComprobanteCompletoJumio';
 import Modal from "react-bootstrap/Modal";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { mtFindPersonJumio } from '../../Api/mtFindPersonJumio';
 
 const DataExperienciaLaboral = () => {
 
@@ -33,13 +34,29 @@ const DataExperienciaLaboral = () => {
 
     async function createSession() {
 
-      // setLoading(true);
+      const objJumioSelfie = {
+        id: sessionStorage.getItem('id_jumio'),
+        idJumio: sessionStorage.getItem('id_jumio')
+      };
 
-      setUserExperience(sessionStorage.getItem("experienciaLabel"));
-      setFirstName(sessionStorage.getItem("nombre") || '');
-      setPaternalLastName(sessionStorage.getItem("paterno") || '');
-      setMaternalLastName(sessionStorage.getItem("materno") || '');
+      const responsePersonJumio = await mtFindPersonJumio(objJumioSelfie);
 
+      if (responsePersonJumio.status === 200) {
+
+        setFirstName(responsePersonJumio.nombre);
+        setPaternalLastName(responsePersonJumio.paterno);
+        setMaternalLastName(responsePersonJumio.materno);
+        setUserExperience(sessionStorage.getItem("experienciaLabel"));
+
+      } else {
+
+        setShow(true);
+        setShowStatus(responsePersonJumio.status);
+        setShowMessage(responsePersonJumio.message);
+
+      }
+
+      setLoading(true);
 
     }
 
@@ -80,37 +97,44 @@ const DataExperienciaLaboral = () => {
 
   return (
     <>
+
       <div className="initBack_P2 animate__animated animate__fadeIn">
-        <div className="containerRender">
-          <div className="containerInfo_P2">
-            <div className="containerIdent_P2">
+        {!loading ? (
+          <div className="spinner"></div>
+        ) : (
+          <>
+            <div className="containerRender">
+              <div className="containerInfo_P2">
+                <div className="containerIdent_P2">
 
-              {!verNameFull ? (
-                <>
-                  <div className="txtOp_P2">Nombre/Given name</div>
-                  <div className="txtVer_P2">{firstName}</div>
+                  {!verNameFull ? (
+                    <>
+                      <div className="txtOp_P2">Nombre/Given name</div>
+                      <div className="txtVer_P2">{firstName}</div>
 
-                </>
-              ) : (
-                <>
-                  <div className="txtOp_P2">Nombres/Given names</div>
-                  <div className="txtVer_P2">{firstName}</div>
-                  <div className="txtOp_P2">Apellidos/Surname</div>
-                  <div className="txtVer_P2">{paternalLastName} {maternalLastName}</div>
-                </>
-              )}
+                    </>
+                  ) : (
+                    <>
+                      <div className="txtOp_P2">Nombres/Given names</div>
+                      <div className="txtVer_P2">{firstName}</div>
+                      <div className="txtOp_P2">Apellidos/Surname</div>
+                      <div className="txtVer_P2">{paternalLastName} {maternalLastName}</div>
+                    </>
+                  )}
 
-              <div className="txtOp_P2">Experiencia/Experience</div>
-              <div className="txtVer_P2">{userExperience}</div>
-              <hr className="line" />
-              <div className=' text-center Footer__text'>
-                La fecha de expiración son
+                  <div className="txtOp_P2">Experiencia/Experience</div>
+                  <div className="txtVer_P2">{userExperience}</div>
+                  <hr className="line" />
+                  <div className=' text-center Footer__text'>
+                    La fecha de expiración son
+                  </div>
+                  <div className="infoCenter"><strong> 90 días</strong>  posteriores a la generación.</div>
+                </div>
               </div>
-              <div className="infoCenter"><strong> 90 días</strong>  posteriores a la generación.</div>
             </div>
+          </>
+        )}
 
-          </div>
-        </div>
         <div className="footer">
           <div className="containerCont_P2">
             <button className='button_P2' onClick={e => handleAceptar()} >
