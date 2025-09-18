@@ -8,8 +8,10 @@ import { useRouter } from 'next/navigation';
 import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
+import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function DataRefPersonal() {
+const DataRefPersonal = () => {
 
     const ref = useRef(null);
     const router = useRouter();
@@ -28,6 +30,10 @@ function DataRefPersonal() {
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState('');
+
+    const handleClose = () => {
+        setShow(false);
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -309,6 +315,18 @@ function DataRefPersonal() {
                     </div>
                 </div>
             </div>
+
+            <Modal show={show} onHide={handleClose} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatus}</div>
+                    <div className="msjErrorModal">{showMessage}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     );
