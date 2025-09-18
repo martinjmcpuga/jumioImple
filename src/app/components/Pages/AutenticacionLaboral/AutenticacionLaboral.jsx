@@ -12,18 +12,12 @@ const AutenticacionLaboral = () => {
   const [loading, setLoading] = useState(true);
   const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
-  const [firstName, setFirstName] = useState("");
-  const [paternalLastName, setPaternalLastName] = useState("");
-  const [maternalLastName, setMaternalLastName] = useState("");
   const [userRfc, setUserRfc] = useState('');
   const [verNameFull, setverNameFull] = useState(true);
   const [cpv, setCpv] = useState("");
 
   useEffect(() => {
     setRutaBack('/bandeja');
-    setFirstName(sessionStorage.getItem("nombre") || '');
-    setPaternalLastName(sessionStorage.getItem("paterno") || '');
-    setMaternalLastName(sessionStorage.getItem("materno") || '');
     setCpv(sessionStorage.getItem("sCpv") || '');
   }, []);
 
