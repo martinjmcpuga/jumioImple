@@ -156,8 +156,6 @@ const ActividadesLaborales = () => {
                 </div>
                 <hr className="line" />
                 <div className="container-fluid ">
-
-
                   {!blHistorialNo ? (
                     <>
                       {!blHistorial0 ? (
@@ -183,7 +181,6 @@ const ActividadesLaborales = () => {
                             <br />
                             <hr className="lineSimple" />
                           </div>
-
                         </>
                       ) : (
                         <>
@@ -354,7 +351,6 @@ const ActividadesLaborales = () => {
                       </div>
                     </>
                   )}
-
                 </div>
 
                 <hr className="lineSimple" />
@@ -399,7 +395,7 @@ const ActividadesLaborales = () => {
           </button>
         </Modal.Footer>
       </Modal>
-      
+
     </>
   )
 }

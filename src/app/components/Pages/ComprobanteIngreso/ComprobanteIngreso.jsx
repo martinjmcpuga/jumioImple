@@ -44,10 +44,15 @@ const ComprobanteIngreso = () => {
   const [selectComprobante, setSelectComprobante] = useState("");
   const [selectEsquema, setSelectEsquema] = useState("");
 
-  const [show, setShow] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
   const [showMessage, setShowMessage] = useState('');
   const [loading, setLoading] = useState(false);
+
+
+  const handleCloseError = () => {
+    setShowError(false);
+  };
 
   useEffect(() => {
     setRutaBack(sessionStorage.getItem("n5com"));
@@ -83,7 +88,7 @@ const ComprobanteIngreso = () => {
     } else {
 
       setLoading(false);
-      setShow(true);
+      setShowError(true);
       setShowStatus(response.status);
       setShowMessage(response.message);
 
@@ -191,6 +196,19 @@ const ComprobanteIngreso = () => {
           </div>
         </div>
       </div>
+
+      <Modal show={showError} onHide={handleCloseError} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+        <Modal.Body>
+          <div className="msjTitleModalDiv">{showStatus}</div>
+          <div className="msjErrorModal">{showMessage}</div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="button_P2" onClick={handleClose}>
+            <span className="txtButton_P2">Regresar</span>
+          </button>
+        </Modal.Footer>
+      </Modal>
+
     </>
   )
 }

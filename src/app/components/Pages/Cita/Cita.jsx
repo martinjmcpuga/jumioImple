@@ -47,7 +47,6 @@ function Cita() {
 
     const handleClose = async () => {
         setShow(false);
-        //window.location.href = "https://midpr.net/";
     };
 
     const onContinueModel = async () => {
