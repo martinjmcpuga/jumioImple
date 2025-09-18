@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
-function DataRefPersonal() {
+const DataRefPersonal = () => {
 
     const ref = useRef(null);
     const router = useRouter();
