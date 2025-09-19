@@ -47,7 +47,7 @@ const Dataconfirm = () => {
 
         setLoading(true);
 
-      }, 2000);
+      }, 1500);
 
     }
 
