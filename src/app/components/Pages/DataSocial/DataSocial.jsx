@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { mtFindPersonJumio } from '../../Api/mtFindPersonJumio';
 import { useRef } from 'react';
-import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';

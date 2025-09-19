@@ -61,7 +61,6 @@ const AutenticacionLaboral = () => {
 
   return (
     <>
-
       <div className="containerRender onContentExpands">
         {!loading ? (
           <div className="spinner"></div>
@@ -113,7 +112,6 @@ const AutenticacionLaboral = () => {
                 </div>
               </div>
             </div>
-
             <div className="footer">
               <div className="containerCont_P2">
                 <>
