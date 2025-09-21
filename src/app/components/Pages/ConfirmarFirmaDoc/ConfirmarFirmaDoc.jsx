@@ -91,7 +91,7 @@ function ConfirmarFirmaDoc() {
                     <div className="msjErrorModal">{showMessage}</div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className="button_P2" onClick={handleClose}>
+                    <button className="button_P2" onClick={handleCloseError}>
                         <span className="txtButton_P2">Regresar</span>
                     </button>
                 </Modal.Footer>
