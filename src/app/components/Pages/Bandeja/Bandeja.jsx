@@ -171,15 +171,6 @@ const Bandeja = () => {
 
               }
 
-              if (responsePersonJumio.valRfc === true) {
-                //setRfc(responsePersonJumio.rfc);
-              }
-
-              if (responsePersonJumio.valNss === true) {
-                //setValidateNss(true);
-                //setNss(response.nss);
-              }
-
               if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.comprobante0 === true) {
 
                 setValidateLab(true);

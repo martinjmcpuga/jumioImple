@@ -17,24 +17,23 @@ const CamaraCompareFirma = ({ }) => {
     const { IdJumio } = useAppContext();
     const isRunned = useRef(false);
     const router = useRouter();
-    const webCamRef = useRef(null)
-    const mainButton = useRef(null)
-    const DropMenu = useRef(null)
-    const switchButton = useRef(null)
-    const [modelsLoaded, setModelsLoaded] = useState(false)
-    const [imageSrc, setImageSrc] = useState(null)
-    const [facingMode, setFacingMode] = useState("user")
-    const [devices, SetDevices] = useState([])
-    const [selectedDevice, setSelectedDevice] = useState("")
-    const [countdown, setCountdown] = useState(null)
-    const [message, setMessage] = useState("Por favor, mire al centro del círculo y mantenga su rostro allí")
-    const [isCapturing, setIsCapturing] = useState(false) // Nuevo estado
-    const [showDropMenu, setShowDropMenu] = useState(false)
+    const webCamRef = useRef(null);
+    const mainButton = useRef(null);
+    const DropMenu = useRef(null);
+    const switchButton = useRef(null);
+    const [modelsLoaded, setModelsLoaded] = useState(false);
+    const [imageSrc, setImageSrc] = useState(null);
+    const [facingMode, setFacingMode] = useState("user");
+    const [devices, SetDevices] = useState([]);
+    const [selectedDevice, setSelectedDevice] = useState("");
+    const [countdown, setCountdown] = useState(null);
+    const [message, setMessage] = useState("Por favor, mire al centro del círculo y mantenga su rostro allí");
+    const [isCapturing, setIsCapturing] = useState(false);
+    const [showDropMenu, setShowDropMenu] = useState(false);
     const [show, setShow] = useState(false);
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState("");
     const [loading, setLoading] = useState(false);
-
     const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
 
 

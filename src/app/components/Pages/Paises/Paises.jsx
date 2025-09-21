@@ -10,7 +10,6 @@ import './paises.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 import { mtfindCpvIdJumio } from '../../Api/mtfindCpvIdJumio';
-
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Paises = () => {

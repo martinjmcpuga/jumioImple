@@ -22,7 +22,6 @@ function IdentificacionSocial() {
   const ref = useRef(null);
 
   useEffect(() => {
-    // Habilitar el botón solo si la longitud del texto es menor a 11
     setButtonEnabled(socialStr.length < 11);
   }, [socialStr]);
 

@@ -3,7 +3,9 @@
 import React from "react";
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from "react";
+import Modal from 'react-bootstrap/Modal';
 import './style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ConfirmarFirmaDoc() {
 
@@ -11,6 +13,9 @@ function ConfirmarFirmaDoc() {
     const router = useRouter();
     const [strStatus, setStrStatus] = useState("");
     const [strOperation, setStrOperation] = useState("");
+    const [showError, setShowError] = useState(false);
+    const [showStatus, setShowStatus] = useState(null);
+    const [showMessage, setShowMessage] = useState('');
 
     useEffect(() => {
 
@@ -35,6 +40,10 @@ function ConfirmarFirmaDoc() {
     const handleReintentar = async () => {
         router.push('/bandeja');
     }
+
+    const handleCloseError = () => {
+        setShowError(false);
+    };
 
     return (
         <>
@@ -75,6 +84,18 @@ function ConfirmarFirmaDoc() {
                     </div>
                 </div>
             </div>
+
+            <Modal show={showError} onHide={handleCloseError} centered backdrop="static" keyboard={false} className="animate__animated animate__fadeIn">
+                <Modal.Body>
+                    <div className="msjTitleModalDiv">{showStatus}</div>
+                    <div className="msjErrorModal">{showMessage}</div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="button_P2" onClick={handleClose}>
+                        <span className="txtButton_P2">Regresar</span>
+                    </button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

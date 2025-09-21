@@ -8,7 +8,6 @@ import dynamic from 'next/dynamic';
 import Modal from 'react-bootstrap/Modal';
 import './ComprobanteIngreso.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const ComprobanteIngreso = () => {
@@ -16,9 +15,7 @@ const ComprobanteIngreso = () => {
   const Options = [
     {
       Data: "Recibo de nómina"
-    } /*{
-      Data: "Factura"
-    }*/
+    }
   ]
 
   const Esquema = [

@@ -145,7 +145,7 @@ const IneFormulario = () => {
                           className="form-control" />
                       </div>
                       <br />
-                      <div  className="form-group w-full">
+                      <div className="form-group w-full">
                         <p className="txtNat_P3Hist mb-2">Fecha de Nacimiento:</p>
                         <div>
                           <DatePicker
@@ -160,7 +160,7 @@ const IneFormulario = () => {
                             maxDate={today}
                             disabled={isEnabled}
                             locale="es"
-                            className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"/>
+                            className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]" />
                         </div>
                       </div>
                       <br />

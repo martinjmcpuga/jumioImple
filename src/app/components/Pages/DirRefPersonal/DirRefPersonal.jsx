@@ -6,6 +6,7 @@ import "./styleDomPersonal.css";
 import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const country = [
   {
