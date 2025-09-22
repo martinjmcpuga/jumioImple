@@ -6,9 +6,9 @@ import { AccountCreation } from '../Api/AccountCreation'
 import { FetchToken } from '../Api/Fetch'
 import dynamic from 'next/dynamic'
 import { JumioAccountCreation } from '../Api/jumioAccountCreation'
-import { FetchAccAWS } from '../Api/FetchAccAWS'
 import { useSearchParams } from 'next/navigation'
 import { useAppContext } from '../../context/AppContext'
+import { getTokenJumio } from '../Api/getTokenJumio';
 
 const JumioComponent = dynamic(() => import('./JumioComponent'), { ssr: false })
 
@@ -28,9 +28,10 @@ export default function JumioJsx() {
     async function createSession() {
       const obj = {
         cpv: sessionStorage.getItem('sCpv'),
+        pais: sessionStorage.getItem('pais'),
         documentType: cpvI
       };
-      const tokenData = await FetchAccAWS(obj)
+      const tokenData = await getTokenJumio(obj)
       if (!tokenData || !tokenData.sdk || !tokenData.sdk.token || !tokenData.idJumio) {
         throw new Error('Invalid token data received')
 

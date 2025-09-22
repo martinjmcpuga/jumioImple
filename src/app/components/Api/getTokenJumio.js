@@ -1,6 +1,6 @@
 import { appGlobal } from './appGlobal';
 
-export async function FetchAccAWS(obj) {
+export async function getTokenJumio(obj) {
     try {
         const url = appGlobal.host + "getTokenJumio";
         const params = {

@@ -29,7 +29,7 @@ const Paises = () => {
   const [blContinueOp, setBlContinueOp] = useState('1');
   const [showCurp, setShowCurp] = useState(false);
   const [msjnumeroNacionalPholder, setmsjnumeroNacional] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [caracteres, setCaracteres] = useState(0);
   const [country, setCountry] = useState([]);
   const { cpvI, curpValidate, setPais, setPaisIso2 } = useAppContext();
@@ -53,7 +53,9 @@ const Paises = () => {
     isRunned.current = true;
 
     async function createSession() {
+
       setLoading(true);
+
       const response = await getPaisByIso({});
       if (response.status === 200) {
         // 🔥 Normalizamos las opciones para React-Select
@@ -66,7 +68,9 @@ const Paises = () => {
           caracteres: p.caracteres,
           numeroNacionalTxt: p.numeroNacionalTxt,
         }));
+
         setCountry(options);
+
       } else {
         setShow(true);
         setShowStatus(`Error ${response.status}`);
@@ -194,109 +198,120 @@ const Paises = () => {
 
   };
 
-
   return (
     <>
       <div className="containerInfo_P2 animate__animated animate__fadeIn">
-        <div className="containerIdent_P2 onContentExpands">
-          <p className="txtNat_P3">Nacionalidad</p>
-          <Select
-            options={country}
-            onChange={handleChangePais}
-            styles={customStyles}
-            formatOptionLabel={(country) => (
-              <div className="containerNac animate__animated animate__fadeIn">
-                <div className="pais">
-                  {country.claveIso2} {country.label}
-                </div>
-                <div className="paisBandera animate__animated animate__fadeIn">
-                  <img
-                    className="bandera"
-                    src={country.ruta || '/images/default-flag.svg'}
-                    alt={country.label}
-                  />
-                </div>
-              </div>
-            )}
-            placeholder="Seleccionar nacionalidad"
-          />
 
-          <br />
-          {showCurp && (
-            <div className="containerInfoOnExpands">
-              <p className="txtNum_P3">Número de Identificación Nacional</p>
-              {['1', '2', '3'].includes(game) && (
-                <div className="Row_P3">
-                  <div className="Column_P3">
-                    <Form.Control
-                      style={{
-                        borderColor: '#c4cbd1',
-                        width: '100%',
-                        padding: '12px 15px',
-                        border: '1px solid #c4cbd1',
-                        borderRadius: '8px 0 0 8px',
-                        height: '52px',
-                      }}
-                      required
-                      maxLength={18}
-                      type="text"
-                      ref={ref}
-                      placeholder={msjnumeroNacionalPholder}
-                      value={curpStr}
-                      onChange={handleChange}
-                      onKeyDown={handleKeyDown}
-                    />
+        {loading ? (
+
+          <div className="containerRender">
+            <div className="spinner"></div>
+          </div>
+
+        ) : (
+          <>
+            <div className="containerIdent_P2 onContentExpands animate__animated animate__fadeIn">
+              <p className="txtNat_P3">Nacionalidad</p>
+              <Select
+                options={country}
+                onChange={handleChangePais}
+                styles={customStyles}
+                formatOptionLabel={(country) => (
+                  <div className="containerNac animate__animated animate__fadeIn">
+                    <div className="pais">
+                      {country.claveIso2} {country.label}
+                    </div>
+                    <div className="paisBandera animate__animated animate__fadeIn">
+                      <img
+                        className="bandera"
+                        src={country.ruta || '/images/default-flag.svg'}
+                        alt={country.label}
+                      />
+                    </div>
                   </div>
-                  {game === '2' && (
-                    <div className="Column1_P3 animate__animated myDiv_P3">
-                      <div className="myDiv_P3_3">
-                        <Spinner animation="border" size="sm" />
+                )}
+                placeholder="Seleccionar nacionalidad"
+              />
+
+              <br />
+              {showCurp && (
+                <div className="containerInfoOnExpands">
+                  <p className="txtNum_P3">Número de Identificación Nacional</p>
+                  {['1', '2', '3'].includes(game) && (
+                    <div className="Row_P3">
+                      <div className="Column_P3">
+                        <Form.Control
+                          style={{
+                            borderColor: '#c4cbd1',
+                            width: '100%',
+                            padding: '12px 15px',
+                            border: '1px solid #c4cbd1',
+                            borderRadius: '8px 0 0 8px',
+                            height: '52px',
+                          }}
+                          required
+                          maxLength={18}
+                          type="text"
+                          ref={ref}
+                          placeholder={msjnumeroNacionalPholder}
+                          value={curpStr}
+                          onChange={handleChange}
+                          onKeyDown={handleKeyDown}
+                        />
                       </div>
+                      {game === '2' && (
+                        <div className="Column1_P3 animate__animated myDiv_P3">
+                          <div className="myDiv_P3_3">
+                            <Spinner animation="border" size="sm" />
+                          </div>
+                        </div>
+                      )}
+                      {game === '3' && (
+                        <div className="Column1_P3 animate__animated myDiv_P3">
+                          <div className="myDiv_P3_3">
+                            <img src="assets/check.svg" alt="check" />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
-                  {game === '3' && (
-                    <div className="Column1_P3 animate__animated myDiv_P3">
-                      <div className="myDiv_P3_3">
-                        <img src="assets/check.svg" alt="check" />
-                      </div>
-                    </div>
-                  )}
+                  <section className="btnRenderPercent">
+                    <br />
+                    <hr className="line" />
+                    {blContinueOp === '1' && (
+                      <button className="btnVer_P3">
+                        <span className="txtVer_P3">Verificar</span>
+                      </button>
+                    )}
+                    {blContinueOp === '2' && (
+                      <>
+                        <button className="btnVer_P3_Select" onClick={onValidateCurp}>
+                          <span className="txtVer_P3">Verificar</span>
+                        </button>
+                      </>
+                    )}
+                    {blContinueOp === '3' && (
+
+                      <button className="button_P2 animate__animated animate__fadeIn" onClick={onPoliticas}>
+                        <span className="txtButton_P2">Continuar</span>
+                      </button>
+
+                    )}
+                    {blContinueOp === '4' && (
+                      <button
+                        className="button_P2 animate__animated animate__fadeIn"
+                        onClick={onValidateFaceMach}
+                      >
+                        <span className="txtButton_P2">Continuar</span>
+                      </button>
+                    )}
+                  </section>
                 </div>
               )}
-              <section className="btnRenderPercent">
-                <br />
-                <hr className="line" />
-                {blContinueOp === '1' && (
-                  <button className="btnVer_P3">
-                    <span className="txtVer_P3">Verificar</span>
-                  </button>
-                )}
-                {blContinueOp === '2' && (
-                  <>
-                    <button className="btnVer_P3_Select" onClick={onValidateCurp}>
-                      <span className="txtVer_P3">Verificar</span>
-                    </button>
-                  </>
-                )}
-                {blContinueOp === '3' && (
-
-                  <button className="button_P2 animate__animated animate__fadeIn" onClick={onPoliticas}>
-                    <span className="txtButton_P2">Continuar</span>
-                  </button>
-
-                )}
-                {blContinueOp === '4' && (
-                  <button
-                    className="button_P2 animate__animated animate__fadeIn"
-                    onClick={onValidateFaceMach}
-                  >
-                    <span className="txtButton_P2">Continuar</span>
-                  </button>
-                )}
-              </section>
             </div>
-          )}
-        </div>
+          </>
+        )}
+
       </div>
 
       <Modal
