@@ -25,9 +25,20 @@ const Dataconfirm = () => {
 
   useEffect(() => {
 
-    setFirstName(sessionStorage.getItem("nombre") || '');
-    setPaternalLastName(sessionStorage.getItem("paterno") || '');
-    setMaternalLastName(sessionStorage.getItem("materno") || '');
+    if (sessionStorage.getItem("paterno") === 'null') {
+
+      setverNameFull(false);
+      setFirstName(sessionStorage.getItem("nombre") || '');
+
+    } else {
+
+      setverNameFull(true);
+      setFirstName(sessionStorage.getItem("nombre") || '');
+      setPaternalLastName(sessionStorage.getItem("paterno") || '');
+      setMaternalLastName(sessionStorage.getItem("materno") || '');
+
+    }
+
     setBirthDate(sessionStorage.getItem("fechaNacimientoFront") || '');
     setClaveDeElector(sessionStorage.getItem("curpValidate") || '');
 
