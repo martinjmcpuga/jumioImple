@@ -7,10 +7,8 @@ import WebCam from 'react-webcam'
 import * as faceApi from 'face-api.js'
 import './CamaraCompare.css'
 import Modal from "react-bootstrap/Modal";
-import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
-import { mtUpdateSignDocIndivJumio } from '../../Api/mtUpdateSignDocIndivJumio';
 import { mtUpdateComprobante0_Jumio } from '../../Api/mtUpdateComprobante0_Jumio';
 
 const CamaraCompareRecibo = ({ }) => {
