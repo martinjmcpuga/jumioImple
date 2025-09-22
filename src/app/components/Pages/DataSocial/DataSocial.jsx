@@ -43,9 +43,19 @@ const DataSocial = ({ }) => {
 
       if (responsePersonJumio.status === 200) {
 
-        setFirstName(responsePersonJumio.nombre);
-        setPaternalLastName(responsePersonJumio.paterno);
-        setMaternalLastName(responsePersonJumio.materno);
+        if (responsePersonJumio.paterno === 'null') {
+
+          setverNameFull(false);
+          setFirstName(responsePersonJumio.nombre);
+
+        } else {
+
+          setverNameFull(true);
+          setFirstName(responsePersonJumio.nombre);
+          setPaternalLastName(responsePersonJumio.paterno);
+          setMaternalLastName(responsePersonJumio.materno);
+
+        }
         setUserNss(sessionStorage.getItem("socialStr") || '');
 
       } else {
@@ -117,7 +127,7 @@ const DataSocial = ({ }) => {
 
         <div className="footer">
           <div className="containerCont_P2">
-            <button className='button_P2' onClick={e => setShow2(true)} >
+            <button className='button_P2' onClick={e => handleAceptar()} >
               <span className='txtButton_P2'>Aceptar</span>
             </button>
             <div className="spaceButton14" />
