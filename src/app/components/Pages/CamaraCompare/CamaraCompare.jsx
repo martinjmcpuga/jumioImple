@@ -12,7 +12,7 @@ import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
 
 const CamComponent = ({ }) => {
 
-        const { IdJumio } = useAppContext();
+    const { IdJumio } = useAppContext();
     const isRunned = useRef(false);
     const router = useRouter();
     const webCamRef = useRef(null);
@@ -158,6 +158,7 @@ const CamComponent = ({ }) => {
             setShowMessage(showMsjUsu);
 
         }
+
     }
 
     useEffect(() => {
@@ -168,7 +169,6 @@ const CamComponent = ({ }) => {
 
     return (
         <>
-
             <div className="containerRender animate__animated animate__fadeIn">
                 {!loading ? (
                     <div className="spinner"></div>
