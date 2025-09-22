@@ -89,7 +89,6 @@ const DataSocial = ({ }) => {
     <>
 
       <div className="initBack_P2 animate__animated animate__fadeIn">
-
         {!loading ? (
           <div className="spinner"></div>
         ) : (

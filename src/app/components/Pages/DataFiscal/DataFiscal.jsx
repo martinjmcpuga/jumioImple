@@ -43,9 +43,20 @@ const DataFiscal = () => {
 
       if (responsePersonJumio.status === 200) {
 
-        setFirstName(responsePersonJumio.nombre);
-        setPaternalLastName(responsePersonJumio.paterno);
-        setMaternalLastName(responsePersonJumio.materno);
+        if (responsePersonJumio.paterno === 'null') {
+
+          setverNameFull(false);
+          setFirstName(responsePersonJumio.nombre);
+
+        } else {
+
+          setverNameFull(true);
+          setFirstName(responsePersonJumio.nombre);
+          setPaternalLastName(responsePersonJumio.paterno);
+          setMaternalLastName(responsePersonJumio.materno);
+
+        }
+
         setUserRfc(sessionStorage.getItem("userRfc") || '');
 
       } else {
