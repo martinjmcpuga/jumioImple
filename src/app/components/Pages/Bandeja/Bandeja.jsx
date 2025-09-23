@@ -90,6 +90,9 @@ const Bandeja = () => {
           nombre: sessionStorage.getItem("nombre"),
           paterno: sessionStorage.getItem("paterno"),
           materno: sessionStorage.getItem("materno"),
+          vigenciaCpv: sessionStorage.getItem("vigenciaCpv"),
+          telefono: sessionStorage.getItem("telefono"),
+          correo: sessionStorage.getItem("correo"),
           cliente: appGlobal.ev
         };
 
