@@ -10,6 +10,7 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { appGlobal } from '../../Api/appGlobal';
 
 const Bandeja = () => {
 
@@ -89,6 +90,7 @@ const Bandeja = () => {
           nombre: sessionStorage.getItem("nombre"),
           paterno: sessionStorage.getItem("paterno"),
           materno: sessionStorage.getItem("materno"),
+          cliente: appGlobal.ev
         };
 
         const response = await getRetrievalByAccount(objJumio);
@@ -103,7 +105,6 @@ const Bandeja = () => {
           const responseSelfie = await getRetrievalByAccountSelfie(objJumioSelfie);
 
           if (responseSelfie.status === 200) {
-
 
             const responsePersonJumio = await mtFindPersonJumio(objJumioSelfie);
 
