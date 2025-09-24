@@ -4,8 +4,7 @@ import InfoSelfie from '../components/Pages/InfoSelfie/InfoSelfie'
 const page = () => {
   return (
     <div>
-
-        <InfoSelfie />
+      <InfoSelfie />
     </div>
   )
 }
