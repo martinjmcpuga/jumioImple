@@ -87,7 +87,6 @@ export default function Home() {
 
   const onValidateCurp = async () => {
     setGame('2');
-    const curpVal = mounted ? curpValidate : null;
     if (sessionStorage.getItem('curpValidate') === curpStr) {
       const objPerson = { cpv: cpvI };
       const responseIdPerson = await mtfindCpvIdJumio(objPerson);
@@ -171,12 +170,15 @@ export default function Home() {
 
   const onContinueClose = async () => {
 
+    /*
     router.push("/documentos");
+    */
 
   };
 
   const onContinueModel = async () => {
 
+    /*
     if (sessionStorage.getItem("nombreManual") === "200") {
 
       router.push("/documentos");
@@ -186,6 +188,7 @@ export default function Home() {
       router.push("/ineformulario");
 
     }
+      */
 
   };
 
