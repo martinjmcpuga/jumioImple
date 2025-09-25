@@ -192,13 +192,20 @@ function DataDomPersonal() {
         }
     };
 
+    // Dentro de tu handleChange del CP
     const handleChange = (event) => {
-        if (event.target.value.length <= 5) {
-            setCodigoPostal(event.target.value);
+        const value = event.target.value;
+        if (value.length <= 5) {
+            setCodigoPostal(value);
+
+            if (value.length < 5) {
+                setColonia("");
+                setTipoColonia([]);
+            }
         }
 
-        if (event.target.value.length === 5) {
-            fnFetCodigoPostalCpt(event.target.value);
+        if (value.length === 5) {
+            fnFetCodigoPostalCpt(value);
         }
     };
 
@@ -322,13 +329,11 @@ function DataDomPersonal() {
                                                         classNamePrefix="select"
                                                         placeholder="Selecciona la colonia"
                                                         options={tipoColonia}
-                                                        value={tipoColonia.asentamiento}
+                                                        value={tipoColonia.find(item => item.asentamiento === colonia) || null}
                                                         onChange={handleChangeLic}
                                                         formatOptionLabel={tipoColonia => (
                                                             <div className="containerEmisor">
-                                                                <>
-                                                                    <div className="licenciaValue">{tipoColonia.asentamiento}</div>
-                                                                </>
+                                                                <div className="licenciaValue">{tipoColonia.asentamiento}</div>
                                                             </div>
                                                         )}
                                                     />
