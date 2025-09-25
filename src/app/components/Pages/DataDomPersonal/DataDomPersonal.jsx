@@ -126,6 +126,8 @@ function DataDomPersonal() {
         }
     });
 
+    /*
+
     useEffect(() => {
 
         if (isRunned.current) return;
@@ -157,6 +159,8 @@ function DataDomPersonal() {
         createSession();
 
     }, []);
+
+    */
 
     const fnFetCodigoPostalCpt = async (cpCod) => {
 

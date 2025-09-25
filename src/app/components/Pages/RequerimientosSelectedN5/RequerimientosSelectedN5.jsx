@@ -110,15 +110,6 @@ const RequerimientosSelectedN5 = (props) => {
 
     router.push('/camaracompare');
 
-    /*
-    navigate("/FaceLoginPassaporte", {
-      state: {
-        rutaContinue: "/PantallaBase27",
-        typeCredential: "ine",
-      },
-    });
-    */
-
   };
 
   useEffect(() => {

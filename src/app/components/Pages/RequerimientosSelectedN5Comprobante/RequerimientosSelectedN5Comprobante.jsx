@@ -83,13 +83,7 @@ const RequerimientosSelectedN5Comprobante = (props) => {
   const getResumen = async () => {
 
     router.push('/camaracompare');
-
-    //  navigate("/FaceLoginPassaporte", {
-    //    state: {
-    //     rutaContinue: "/PantallaBase27",
-    //     typeCredential: "ine",
-    //   },
-    // });
+    
   };
 
 
