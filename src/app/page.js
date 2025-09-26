@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
 import { mtfindCpvIdJumio } from './components/Api/mtfindCpvIdJumio';
 import { getPaisByIso } from './components/Api/getPaisByIso';
+import { validateCurpFirma_Jumio } from './components/Api/validateCurpFirma_Jumio';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 export default function Home() {
@@ -32,7 +33,6 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [onehabilita, setOnehabilita] = useState(true);
 
-
   const showModalError = (title, message) => {
     setShowStatus(title);
     setShowMessage(message);
@@ -50,6 +50,7 @@ export default function Home() {
       setLoading(true);
 
       const response = await getPaisByIso({});
+
       if (response.status === 200) {
         // 🔥 Normalizamos las opciones para React-Select
         const options = response.listModelPais.map((p) => ({
@@ -65,10 +66,13 @@ export default function Home() {
         setCountry(options);
 
       } else {
+
         setShow(true);
         setShowStatus(`Error ${response.status}`);
         setShowMessage(response.message);
+
       }
+
       setLoading(false);
     }
 
@@ -81,11 +85,43 @@ export default function Home() {
     if (curpStr.length < caracteres) setBlContinueOp('1');
   }, [curpStr, caracteres]);
 
+
+
   const onValidateFaceMach = async () => {
-    //console.log('Validar Face Match...');
+
+    //cam compare 
+
+    router.push('/camaracompare');
+
   };
 
   const onValidateCurp = async () => {
+
+    setGame('2');
+    const objPerson = {
+      userReference: curpStr,
+    };
+
+    const responseIdPerson = await validateCurpFirma_Jumio(objPerson);
+
+    if (responseIdPerson.status === 200) {
+
+      sessionStorage.setItem("cpv", responseIdPerson.cpv);
+      sessionStorage.setItem("id_jumio", "" + responseIdPerson.id);
+      sessionStorage.setItem("curp", "" + curpStr);
+
+      setGame('3');
+      setBlContinueOp('4');
+
+    } else {
+
+      showModalError(
+        `Error ${responseIdPerson.status}`,
+        responseIdPerson.message);
+    }
+
+
+    /*
     setGame('2');
     if (sessionStorage.getItem('curpValidate') === curpStr) {
       const objPerson = { cpv: cpvI };
@@ -108,6 +144,8 @@ export default function Home() {
         'El Número de Identificación Nacional no es correcto.'
       );
     }
+
+    */
   };
 
   const handleClose = () => setShow(false);
@@ -285,11 +323,9 @@ export default function Home() {
                       </>
                     )}
                     {blContinueOp === '3' && (
-
                       <button className="button_P2 animate__animated animate__fadeIn" onClick={onPoliticas}>
                         <span className="txtButton_P2">Continuar</span>
                       </button>
-
                     )}
                     {blContinueOp === '4' && (
                       <button
