@@ -6,7 +6,6 @@ import { Form, Spinner, Modal } from 'react-bootstrap';
 import './paises.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
-import { mtfindCpvIdJumio } from './components/Api/mtfindCpvIdJumio';
 import { getPaisByIso } from './components/Api/getPaisByIso';
 import { validateCurpFirma_Jumio } from './components/Api/validateCurpFirma_Jumio';
 const Select = dynamic(() => import('react-select'), { ssr: false });
@@ -52,7 +51,7 @@ export default function Home() {
       const response = await getPaisByIso({});
 
       if (response.status === 200) {
-        // 🔥 Normalizamos las opciones para React-Select
+
         const options = response.listModelPais.map((p) => ({
           value: p.claveIso3,
           label: p.nombre,
@@ -86,10 +85,7 @@ export default function Home() {
   }, [curpStr, caracteres]);
 
 
-
   const onValidateFaceMach = async () => {
-
-    //cam compare 
 
     router.push('/camaracompare');
 
@@ -120,32 +116,6 @@ export default function Home() {
         responseIdPerson.message);
     }
 
-
-    /*
-    setGame('2');
-    if (sessionStorage.getItem('curpValidate') === curpStr) {
-      const objPerson = { cpv: cpvI };
-      const responseIdPerson = await mtfindCpvIdJumio(objPerson);
-      if (responseIdPerson.status === 400) {
-        setGame('3');
-        setBlContinueOp('3');
-      } else if (responseIdPerson.status === 200) {
-        setGame('3');
-        setBlContinueOp('4');
-      } else {
-        showModalError(
-          `Error ${responseIdPerson.status}`,
-          responseIdPerson.message
-        );
-      }
-    } else {
-      showModalError(
-        'Credenciales inválidas',
-        'El Número de Identificación Nacional no es correcto.'
-      );
-    }
-
-    */
   };
 
   const handleClose = () => setShow(false);
