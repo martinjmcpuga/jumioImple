@@ -139,13 +139,9 @@ const CamComponent = ({ }) => {
 
         const response = await getSelfieToCamara_Jumio(objIncode);
 
-        router.push("/upin");
-
-        /*
-
         if (response.status === 200) {
 
-            router.push("/bandeja");
+            router.push("/upin");
 
         } else if (response.status === 500) {
 
@@ -162,7 +158,7 @@ const CamComponent = ({ }) => {
             setShowMessage(showMsjUsu);
 
         }
-            */
+
 
     }
 

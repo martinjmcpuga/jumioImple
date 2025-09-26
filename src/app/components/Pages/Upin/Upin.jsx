@@ -50,9 +50,9 @@ const Upin = () => {
 
   const handleButtonClick = async () => {
 
-    localStorage.setItem("upin", "" + fiscalStr);
-    navigate('/PantallaBase27')
-    
+    //localStorage.setItem("upin", "" + fiscalStr);
+    //navigate('/PantallaBase27')
+
   }
 
   const style = {
