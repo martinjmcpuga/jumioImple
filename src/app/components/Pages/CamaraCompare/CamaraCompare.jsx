@@ -159,7 +159,6 @@ const CamComponent = ({ }) => {
 
         }
 
-
     }
 
     useEffect(() => {

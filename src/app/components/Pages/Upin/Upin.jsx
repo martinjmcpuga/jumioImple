@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from "react";
+import { useRouter } from 'next/navigation';
 import Form from "react-bootstrap/Form";
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Upin = () => {
 
   const ref = useRef(null);
+  const router = useRouter();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [fiscalStr, setfiscalStr] = useState("");
   const [show, setShow] = useState(false);
@@ -50,8 +52,8 @@ const Upin = () => {
 
   const handleButtonClick = async () => {
 
-    //localStorage.setItem("upin", "" + fiscalStr);
-    //navigate('/PantallaBase27')
+    sessionStorage.setItem("upin", "" + fiscalStr);
+    router.push("/firmadoc");
 
   }
 

@@ -4,7 +4,6 @@
 import React from 'react';
 import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useRef, useState } from "react";
-import { getGetDocIndividualWsaicm } from '../../Api/getGetDocIndividualWsaicm';
 import { useRouter } from 'next/navigation';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import dynamic from 'next/dynamic';
@@ -12,6 +11,8 @@ import Modal from 'react-bootstrap/Modal';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 import './DataCss.css'
+import { getCredentialsWsaicm } from '../../Api/getCredentialsWsaicm';
+import { getGetDocWsaicm } from '../../Api/getGetDocWsaicm';
 
 const Viewer = dynamic(
   () => import('@react-pdf-viewer/core').then((mod) => mod.Viewer),
@@ -35,9 +36,10 @@ const DocumentosPrev = () => {
   const [showError, setShowError] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
   const [validacionDoc, setValidacionDoc] = useState(false);
+  const [list, setList] = React.useState([]);
 
   useEffect(() => {
-    setRutaBack('/bandeja');
+    setRutaBack('/');
   }, []);
 
 
@@ -49,24 +51,38 @@ const DocumentosPrev = () => {
 
       setLoading(true);
 
-      const objDoc = {
-        cpv: sessionStorage.getItem('sCpv'),
+      const objIncode = {
+        uPin: sessionStorage.getItem("upin"),
+        curp: sessionStorage.getItem("curp"),
       }
 
-      const responseDoc = await getGetDocIndividualWsaicm(objDoc);
+      const response = await getCredentialsWsaicm(objIncode);
 
-      if (responseDoc.status === 200) {
+      if (response.status === 200) {
 
-        setPdfUrl(responseDoc.doc);
+        if (response.docs == []) {
+
+          setShowError(true);
+          setShowStatus(400);
+          setShowMessage("No existen documentos");
+
+        } else {
+
+          setList(response.docs);
+
+        }
+
         setLoading(false);
-        setShow(true);
 
       } else {
 
+        setValidacionDoc(true);
         setLoading(false);
+
         setShowError(true);
         setShowStatus(400);
-        setShowMessage(responseDoc.message);
+        setShowMessage(response.message);
+
       }
 
     }
@@ -77,25 +93,43 @@ const DocumentosPrev = () => {
 
   const handleAceptar = async () => {
 
-    router.push('/camaracomparefirma');
+    //router.push('/camaracomparefirma');
 
   }
 
   const handleClose = () => {
     setShow(false);
-    router.push('/bandeja');
+    //router.push('/bandeja');
   }
 
   const handleCloseError = () => {
     setShowError(false);
-    router.push('/bandeja');
+    //router.push('/bandeja');
 
   }
 
   const handleConfirmar = () => {
 
     setShow(false);
-    router.push('/camaracomparefirma');
+    // router.push('/camaracomparefirma');
+  }
+
+  const handleToggleComplete = async (cpv) => {
+
+    sessionStorage.setItem("sCpv", "" + cpv);
+
+    const objDoc = {
+      cpv: sessionStorage.getItem("sCpv"),
+    }
+
+    const responseDoc = await getGetDocWsaicm(objDoc);
+
+    if (responseDoc.status === 200) {
+
+      setPdfUrl(responseDoc.doc);
+      setShow(true);
+    }
+
   }
 
   const newplugin = defaultLayoutPlugin();
@@ -150,7 +184,30 @@ const DocumentosPrev = () => {
                 <div className="txtOp_P2">Remitente/Sender</div>
                 <div className="txtVer_P2">BP Intelligence</div>
                 <br />
-                <div className='some-page-wrapper' />
+
+                <div class='some-page-wrapper'>
+                  <ul>
+                    {list.map((item) => (
+                      <li key={item.cpv}>
+                        <div class='row'>
+                          <div class='column'>
+                            <div class='blue-column'>
+                              <div className="txtVer_P2">{item.cpv}</div>
+                            </div>
+                          </div>
+                          <div class='column'>
+                            <div class='green-column'>
+                              <button className='button_Comp_P28' onClick={() => handleToggleComplete(item.cpv)}>
+                                <span className='txtButton_Comp_P28'>Ver</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
               </div>
             </div>
           </div>
@@ -177,7 +234,6 @@ const DocumentosPrev = () => {
             </div>
           </div>
         </div>
-
       )}
 
       <Modal className="animate__animated animate__fadeIn" show={showError} onHide={handleCloseError} animation={false} centered backdrop="static">
