@@ -10,7 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
-import { mtUpdateSignDocIndivJumio } from '../../Api/mtUpdateSignDocIndivJumio';
+import { getSignDocWsaicm } from '../../Api/getSignDocWsaicm';
 
 const CamaraCompareFirma = ({ }) => {
 
@@ -145,21 +145,13 @@ const CamaraCompareFirma = ({ }) => {
 
         if (response.status === 200) {
 
-            const responseSignDoc = await mtUpdateSignDocIndivJumio(objIncode);
-
-            if (responseSignDoc.status === 200) {
-
-                router.push("/confirmarfirmadoc");
-
-            } else {
-
-                setLoading(true);
-                setShow(true);
-                setShowStatus(responseSignDoc.status);
-                setShowMessage(responseSignDoc.message);
-
+            const objDoc = {
+                cpv: sessionStorage.getItem("sCpv"),
             }
 
+            await getSignDocWsaicm(objDoc);
+
+            router.push("/firmadoc");
 
         } else if (response.status === 500) {
 

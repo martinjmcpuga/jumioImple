@@ -1,0 +1,80 @@
+.Footer__text {
+    font-size: smaller;
+}
+
+.Button__firmar {
+    border-radius: 14px;
+    border: #FFF;
+    background: #51B35E;
+    color: #FFF;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    height: 48px;
+}
+
+.Modal_Styled {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.Button__autorizar {
+    color: #5273E6;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background-color: #5272e625;
+    height: 48px;
+    padding-left: 10px;
+    margin-right: 10px !important;
+}
+
+.Modal_Styled .modal-content {
+    height: 100%;
+}
+
+.rpv-default-layout__container {
+    height: 100%;
+}
+
+.Container__pdf {
+    overflow-x: scroll;
+    min-height: 700px;
+}
+
+.ola {
+    overflow: auto;
+    height: 80%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.ola {
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+@media screen and (max-width: 632px) {
+    .Modal_Styled {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .Button__autorizar {
+        margin-bottom: 10%;
+    }
+}

@@ -93,7 +93,7 @@ const DocumentosPrev = () => {
 
   const handleAceptar = async () => {
 
-    //router.push('/camaracomparefirma');
+    router.push('/registroidentidad');
 
   }
 
@@ -111,7 +111,7 @@ const DocumentosPrev = () => {
   const handleConfirmar = () => {
 
     setShow(false);
-    // router.push('/camaracomparefirma');
+    router.push('/camaracomparefirma');
   }
 
   const handleToggleComplete = async (cpv) => {
