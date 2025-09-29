@@ -124,7 +124,7 @@ const MenuSolvencia = () => {
                       <div className="col-2 boxCheck">
                         <img
                           className="Rectangle-1408"
-                          src={buttonPlay}
+                          src='assets/boton-play.svg'
                           onClick={getHomeTest1}
                         />
                       </div>
