@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from "react";
+import { Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
 
 const MenuSolvencia = () => {
