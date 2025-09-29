@@ -43,10 +43,8 @@ const HomeSolvencia = () => {
               <div className="txtDocReq_P2">Documento de Identificación</div>
               <div className="txtIdenOf_P2">Número de Identificación Nacional (CURP).</div>
             </p>
-
           </div>
         </div>
-
         <div className="footer">
           <div className="containerCont_P2">
             <button className="button_P2" onClick={onTest}>
