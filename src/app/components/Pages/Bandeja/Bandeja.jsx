@@ -47,6 +47,10 @@ const Bandeja = () => {
   const [auCita, setAuCita] = useState(true);
   const [auCitaVer, setAuCitaVer] = useState(false);
 
+  const [solvencia, setsolvencia] = useState(false);
+  const [solvenciaCompleto, setsolvenciaCompleto] = useState(false);
+
+
   useEffect(() => {
 
     setCurpStr(sessionStorage.getItem('curpValidate'));
@@ -266,6 +270,10 @@ const Bandeja = () => {
 
   const getHomeFirma = async () => {
     router.push("/firmadoc");
+  };
+
+  const getSolvencia = async () => {
+    router.push("/homesolvencia");
   };
 
   return (
@@ -509,6 +517,57 @@ const Bandeja = () => {
                           </div>
                         </div>
                         <img src='assets/flecha_url.svg' className="flecha_url" />
+                      </div>
+                    </div>
+                  </>
+                )}
+              </>
+            </>
+          ) : (
+            <></>
+          )}
+
+
+          {/*** ---  Solvencia  ---  */}
+
+          {solvencia ? (
+            <>
+              <>
+                {!solvenciaCompleto ? (
+                  <>
+                    <div className="cards animate__animated animate__fadeIn">
+                      <div className="rcornersDes27" onClick={getSolvencia}>
+                        <img src={file_alt} align="left" className="imgFol_P27_Img marginCustom" />
+                        <img
+                          src={arrow_green}
+                          align="right"
+                          className="flecha_url"
+                        />
+                        <div className="txtDocReq_P27">Capacidad de Endeudamiento</div>
+                        <div className="txtVerificadoDes27" align="left">
+                          Realiza la prueba digital
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="cards animate__animated animate__fadeIn">
+                      <div
+                        className="rcorners27"
+                        style={{ display: "flex", justifyContent: "space-between" }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <img src={fileUSer} align="left" className="imgFol_P27_Img" />
+                          <div>
+                            <div className="txtDocReq_P27">Capacidad de Endeudamiento</div>
+                            <div className="txtIdenOf_P27" align="left">
+
+                            </div>
+                            <div className="txtVerificado">Verificado</div>
+                          </div>
+                        </div>
+                        <img src={flecha_url} onClick={getSolvenciaCompartir} className="flecha_url" />
                       </div>
                     </div>
                   </>
