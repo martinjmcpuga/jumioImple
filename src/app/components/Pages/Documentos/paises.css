@@ -1,71 +1,67 @@
-.containerEmisor {
-  display: flex;
+/* Bloque principal */
+.documentos {
+  padding: 1rem;
 }
 
-.button_P2 {
-  width: 100%;
-  height: 48px;
-  background: #55ac68 0% 0% no-repeat padding-box;
-  border: 1px solid #55ac68;
+/* Contenido */
+.documentos__content {
+  background: #fff;
   border-radius: 8px;
-  color: #ffffff;
+  padding: 1rem;
 }
 
-.txtSilver_P2 {
-  color: #c1c1c1;
-  font-size: 13px;
-  font-style: normal;
-  line-height: 140%;
-}
-
-.textCheck {
-  color: #000;
-  font-family: Inter;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-}
-
-.containerNac {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.pais {
-  font-weight: bold;
+/* Título */
+.documentos__title {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
   font-size: 14px;
+  line-height: 28px;
+  color: #0C3C2C;
+  margin-bottom: 1rem;
 }
 
-.paisBandera img.bandera {
-  width: 24px;
-  height: 16px;
+/* Divider */
+.documentos__divider {
+  border: none;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 1rem 0;
 }
 
-.curpInputBox {
-  margin-top: 20px;
-}
-
-
-/* Contenedor de cada opción (texto + bandera) */
-.containerNac {
-  display: flex;
-  justify-content: space-between; /* separa texto y bandera */
-  align-items: center;
-  width: 100%;
-}
-
-.pais {
+/* Opción en el select */
+.documentos__option-text {
   font-weight: 600;
   font-size: 14px;
   color: #022500;
-  text-align: left;
 }
 
-.paisBandera img.bandera {
-  width: 24px;
-  height: 16px;
-  object-fit: cover;
-  margin-left: 10px;
+/* Contenedor de botones */
+.documentos__actions {
+  margin-top: 2rem;
+}
+
+/* Botón principal */
+.documentos__btn {
+  width: 100%;
+  height: 48px;
+  background: #55AC68;
+  border: 1px solid #55AC68;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.documentos__btn:hover {
+  opacity: 0.9;
+}
+
+/* Estado deshabilitado */
+.documentos__btn--disabled {
+  background: #79a8750d;
+  border: 1px solid #79a8750d;
+  color: #999;
+  cursor: not-allowed;
 }

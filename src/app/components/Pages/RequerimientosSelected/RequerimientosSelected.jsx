@@ -199,10 +199,10 @@ const RequerimientosSelected = () => {
                               <article className="d-flex  align-items-center">
                                 <div className="textCheck w-100  d-flex align-items-center">
                                   <div className="containerCheck_P28 spaceRadio">
-                                    <input type="radio" className="rdnSize mt-1" disabled />
+                                    <input type="radio" className="rdnSize mt-1" disabled /> 
                                   </div>
                                   <div className="w-100  Spacing d-flex align-items-center">
-                                    Domicilio Personal
+                                     Domicilio Personal
                                     <img
                                       onClick={handleButtonClick}
                                       src="assets/arrow_green.svg"

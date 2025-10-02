@@ -60,7 +60,7 @@ const Requerimientos = () => {
               </table>
             </div>
 
-            <section className="containerButtonOnExpands_P2">
+            <section className="containerButtonOnExpands_P2" style={{ marginTop: '20px' }}>
               <div></div>
 
               <br />

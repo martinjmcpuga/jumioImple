@@ -4,6 +4,8 @@ import React from 'react'
 import { useState, useEffect, useRef } from 'react';
 import { useAppContext } from '../../../context/AppContext';
 import Link from 'next/link';
+import './style.css';
+
 
 const Dataconfirm = () => {
 
@@ -80,15 +82,15 @@ const Dataconfirm = () => {
               {!verNameFull ? (
                 <>
                   <div className="txtOp_P2">Nombre/Given name</div>
-                  <div className="txtVer_P2">{firstName}</div>
+                  <div className="txtVer_P2 P_button">{firstName}</div>
                 </>
               ) : (
                 <>
                   <div className="txtOp_P2">Nombres/Given names</div>
-                  <div className="txtVer_P2">{firstName}</div>
+                  <div className="txtVer_P2 P_button">{firstName}</div>
 
-                  <div className="txtCpv_P2">Apellidos/Surname</div>
-                  <div className="txtVer_P2">
+                  <div className="txtOp_P2">Apellidos/Surname</div>
+                  <div className="txtVer_P2 P_button">
                     {paternalLastName} {maternalLastName}
                   </div>
                 </>

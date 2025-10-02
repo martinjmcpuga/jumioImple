@@ -209,162 +209,150 @@ function UploadComprobante() {
 
   return (
     <>
-      <div className="initBack_P2 animate__animated animate__fadeIn">
+      <>
+  <div className="initBack_P2 animate__animated animate__fadeIn">
+    <div className="containerInfo_P2 onContentExpands">
+      <div className="containerIdent_P2">
 
-        <div>
-
-          {loading ? (
-
+        {loading ? (
+          <div className="spinnerWrapper">
             <div className="spinner" />
+            <p className="loadingText">Cargando, por favor espera...</p>
+          </div>
+        ) : (
+          <div className="animate__animated animate__fadeIn">
 
-          ) : (
+            {/* Caso: Imagenes múltiples */}
+            {filesImage.length > 0 && (
+              <div className="previewCard">
+                <h3 className="previewTitle">Revisa tu foto</h3>
+                <p className="previewSubtitle">
+                  Asegúrate de que las letras sean legibles y con buena iluminación.
+                </p>
 
-            <div className='animate__animated animate__fadeIn'>
-              <div className='containerInfo_P2 onContentExpands'>
-                <div className="containerIdent_P2">
-                  {filesImage.length > 0 ? (
-                    <div>
-                      <div className="textFileSelectUp">Revisa tu foto:</div>
-                      <p className="subtitleTextFileUp">
-                        Asegúrate que las letras se vean claras y tenga buena
-                        iluminación
-                      </p>
-
-                      <div>
-                        {filesImage.map((file, index) => (
-
-                          <div key={index}>
-                            <div className="contaunerFileUp">
-                              <img
-                                className="borderPaddingUp"
-                                src={URL.createObjectURL(filesImage[index])}
-                                alt="Archivo seleccionado"
-                              />
-                            </div>
-                          </div>
-                        ))}
-
-
-                        <div className="buttonCenterUp">
-                          <div className="spaceButtonReloadUp">
-                          </div>
-                        </div>
-                        <div className="space"></div>
-                      </div>
-
-
-                      <div className="space"></div>
-                    </div>
-                  ) : null}
-                  {selectedFile ? (
-                    <div className='animate__animated animate__fadeIn'>
-                      <div className="textFileSelectUp">Revisa tu foto:</div>
-                      <p className="subtitleTextFileUp">
-                        Asegúrate que las letras se vean claras y tenga buena
-                        iluminación
-                      </p>
-                      {selectedFile.type.startsWith("image/") && (
-                        <div>
-                          <div className="contaunerFileUp">
-                            <img
-                              className="borderPaddingUp"
-                              src={URL.createObjectURL(selectedFile)}
-                              alt="Archivo seleccionado"
-                            />
-                          </div>
-
-                          <div className="buttonCenterUp">
-                            <div className="spaceButtonReloadUp">
-                              <button
-                                className="buttonReloadUp"
-                                onClick={handleReloadImage2}
-                              >
-                                <span className="txtButton_P2_OpUp">Cargar otro archivo</span>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="space"></div>
-                        </div>
-                      )}
-                      {selectedFile.type === "application/pdf" && (
-                        <div className="contextPdfUp">
-                          <PDFDocument file={(selectedFile)} onLoadSuccess={onDocumentLoadSuccess}>
-                            <PDFPage pageNumber={1} renderTextLayer={false} renderAnnotationLayer={false} />
-                          </PDFDocument>
-                        </div>
-                      )}
-
-                      <div className="space"></div>
-                    </div>
-                  ) : (
-                    <>
-                      <div
-                        className="drop-zone centerButtonUp"
-                        id="drop-zone"
-                        onDrop={handleDrop}
-                        onDragOver={handleDragOver}
-                        onClick={handleClick}>
-                        <div className="buttonFileUp">
-                          <input
-                            type="file"
-                            id="fileInput"
-                            style={{ display: "none" }}
-                            accept=".pdf, .jpeg, .jpg, .png"
-                            onChange={handleFileChange}
-                          />
-                          <span>Cargar Archivo</span>
-                        </div>
-                      </div>
-                    </>
-                  )}
+                <div className="previewGallery">
+                  {filesImage.map((file, index) => (
+                    <img
+                      key={index}
+                      className="previewImage"
+                      src={URL.createObjectURL(file)}
+                      alt="Archivo seleccionado"
+                    />
+                  ))}
                 </div>
               </div>
-            </div>
-          )}
-
-          <br />
-          <br />
-          <br />
-          <br />
-
-          <div className="footer">
-            {!selectedFile && !filesImage.length > 0 ? (
-              <>
-                <div className='containerCont_P2'>
-                  <button className='btnVer_P3'>
-                    <span className='txtVer_P3'>Continuar</span>
-                  </button>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className='containerCont_P2'>
-                  <button className='button_P2' onClick={handleReloadImage} >
-                    <span className='txtButton_P2'>Continuar</span>
-                  </button>
-                </div>
-              </>
             )}
-            <div className="imageContainer_P2">
-              <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
-            </div>
+
+            {/* Caso: Archivo único */}
+            {selectedFile && (
+              <div className="previewCard animate__animated animate__fadeIn">
+                <h3 className="previewTitle">Revisa tu archivo</h3>
+                <p className="previewSubtitle">
+                  Asegúrate de que las letras sean legibles y con buena iluminación.
+                </p>
+
+                {selectedFile.type.startsWith("image/") && (
+                  <div className="previewWrapper">
+                    <img
+                      className="previewImage"
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="Archivo seleccionado"
+                    />
+                    <button
+                      className="buttonSecondary"
+                      onClick={handleReloadImage2}
+                    >
+                      Cargar otro archivo
+                    </button>
+                  </div>
+                )}
+
+                {selectedFile.type === "application/pdf" && (
+                  <div className="pdfPreview">
+                    <PDFDocument
+                      file={selectedFile}
+                      onLoadSuccess={onDocumentLoadSuccess}
+                    >
+                      <PDFPage
+                        pageNumber={1}
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                      />
+                    </PDFDocument>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Caso: Nada seleccionado */}
+            {!selectedFile && filesImage.length === 0 && (
+              <div className="containerIdent_P2">
+              <div
+                className="dropZone"
+                id="drop-zone"
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onClick={handleClick}
+              >
+                <input
+                  type="file"
+                  id="fileInput"
+                  style={{ display: "none" }}
+                  accept=".pdf, .jpeg, .jpg, .png"
+                  onChange={handleFileChange}
+                />
+                <div className="dropZoneContent">
+                  <span className="dropZoneIcon">📂</span>
+                  <p className="dropZoneText">Haz clic o arrastra un archivo aquí</p>
+                  <small className="dropZoneHint">Formatos permitidos: PDF, JPG, PNG</small>
+                </div>
+              </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Footer */}
+        <div className="footer">
+          <div className="containerCont_P2">
+            {!selectedFile && filesImage.length === 0 ? (
+              <button className="buttonDisabled" disabled>
+                Continuar
+              </button>
+            ) : (
+              <button className="button_P2" onClick={handleReloadImage}>
+                Continuar
+              </button>
+            )}
+          </div>
+          <div className="imageContainer_P2">
+            <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      {/* Mensaje de errores */}
+  {/* Modal de errores */}
+  <Modal
+    show={show}
+    onHide={handleClose}
+    animation={false}
+    centered
+    className="animate__animated animate__fadeIn"
+  >
+    <Modal.Body className="backGroudModal">
+      <div className="msjTitleModalDiv">Error</div>
+      <div className="msjErrorModal">{showMessage}</div>
+    </Modal.Body>
+    <Modal.Footer>
+      <button className="button_P2" onClick={handleClose}>
+        <span className="txtButton_P2">Regresar</span>
+      </button>
+    </Modal.Footer>
+  </Modal>
+</>
 
-      <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn">
-        <Modal.Body className="backGroudModal">
-          <div className="msjTitleModalDiv">Error</div>
-          <div className="msjErrorModal">{showMessage}</div>
-        </Modal.Body>
-        <Modal.Footer>
-          <button className="button_P2" onClick={handleClose}>
-            <span className="txtButton_P2">Regresar</span>
-          </button>
-        </Modal.Footer>
-      </Modal>
     </>
   );
 }
