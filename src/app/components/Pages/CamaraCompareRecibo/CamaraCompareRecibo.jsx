@@ -35,7 +35,6 @@ const CamaraCompareRecibo = ({ }) => {
     const [loading, setLoading] = useState(false);
     const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
 
-
     useEffect(() => {
 
         if (isRunned.current) return;
