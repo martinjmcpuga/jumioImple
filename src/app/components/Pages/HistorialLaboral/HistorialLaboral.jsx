@@ -154,28 +154,6 @@ const HistorialLaboral = () => {
 
   }
 
-  const handleDateChangeInicio = (date) => {
-    setselectedDateInicio(date);
-    setIsEnabled(false);
-  };
-
-  const handleDateChangeTermino = (date) => {
-    setselectedDateTermino(date);
-    setIsEnabled(false);
-  };
-
-  const handleDatePickerClose = (date) => {
-    if (selectedDateInicio === null) {
-      setselectedDateInicio(date);
-    }
-  };
-
-  const handleDatePickerCloseT = (date) => {
-    if (selectedDateTermino === null) {
-      setselectedDateTermino(date);
-    }
-  };
-
   const handleButtonClick = async () => {
 
     let monthStr = "";
