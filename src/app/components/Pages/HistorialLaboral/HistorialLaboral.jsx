@@ -140,8 +140,6 @@ const HistorialLaboral = () => {
 
   }, []);
 
-
-
   const handleDisabledTermino = async (event) => {
 
     if (event.target.checked && !onehabilita) {

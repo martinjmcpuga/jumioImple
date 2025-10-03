@@ -1,14 +1,10 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Footer from '../../Footer/Footer'
-import './InfoSelfie.css'
-import { useAppContext } from '@/app/context/AppContext'
-
-const handleButtonClick = () => {
-
-}
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Footer from '../../Footer/Footer';
+import './InfoSelfie.css';
+import { useAppContext } from '@/app/context/AppContext';
 
 const InfoSelfie = () => {
 
