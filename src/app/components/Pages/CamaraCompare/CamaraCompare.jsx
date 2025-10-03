@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import WebCam from 'react-webcam'
-import * as faceApi from 'face-api.js'
-import './CamaraCompare.css'
+import WebCam from 'react-webcam';
+import * as faceApi from 'face-api.js';
+import './CamaraCompare.css';
 import Modal from "react-bootstrap/Modal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
@@ -45,7 +45,7 @@ const CamComponent = ({ }) => {
 
                 setLoading(true);
 
-            }, 1500);
+            }, 1300);
 
         }
 

@@ -6,12 +6,12 @@ import { useAppContext } from '../context/AppContext'
 
 const Page = () => {
 
-  const {setInterName}=useAppContext();
-  
+  const { setInterName } = useAppContext();
+
   useEffect(() => {
-    sessionStorage.setItem('interName','Autenticación Laboral');
+    sessionStorage.setItem('interName', 'Autenticación Laboral');
     setInterName('Autenticación Laboral');
-}, []);
+  }, []);
 
   return (
     <>

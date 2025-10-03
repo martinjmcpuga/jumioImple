@@ -45,7 +45,7 @@ const CamaraCompareN2 = ({ }) => {
 
                 setLoading(true);
 
-            }, 1500);
+            }, 1300);
 
         }
 

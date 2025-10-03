@@ -99,17 +99,6 @@ const DataRefPersonal = () => {
 
     }
 
-    const handleCloseError = async () => {
-        setShow(false);
-        /*
-          navigate("/AppIncodeDocument", {
-              state: {
-                  rutaContinue: "/DataDomPersonal",
-              }
-          });
-          */
-    }
-
     const handkeOnKeyDown = async (event) => {
         if (
             event.code === "Enter" ||

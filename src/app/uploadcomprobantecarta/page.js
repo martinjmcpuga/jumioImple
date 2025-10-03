@@ -5,12 +5,12 @@ import UploadComprobanteCarta from '../components/Pages/UploadComprobanteCarta/U
 import { useAppContext } from '../context/AppContext'
 
 const Page = () => {
-  const {setInterName}=useAppContext();
+  const { setInterName } = useAppContext();
 
   useEffect(() => {
     setInterName('Comprobante de Carta');
-    sessionStorage.setItem('interName','Comprobante de Carta');
-}, []);
+    sessionStorage.setItem('interName', 'Comprobante de Carta');
+  }, []);
   return (
     <>
       <UploadComprobanteCarta />

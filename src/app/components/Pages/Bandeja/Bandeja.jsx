@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getPerfilAicmJumio } from '../../Api/getPerfilAicmJumio';
 import { getRetrievalByAccount } from '../../Api/getRetrievalByAccount';
 import { getRetrievalByAccountSelfie } from '../../Api/getRetrievalByAccountSelfie';
+import { getPalencaUsersAccounts_Jumio } from '../../Api/getPalencaUsersAccounts_Jumio';
 import { mtFindPersonJumio } from '../../Api/mtFindPersonJumio';
 import { useRef } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
@@ -132,7 +133,7 @@ const Bandeja = () => {
               }
 
               if (responsePerfilCpv.n5BGC === true) {
-                //getPalencaUsersAccounts_Jumio(obj);
+                getPalencaUsersAccounts_Jumio(obj);
               }
 
               if (responsePerfilCpv.auCita === true) {

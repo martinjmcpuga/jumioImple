@@ -126,42 +126,6 @@ function DataDomPersonal() {
         }
     });
 
-    /*
-
-    useEffect(() => {
-
-        if (isRunned.current) return;
-        isRunned.current = true;
-
-        async function createSession() {
-
-            setLoading(true);
-            setTipoColonia([]);
-
-            const modelCodigoPostal = {
-                cp: codigoPostal
-            }
-
-            const response = await getCodigoPostalCpt_Jumio(modelCodigoPostal);
-
-            if (response.status === 200) {
-                setEdo(response.listRest[0].nomestado);
-                setMuni(response.listRest[0].municipio);
-                setTipoColonia(response.listRest);
-            } else {
-                setTipoColonia([]);
-            }
-
-            setLoading(false);
-
-        }
-
-        createSession();
-
-    }, []);
-
-    */
-
     const fnFetCodigoPostalCpt = async (cpCod) => {
 
         setTipoColonia([]);
@@ -244,7 +208,6 @@ function DataDomPersonal() {
             sessionStorage.setItem("longitud", longitud);
             sessionStorage.setItem("latitud_obtenida", latitud_obtenida);
             sessionStorage.setItem("longitud_obtenida", longitud_obtenida);
-
             router.push("/validarubicacion");
 
         } else {

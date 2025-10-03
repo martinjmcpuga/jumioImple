@@ -46,7 +46,6 @@ const ComprobanteIngreso = () => {
   const [showMessage, setShowMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-
   const handleCloseError = () => {
     setShowError(false);
   };

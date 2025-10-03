@@ -5,7 +5,7 @@ import RequerimientosSelfie from '../components/Pages/RequerimientosSelfie/Reque
 const page = () => {
   return (
     <>
-    <RequerimientosSelfie />
+      <RequerimientosSelfie />
     </>
   )
 }

@@ -6,7 +6,6 @@ import { useAppContext } from '../../../context/AppContext';
 import Link from 'next/link';
 import './style.css';
 
-
 const Dataconfirm = () => {
 
   const { setRutaBack } = useAppContext();
@@ -60,7 +59,7 @@ const Dataconfirm = () => {
 
         setLoading(true);
 
-      }, 1500);
+      }, 1300);
 
     }
 

@@ -48,7 +48,7 @@ const CamaraCompareFirma = ({ }) => {
 
                 setLoading(true);
 
-            }, 1500);
+            }, 1300);
 
         }
 

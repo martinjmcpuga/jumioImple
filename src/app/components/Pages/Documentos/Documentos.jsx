@@ -63,7 +63,7 @@ const Documentos = () => {
       ...base,
       backgroundColor: state.isSelected ? '#0078ff26'
         : state.isFocused ? '#f1f1f1'
-        : 'white',
+          : 'white',
       color: '#333',
       cursor: 'pointer',
     }),
