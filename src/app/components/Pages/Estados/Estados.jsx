@@ -8,13 +8,14 @@ import "./Estados.css";
 import dynamic from 'next/dynamic';
 import { getEstadoWsaicm } from "../../Api/getEstadoWsaicm";
 const Select = dynamic(() => import('react-select'), { ssr: false });
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Estados = () => {
 
   const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
   const [isButtonEnabled, setButtonEnabled] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [state, setStates] = useState()
   const isRunned = useRef(false);
   const [listEstados, getListEstados] = useState(null);
@@ -33,7 +34,7 @@ const Estados = () => {
       setLoading(true);
 
       const obj = {
-        cpv: ''
+        cpv: sessionStorage.getItem("sCpv")
       };
 
       const response = await getEstadoWsaicm(obj);
@@ -57,17 +58,32 @@ const Estados = () => {
   };
 
   const style = {
-    control: base => ({
+    control: (base) => ({
       ...base,
-      height: "52px !important",
-      borderRadius: "4px !important",
-      boxShadow: "none !important",
-      borderColor: "#c4cbd1 !important",
-      "&:hover": {
-        borderColor: "#c4cbd1 !important"
-      }
-
-    })
+      height: 52,
+      borderRadius: 4,
+      boxShadow: 'none',
+      borderColor: '#c4cbd1',
+      '&:hover': {
+        borderColor: '#c4cbd1',
+      },
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? '#0078ff26'
+        : state.isFocused
+          ? '#f1f1f1'
+          : 'white',
+      color: '#333',
+      cursor: 'pointer',
+    }),
+    singleValue: (base) => ({
+      ...base,
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    }),
   };
 
   const handleChange = (selectedOption) => {
@@ -80,50 +96,62 @@ const Estados = () => {
   return (
     <>
       <div className="initBack_P2 animate__animated animate__fadeIn">
-        <div className="containerRender">
-          <div className="containerInfo_P2">
-            <div className="containerIdent_P2">
-              <div className="txtOp_P2">Seleccione la ubicación más conveniente</div>
-              <hr className="line" />
-              <div className="containerInfo_Normal ">
-                <span className="textState">Estado</span>
-                <br />
-                <Select
-                  styles={style}
-                  options={listEstados}
-                  onChange={handleChange}
-                  value={selectedOption}
-                  formatOptionLabel={state => (
-                    <div className="containerDom">
-                      <div className="animate__animated animate__fadeIn pais">{state.nombre}</div>
-                    </div>
-                  )}
-                  placeholder="Selecciona tu Estado"
-                />
 
-              </div>
-              <hr className="lineSimple" />
-              <div className="btnContinue">
-                {!isButtonEnabled ? (
-                  <>
-                    <button className="btnVer_P3">
-                      <span className="txtVer_P3">Continuar</span>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="button_P2 animate__animated animate__fadeIn"
-                      onClick={handleButtonClick}
-                    >
-                      <span className="txtButton_P2">Continuar</span>
-                    </button>
-                  </>
-                )}
+        {loading ? (
+
+          <div className="containerRender">
+            <div className="spinner"></div>
+          </div>
+
+        ) : (
+          <>
+            <div className="containerRender animate__animated animate__fadeIn">
+              <div className="containerInfo_P2">
+                <div className="containerIdent_P2">
+                  <div className="txtOp_P2">Seleccione la ubicación más conveniente</div>
+                  <hr className="line" />
+                  <div className="containerInfo_Normal ">
+                    <span className="textState">Estado</span>
+                    <br />
+                    <Select
+                      styles={style}
+                      options={listEstados}
+                      onChange={handleChange}
+                      value={selectedOption}
+                      formatOptionLabel={state => (
+                        <div className="containerDom">
+                          <div className="animate__animated animate__fadeIn pais">{state.nombre}</div>
+                        </div>
+                      )}
+                      placeholder="Selecciona tu Estado"
+                    />
+
+                  </div>
+                  <hr className="lineSimple" />
+                  <div className="btnContinue">
+                    {!isButtonEnabled ? (
+                      <>
+                        <button className="btnVer_P3">
+                          <span className="txtVer_P3">Continuar</span>
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className="button_P2 animate__animated animate__fadeIn"
+                          onClick={handleButtonClick}
+                        >
+                          <span className="txtButton_P2">Continuar</span>
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
+
         <div className="footer">
           <div className="imageContainer_P2">
             <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />

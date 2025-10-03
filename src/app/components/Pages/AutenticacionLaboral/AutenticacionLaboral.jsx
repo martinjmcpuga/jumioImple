@@ -50,8 +50,6 @@ const AutenticacionLaboral = () => {
 
   const onContinue = async () => {
 
-    /** Validacion documento laboral  */
-
     router.push('/requerimientosn5');
 
   };

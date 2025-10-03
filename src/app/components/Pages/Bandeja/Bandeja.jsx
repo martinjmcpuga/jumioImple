@@ -249,7 +249,6 @@ const Bandeja = () => {
   }, []);
 
   const getHomeDomPersonal = async (event) => {
-
     router.push('/initdomicilio');
   };
 

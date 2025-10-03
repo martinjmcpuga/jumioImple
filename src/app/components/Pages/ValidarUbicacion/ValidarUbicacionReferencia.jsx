@@ -191,6 +191,7 @@ function ValidarUbicacionReferencia() {
                                 router.push('/requerimientosselected');
 
                             } else {
+
                                 setLoading(false);
                                 setShowError(true);
                                 setShowStatusError(response.status);
@@ -199,6 +200,7 @@ function ValidarUbicacionReferencia() {
                             }
 
                         } else {
+
                             setLoading(false);
                             setShowError(true);
                             setShowStatusError("400");

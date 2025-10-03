@@ -248,7 +248,6 @@ function ValidarUbicacion() {
                     <div className="spinner"></div>
                 ) : (
                     <>
-
                         <div className="containerRender onContentExpands">
                             <div className="containerInfo_P2">
                                 <div className="containerIdent_P2 scrollDataPersonal">

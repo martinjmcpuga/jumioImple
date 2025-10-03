@@ -6,7 +6,7 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Modal from 'react-bootstrap/Modal';
-import './ComprobanteIngreso.css'
+import './ComprobanteIngreso.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 

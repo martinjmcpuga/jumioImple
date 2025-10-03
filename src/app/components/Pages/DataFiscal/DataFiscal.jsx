@@ -4,7 +4,7 @@ import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import './DataCss.css'
+import './DataCss.css';
 import { mtFindPersonJumio } from '../../Api/mtFindPersonJumio';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
