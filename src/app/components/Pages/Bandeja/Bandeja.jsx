@@ -94,6 +94,7 @@ const Bandeja = () => {
           vigenciaCpv: sessionStorage.getItem("vigenciaCpv"),
           telefono: sessionStorage.getItem("telefono"),
           correo: sessionStorage.getItem("correo"),
+          idDocPais: sessionStorage.getItem("idDocPais"),
           cliente: appGlobal.ev
         };
 
