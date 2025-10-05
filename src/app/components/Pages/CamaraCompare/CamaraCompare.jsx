@@ -41,6 +41,8 @@ const CamComponent = ({ }) => {
 
         async function createSession() {
 
+            setLoading(false);
+
             setTimeout(() => {
 
                 setLoading(true);
