@@ -47,7 +47,7 @@ const CamComponent = ({ }) => {
 
                 setLoading(true);
 
-            }, 1000);
+            }, 500);
 
         }
 
