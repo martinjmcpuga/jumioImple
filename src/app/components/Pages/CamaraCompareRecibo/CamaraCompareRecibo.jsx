@@ -48,7 +48,7 @@ const CamaraCompareRecibo = ({ }) => {
 
                 setLoading(true);
 
-            }, 500);
+            }, 1000);
 
         }
 
