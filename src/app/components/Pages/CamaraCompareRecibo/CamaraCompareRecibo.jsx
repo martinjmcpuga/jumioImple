@@ -42,11 +42,13 @@ const CamaraCompareRecibo = ({ }) => {
 
         async function createSession() {
 
+            setLoading(false);
+
             setTimeout(() => {
 
                 setLoading(true);
 
-            }, 1300);
+            }, 1000);
 
         }
 
