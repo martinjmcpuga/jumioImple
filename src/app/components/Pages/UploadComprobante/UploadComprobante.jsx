@@ -210,9 +210,9 @@ function UploadComprobante() {
   return (
     <>
       <>
-  <div className="initBack_P2 animate__animated animate__fadeIn">
+  <div className="initBack_P2 animate__animated animate__fadeIn containerRender">
     <div className="containerInfo_P2 onContentExpands">
-      <div className="containerIdent_P2">
+      <div className="containerIdent_P2Document">
 
         {loading ? (
           <div className="spinnerWrapper">
@@ -224,7 +224,7 @@ function UploadComprobante() {
 
             {/* Caso: Imagenes múltiples */}
             {filesImage.length > 0 && (
-              <div className="previewCard">
+              <div className="previewCard min-h-full ">
                 <h3 className="previewTitle">Revisa tu foto</h3>
                 <p className="previewSubtitle">
                   Asegúrate de que las letras sean legibles y con buena iluminación.
