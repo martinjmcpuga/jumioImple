@@ -259,7 +259,7 @@
     /* Centra horizontalmente */
     align-items: center;
     /* Centra verticalmente */
-    height: 80vh;
+    height: 90vh;
     /* Ocupa toda la altura de la ventana */
     flex-direction: column;
     /* Para que los hijos se apilen verticalmente si hay varios */
