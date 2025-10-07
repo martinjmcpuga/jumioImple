@@ -168,6 +168,7 @@ function ValidarUbicacion() {
                                 id: sessionStorage.getItem('id_jumio'),
                                 documentType: sessionStorage.getItem('documentType'),
                                 documentTypeLabel: sessionStorage.getItem('documentTypeLabel'),
+                                fechaValidaComprobante: sessionStorage.getItem('fechaValidaComprobante'),
                                 cpDom: cpDom,
                                 coloniaDom: coloniaDom,
                                 calleDom: calleDom,
