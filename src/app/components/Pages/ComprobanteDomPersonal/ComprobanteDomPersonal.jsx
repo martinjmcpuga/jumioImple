@@ -22,6 +22,8 @@ function ComprobanteDomPersonal() {
     const handleSelectChange = (selectedOption) => {
 
         sessionStorage.setItem('tipo_comprobante', selectedOption.label)
+        sessionStorage.setItem("documentTypeArray", selectedOption.value);
+        sessionStorage.setItem("documentTypeLabel", selectedOption.label);
         setSelectedOption(selectedOption);
         setBlContinue(true);
 
