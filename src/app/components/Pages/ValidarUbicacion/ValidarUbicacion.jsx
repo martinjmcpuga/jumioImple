@@ -166,7 +166,7 @@ function ValidarUbicacion() {
 
                             const objInsertDom = {
                                 id: sessionStorage.getItem('id_jumio'),
-                                documentType: "",
+                                documentType: sessionStorage.getItem('documentType'),
                                 documentTypeLabel: sessionStorage.getItem('documentTypeLabel'),
                                 cpDom: cpDom,
                                 coloniaDom: coloniaDom,

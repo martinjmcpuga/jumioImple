@@ -183,6 +183,8 @@ function UploadComprobante() {
       if (responseComprobante.status === 200) {
 
         sessionStorage.setItem('cp_comprobante', responseComprobante.cp)
+        sessionStorage.setItem('documentType', responseComprobante.documentType)
+
 
         router.push('/datadompersonal');
 
@@ -210,148 +212,148 @@ function UploadComprobante() {
   return (
     <>
       <>
-  <div className="initBack_P2 animate__animated animate__fadeIn containerRender">
-    <div className="containerInfo_P2 onContentExpands">
-      <div className="containerIdent_P2Document">
+        <div className="initBack_P2 animate__animated animate__fadeIn containerRender">
+          <div className="containerInfo_P2 onContentExpands">
+            <div className="containerIdent_P2Document">
 
-        {loading ? (
-          <div className="spinnerWrapper">
-            <div className="spinner" />
-            <p className="loadingText">Cargando, por favor espera...</p>
-          </div>
-        ) : (
-          <div className="animate__animated animate__fadeIn">
-
-            {/* Caso: Imagenes múltiples */}
-            {filesImage.length > 0 && (
-              <div className="previewCard min-h-full ">
-                <h3 className="previewTitle">Revisa tu foto</h3>
-                <p className="previewSubtitle">
-                  Asegúrate de que las letras sean legibles y con buena iluminación.
-                </p>
-
-                <div className="previewGallery">
-                  {filesImage.map((file, index) => (
-                    <img
-                      key={index}
-                      className="previewImage"
-                      src={URL.createObjectURL(file)}
-                      alt="Archivo seleccionado"
-                    />
-                  ))}
+              {loading ? (
+                <div className="spinnerWrapper">
+                  <div className="spinner" />
+                  <p className="loadingText">Cargando, por favor espera...</p>
                 </div>
-              </div>
-            )}
+              ) : (
+                <div className="animate__animated animate__fadeIn">
 
-            {/* Caso: Archivo único */}
-            {selectedFile && (
-              <div className="previewCard animate__animated animate__fadeIn">
-                <h3 className="previewTitle">Revisa tu archivo</h3>
-                <p className="previewSubtitle">
-                  Asegúrate de que las letras sean legibles y con buena iluminación.
-                </p>
+                  {/* Caso: Imagenes múltiples */}
+                  {filesImage.length > 0 && (
+                    <div className="previewCard min-h-full ">
+                      <h3 className="previewTitle">Revisa tu foto</h3>
+                      <p className="previewSubtitle">
+                        Asegúrate de que las letras sean legibles y con buena iluminación.
+                      </p>
 
-                {selectedFile.type.startsWith("image/") && (
-                  <div className="previewWrapper">
-                    <img
-                      className="previewImage"
-                      src={URL.createObjectURL(selectedFile)}
-                      alt="Archivo seleccionado"
-                    />
-                    <button
-                      className="buttonSecondary"
-                      onClick={handleReloadImage2}
-                    >
-                      Cargar otro archivo
+                      <div className="previewGallery">
+                        {filesImage.map((file, index) => (
+                          <img
+                            key={index}
+                            className="previewImage"
+                            src={URL.createObjectURL(file)}
+                            alt="Archivo seleccionado"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Caso: Archivo único */}
+                  {selectedFile && (
+                    <div className="previewCard animate__animated animate__fadeIn">
+                      <h3 className="previewTitle">Revisa tu archivo</h3>
+                      <p className="previewSubtitle">
+                        Asegúrate de que las letras sean legibles y con buena iluminación.
+                      </p>
+
+                      {selectedFile.type.startsWith("image/") && (
+                        <div className="previewWrapper">
+                          <img
+                            className="previewImage"
+                            src={URL.createObjectURL(selectedFile)}
+                            alt="Archivo seleccionado"
+                          />
+                          <button
+                            className="buttonSecondary"
+                            onClick={handleReloadImage2}
+                          >
+                            Cargar otro archivo
+                          </button>
+                        </div>
+                      )}
+
+                      {selectedFile.type === "application/pdf" && (
+                        <div className="pdfPreview">
+                          <PDFDocument
+                            file={selectedFile}
+                            onLoadSuccess={onDocumentLoadSuccess}
+                          >
+                            <PDFPage
+                              pageNumber={1}
+                              renderTextLayer={false}
+                              renderAnnotationLayer={false}
+                            />
+                          </PDFDocument>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Caso: Nada seleccionado */}
+                  {!selectedFile && filesImage.length === 0 && (
+                    <div className="containerIdent_P2">
+                      <div
+                        className="dropZone"
+                        id="drop-zone"
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}
+                        onClick={handleClick}
+                      >
+                        <input
+                          type="file"
+                          id="fileInput"
+                          style={{ display: "none" }}
+                          accept=".pdf, .jpeg, .jpg, .png"
+                          onChange={handleFileChange}
+                        />
+                        <div className="dropZoneContent">
+                          <span className="dropZoneIcon">📂</span>
+                          <p className="dropZoneText">Haz clic o arrastra un archivo aquí</p>
+                          <small className="dropZoneHint">Formatos permitidos: PDF, JPG, PNG</small>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Footer */}
+              <div className="footer">
+                <div className="containerCont_P2">
+                  {!selectedFile && filesImage.length === 0 ? (
+                    <button className="buttonDisabled" disabled>
+                      Continuar
                     </button>
-                  </div>
-                )}
-
-                {selectedFile.type === "application/pdf" && (
-                  <div className="pdfPreview">
-                    <PDFDocument
-                      file={selectedFile}
-                      onLoadSuccess={onDocumentLoadSuccess}
-                    >
-                      <PDFPage
-                        pageNumber={1}
-                        renderTextLayer={false}
-                        renderAnnotationLayer={false}
-                      />
-                    </PDFDocument>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Caso: Nada seleccionado */}
-            {!selectedFile && filesImage.length === 0 && (
-              <div className="containerIdent_P2">
-              <div
-                className="dropZone"
-                id="drop-zone"
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}
-                onClick={handleClick}
-              >
-                <input
-                  type="file"
-                  id="fileInput"
-                  style={{ display: "none" }}
-                  accept=".pdf, .jpeg, .jpg, .png"
-                  onChange={handleFileChange}
-                />
-                <div className="dropZoneContent">
-                  <span className="dropZoneIcon">📂</span>
-                  <p className="dropZoneText">Haz clic o arrastra un archivo aquí</p>
-                  <small className="dropZoneHint">Formatos permitidos: PDF, JPG, PNG</small>
+                  ) : (
+                    <button className="button_P2" onClick={handleReloadImage}>
+                      Continuar
+                    </button>
+                  )}
+                </div>
+                <div className="imageContainer_P2">
+                  <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
                 </div>
               </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Footer */}
-        <div className="footer">
-          <div className="containerCont_P2">
-            {!selectedFile && filesImage.length === 0 ? (
-              <button className="buttonDisabled" disabled>
-                Continuar
-              </button>
-            ) : (
-              <button className="button_P2" onClick={handleReloadImage}>
-                Continuar
-              </button>
-            )}
-          </div>
-          <div className="imageContainer_P2">
-            <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  {/* Modal de errores */}
-  <Modal
-    show={show}
-    onHide={handleClose}
-    animation={false}
-    centered
-    className="animate__animated animate__fadeIn"
-  >
-    <Modal.Body className="backGroudModal">
-      <div className="msjTitleModalDiv">Error</div>
-      <div className="msjErrorModal">{showMessage}</div>
-    </Modal.Body>
-    <Modal.Footer>
-      <button className="button_P2" onClick={handleClose}>
-        <span className="txtButton_P2">Regresar</span>
-      </button>
-    </Modal.Footer>
-  </Modal>
-</>
+        {/* Modal de errores */}
+        <Modal
+          show={show}
+          onHide={handleClose}
+          animation={false}
+          centered
+          className="animate__animated animate__fadeIn"
+        >
+          <Modal.Body className="backGroudModal">
+            <div className="msjTitleModalDiv">Error</div>
+            <div className="msjErrorModal">{showMessage}</div>
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="button_P2" onClick={handleClose}>
+              <span className="txtButton_P2">Regresar</span>
+            </button>
+          </Modal.Footer>
+        </Modal>
+      </>
 
     </>
   );
