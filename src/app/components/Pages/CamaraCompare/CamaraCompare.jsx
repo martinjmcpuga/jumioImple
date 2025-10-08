@@ -96,7 +96,7 @@ const CamComponent = ({ }) => {
         const detection = await faceApi.detectSingleFace(video, new faceApi.TinyFaceDetectorOptions());
 
         if (detection && countdown === null) {
-            //console.log("Rostro detectado ✅");
+
             setIsCapturing(true) // Bloquear reconocimiento
             setCountdown(3)
             setMessage("Cara detectada, tomando foto en 3 segundos")
@@ -142,7 +142,7 @@ const CamComponent = ({ }) => {
         const response = await getSelfieToCamara_Jumio(objIncode);
 
         router.push("/bandeja");
-        
+
         /*
 
         if (response.status === 200) {
