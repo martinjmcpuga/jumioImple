@@ -35,6 +35,8 @@ function ValidarUbicacion() {
     const [lng, setLng] = useState("");
     const [canvas, setCanvas] = useState(null);
     const [dataUrl, setDataUrl] = useState(null);
+
+
     const [loading, setLoading] = useState(false);
 
     /******************************************************************** */
@@ -118,7 +120,6 @@ function ValidarUbicacion() {
         contentRef: mapContainer,
         print: async () => {
             const doc = new jsPDF({
-                orientation: "portrait",
                 unit: "px",
                 format: [canvas.width / 2, canvas.height / 2]
             });
@@ -126,13 +127,11 @@ function ValidarUbicacion() {
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
-                    scale: 1,
+                    scale: .4,
                 },
-                margin: 0,
-                x: 0,
-                y: 0,
+                margin: 1,
+                x: 4,
                 async callback(doc) {
-                    doc.save('Mapa.pdf');
                     const file = doc.output('blob');
                     try {
                         setLoading(true);
@@ -191,14 +190,17 @@ function ValidarUbicacion() {
                                 imagenDom: "",
                             };
 
+                            console.log(objInsertDom)
+
                             const response = await mtUpdatePersonDom_Jumio(objInsertDom);
+
+                            console.log(response)
 
                             if (response.status === 200) {
 
                                 router.push('/requerimientosselected');
 
                             } else {
-
                                 setLoading(false);
                                 setShowError(true);
                                 setShowStatusError(response.status);
@@ -247,6 +249,7 @@ function ValidarUbicacion() {
                     <div className="spinner"></div>
                 ) : (
                     <>
+
                         <div className="containerRender onContentExpands">
                             <div className="containerInfo_P2">
                                 <div className="containerIdent_P2 scrollDataPersonal">

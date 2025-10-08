@@ -124,11 +124,10 @@ function ValidarUbicacionReferencia() {
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
-                    scale: 1,
+                    scale: .4,
                 },
-                margin: 0,
-                x: 0,
-                y: 0,
+                margin: 1,
+                x: 4,
                 async callback(doc) {
                     const file = doc.output('blob');
                     try {
@@ -192,7 +191,6 @@ function ValidarUbicacionReferencia() {
                                 router.push('/requerimientosselected');
 
                             } else {
-
                                 setLoading(false);
                                 setShowError(true);
                                 setShowStatusError(response.status);
@@ -201,7 +199,6 @@ function ValidarUbicacionReferencia() {
                             }
 
                         } else {
-
                             setLoading(false);
                             setShowError(true);
                             setShowStatusError("400");
