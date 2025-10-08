@@ -145,14 +145,14 @@ input::placeholder {
 /* Botones */
 /* ========================================================= */
 
-.containerCont_P2 {
+/* .containerCont_P2 {
     display: flex;
     gap: 15px;
-}
-
+} */
+/* 
 .spaceButton14 {
     flex: 1;
-}
+} */
 
 .button_P2 {
     width: 100%;
@@ -209,4 +209,16 @@ input::placeholder {
 .bandera {
     height: 20px;
     width: 35px;
+}
+
+.containerCont_P2 {
+    display: flex;
+    flex-direction: column; /* ¡Esta es la clave para apilarlos! */
+    gap: 15px; /* Agrega un espacio entre el botón "Mapear" y "Reintentar" */
+    width: 100%; /* Asegura que ocupe el ancho disponible */
+}
+
+/* Opcional: Asegura que los contenedores de los botones también ocupen el ancho completo */
+.spaceButton14 {
+    width: 100%;
 }
