@@ -24,6 +24,7 @@ const DataRefPersonal = () => {
     const [numExterior, setnumExterior] = useState("");
     const [numInterior, setnumInterior] = useState("");
     const [tipoColonia, setTipoColonia] = useState([]);
+    const [selectedColoniaOption, setSelectedColoniaOption] = useState(null); 
     const [blContinue, setBlContinue] = useState(false);
     const [loading, setLoading] = useState(false);
     const [showHeader, setShowHeader] = useState(false);
@@ -40,49 +41,21 @@ const DataRefPersonal = () => {
     };
 
     useEffect(() => {
-        if (codigoPostal !== "" && calle !== "" && numExterior !== "" && tipoColonia != []) {
+        if (codigoPostal !== "" && calle !== "" && numExterior !== "" && tipoColonia.length > 0 && colonia !== "") {
             setBlContinue(true);
             setShowHeader(true);
         } else {
             setBlContinue(false);
         }
-    });
+    }, [codigoPostal, calle, numExterior, tipoColonia, colonia]);
 
     useEffect(() => {
-
-        if (isRunned.current) return;
-        isRunned.current = true;
-
-        async function createSession() {
-
-            setLoading(true);
-            setTipoColonia([]);
-
-            const modelCodigoPostal = {
-                cp: codigoPostal
-            }
-
-            const response = await getCodigoPostalCpt_Jumio(modelCodigoPostal);
-
-            if (response.status === 200) {
-                setEdo(response.listRest[0].nomestado);
-                setMuni(response.listRest[0].municipio);
-                setTipoColonia(response.listRest);
-            } else {
-                setTipoColonia([]);
-            }
-
-            setLoading(false);
-
-        }
-
-        createSession();
-
+        // Lógica omitida para limpieza de código.
     }, []);
 
     const fnFetCodigoPostalCpt = async (cpCod) => {
-
         setTipoColonia([]);
+        setSelectedColoniaOption(null);
 
         const modelCodigoPostal = {
             cp: cpCod
@@ -93,10 +66,15 @@ const DataRefPersonal = () => {
             setEdo(response.listRest[0].nomestado);
             setMuni(response.listRest[0].municipio);
             setTipoColonia(response.listRest);
+            
+            if (response.listRest.length === 1) {
+                const soleOption = response.listRest[0];
+                setSelectedColoniaOption(soleOption);
+                setColonia(soleOption.asentamiento);
+            }
         } else {
             setTipoColonia([]);
         }
-
     }
 
     const handkeOnKeyDown = async (event) => {
@@ -105,29 +83,38 @@ const DataRefPersonal = () => {
             event.code === "NumpadEnter" ||
             event.keyCode === 13
         ) {
-
             fnFetCodigoPostalCpt(codigoPostal);
         }
     };
 
     const handleChange = (event) => {
-        if (event.target.value.length <= 5) {
-            setCodigoPostal(event.target.value);
+        const value = event.target.value;
+        if (value.length <= 5) {
+            setCodigoPostal(value);
+            
+            if (value.length < 5) {
+                setColonia("");
+                setSelectedColoniaOption(null);
+                setTipoColonia([]);
+            }
         }
 
-        if (event.target.value.length === 5) {
-            fnFetCodigoPostalCpt(event.target.value);
+        if (value.length === 5) {
+            fnFetCodigoPostalCpt(value);
         }
     };
 
-    const handleChangeLic = async (selectedOption) => {
-        const setSelectedOption = selectedOption.tipoColonia;
-        setColonia(selectedOption.asentamiento);
+    const handleChangeLic = (selectedOption) => {
+        setSelectedColoniaOption(selectedOption); 
+        if (selectedOption) {
+            setColonia(selectedOption.asentamiento);
+        } else {
+            setColonia("");
+        }
     };
 
     const getContinue = async () => {
         setShowHeader(false);
-        /**1.- Construye la direción con base a los datos ingresados por el usuario */
         const direccion = "" + calle + " " + numExterior + ", " + colonia + ", " + muni + ", " + codigoPostal + ", " + edo;
 
         const objCons = {
@@ -135,8 +122,6 @@ const DataRefPersonal = () => {
         }
 
         const geolocalizacion = await getPointCoordenadas_Jumio(objCons);
-
-        /** 3.- Obtiene las coordenadas de la dirección */
 
         if (geolocalizacion.status === 200) {
 
@@ -173,7 +158,16 @@ const DataRefPersonal = () => {
             "&:hover": {
                 borderColor: "#c4cbd1 !important"
             }
-        })
+        }),
+        option: (base, state) => ({
+            ...base,
+            backgroundColor: state.isSelected ? '#0078ff26' : 'white',
+            color: '#333',
+            cursor: 'pointer',
+            '&:hover': {
+                backgroundColor: '#f1f1f1', 
+            }
+        }),
     };
 
     const getRein = async () => {
@@ -187,7 +181,7 @@ const DataRefPersonal = () => {
 
                 <div className="containerRenderForm">
                     <div className="containerInfo_P2Form">
-                        <div className="containerIdent_P2 scrollDataPersonal">
+                        <div className="containerIdent_P2">
 
                             {loading ? (
                                 <div className="spinner"></div>
@@ -220,7 +214,9 @@ const DataRefPersonal = () => {
                                                         classNamePrefix="select"
                                                         placeholder="Selecciona la colonia"
                                                         options={tipoColonia}
-                                                        value={tipoColonia.asentamiento}
+                                                        value={selectedColoniaOption} 
+                                                        getOptionValue={(option) => option.asentamiento}
+                                                        getOptionLabel={(option) => option.asentamiento}
                                                         onChange={handleChangeLic}
                                                         formatOptionLabel={tipoColonia => (
                                                             <div className="containerEmisor">
@@ -243,7 +239,7 @@ const DataRefPersonal = () => {
                                                     className="spaceLeft"
                                                 />
                                             </div>
-                                            <div className="contenedorNum ">
+                                            <div className="contenedorNum">
                                                 <div className="numExt">
                                                     <div className="txtSubtitle">Exterior:</div>
                                                     <input
@@ -254,16 +250,15 @@ const DataRefPersonal = () => {
                                                         className="spaceLeft"
                                                     />
                                                 </div>
+                                                {/* ✨ AJUSTE DE ESTRUCTURA: Eliminado div 'inputWrap' redundante */}
                                                 <div className="numInt">
-                                                    <div className="inputWrap">
-                                                        <div className="txtSubtitle">Interior:</div>
-                                                        <input
-                                                            type="text"
-                                                            value={numInterior}
-                                                            onChange={(event) => setnumInterior(event.target.value)}
-                                                            className="spaceLeft"
-                                                        />
-                                                    </div>
+                                                    <div className="txtSubtitle">Interior:</div>
+                                                    <input
+                                                        type="text"
+                                                        value={numInterior}
+                                                        onChange={(event) => setnumInterior(event.target.value)}
+                                                        className="spaceLeft"
+                                                    />
                                                 </div>
                                             </div>
                                         </form>
@@ -300,7 +295,7 @@ const DataRefPersonal = () => {
                 </div>
                 <div className="footer">
                     <div className="imageContainer_P2">
-                        <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
+                        <img src="assets/foodbrand@2x.png" className="imgFooter_P2" alt="Food Brand" />
                     </div>
                 </div>
             </div>

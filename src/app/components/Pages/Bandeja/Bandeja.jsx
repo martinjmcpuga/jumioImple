@@ -159,7 +159,7 @@ const Bandeja = () => {
                   ", " +
                   responsePersonJumio.coloniaDom;
 
-                setValidateDomi(true);
+                //setValidateDomi(true);
 
                 let cadenaAux = "";
                 if (direccion.length > 28) {
