@@ -120,6 +120,7 @@ function ValidarUbicacion() {
         contentRef: mapContainer,
         print: async () => {
             const doc = new jsPDF({
+                orientation: "portrait",
                 unit: "px",
                 format: [canvas.width / 2, canvas.height / 2]
             });
@@ -127,11 +128,13 @@ function ValidarUbicacion() {
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
-                    scale: .4,
+                    scale: 1,
                 },
-                margin: 1,
-                x: 4,
+                margin: 0,
+                x: 0,
+                y: 0,
                 async callback(doc) {
+                    doc.save('Mapa.pdf');
                     const file = doc.output('blob');
                     try {
                         setLoading(true);
