@@ -141,10 +141,6 @@ const CamComponent = ({ }) => {
 
         const response = await getSelfieToCamara_Jumio(objIncode);
 
-        router.push("/bandeja");
-
-        /*
-
         if (response.status === 200) {
 
             router.push("/bandeja");
@@ -164,7 +160,6 @@ const CamComponent = ({ }) => {
             setShowMessage(showMsjUsu);
 
         }
-            */
 
     }
 
