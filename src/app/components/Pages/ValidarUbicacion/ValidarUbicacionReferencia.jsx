@@ -124,10 +124,11 @@ function ValidarUbicacionReferencia() {
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
-                    scale: .4,
+                    scale: 1,
                 },
-                margin: 1,
-                x: 4,
+                margin: 0,
+                x: 0,
+                y: 0,
                 async callback(doc) {
                     const file = doc.output('blob');
                     try {
