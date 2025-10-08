@@ -35,8 +35,6 @@ function ValidarUbicacion() {
     const [lng, setLng] = useState("");
     const [canvas, setCanvas] = useState(null);
     const [dataUrl, setDataUrl] = useState(null);
-
-
     const [loading, setLoading] = useState(false);
 
     /******************************************************************** */
@@ -193,17 +191,14 @@ function ValidarUbicacion() {
                                 imagenDom: "",
                             };
 
-                            console.log(objInsertDom)
-
                             const response = await mtUpdatePersonDom_Jumio(objInsertDom);
-
-                            console.log(response)
 
                             if (response.status === 200) {
 
                                 router.push('/requerimientosselected');
 
                             } else {
+
                                 setLoading(false);
                                 setShowError(true);
                                 setShowStatusError(response.status);
