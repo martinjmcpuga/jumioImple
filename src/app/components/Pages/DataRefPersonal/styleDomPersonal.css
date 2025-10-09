@@ -1,59 +1,31 @@
-/* ========================================================= */
-/* Estructura Principal y Contenedores */
-/* ========================================================= */
-
-.initBack_P2 {
-    /* Si tienes estilos para el fondo principal, agrégalos aquí */
-}
-
+/* Contenedores principales */
 .containerRenderForm {
     padding-bottom: 1px;
 }
 
-.containerInfo_P2Form,
 .containerInfo_P2 {
-    /* Unificado para ambos componentes */
     padding: 15px 15px 20px 15px;
 }
 
-.scrollDataPersonal,
 .scrollDataDom {
-    /* Unificado */
-    overflow-y: auto;
-    max-height: 85vh; 
+    overflow: scroll;
+    height: 500px;
 }
 
 .heigthData1 {
-    /* Altura consistente para el área del formulario */
     height: 800px;
 }
 
-/* ========================================================= */
-/* Tipografía y Separadores */
-/* ========================================================= */
-
-.txtOp_P2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 5px;
-}
-
+/* Texto y labels */
 .txtSubtitle {
     font-size: 14px;
     font-family: 'Inter', sans-serif;
-    /* Usamos 500 para la etiqueta estándar */
-    font-weight: 500; 
+    font-weight: 500;
     line-height: 28px;
     margin-bottom: 5px;
-    margin-top: 15px; /* Espacio antes de cada label/grupo de input */
+    margin-top: 10px;
     display: block;
     color: #333;
-}
-
-/* Ajuste específico para el primer título si es necesario */
-form > div:first-child .txtSubtitle {
-    margin-top: 5px; 
 }
 
 .subTitle {
@@ -61,22 +33,15 @@ form > div:first-child .txtSubtitle {
     font-family: 'Inter', sans-serif;
     line-height: 20px;
     color: #C1C1C1;
-    margin-bottom: 10px;
 }
 
+/* Separadores */
 .separadorLine,
 .line {
-    /* Regla horizontal */
-    border: 0;
-    border-top: 1px solid #cfcfcf;
-    margin: 15px 0;
+    color: #cfcfcf;
 }
 
-/* ========================================================= */
-/* Inputs y Select (Apariencia del Formulario) */
-/* ========================================================= */
-
-/* Clase principal para la apariencia de todos los inputs */
+/* Inputs */
 input.spaceLeft {
     width: 100%;
     padding: 12px 15px;
@@ -85,10 +50,8 @@ input.spaceLeft {
     font-size: 1rem;
     outline: none;
     transition: all 0.3s ease;
-    margin-top: 5px; /* Separación del label */
+    margin-top: 5px;
     height: 52px;
-    /* Agregamos el margen inferior para separar los campos, excepto en .contenedorNum */
-    margin-bottom: 15px; 
 }
 
 input.spaceLeft:focus {
@@ -101,59 +64,7 @@ input::placeholder {
     opacity: 1;
 }
 
-/* Estilos de react-select */
-.select-wrapper {
-    margin-top: 5px;
-    margin-bottom: 15px; /* Mismo espaciado que los inputs */
-}
-
-.licenciaValue {
-    width: 100%;
-    text-align: left;
-}
-
-.css-1jqq78o-placeholder { 
-    text-align: left;
-}
-
-/* ========================================================= */
-/* Contenedor de Números (Exterior/Interior) */
-/* ========================================================= */
-
-.contenedorNum {
-    /* Utilizamos Flexbox */
-    display: flex;
-    justify-content: space-between;
-    gap: 15px; /* Espacio entre los campos */
-    margin-bottom: 15px; /* Espaciado con el siguiente elemento */
-}
-
-.numExt,
-.numInt {
-    /* Ambos toman el mismo espacio disponible */
-    flex: 1;
-}
-
-/* Asegura que los inputs internos usen el 100% del espacio de su contenedor flexible */
-.contenedorNum .spaceLeft {
-    width: 100% !important; 
-    margin-bottom: 0; /* Eliminamos el margen inferior del input para que el contenedor lo maneje */
-}
-
-
-/* ========================================================= */
 /* Botones */
-/* ========================================================= */
-
-/* .containerCont_P2 {
-    display: flex;
-    gap: 15px;
-} */
-/* 
-.spaceButton14 {
-    flex: 1;
-} */
-
 .button_P2 {
     width: 100%;
     height: 48px;
@@ -162,63 +73,41 @@ input::placeholder {
     border-radius: 8px;
     color: #FFFFFF;
     cursor: pointer;
-    font-weight: 600;
 }
 
-.buttonRein_P2 {
-    width: 100%;
-    height: 48px;
-    background: #fff;
-    border: 1px solid #c4cbd1;
-    border-radius: 8px;
-    color: #333;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.btnVer_P3 {
-    width: 100%;
-    height: 48px;
-    background: #e0e0e0;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    color: #a0a0a0;
-    cursor: default;
-    font-weight: 600;
-}
-
-/* ========================================================= */
-/* Clases Auxiliares (Banderas/Modal) */
-/* ========================================================= */
-
-.containerDom {
+/* Número exterior/interior */
+.contenedorNum {
     display: flex;
+    justify-content: space-between;
 }
 
-.pais {
-    width: 80%;
+.contenedorNum input {
+    width: 140px;
+}
+
+.numExt {
     float: left;
+}
+
+.numInt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Select */
+.select-wrapper {
+    margin-top: 5px;
+}
+
+.licenciaValue {
+    width: 100%;
     text-align: left;
 }
 
-.paisBandera {
-    width: 20%;
-    float: right; 
-}
-
-.bandera {
-    height: 20px;
-    width: 35px;
-}
-
-.containerCont_P2 {
-    display: flex;
-    flex-direction: column; /* ¡Esta es la clave para apilarlos! */
-    gap: 15px; /* Agrega un espacio entre el botón "Mapear" y "Reintentar" */
-    width: 100%; /* Asegura que ocupe el ancho disponible */
-}
-
-/* Opcional: Asegura que los contenedores de los botones también ocupen el ancho completo */
-.spaceButton14 {
-    width: 100%;
+/* Placeholder react-select */
+/* Esta clase puede variar dependiendo de la versión y si has modificado el classNamePrefix */
+/* Usando .select-wrapper para asegurar alcance */
+.select-wrapper .css-1jqq78o-placeholder { 
+    text-align: left;
 }

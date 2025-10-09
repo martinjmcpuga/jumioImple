@@ -113,11 +113,11 @@ const RequerimientosSelected = () => {
           /** -------------------------------------- */
 
           if (responsePerson.domicilioParticular === true) {
-            //setDomicilioParticular(true);
+            setDomicilioParticular(true);
           }
 
           if (responsePerson.domicilioParticularRef === true) {
-            //setDomicilioParticularRef(true);
+            setDomicilioParticularRef(true);
           }
 
           if (responsePerson.valRfc === true) {
