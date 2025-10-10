@@ -83,7 +83,7 @@ const RequerimientosSelectedN5Comprobante = (props) => {
   const getResumen = async () => {
 
     router.push('/camaracompare');
-    
+
   };
 
 
