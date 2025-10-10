@@ -99,9 +99,8 @@ const RequerimientosSelectedN5Comprobante = (props) => {
     }
   });
 
-
   const handleRedirecNotComproante = () => {
-    navigate("/ComprobanteIngreso")
+    //navigate("/ComprobanteIngreso")
   }
 
   return (

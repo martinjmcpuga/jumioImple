@@ -31,13 +31,7 @@ function Cita() {
 
     const onValidateFaceMach = async () => {
 
-
-        //navigate("/RequerimientosSelectedCita", {
-        //    state: {
-        //        rutaContinue: "/PantallaBase27",
-        //        typeCredential: "lic",
-        //    },
-        //});
+        router.push("/requerimientosselectedcita");
 
     };
 
