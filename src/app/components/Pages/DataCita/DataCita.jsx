@@ -10,15 +10,15 @@ const DataCita = () => {
 
   const isRunned = useRef(false);
   const router = useRouter();
-  const [firstName, setFirstName] = useState(sessionStorage.getItem("nombre"));
-  const [paternalLastName, setPaternalLastName] = useState(sessionStorage.getItem("paterno"));
-  const [maternalLastName, setMaternalLastName] = useState(sessionStorage.getItem("materno"));
+  const [firstName, setFirstName] = useState("");
+  const [paternalLastName, setPaternalLastName] = useState("");
+  const [maternalLastName, setMaternalLastName] = useState("");
   const [verNameFull, setverNameFull] = useState(true);
-  const [horario, setHorario] = useState(sessionStorage.getItem("horario"));
-  const [ubicacion, setUbicacion] = useState(sessionStorage.getItem("ubicacion"));
-  const [ubicacionDireccion, setUbicacionDireccion] = useState(sessionStorage.getItem("ubicacionDireccion"));
-  const [ubicacionApertura, setUbicacionApertura] = useState(sessionStorage.getItem("ubicacionApertura"));
-  const [ubicacionCierre, setUbicacionCierre] = useState(sessionStorage.getItem("ubicacionCierre"));
+  const [horario, setHorario] = useState("");
+  const [ubicacion, setUbicacion] = useState("");
+  const [ubicacionDireccion, setUbicacionDireccion] = useState("");
+  const [ubicacionApertura, setUbicacionApertura] = useState("");
+  const [ubicacionCierre, setUbicacionCierre] = useState("");
 
   const handleAceptar = () => {
 
@@ -41,6 +41,12 @@ const DataCita = () => {
       setMaternalLastName(sessionStorage.getItem("materno") || '');
 
     }
+
+    setHorario(sessionStorage.getItem("horario"));
+    setUbicacion(sessionStorage.getItem("ubicacion"));
+    setUbicacionDireccion(sessionStorage.getItem("ubicacionDireccion"));
+    setUbicacionApertura(sessionStorage.getItem("ubicacionApertura"));
+    setUbicacionCierre(sessionStorage.getItem("ubicacionCierre"));
 
   }, []);
 
