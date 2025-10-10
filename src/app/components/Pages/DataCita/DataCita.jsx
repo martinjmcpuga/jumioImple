@@ -4,7 +4,6 @@ import React from "react";
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
-import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DataCita = () => {
