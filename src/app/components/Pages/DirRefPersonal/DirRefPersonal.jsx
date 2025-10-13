@@ -54,8 +54,6 @@ function DirRefPersonal() {
   return (
     <>
       <div className="initBack_P2 animate__animated animate__fadeIn">
-
-
         <div className="containerRender">
           <div className="containerInfo_P2">
             <div className="containerIdent_P2">

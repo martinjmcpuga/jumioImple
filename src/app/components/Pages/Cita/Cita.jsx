@@ -31,13 +31,7 @@ function Cita() {
 
     const onValidateFaceMach = async () => {
 
-
-        //navigate("/RequerimientosSelectedCita", {
-        //    state: {
-        //        rutaContinue: "/PantallaBase27",
-        //        typeCredential: "lic",
-        //    },
-        //});
+        router.push("/requerimientosselectedcita");
 
     };
 
@@ -52,8 +46,6 @@ function Cita() {
     const onContinueModel = async () => {
         setModalShow(false);
     };
-
-
 
     return (
         <>
@@ -85,9 +77,7 @@ function Cita() {
                                 <div className='txtIdenOf_P2'>Fecha de recolección</div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 

@@ -9,8 +9,10 @@ import './CamaraCompare.css';
 import Modal from "react-bootstrap/Modal";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
+import { getCitaWsaicm } from '../../Api/getCitaWsaicm';
+import { mtUpdateGenerarCita } from '../../Api/mtUpdateGenerarCita';
 
-const CamaraCompareN2 = ({ }) => {
+const CamaraCompareCita = ({ }) => {
 
     const { IdJumio } = useAppContext();
     const isRunned = useRef(false);
@@ -32,7 +34,7 @@ const CamaraCompareN2 = ({ }) => {
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState("");
     const [loading, setLoading] = useState(false);
-    const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
+    const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico. Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
 
     useEffect(() => {
 
@@ -77,7 +79,7 @@ const CamaraCompareN2 = ({ }) => {
         };
 
         fetchDevices();
-        
+
     }, []);
 
 
@@ -145,7 +147,32 @@ const CamaraCompareN2 = ({ }) => {
 
         if (response.status === 200) {
 
-            router.push("/resumeaddscore");
+            const obj = {
+                idUbicacion: sessionStorage.getItem("idUbicacion"),
+                fechaHora: sessionStorage.getItem("horario"),
+                cpv: sessionStorage.getItem("sCpv"),
+            };
+
+            const responseSignDoc = await getCitaWsaicm(obj);
+
+            if (responseSignDoc.status === 200) {
+
+                const objCons = {
+                    id: sessionStorage.getItem('id_jumio'),
+                };
+
+                await mtUpdateGenerarCita(objCons);
+
+                router.push("/bandeja");
+
+            } else {
+
+                setLoading(true);
+                setShow(true);
+                setShowStatus(responseSignDoc.status);
+                setShowMessage(responseSignDoc.message);
+
+            }
 
         } else if (response.status === 500) {
 
@@ -235,4 +262,4 @@ const CamaraCompareN2 = ({ }) => {
     )
 }
 
-export default CamaraCompareN2
+export default CamaraCompareCita

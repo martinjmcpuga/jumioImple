@@ -6,70 +6,49 @@ import Footer from '../../Footer/Footer'
 import { useAppContext } from '../../../context/AppContext'
 import './paises.css'
 import { getDocumentoByPais } from '../../Api/getDocumentoByPais'
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
+import { components } from 'react-select'
+
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 const Documentos = () => {
+  const { setCpvI, setRutaBack } = useAppContext()
 
-  const { cpvI } = useAppContext()
-  const [selectedDoc, setSelectedDoc] = useState(null)
-  const [isMounted, setIsMounted] = useState(false) // Evita el hydration mismatch
-  const { setCpvI } = useAppContext() // aquí lo traes
-  const { setRutaBack } = useAppContext();
-
-  const [blContinue, setBlContinue] = useState(false);
-  const [txtSelect, setTxtSelect] = useState('');
-  const [identificacion, setidentificacion] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const isRunned = useRef(false);
-  const [show, setShow] = useState(false);
-  const [showStatus, setShowStatus] = useState(null);
-  const [showMessage, setShowMessage] = useState("");
+  const [identificacion, setIdentificacion] = useState([])
+  const [selectedOption, setSelectedOption] = useState(null)
+  const [isMounted, setIsMounted] = useState(false)
+  const isRunned = useRef(false)
+  const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false)
+  const [showStatus, setShowStatus] = useState(null)
+  const [showMessage, setShowMessage] = useState("")
 
   useEffect(() => {
-    setRutaBack('/paises');
-  }, []);
-
-  useEffect(() => {
+    setRutaBack('/paises')
     setIsMounted(true)
   }, [])
 
-
   useEffect(() => {
-    if (isRunned.current) return;
-    isRunned.current = true;
+    if (isRunned.current) return
+    isRunned.current = true
 
-    async function createSession() {
-
-      setLoading(true);
-
-      const objIncode = {
-        pais: sessionStorage.getItem("paisIso2"),
-      }
-
-      const response = await getDocumentoByPais(objIncode);
+    async function fetchDocs() {
+      setLoading(true)
+      const objIncode = { pais: sessionStorage.getItem("paisIso2") }
+      const response = await getDocumentoByPais(objIncode)
 
       if (response.status === 200) {
-
-        setidentificacion(response.listModelDocumentoPais);
-        setLoading(false);
-
+        setIdentificacion(response.listModelDocumentoPais)
       } else {
-
-        setLoading(false);
-        setShow(true);
-        setShowStatus("Error " + response.status);
-        setShowMessage(response.message);
-
+        setShow(true)
+        setShowStatus("Error " + response.status)
+        setShowMessage(response.message)
       }
-
+      setLoading(false)
     }
 
-    createSession();
-
-  }, []);
-
+    fetchDocs()
+  }, [])
 
   const customStyles = {
     control: (base) => ({
@@ -78,16 +57,12 @@ const Documentos = () => {
       borderRadius: 4,
       boxShadow: 'none',
       borderColor: '#c4cbd1',
-      '&:hover': {
-        borderColor: '#c4cbd1',
-      },
+      '&:hover': { borderColor: '#c4cbd1' },
     }),
     option: (base, state) => ({
       ...base,
-      backgroundColor: state.isSelected
-        ? '#0078ff26'
-        : state.isFocused
-          ? '#f1f1f1'
+      backgroundColor: state.isSelected ? '#0078ff26'
+        : state.isFocused ? '#f1f1f1'
           : 'white',
       color: '#333',
       cursor: 'pointer',
@@ -98,33 +73,42 @@ const Documentos = () => {
       alignItems: 'center',
       gap: '8px',
     }),
-  };
+  }
 
+  // 🔹 Componente para mostrar opciones en el dropdown
+  const Option = (props) => (
+    <components.Option {...props}>
+      <div className="documentos__option">
+        <span className="documentos__option-text">{props.data.descripcionTexto}</span>
+      </div>
+    </components.Option>
+  )
 
-  const handleChange = async (selectedOption) => {
+  // 🔹 Componente para mostrar el valor seleccionado
+  const SingleValue = (props) => (
+    <components.SingleValue {...props}>
+      <div className="documentos__option">
+        <span className="documentos__option-text">{props.data.descripcionTexto}</span>
+      </div>
+    </components.SingleValue>
+  )
 
-    setSelectedOption(selectedOption);
-    const valorAppIncode = selectedOption.valorAppIncode;
-    sessionStorage.setItem("idDocPais", selectedOption.id);
-    setTxtSelect(valorAppIncode);
+  const handleChange = (option) => {
+    setSelectedOption(option)
+    sessionStorage.setItem("idDocPais", option.id)
 
-    //console.log(selectedOption);
-    //console.log(valorAppIncode);
-    //console.log("idDocPais " + selectedOption.id);
-
-    if (valorAppIncode === '0' || valorAppIncode === '2') {
-      setCpvI("credencial");
-    } if (valorAppIncode === '1') {
-      setCpvI("pasaporte");
+    if (option.valorAppIncode === '0' || option.valorAppIncode === '2') {
+      setCpvI("credencial")
+    } else if (option.valorAppIncode === '1') {
+      setCpvI("pasaporte")
     }
-
-  };
+  }
 
   return (
     <>
-      <div className="containerInfo_P2 animate__animated animate__fadeIn">
-        <div className="containerIdent_P2 onContentExpands">
-          <p className="txtDocumentos">Documento de Identificación</p>
+      <div className="documentos animate__animated animate__fadeIn">
+        <div className="documentos__content onContentExpands">
+          <p className="documentos__title">Documento de Identificación</p>
 
           {isMounted && (
             <Select
@@ -132,39 +116,28 @@ const Documentos = () => {
               options={identificacion}
               onChange={handleChange}
               value={selectedOption}
-              formatOptionLabel={state => (
-                <div className="containerDom">
-                  <div className="animate__animated animate__fadeIn pais">{state.descripcionTexto}</div>
-                </div>
-              )}
+              components={{ Option, SingleValue }}
               placeholder="Seleccionar documento"
+              getOptionLabel={(e) => e.descripcionTexto}
+              getOptionValue={(e) => e.id}
             />
           )}
 
-          <hr className="line" />
+          <hr className="documentos__divider" />
 
-          <section className="containerButtonOnExpands_P2" style={{ marginTop: '2rem' }}>
-            <div className="btnContinue">
-              {!selectedOption ? (
-                <button className="btnVer_P3" disabled>
-                  <span className="txtVer_P3">Continuar</span>
+          <div className="documentos__actions">
+            {!selectedOption ? (
+              <button className="documentos__btn documentos__btn--disabled" disabled>
+                Continuar
+              </button>
+            ) : (
+              <Link href="/infocredencial" passHref>
+                <button className="documentos__btn">
+                  Continuar
                 </button>
-              ) : (
-                <Link href={selectedOption ? '/infocredencial' : '#'} passHref>
-                  <button
-                    className="button_P2"
-                    disabled={!selectedOption}
-                    style={{
-                      opacity: selectedOption ? 1 : 0.6,
-                      cursor: selectedOption ? 'pointer' : 'not-allowed'
-                    }}
-                  >
-                    <span className="txtButton_P2">Continuar</span>
-                  </button>
-                </Link>
-              )}
-            </div>
-          </section>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
       <Footer />

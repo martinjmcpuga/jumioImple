@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useEffect } from 'react'
 import InitDomicilio from '../components/Pages/InitDomicilio/InitDomicilio'

@@ -1,145 +1,5 @@
-.containerDom {
-    display: flex;
-}
-
-.pais {
-    width: 80%;
-    float: left;
-    text-align: left;
-}
-
-.paisBandera {
-    width: 20%;
-    float: end;
-}
-
-.bandera {
-    height: 20px;
-    width: 35px;
-}
-
-.txtSubtitle{
-    font-size: 14px;
-    font-family: 'Inter';
-    font-weight: 600;
-    line-height: 28px;
-}
-
-form .txtSubtitle {
-    font-size: 14px;
-    line-height: 28px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.titleForm{
-    /* width: 100%;
-    font: var(--unnamed-font-style-normal) normal medium var(--unnamed-font-size-15)/var(--unnamed-line-spacing-28) var(--unnamed-font-family-inter);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    text-align: left;
-    font: normal normal medium 17px/28px Inter;
-    letter-spacing: 0px;
-    color: #000000;
-    opacity: 1;
-    font-weight: 600;  */
-
-    left: 30px;
-    width: 98px;
-    height: 17px;
-    color: var(--unnamed-color-000000);
-    text-align: left;
-    font: normal normal 600 12px/2px Inter;
-    letter-spacing: 0px;
-    color: #000000;
-    opacity: 1;
-}
-
-.separadorLine {
-    color: #cfcfcf;
-}
-
-.button_P2 {
-    width: 100%;
-    height: 48px;
-    background: #55AC68 0% 0% no-repeat padding-box;
-    border: 1px solid #55AC68;
-    border-radius: 8px;
-    color: #FFFFFF;
-}
-
-.operation {
-    padding: 15px 0px 0px 0px;
-}
-
-input {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #c4cbd1;
-    height: 44px;
-    margin: 0px auto 0px auto !important;
-    height: 52px;
-}
-/* 
-.typeInput {
-    width: 100%;
-    border-color: #c4cbd1 !important;
-    display: block;
-    border: 1px solid #c4cbd1;
-    border-radius: 8px;
-    height: 44px;
-}
-
-.typeInputNum {
-    width: 160px;
-    border-color: #c4cbd1 !important;
-    display: block;
-    border: 1px solid #c4cbd1;
-    border-radius: 8px;
-    height: 44px;
-} */
-
-.contenedorNum {
-    display: "flex"; 
-    justify-content: "space-between";
-}
-
-.contenedorNum input {
-    width: 140px;
-}
-
-.numExt{
-    float: left;
-}
-
-.numInt{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.subTitle {
-    font-size: 12px;
-    font-family: 'Inter';
-    line-height: 20px;
-    color: #C1C1C1;
-}
-
-.css-1jqq78o-placeholder {
-    text-align: left;
-}  
-
-.licenciaValue {
-    width: 100%;
-    float: left;
-    text-align: left;
-}
-
-.scrollDataDom {
-    overflow: scroll;
-    height: 500px;
-}
-
-.containerRenderForm{
+/* Contenedores principales */
+.containerRenderForm {
     padding-bottom: 1px;
 }
 
@@ -147,6 +7,107 @@ input {
     padding: 15px 15px 20px 15px;
 }
 
-.heigthData1{
+.scrollDataDom {
+    overflow: scroll;
+    height: 500px;
+}
+
+.heigthData1 {
     height: 800px;
+}
+
+/* Texto y labels */
+.txtSubtitle {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    line-height: 28px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    display: block;
+    color: #333;
+}
+
+.subTitle {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    line-height: 20px;
+    color: #C1C1C1;
+}
+
+/* Separadores */
+.separadorLine,
+.line {
+    color: #cfcfcf;
+}
+
+/* Inputs */
+input.spaceLeft {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #c4cbd1;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    height: 52px;
+}
+
+input.spaceLeft:focus {
+    border-color: #0078ff;
+    box-shadow: 0 0 6px rgba(0, 120, 255, 0.2);
+}
+
+input::placeholder {
+    color: #a0a0a0;
+    opacity: 1;
+}
+
+/* Botones */
+.button_P2 {
+    width: 100%;
+    height: 48px;
+    background: #55AC68;
+    border: 1px solid #55AC68;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Número exterior/interior */
+.contenedorNum {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedorNum input {
+    width: 140px;
+}
+
+.numExt {
+    float: left;
+}
+
+.numInt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Select */
+.select-wrapper {
+    margin-top: 5px;
+}
+
+.licenciaValue {
+    width: 100%;
+    text-align: left;
+}
+
+/* Placeholder react-select */
+/* Esta clase puede variar dependiendo de la versión y si has modificado el classNamePrefix */
+/* Usando .select-wrapper para asegurar alcance */
+.select-wrapper .css-1jqq78o-placeholder { 
+    text-align: left;
 }

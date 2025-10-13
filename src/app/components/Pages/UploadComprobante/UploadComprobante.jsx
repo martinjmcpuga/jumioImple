@@ -182,8 +182,9 @@ function UploadComprobante() {
 
       if (responseComprobante.status === 200) {
 
-        sessionStorage.setItem('cp_comprobante', responseComprobante.cp)
-
+        sessionStorage.setItem('cp_comprobante', responseComprobante.cp);
+        sessionStorage.setItem('documentType', responseComprobante.documentType);
+        sessionStorage.setItem('fechaValidaComprobante', responseComprobante.fechaValida);
         router.push('/datadompersonal');
 
       } else {

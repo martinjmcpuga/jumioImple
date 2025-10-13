@@ -43,7 +43,7 @@ const RequerimientosSelectedCita = () => {
   }
 
   const getResumen = async () => {
-    //navigate("/DataCita");
+    router.push("/datacita");
   };
 
   useEffect(() => {

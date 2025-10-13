@@ -57,6 +57,7 @@ const ExperienciaLaboral = () => {
   };
 
   const customStyles = {
+
     control: (provided, state) => ({
       ...provided,
       minHeight: '60px',

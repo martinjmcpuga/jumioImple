@@ -7,6 +7,7 @@ import { mtFindPersonJumio } from "../../Api/mtFindPersonJumio";
 import Modal from "react-bootstrap/Modal";
 import "./requerimientos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { mtUpdateHistorialCompletoJumio } from "../../Api/mtUpdateHistorialCompletoJumio";
 
 const RequerimientosSelectedN5Carta = (props) => {
 
@@ -86,7 +87,7 @@ const RequerimientosSelectedN5Carta = (props) => {
           responsePerson.historial1 === true &&
           responsePerson.historial2 === true) {
 
-          //const responseHistorialCompleto = await mtUpdateHistorialCompleto(objCons);
+          const responseHistorialCompleto = await mtUpdateHistorialCompletoJumio(objCons);
 
           setDomicilioParticularRef(true);
 

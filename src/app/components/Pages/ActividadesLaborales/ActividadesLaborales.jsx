@@ -107,9 +107,8 @@ const ActividadesLaborales = () => {
 
         } else if (responsePerson.onActividad === true) {
 
-
-          // const responseHistorialCompleto = await mtUpdateHistorialCompleto(objCons);
-          // setBlOnActividad(true);
+          const responseHistorialCompleto = await mtUpdateHistorialCompletoJumio(objCons);
+          setBlOnActividad(true);
 
         }
 
@@ -148,7 +147,6 @@ const ActividadesLaborales = () => {
           ) : (
 
             <div className="containerInfo_P2 animate__animated animate__fadeIn">
-
               <div className="containerIdent_P2">
                 <div className="txtOp_P2">Actividades Laborales</div>
                 <div className="txtSilver_P2">

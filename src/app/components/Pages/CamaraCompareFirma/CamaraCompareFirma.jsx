@@ -1,13 +1,12 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import WebCam from 'react-webcam'
-import * as faceApi from 'face-api.js'
-import './CamaraCompare.css'
+import WebCam from 'react-webcam';
+import * as faceApi from 'face-api.js';
+import './CamaraCompare.css';
 import Modal from "react-bootstrap/Modal";
-import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getSelfieToCamara_Jumio } from '../../Api/getSelfieToCamara_Jumio';
 import { mtUpdateSignDocIndivJumio } from '../../Api/mtUpdateSignDocIndivJumio';
@@ -34,7 +33,7 @@ const CamaraCompareFirma = ({ }) => {
     const [showStatus, setShowStatus] = useState(null);
     const [showMessage, setShowMessage] = useState("");
     const [loading, setLoading] = useState(false);
-    const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico.Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
+    const [showMsjUsu, setShowMsjUsu] = useState("No se ha podido verificar que la persona en la identificación sea la misma que la del biométrico. Intenta de nuevo o póngase en contacto con los administradores de este servicio.");
 
 
     useEffect(() => {
@@ -44,11 +43,13 @@ const CamaraCompareFirma = ({ }) => {
 
         async function createSession() {
 
+            setLoading(false);
+
             setTimeout(() => {
 
                 setLoading(true);
 
-            }, 1500);
+            }, 1000);
 
         }
 

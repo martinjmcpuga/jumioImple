@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import { getWsAddScoreJumio } from "../../Api/getWsAddScoreJumio";
 import './style.css';
 
-
 const ResumeAddScore = () => {
 
     const isRunned = useRef(false);

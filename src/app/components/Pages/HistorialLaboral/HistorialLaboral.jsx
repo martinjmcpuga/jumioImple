@@ -21,393 +21,182 @@ import es from "date-fns/locale/es";
 registerLocale("es", es);
 
 const country = [
-  {
-    "label": "Mexico",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1920px-Flag_of_Mexico.svg.png",
-    "value": "MX"
-  },
-  {
-    "label": "Argentina",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1920px-Flag_of_Argentina.svg.png",
-    "value": "AR"
-  },
-  {
-    "label": "Brasil",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1920px-Flag_of_Brazil.svg.png",
-    "value": "BR"
-  },
-  {
-    "label": "Chile",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/1920px-Flag_of_Chile.svg.png",
-    "value": "CL"
-  },
-  {
-    "label": "United States",
-    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png",
-    "value": "US"
-  }
+  { label: "Mexico", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1920px-Flag_of_Mexico.svg.png", value: "MX" },
+  { label: "Argentina", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1920px-Flag_of_Argentina.svg.png", value: "AR" },
+  { label: "Brasil", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1920px-Flag_of_Brazil.svg.png", value: "BR" },
+  { label: "Chile", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/1920px-Flag_of_Chile.svg.png", value: "CL" },
+  { label: "United States", image: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png", value: "US" }
 ];
 
-
 const HistorialLaboral = () => {
-
   const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
+
   const [isButtonEnabled, setButtonEnabled] = useState(true);
   const [selectedDateInicio, setselectedDateInicio] = useState(null);
   const [selectedDateTermino, setselectedDateTermino] = useState(null);
-  const [isEnabled, setIsEnabled] = useState(false);
-  const [states, setStates] = useState("");
+  const [states, setStates] = useState([]);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [onehabilita, setOnehabilita] = useState(false);
-
-  {/** Variables del formulario */ }
 
   const [puesto, setPuesto] = useState('');
   const [organizacion, setOrganizacion] = useState('');
   const [pais, setPais] = useState('');
   const [estado, setEstado] = useState('');
-  const [listEdo, setListEdo] = useState([]);
   const [blHistorial0Ruta, setBlHistorial0Ruta] = useState(false);
-  const [stateOption, setstateOption] = useState("");
-  const [option, setSelectedOption] = useState("");
+  const [stateOption, setstateOption] = useState(null);
+
   const isRunned = useRef(false);
   const [loading, setLoading] = useState(false);
   const [blActual, setBlActual] = useState(false);
 
-  {/** Variables que disparan mensaje de error  */ }
-
-  const [show, setShow] = useState(false);
-  const [showStatus, setShowStatus] = useState(null);
-  const [showMessage, setShowMessage] = useState('');
-
-  const [urlBack, setUrlBack] = useState("");
-
+  useEffect(() => { setRutaBack(sessionStorage.getItem("n5com")); }, []);
 
   useEffect(() => {
-    setRutaBack(sessionStorage.getItem("n5com"));
-  }, []);
-
-
-  useEffect(() => {
-
     if (isRunned.current) return;
     isRunned.current = true;
-
-    async function createSession() {
-
+    (async function createSession() {
       setLoading(true);
-
-      setUrlBack(sessionStorage.getItem("n5com"));
       setPais('México');
-
-      const objCons = {
-        id: sessionStorage.getItem('id_jumio')
-      }
-
+      const objCons = { id: sessionStorage.getItem('id_jumio') };
       const responsePerson = await mtFindPersonJumio(objCons);
-
-      console.log(responsePerson);
-
       if (responsePerson.status === 200) {
-
-        if (responsePerson.onActividad === true) {
-          setBlActual(true);
-        }
-
-        if (responsePerson.historial0 === false) {
-          setBlHistorial0Ruta("0");
-        } else if (responsePerson.historial1 === false) {
-          setBlHistorial0Ruta("1");
-        } else if (responsePerson.historial2 === false) {
-          setBlHistorial0Ruta("2");
-        }
-
+        if (responsePerson.onActividad === true) setBlActual(true);
+        if (responsePerson.historial0 === false) setBlHistorial0Ruta("0");
+        else if (responsePerson.historial1 === false) setBlHistorial0Ruta("1");
+        else if (responsePerson.historial2 === false) setBlHistorial0Ruta("2");
         setLoading(false);
-
       } else {
-
         setLoading(false);
-        setShow(true);
-        setShowStatus(responsePerson.status);
-        setShowMessage(responsePerson.message);
-
       }
-
-    }
-
-    createSession();
-
+    })();
   }, []);
 
+  // const handleDisabledTermino = async (event) => {
 
+  //   if (event.target.checked && !onehabilita) {
+  //     setOnehabilita(true);
+  //     setIsSubscribed(true);
+  //   } else if (event.target.checked && onehabilita) {
+  //     setOnehabilita(false);
+  //     setIsSubscribed(false);
+  //   }
 
-  const handleDisabledTermino = async (event) => {
+  // }
 
-    if (event.target.checked && !onehabilita) {
-      setOnehabilita(true);
-      setIsSubscribed(true);
-    } else if (event.target.checked && onehabilita) {
-      setOnehabilita(false);
-      setIsSubscribed(false);
-    }
+  // <-- AQUI: cargamos y transformamos los estados a { value, label, init }
+  useEffect(() => {
+    getListEstadosJumio().then(item => {
+      const list = item?.listEstados || [];
+      const formatted = list.map(edo => ({
+        value: edo.nombreEstado,
+        label: edo.nombreEstado,
+        init: edo.init,        // mantiene la abreviatura si existe
+        original: edo          // opcional, por si necesitas otros campos
+      }));
+      setStates(formatted);
+    });
+  }, []);
 
-  }
-
-  const handleDateChangeInicio = (date) => {
-    setselectedDateInicio(date);
-    setIsEnabled(false);
+  const handleDisabledTermino = () => {
+    const newVal = !onehabilita;
+    setOnehabilita(newVal);
+    setIsSubscribed(newVal);
   };
 
-  const handleDateChangeTermino = (date) => {
-    setselectedDateTermino(date);
-    setIsEnabled(false);
-  };
-
-  const handleDatePickerClose = (date) => {
-    if (selectedDateInicio === null) {
-      setselectedDateInicio(date);
-    }
-  };
-
-  const handleDatePickerCloseT = (date) => {
-    if (selectedDateTermino === null) {
-      setselectedDateTermino(date);
-    }
-  };
-
+  const pad = n => (n < 10 ? '0' + n : '' + n);
   const handleButtonClick = async () => {
-
-    let monthStr = "";
-    if ((selectedDateInicio.getMonth() + 1) < 10) {
-      monthStr = "0" + (selectedDateInicio.getMonth() + 1);
-    } else {
-      monthStr = "" + (selectedDateInicio.getMonth() + 1);
+    if (!selectedDateInicio) return;
+    const dateStr = `${selectedDateInicio.getFullYear()}-${pad(selectedDateInicio.getMonth() + 1)}-${pad(selectedDateInicio.getDate())}`;
+    let dateStrFinish = '';
+    if (!isSubscribed && selectedDateTermino) {
+      dateStrFinish = `${selectedDateTermino.getFullYear()}-${pad(selectedDateTermino.getMonth() + 1)}-${pad(selectedDateTermino.getDate())}`;
     }
-
-    let darStr = "";
-    if ((selectedDateInicio.getDate()) < 10) {
-      darStr = "0" + (selectedDateInicio.getDate());
-    } else {
-      darStr = "" + (selectedDateInicio.getDate());
-    }
-
-    let dateStr = "" + selectedDateInicio.getFullYear() + "-" + (monthStr) + "-" + darStr;
-
-    let dateStrFinish = "";
-
-    if (!isSubscribed) {
-
-      monthStr = "";
-      if ((selectedDateTermino.getMonth() + 1) < 10) {
-        monthStr = "0" + (selectedDateTermino.getMonth() + 1);
-      } else {
-        monthStr = "" + (selectedDateTermino.getMonth() + 1);
-      }
-
-
-      darStr = "";
-      if ((selectedDateTermino.getDate()) < 10) {
-        darStr = "0" + (selectedDateTermino.getDate());
-      } else {
-        darStr = "" + (selectedDateTermino.getDate());
-      }
-
-      dateStrFinish = "" + selectedDateTermino.getFullYear() + "-" + (monthStr) + "-" + darStr;
-    }
-
-    const objCons = {
-      id: sessionStorage.getItem('id_jumio'),
-    }
-
-    console.log('blHistorial0Ruta -> ' + blHistorial0Ruta);
-
-    if (blHistorial0Ruta === '0') {
-
-      const responseHis0 = await mtUpdateHistorial0Jumio(objCons);
-
-      console.log(responseHis0);
-
-      if (responseHis0.status === 200) {
-
-        const objLab = {
-          id: sessionStorage.getItem('id_jumio'),
-          puesto: puesto,
-          organizacion: organizacion,
-          actual: isSubscribed,
-          fechaInicio: dateStr,
-          fechaFin: dateStrFinish,
-          pais: pais,
-          estado: estado,
-        }
-
-        const response = await mtfindSaveLapJumio(objLab);
-
-        console.log(response);
-
-        if (response.status === 200) {
-
-          router.push('/actividadeslaborales');
-
-        } else {
-
-          setLoading(false);
-          setShow(true);
-          setShowStatus(response.status);
-          setShowMessage(response.message);
-        }
-
-      } else {
-
-        setLoading(false);
-        setShow(true);
-        setShowStatus(responseHis0.status);
-        setShowMessage(responseHis0.message);
-
-      }
-    } else if (blHistorial0Ruta === '1') {
-
-      const responseHis0 = await mtUpdateHistorial1Jumio(objCons);
-
-      if (responseHis0.status === 200) {
-
-        const objLab = {
-          id: sessionStorage.getItem('id_jumio'),
-          puesto: puesto,
-          organizacion: organizacion,
-          actual: isSubscribed,
-          fechaInicio: dateStr,
-          fechaFin: dateStrFinish,
-          pais: pais,
-          estado: estado,
-        }
-
-        const response = await mtfindSaveLapJumio(objLab);
-
-        if (response.status === 200) {
-
-          router.push('/actividadeslaborales');
-
-        } else {
-          setLoading(false);
-          setShow(true);
-          setShowStatus(response.status);
-          setShowMessage(response.message);
-        }
-
-      } else {
-
-        setLoading(false);
-        setShow(true);
-        setShowStatus(responseHis0.status);
-        setShowMessage(responseHis0.message);
-
-      }
-
-    } else if (blHistorial0Ruta === '2') {
-
-      const responseHis0 = await mtUpdateHistorial2Jumio(objCons);
-
-      if (responseHis0.status === 200) {
-
-        const objLab = {
-          id: sessionStorage.getItem('id_jumio'),
-          puesto: puesto,
-          organizacion: organizacion,
-          actual: isSubscribed,
-          fechaInicio: dateStr,
-          fechaFin: dateStrFinish,
-          pais: pais,
-          estado: estado,
-        }
-
-        const response = await mtfindSaveLapJumio(objLab);
-
-        if (response.status === 200) {
-
-          router.push('/actividadeslaborales');
-
-        } else {
-          setLoading(false);
-          setShow(true);
-          setShowStatus(response.status);
-          setShowMessage(response.message);
-        }
-
-      } else {
-
-        setLoading(false);
-        setShow(true);
-        setShowStatus(responseHis0.status);
-        setShowMessage(responseHis0.message);
-
-      }
-    }
+    const objCons = { id: sessionStorage.getItem('id_jumio') };
+    let updateFn = null;
+    if (blHistorial0Ruta === '0') updateFn = mtUpdateHistorial0Jumio;
+    else if (blHistorial0Ruta === '1') updateFn = mtUpdateHistorial1Jumio;
+    else if (blHistorial0Ruta === '2') updateFn = mtUpdateHistorial2Jumio;
+    const responseHis = await updateFn(objCons);
+    if (responseHis?.status === 200) {
+      const objLab = { id: sessionStorage.getItem('id_jumio'), puesto, organizacion, actual: isSubscribed, fechaInicio: dateStr, fechaFin: dateStrFinish, pais, estado };
+      const response = await mtfindSaveLapJumio(objLab);
+      if (response.status === 200) router.push('/actividadeslaborales');
+      else { /* manejar error */ }
+    } else { /* manejar error */ }
   };
 
+  // estilos para react-select (se aplican inline)
   const style = {
-    control: (base) => ({
+    control: (base, state) => ({
       ...base,
-      height: 52,
-      borderRadius: 4,
+      minHeight: 52,
+      borderRadius: 6,
       boxShadow: 'none',
-      borderColor: '#c4cbd1',
-      '&:hover': {
-        borderColor: '#c4cbd1',
-      },
+      borderColor: state.isFocused ? '#0078ff80' : '#c4cbd1',
+      '&:hover': { borderColor: '#0078ff80' },
+      background: 'white'
     }),
     option: (base, state) => ({
       ...base,
-      backgroundColor: state.isSelected
-        ? '#0078ff26'
-        : state.isFocused
-          ? '#f1f1f1'
-          : 'white',
+      backgroundColor: state.isSelected ? 'rgba(0,120,255,0.15)' : (state.isFocused ? '#f1f1f1' : 'white'),
       color: '#333',
-      cursor: 'pointer',
+      padding: '8px 12px',
+      cursor: 'pointer'
     }),
-    singleValue: (base) => ({
-      ...base,
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px',
-    }),
+    singleValue: base => ({ ...base, display: 'flex', alignItems: 'center', gap: '8px' }),
+    placeholder: base => ({ ...base, color: '#777' }),
+    menuPortal: base => ({ ...base, zIndex: 9999 }),
+    menuList: base => ({ ...base, maxHeight: 240 }),
   };
 
-  useEffect(() => {
-    getListEstadosJumio().then(item => {
-      setStates(item.listEstados)
-    })
-  }, [])
-
-
-  const handleChangeState = (selectedOption) => {
-    setstateOption(selectedOption); // 👈 guarda el objeto completo
-    setEstado(selectedOption.nombreEstado); // esto sigue guardando solo el string si lo necesitas
+  // Componente Option personalizado para forzar estilos inline
+  const CustomOption = (props) => {
+    const { innerRef, innerProps, isFocused, isSelected } = props;
+    return (
+      <div
+        ref={innerRef}
+        {...innerProps}
+        style={{
+          backgroundColor: isSelected ? 'rgba(0,120,255,0.15)' : (isFocused ? '#f1f1f1' : 'white'),
+          color: '#333',
+          padding: '8px 12px',
+          cursor: 'pointer',
+          userSelect: 'none' // evita que el texto se seleccione por accidente
+        }}
+      >
+        {props.children}
+      </div>
+    );
   };
 
-
-  const handleChange = (selectedOption) => {
-    const setSelectedOption = selectedOption.value;
-  };
-
-  const handlePuestoChange = (event) => {
-    setPuesto(event.target.value);
-  };
-
-  const handleOrganizacionChange = (event) => {
-    setOrganizacion(event.target.value);
-  };
-
-  {/** Inicio del componete */ }
-
-  useEffect(() => {
-    if (puesto !== "" && organizacion !== "" && estado !== "") {
-      setButtonEnabled(true);
-    } else {
-      setButtonEnabled(false);
+  // Al abrir cualquier menú, limpiamos selección de texto (evita el "azul")
+  const handleMenuOpen = () => {
+    if (typeof window !== 'undefined' && window.getSelection) {
+      const sel = window.getSelection();
+      if (sel) {
+        try {
+          if (sel.removeAllRanges) sel.removeAllRanges();
+          else if (sel.empty) sel.empty();
+        } catch (e) { /* ignore */ }
+      }
     }
-  });
+  };
+
+  // <-- AQUI: actualizamos para usar selectedOption.label (y guardamos el objeto)
+  const handleChangeState = (selectedOption) => {
+    setstateOption(selectedOption);
+    setEstado(selectedOption?.label || '');
+  };
+
+  const handleChangePais = (selectedOption) => {
+    setPais(selectedOption?.label || '');
+  };
+
+  useEffect(() => {
+    if (puesto !== "" && organizacion !== "" && estado !== "") setButtonEnabled(true);
+    else setButtonEnabled(false);
+  }, [puesto, organizacion, estado]);
 
   return (
     <>
@@ -415,148 +204,109 @@ const HistorialLaboral = () => {
         <div className="containerRender">
           <div className="containerInfo_P2">
             <div className="containerIdent_P2">
-
               {loading ? (
-                <div className="containerRender">
-                  <div className="spinner"></div>
-                </div>
+                <div className="containerRender"><div className="spinner" /></div>
               ) : (
-
                 <div className='animate__animated animate__fadeIn'>
-                  <p className="txtNat_P3Hist">Puesto</p>
+                  <div className="txtNat_P3Hist">Puesto</div>
+                  <input className="dateStyle mb-3" required maxLength={30} value={puesto} onChange={(e) => setPuesto(e.target.value)} type="text" placeholder="Nombre del puesto" />
 
-                  <input
-                    className="dateStyle mb-3"
-                    required={true}
-                    maxLength={30}
-                    value={puesto}
-                    onChange={handlePuestoChange}
-                    type="text"
-                    placeholder="Nombre del puesto"
-                  />
+                  <div className="txtNat_P3Hist">Organización</div>
+                  <input className="dateStyle mb-3" required maxLength={30} value={organizacion} onChange={(e) => setOrganizacion(e.target.value)} type="text" placeholder="Nombre de la organización" />
 
-                  <p className="txtNat_P3Hist">Organización</p>
-
-                  <input
-                    className="dateStyle mb-3"
-                    required={true}
-                    maxLength={30}
-                    type="text"
-                    value={organizacion}
-                    onChange={handleOrganizacionChange}
-                    placeholder="Nombre de la organización"
-                  />
-
-                  {!blActual ? (
+                  {!blActual && (
                     <>
-                      <div className="TrabajoActual d-flex  container-fluid py-1" id="RadioSelected" style={{ backgroundColor: '#379bf321', borderRadius: '8px', borderColor: '#379bf3' }}>
+                      <div className="TrabajoActual d-flex container-fluid py-1" style={{ backgroundColor: '#379bf321', borderRadius: '8px', borderColor: '#379bf3' }}>
                         <div className="row containerTrabajo">
                           <div className="col-1 d-flex justify-content-start ">
                             <input type="radio" className="RadioSpace" checked={onehabilita} onClick={handleDisabledTermino} onChange={handleDisabledTermino} />
                           </div>
                           <div className="col-10">
-                            <p className="mb-0 lining"><abbr className="TrabajoActual--color">Trabajo actual</abbr> <br />Selecciona esta opción si este es su trabajo
-                              actual.</p>
+                            <p className="mb-0 lining"><abbr className="TrabajoActual--color">Trabajo actual</abbr> <br />Selecciona esta opción si este es su trabajo actual.</p>
                           </div>
                         </div>
                       </div>
                       <br />
                     </>
-                  ) : (
-                    <></>
                   )}
-                  <p className="txtNat_P3Hist">Inicio</p>
+
+                  <div className="txtNat_P3Hist pt15">Inicio</div>
                   <DatePicker
-                    className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"
+                    className="w-full rounded-lg border border-gray-100 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"
                     selected={selectedDateInicio}
-                    onChange={(date) => setselectedDateInicio(date)}
+                    onChange={setselectedDateInicio}
                     dateFormat="yyyy-MM-dd"
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="scroll"
-                    yearDropdownItemNumber={100} // muestra 100 años en el scroll
-                    locale="es"
-                    placeholderText="YYYY-MM-DD"
-                    minDate={new Date(1950, 0, 1)}
-                    maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                    showMonthDropdown showYearDropdown dropdownMode="scroll" yearDropdownItemNumber={100}
+                    locale="es" placeholderText="YYYY-MM-DD" minDate={new Date(1950, 0, 1)} maxDate={new Date()}
                   />
+
                   {!isSubscribed && (
                     <>
-                      <p className="txtNat_P3Hist">Terminación</p>
+                      <div className="txtNat_P3Hist pt15">Terminación</div>
                       <DatePicker
-                        className="w-full rounded-lg border border-gray-100 px-4 py-2 pl-2 pr-[10.5rem] text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"
+                        className="w-full rounded-lg border border-gray-100 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#3c805f6e]"
                         selected={selectedDateTermino}
-                        onChange={(date) => setselectedDateTermino(date)}
+                        onChange={setselectedDateTermino}
                         dateFormat="yyyy-MM-dd"
-                        showMonthDropdown
-                        showYearDropdown
-                        dropdownMode="scroll"
-                        yearDropdownItemNumber={100}
-                        locale="es"
-                        placeholderText="YYYY-MM-DD"
-                        minDate={selectedDateInicio || new Date(1950, 0, 1)}
-                        maxDate={new Date(new Date().getFullYear(), 11, 31)}
+                        showMonthDropdown showYearDropdown dropdownMode="scroll" yearDropdownItemNumber={100}
+                        locale="es" placeholderText="YYYY-MM-DD" minDate={selectedDateInicio || new Date(1950, 0, 1)} maxDate={new Date()}
                       />
                     </>
                   )}
 
-                  <p className="txtNat_P3Hist">País</p>
+                  <div className="txtNat_P3Hist pt15">País</div>
                   <Select
+                    className="myReactSelect"
+                    classNamePrefix="myRS"
                     options={country}
-                    onChange={handleChange}
+                    onChange={handleChangePais}
                     styles={style}
-                    formatOptionLabel={country => (
-                      <div className="containerNac">
-                        <div className="pais">{country.value} {country.label}</div>
-                        <div className="paisBandera">
-                          <img className="bandera" src={country.image} />
-                        </div>
+                    components={{ Option: CustomOption }}
+                    formatOptionLabel={c => (
+                      <div className="containerNac" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div className="pais">{c.value} {c.label}</div>
+                        <div><img className="bandera" src={c.image} alt={c.label} /></div>
                       </div>
                     )}
-                    placeholder="Seleccionar nacionalidad"
+                    placeholder="Seleccionar país"
+                    menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                    menuPosition="fixed"
+                    onMenuOpen={handleMenuOpen}
                   />
-
-                  <br />
-                  <p className="txtNat_P3Hist">Estado</p>
+                  <div className="txtNat_P3Hist pt15">Estado</div>
                   <Select
+                    className="myReactSelect"
+                    classNamePrefix="myRS"
                     options={states}
                     onChange={handleChangeState}
-                    value={stateOption}  // ahora es el objeto completo
-                    formatOptionLabel={State => (
-                      <div className="containerDom">
-                        <div className="animate__animated animate__fadeIn pais">{State.init} {State.nombreEstado}</div>
-                      </div>
+                    value={stateOption}
+                    styles={style}
+                    components={{ Option: CustomOption }}
+                    formatOptionLabel={(s) => (
+                      <div className="containerDom" style={{ userSelect: 'none' }}>{s.init} {s.label}</div>
                     )}
-                    placeholder="Seleccionar"
+                    placeholder="Seleccionar estado"
+                    menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                    menuPosition="fixed"
+                    onMenuOpen={handleMenuOpen}
                   />
 
                   <hr className="lineSimple" />
 
                   <div className="btnContinue">
                     {!isButtonEnabled ? (
-                      <>
-                        <button className="btnVer_P3">
-                          <span className="txtVer_P3">Continuar</span>
-                        </button>
-                      </>
+                      <button className="btnVer_P3"><span className="txtVer_P3">Continuar</span></button>
                     ) : (
-                      <>
-                        <button
-                          className="button_P2 animate__animated animate__fadeIn"
-                          onClick={handleButtonClick}
-                        >
-                          <span className="txtButton_P2">Continuar</span>
-                        </button>
-                      </>
+                      <button className="button_P2 animate__animated animate__fadeIn" onClick={handleButtonClick}><span className="txtButton_P2">Continuar</span></button>
                     )}
                     <br /><br /><br />
                   </div>
-
                 </div>
               )}
             </div>
           </div>
         </div>
+
         <div className="footer">
           <div className="imageContainer_P2">
             <img src="assets/foodbrand@2x.png" className="imgFooter_P2" />
@@ -564,7 +314,7 @@ const HistorialLaboral = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HistorialLaboral
+export default HistorialLaboral;

@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
@@ -22,7 +23,7 @@ const AutenticacionLaboral = () => {
 
   useEffect(() => {
     setRutaBack('/bandeja');
-    setCpv(sessionStorage.getItem("sCpv") || '');
+    setCpv(sessionStorage.getItem("sCpv"));
   }, []);
 
 
@@ -38,7 +39,7 @@ const AutenticacionLaboral = () => {
 
         setLoading(true);
 
-      }, 1500);
+      }, 1300);
 
 
     }
@@ -48,8 +49,6 @@ const AutenticacionLaboral = () => {
   }, []);
 
   const onContinue = async () => {
-
-    /** Validacion documento laboral  */
 
     router.push('/requerimientosn5');
 

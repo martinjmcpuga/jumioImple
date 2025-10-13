@@ -92,3 +92,73 @@ input {
   padding: 6px 10px;
   box-sizing: border-box;
 }
+
+/* --- FIX: evita fondo azul al abrir el select --- */
+
+/* Evita selección de texto dentro del menú */
+.myRS__menu,
+.myRS__menu-list,
+.myRS__option {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* Anula el color azul del navegador al seleccionar texto */
+.myRS__menu *::selection {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Asegura colores correctos para opción normal, hover y seleccionada */
+.myRS__option {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+.myRS__option--is-focused {
+  background-color: #f3f4f6 !important; /* gris clarito al pasar el mouse */
+}
+
+.myRS__option--is-selected {
+  background-color: rgba(0,120,255,0.15) !important; /* azul suave solo al seleccionado */
+}
+
+/* Espaciado general entre labels e inputs */
+label {
+  display: block;
+  margin-bottom: 6px; /* separa el texto del input */
+  font-size: 14px;
+  font-weight: 600;
+  color: #0C3C2C;
+}
+
+/* Separa cada grupo de input */
+.mb-4 {
+  margin-bottom: 18px !important;
+}
+
+/* Ajuste visual del input */
+input,
+.rs__control {
+  border-radius: 8px !important;
+  min-height: 44px;
+  font-size: 14px;
+}
+
+/* Ajuste para coherencia con estilo general */
+.react-datepicker__input-container input {
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+/* Mantiene espaciado interno en radio y checkboxes */
+.TrabajoActual {
+  padding: 8px 12px;
+  line-height: 1.4;
+}
+
+.pt15{
+  padding: 20px 0px 5px 0px
+}

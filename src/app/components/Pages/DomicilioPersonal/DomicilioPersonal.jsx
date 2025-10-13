@@ -69,7 +69,6 @@ const DomicilioPersonal = () => {
     })
   };
 
-
   return (
     <>
       <div className="initBack_P2 animate__animated animate__fadeIn">

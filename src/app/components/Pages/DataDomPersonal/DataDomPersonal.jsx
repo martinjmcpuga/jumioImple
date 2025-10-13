@@ -9,13 +9,13 @@ import { Modal } from 'react-bootstrap';
 import "./styleDomPersonal.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import dynamic from 'next/dynamic';
+// Importación dinámica para react-select
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 function DataDomPersonal() {
 
     const ref = useRef(null);
     const router = useRouter();
-    const isRunned = useRef(false);
     const [codigoPostal, setCodigoPostal] = useState("");
     const [colonia, setColonia] = useState("");
     const [calle, setCalle] = useState("");
@@ -24,6 +24,7 @@ function DataDomPersonal() {
     const [numExterior, setnumExterior] = useState("");
     const [numInterior, setnumInterior] = useState("");
     const [tipoColonia, setTipoColonia] = useState([]);
+    const [selectedColoniaOption, setSelectedColoniaOption] = useState(null); 
     const [blContinue, setBlContinue] = useState(false);
     const [loading, setLoading] = useState(false);
     const [showHeader, setShowHeader] = useState(false);
@@ -39,17 +40,14 @@ function DataDomPersonal() {
         async function createSession1() {
 
             setTipoColonia([]);
+            setSelectedColoniaOption(null); // Limpia la opción seleccionada al inicio
 
-            if (sessionStorage.getItem('cp_comprobante') != null &&
-                sessionStorage.getItem('cp_comprobante') != undefined &&
-                sessionStorage.getItem('cp_comprobante') != "null" &&
-                sessionStorage.getItem('cp_comprobante') != 0) {
+            const cp = sessionStorage.getItem('cp_comprobante');
+            if (cp && cp !== "null" && cp !== "0") {
 
-                setCodigoPostal(sessionStorage.getItem('cp_comprobante'));
+                setCodigoPostal(cp);
 
-                const modelCodigoPostal = {
-                    cp: sessionStorage.getItem('cp_comprobante')
-                }
+                const modelCodigoPostal = { cp };
 
                 const response = await getCodigoPostalCpt_Jumio(modelCodigoPostal);
 
@@ -58,7 +56,12 @@ function DataDomPersonal() {
                     setEdo(response.listRest[0].nomestado);
                     setMuni(response.listRest[0].municipio);
                     setTipoColonia(response.listRest);
-
+                    
+                    if (response.listRest.length === 1) {
+                        const soleOption = response.listRest[0];
+                        setSelectedColoniaOption(soleOption);
+                        setColonia(soleOption.asentamiento);
+                    }
                 } else {
 
                     setTipoColonia([]);
@@ -81,8 +84,6 @@ function DataDomPersonal() {
         timeout: 27000
     };
 
-
-    /*se ejecuta si el permiso fue denegado o no se puede encontrar una ubicación*/
     function onError() {
         setShow(true);
         setShowStatus(500);
@@ -90,109 +91,59 @@ function DataDomPersonal() {
         router.push("/datadompersonal");
     }
 
-    /* se ejecuta si los permisos son concedidos y se encuentra una ubicación*/
     function onSucccess(position) {
         setLatitud(position.coords.latitude);
         setLongitud(position.coords.longitude);
-
     }
 
     useEffect(() => {
-
-        async function getFuncionEstados() {
-            /*así llamamos la función getCurrentPosition*/
-
-            navigator.geolocation.getCurrentPosition(onSucccess, onError, config);
-        }
-        getFuncionEstados();
-
+        navigator.geolocation.getCurrentPosition(onSucccess, onError, config);
     }, []);
 
-
-    const handleClose = (event) => {
-
-    };
+    const handleClose = () => setShow(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
     };
 
     useEffect(() => {
-        if (codigoPostal !== "" && calle !== "" && numExterior !== "" && tipoColonia != []) {
+        // La validación ahora usa el estado 'colonia' que se actualiza desde el Select
+        if (codigoPostal !== "" && calle !== "" && numExterior !== "" && tipoColonia.length > 0 && colonia !== "") {
             setBlContinue(true);
             setShowHeader(true);
         } else {
             setBlContinue(false);
         }
-    });
-
-    /*
-
-    useEffect(() => {
-
-        if (isRunned.current) return;
-        isRunned.current = true;
-
-        async function createSession() {
-
-            setLoading(true);
-            setTipoColonia([]);
-
-            const modelCodigoPostal = {
-                cp: codigoPostal
-            }
-
-            const response = await getCodigoPostalCpt_Jumio(modelCodigoPostal);
-
-            if (response.status === 200) {
-                setEdo(response.listRest[0].nomestado);
-                setMuni(response.listRest[0].municipio);
-                setTipoColonia(response.listRest);
-            } else {
-                setTipoColonia([]);
-            }
-
-            setLoading(false);
-
-        }
-
-        createSession();
-
-    }, []);
-
-    */
+    }, [codigoPostal, calle, numExterior, tipoColonia, colonia]);
 
     const fnFetCodigoPostalCpt = async (cpCod) => {
-
         setTipoColonia([]);
+        setSelectedColoniaOption(null); // Limpiar selección al cambiar CP
 
-        const modelCodigoPostal = {
-            cp: cpCod
-        }
+        const modelCodigoPostal = { cp: cpCod };
 
         const response = await getCodigoPostalCpt_Jumio(modelCodigoPostal);
         if (response.status === 200) {
             setEdo(response.listRest[0].nomestado);
             setMuni(response.listRest[0].municipio);
             setTipoColonia(response.listRest);
+             // Opcional: Si solo hay una opción, la preseleccionamos
+            if (response.listRest.length === 1) {
+                const soleOption = response.listRest[0];
+                setSelectedColoniaOption(soleOption);
+                setColonia(soleOption.asentamiento);
+            }
         } else {
             setTipoColonia([]);
         }
-
     }
 
     const handkeOnKeyDown = async (event) => {
-        if (
-            event.code === "Enter" ||
-            event.code === "NumpadEnter" ||
-            event.keyCode === 13
-        ) {
-
+        if (event.code === "Enter" || event.code === "NumpadEnter" || event.keyCode === 13) {
             fnFetCodigoPostalCpt(codigoPostal);
         }
     };
 
-    // Dentro de tu handleChange del CP
     const handleChange = (event) => {
         const value = event.target.value;
         if (value.length <= 5) {
@@ -200,6 +151,7 @@ function DataDomPersonal() {
 
             if (value.length < 5) {
                 setColonia("");
+                setSelectedColoniaOption(null); // Limpiar opción seleccionada
                 setTipoColonia([]);
             }
         }
@@ -209,30 +161,24 @@ function DataDomPersonal() {
         }
     };
 
-    const handleChangeLic = async (selectedOption) => {
-        const setSelectedOption = selectedOption.tipoColonia;
-        setColonia(selectedOption.asentamiento);
+    // Guardamos el objeto completo de la opción seleccionada
+    const handleChangeLic = (selectedOption) => {
+        setSelectedColoniaOption(selectedOption);
+        if (selectedOption) {
+            // Guardamos el string para mantener la compatibilidad con tu useEffect
+            setColonia(selectedOption.asentamiento); 
+        } else {
+            setColonia("");
+        }
     };
 
     const getContinue = async () => {
-
         setShowHeader(false);
-        /**1.- Construye la direción con base a los datos ingresados por el usuario */
-        const direccion = "" + calle + " " + numExterior + ", " + colonia + ", " + muni + ", " + codigoPostal + ", " + edo;
+        const direccion = `${calle} ${numExterior}, ${colonia}, ${muni}, ${codigoPostal}, ${edo}`;
 
-        const objCons = {
-            direccion: direccion
-        }
-
-        const geolocalizacion = await getPointCoordenadas_Jumio(objCons);
-
-        /** 3.- Obtiene las coordenadas de la dirección */
+        const geolocalizacion = await getPointCoordenadas_Jumio({ direccion });
 
         if (geolocalizacion.status === 200) {
-
-            const latitud_obtenida = geolocalizacion.latitud;
-            const longitud_obtenida = geolocalizacion.longitud;
-
             sessionStorage.setItem("cpDom", codigoPostal);
             sessionStorage.setItem("coloniaDom", colonia);
             sessionStorage.setItem("calleDom", calle);
@@ -242,9 +188,8 @@ function DataDomPersonal() {
             sessionStorage.setItem("muniDom", muni);
             sessionStorage.setItem("latitud", latitud);
             sessionStorage.setItem("longitud", longitud);
-            sessionStorage.setItem("latitud_obtenida", latitud_obtenida);
-            sessionStorage.setItem("longitud_obtenida", longitud_obtenida);
-
+            sessionStorage.setItem("latitud_obtenida", geolocalizacion.latitud);
+            sessionStorage.setItem("longitud_obtenida", geolocalizacion.longitud);
             router.push("/validarubicacion");
 
         } else {
@@ -255,6 +200,8 @@ function DataDomPersonal() {
 
         }
     };
+
+    const getRein = () => router.push('/dirrefpersonal');
 
     const style = {
         control: (base) => ({
@@ -270,12 +217,13 @@ function DataDomPersonal() {
         option: (base, state) => ({
             ...base,
             backgroundColor: state.isSelected
-                ? '#0078ff26'
-                : state.isFocused
-                    ? '#f1f1f1'
-                    : 'white',
+                ? '#0078ff26' // solo la seleccionada
+                : 'white',
             color: '#333',
             cursor: 'pointer',
+            '&:hover': {
+                backgroundColor: '#f1f1f1', // hover ligero para las demás
+            }
         }),
         singleValue: (base) => ({
             ...base,
@@ -285,119 +233,104 @@ function DataDomPersonal() {
         }),
     };
 
-    const getRein = async () => {
-
-        router.push('/dirrefpersonal');
-    };
-
     return (
         <>
             <div className="initBack_P2 animate__animated animate__fadeIn">
-
                 <div className="containerRenderForm onContentExpands">
-                    <div className="containerInfo_P2Form">
+                    <div className="containerInfo_P2">
                         <div className="containerIdent_P2 scrollDataPersonal">
-
                             {loading ? (
                                 <div className="spinner"></div>
                             ) : (
-
                                 <div className="animate__animated animate__fadeIn heigthData1">
                                     <div className="txtOp_P2">Domicilio Personal</div>
-                                    <div className="subTitle">Dirección laboral o donde normalmente despeña su actividad diaria.</div>
+                                    <div className="subTitle">Dirección laboral o donde normalmente desempeña su actividad diaria.</div>
                                     <hr className="separadorLine" />
-                                    <div>
-                                        <form onSubmit={handleSubmit}>
-                                            <div>
-                                                <div className="txtSubtitle">Código Postal:</div>
-                                                <input
-                                                    type="text"
-                                                    value={codigoPostal}
-                                                    ref={ref}
-                                                    onChange={handleChange}
-                                                    onKeyDown={handkeOnKeyDown}
-                                                    placeholder="C.P."
-                                                    className="spaceLeft"
-                                                />
-                                            </div>
-                                            <div>
-                                                <div className="txtSubtitle">Colonia:</div>
-                                                <div>
-                                                    <Select
-                                                        styles={style}
-                                                        className="select-wrapper"
-                                                        classNamePrefix="select"
-                                                        placeholder="Selecciona la colonia"
-                                                        options={tipoColonia}
-                                                        value={tipoColonia.find(item => item.asentamiento === colonia) || null}
-                                                        onChange={handleChangeLic}
-                                                        formatOptionLabel={tipoColonia => (
-                                                            <div className="containerEmisor">
-                                                                <div className="licenciaValue">{tipoColonia.asentamiento}</div>
-                                                            </div>
-                                                        )}
-                                                    />
-                                                </div>
-                                                <div />
-                                            </div>
-                                            <div>
-                                                <div className="txtSubtitle">Calle:</div>
-                                                <input
-                                                    type="text"
-                                                    value={calle}
-                                                    onChange={(event) => setCalle(event.target.value)}
-                                                    placeholder="Calle:"
-                                                    className="spaceLeft"
-                                                />
-                                            </div>
-                                            <div className="contenedorNum ">
-                                                <div className="numExt">
-                                                    <div className="txtSubtitle">Exterior:</div>
-                                                    <input
-                                                        type="text"
-                                                        value={numExterior}
-                                                        onChange={(event) => setnumExterior(event.target.value)}
-                                                        placeholder="Número"
-                                                        className="spaceLeft"
-                                                    />
-                                                </div>
-                                                <div className="numInt">
-                                                    <div className="inputWrap">
-                                                        <div className="txtSubtitle">Interior:</div>
-                                                        <input
-                                                            type="text"
-                                                            value={numInterior}
-                                                            onChange={(event) => setnumInterior(event.target.value)}
-                                                            className="spaceLeft"
-                                                        />
+                                    <form onSubmit={handleSubmit}>
+                                        <div>
+                                            <div className="txtSubtitle">Código Postal:</div>
+                                            <input
+                                                type="text"
+                                                value={codigoPostal}
+                                                ref={ref}
+                                                onChange={handleChange}
+                                                onKeyDown={handkeOnKeyDown}
+                                                placeholder="C.P."
+                                                className="spaceLeft"
+                                            />
+                                        </div>
+                                        <div>
+                                            <div className="txtSubtitle">Colonia:</div>
+                                            <Select
+                                                styles={style}
+                                                className="select-wrapper"
+                                                classNamePrefix="select"
+                                                placeholder="Selecciona la colonia"
+                                                options={tipoColonia}
+                                                // Usamos el objeto completo para que mantenga la selección
+                                                value={selectedColoniaOption}
+                                                // Indicamos a react-select qué campo usar como valor y etiqueta
+                                                getOptionValue={(option) => option.asentamiento}
+                                                getOptionLabel={(option) => option.asentamiento}
+                                                onChange={handleChangeLic}
+                                                formatOptionLabel={tipoColonia => (
+                                                    <div className="containerEmisor">
+                                                        <div className="licenciaValue">{tipoColonia.asentamiento}</div>
                                                     </div>
-                                                </div>
+                                                )}
+                                            />
+                                        </div>
+                                        <div>
+                                            <div className="txtSubtitle">Calle:</div>
+                                            <input
+                                                type="text"
+                                                value={calle}
+                                                onChange={(event) => setCalle(event.target.value)}
+                                                placeholder="Calle:"
+                                                className="spaceLeft"
+                                            />
+                                        </div>
+                                        <div className="contenedorNum">
+                                            <div className="numExt">
+                                                <div className="txtSubtitle">Exterior:</div>
+                                                <input
+                                                    type="text"
+                                                    value={numExterior}
+                                                    onChange={(event) => setnumExterior(event.target.value)}
+                                                    placeholder="Número"
+                                                    className="spaceLeft"
+                                                />
                                             </div>
-                                        </form>
-                                    </div>
+                                            <div className="numInt">
+                                                <div className="txtSubtitle">Interior:</div>
+                                                <input
+                                                    type="text"
+                                                    value={numInterior}
+                                                    onChange={(event) => setnumInterior(event.target.value)}
+                                                    className="spaceLeft"
+                                                />
+                                            </div>
+                                        </div>
+                                    </form>
                                     <hr className="line" />
                                     <div className='btnContinue'>
                                         {!blContinue ? (
-                                            <>
-                                                <button className='btnVer_P3'>
-                                                    <span className='txtVer_P3'>Mapear</span>
-                                                </button>
-                                            </>
+                                            <button className='btnVer_P3'>
+                                                <span className='txtVer_P3'>Mapear</span>
+                                            </button>
                                         ) : (
-                                            <>
-                                                <div className='containerCont_P2'>
-                                                    <div className="spaceButton14">
-                                                        <button className='button_P2 animate__animated animate__fadeIn' type="submit" onClick={getContinue}>
-                                                            <span className='txtButton_P2'>Mapear</span>
-                                                        </button>
-                                                    </div>
-                                                    <div className="spaceButton14">
-                                                        <button className='buttonRein_P2' onClick={getRein}>
-                                                            <span className='txtButtonRein_P14'>Reintentar</span>
-                                                        </button>
-                                                    </div>
+                                            <div className='containerCont_P2'>
+                                                <div className="spaceButton14">
+                                                    <button className='button_P2 animate__animated animate__fadeIn' type="submit" onClick={getContinue}>
+                                                        <span className='txtButton_P2'>Mapear</span>
+                                                    </button>
                                                 </div>
-                                            </>
+                                                <div className="spaceButton14">
+                                                    <button className='buttonRein_P2' onClick={getRein}>
+                                                        <span className='txtButtonRein_P14'>Reintentar</span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         )}
                                     </div>
                                 </div>
