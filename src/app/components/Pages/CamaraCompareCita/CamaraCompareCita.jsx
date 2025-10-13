@@ -79,6 +79,7 @@ const CamaraCompareCita = ({ }) => {
         };
 
         fetchDevices();
+
     }, []);
 
 
@@ -172,7 +173,6 @@ const CamaraCompareCita = ({ }) => {
                 setShowMessage(responseSignDoc.message);
 
             }
-
 
         } else if (response.status === 500) {
 

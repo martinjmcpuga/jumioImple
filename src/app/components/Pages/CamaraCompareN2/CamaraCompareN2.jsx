@@ -77,6 +77,7 @@ const CamaraCompareN2 = ({ }) => {
         };
 
         fetchDevices();
+        
     }, []);
 
 

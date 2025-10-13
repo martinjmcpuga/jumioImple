@@ -77,9 +77,7 @@ function Cita() {
                                 <div className='txtIdenOf_P2'>Fecha de recolección</div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 

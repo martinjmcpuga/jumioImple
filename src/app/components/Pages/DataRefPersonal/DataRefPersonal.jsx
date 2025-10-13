@@ -24,7 +24,7 @@ const DataRefPersonal = () => {
     const [numExterior, setnumExterior] = useState("");
     const [numInterior, setnumInterior] = useState("");
     const [tipoColonia, setTipoColonia] = useState([]);
-    const [selectedColoniaOption, setSelectedColoniaOption] = useState(null); 
+    const [selectedColoniaOption, setSelectedColoniaOption] = useState(null);
     const [blContinue, setBlContinue] = useState(false);
     const [loading, setLoading] = useState(false);
     const [showHeader, setShowHeader] = useState(false);
@@ -66,7 +66,7 @@ const DataRefPersonal = () => {
             setEdo(response.listRest[0].nomestado);
             setMuni(response.listRest[0].municipio);
             setTipoColonia(response.listRest);
-            
+
             if (response.listRest.length === 1) {
                 const soleOption = response.listRest[0];
                 setSelectedColoniaOption(soleOption);
@@ -91,7 +91,7 @@ const DataRefPersonal = () => {
         const value = event.target.value;
         if (value.length <= 5) {
             setCodigoPostal(value);
-            
+
             if (value.length < 5) {
                 setColonia("");
                 setSelectedColoniaOption(null);
@@ -105,7 +105,7 @@ const DataRefPersonal = () => {
     };
 
     const handleChangeLic = (selectedOption) => {
-        setSelectedColoniaOption(selectedOption); 
+        setSelectedColoniaOption(selectedOption);
         if (selectedOption) {
             setColonia(selectedOption.asentamiento);
         } else {
@@ -165,7 +165,7 @@ const DataRefPersonal = () => {
             color: '#333',
             cursor: 'pointer',
             '&:hover': {
-                backgroundColor: '#f1f1f1', 
+                backgroundColor: '#f1f1f1',
             }
         }),
     };
@@ -214,7 +214,7 @@ const DataRefPersonal = () => {
                                                         classNamePrefix="select"
                                                         placeholder="Selecciona la colonia"
                                                         options={tipoColonia}
-                                                        value={selectedColoniaOption} 
+                                                        value={selectedColoniaOption}
                                                         getOptionValue={(option) => option.asentamiento}
                                                         getOptionLabel={(option) => option.asentamiento}
                                                         onChange={handleChangeLic}

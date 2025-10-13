@@ -10,6 +10,7 @@ const DataCita = () => {
 
   const isRunned = useRef(false);
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [firstName, setFirstName] = useState("");
   const [paternalLastName, setPaternalLastName] = useState("");
   const [maternalLastName, setMaternalLastName] = useState("");
@@ -25,6 +26,28 @@ const DataCita = () => {
     router.push("/camaracomparecita");
 
   }
+
+
+  useEffect(() => {
+
+    if (isRunned.current) return;
+    isRunned.current = true;
+
+    async function createSession() {
+
+      setLoading(false);
+
+      setTimeout(() => {
+
+        setLoading(true);
+
+      }, 1000);
+
+    }
+
+    createSession();
+
+  }, []);
 
   useEffect(() => {
 
@@ -53,41 +76,45 @@ const DataCita = () => {
 
   return (
     <>
-      <>
-      </>
       <div className="initBack_P2 animate__animated animate__fadeIn">
-        <div className="containerRender">
-          <div className="containerInfo_P2">
-            <div className="containerIdent_P2">
-              {!verNameFull ? (
-                <>
-                  <div className="txtOp_P2">Nombre/Given name</div>
-                  <div className="txtVer_P2 P_button">{firstName}</div>
-                </>
-              ) : (
-                <>
-                  <div className="txtOp_P2">Nombres/Given names</div>
-                  <div className="txtVer_P2 P_button">{firstName}</div>
+        {!loading ? (
+          <div className="spinner"></div>
+        ) : (
+          <>
+            <div className="containerRender animate__animated animate__fadeIn">
+              <div className="containerInfo_P2">
+                <div className="containerIdent_P2">
+                  {!verNameFull ? (
+                    <>
+                      <div className="txtOp_P2">Nombre/Given name</div>
+                      <div className="txtVer_P2 P_button">{firstName}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="txtOp_P2">Nombres/Given names</div>
+                      <div className="txtVer_P2 P_button">{firstName}</div>
 
-                  <div className="txtOp_P2">Apellidos/Surname</div>
-                  <div className="txtVer_P2 P_button">
-                    {paternalLastName} {maternalLastName}
-                  </div>
-                </>
-              )}
-              <div className="txtOp_P2">Ubicación/Location</div>
-              <div className="txtVer_P2">{ubicacion}</div>
-              <div className="txtVer_P2">{ubicacionDireccion}</div>
-              <div className="txtVer_P2">{ubicacionApertura} {ubicacionCierre}</div>
-              <div className="txtOp_P2">Fecha/Date</div>
-              <div className="txtVer_P2">{horario}</div>
-              <hr className="line" />
-              <p className=' text-center Footer__text'>La fecha de expiración son
-                30 días posteriores a la generación.</p>
+                      <div className="txtOp_P2">Apellidos/Surname</div>
+                      <div className="txtVer_P2 P_button">
+                        {paternalLastName} {maternalLastName}
+                      </div>
+                    </>
+                  )}
+                  <div className="txtOp_P2">Ubicación/Location</div>
+                  <div className="txtVer_P2">{ubicacion}</div>
+                  <div className="txtVer_P2">{ubicacionDireccion}</div>
+                  <div className="txtVer_P2">{ubicacionApertura} {ubicacionCierre}</div>
+                  <div className="txtOp_P2">Fecha/Date</div>
+                  <div className="txtVer_P2">{horario}</div>
+                  <hr className="line" />
+                  <p className=' text-center Footer__text'>La fecha de expiración son
+                    30 días posteriores a la generación.</p>
+                </div>
+              </div>
             </div>
+          </>
+        )}
 
-          </div>
-        </div>
         <div className="footer">
           <div className="containerCont_P2">
             <button className='button_P2' onClick={e => handleAceptar()} >
