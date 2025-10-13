@@ -59,7 +59,6 @@ const Ubicacion = () => {
 
   };
 
-
   const handleClose = () => {
     setShow(false);
     router.push("/estados");

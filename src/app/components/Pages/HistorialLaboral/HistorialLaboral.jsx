@@ -107,10 +107,10 @@ const HistorialLaboral = () => {
   const pad = n => (n < 10 ? '0' + n : '' + n);
   const handleButtonClick = async () => {
     if (!selectedDateInicio) return;
-    const dateStr = `${selectedDateInicio.getFullYear()}-${pad(selectedDateInicio.getMonth()+1)}-${pad(selectedDateInicio.getDate())}`;
+    const dateStr = `${selectedDateInicio.getFullYear()}-${pad(selectedDateInicio.getMonth() + 1)}-${pad(selectedDateInicio.getDate())}`;
     let dateStrFinish = '';
     if (!isSubscribed && selectedDateTermino) {
-      dateStrFinish = `${selectedDateTermino.getFullYear()}-${pad(selectedDateTermino.getMonth()+1)}-${pad(selectedDateTermino.getDate())}`;
+      dateStrFinish = `${selectedDateTermino.getFullYear()}-${pad(selectedDateTermino.getMonth() + 1)}-${pad(selectedDateTermino.getDate())}`;
     }
     const objCons = { id: sessionStorage.getItem('id_jumio') };
     let updateFn = null;
@@ -237,7 +237,7 @@ const HistorialLaboral = () => {
                     onChange={setselectedDateInicio}
                     dateFormat="yyyy-MM-dd"
                     showMonthDropdown showYearDropdown dropdownMode="scroll" yearDropdownItemNumber={100}
-                    locale="es" placeholderText="YYYY-MM-DD" minDate={new Date(1950,0,1)} maxDate={new Date()}
+                    locale="es" placeholderText="YYYY-MM-DD" minDate={new Date(1950, 0, 1)} maxDate={new Date()}
                   />
 
                   {!isSubscribed && (
@@ -249,7 +249,7 @@ const HistorialLaboral = () => {
                         onChange={setselectedDateTermino}
                         dateFormat="yyyy-MM-dd"
                         showMonthDropdown showYearDropdown dropdownMode="scroll" yearDropdownItemNumber={100}
-                        locale="es" placeholderText="YYYY-MM-DD" minDate={selectedDateInicio || new Date(1950,0,1)} maxDate={new Date()}
+                        locale="es" placeholderText="YYYY-MM-DD" minDate={selectedDateInicio || new Date(1950, 0, 1)} maxDate={new Date()}
                       />
                     </>
                   )}
