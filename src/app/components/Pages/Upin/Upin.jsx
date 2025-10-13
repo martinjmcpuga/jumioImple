@@ -125,7 +125,6 @@ const Upin = () => {
           </div>
         </div>
       </div>
-
       <Modal className="animate__animated animate__fadeIn" show={show} onHide={handleClose} animation={false} centered backdrop="static">
         <Modal.Body className='backGroudModal'>
           <div className='msjTitleModalDiv'>Error {showStatus}</div>

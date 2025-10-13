@@ -1,6 +1,5 @@
 'use client'
 
-
 import React from 'react';
 import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useRef, useState } from "react";
@@ -99,13 +98,10 @@ const DocumentosPrev = () => {
 
   const handleClose = () => {
     setShow(false);
-    //router.push('/bandeja');
   }
 
   const handleCloseError = () => {
     setShowError(false);
-    //router.push('/bandeja');
-
   }
 
   const handleConfirmar = () => {
