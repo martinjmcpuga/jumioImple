@@ -141,25 +141,30 @@ const CamComponent = ({ }) => {
 
         const response = await getSelfieToCamara_Jumio(objIncode);
 
-        if (response.status === 200) {
+        router.push("/bandeja");
 
-            router.push("/bandeja");
+        /*
 
-        } else if (response.status === 500) {
+       if (response.status === 200) {
 
-            setLoading(true);
-            setShow(true);
-            setShowStatus("Error");
-            setShowMessage(showMsjUsu);
+           router.push("/bandeja");
 
-        } else {
+       } else if (response.status === 500) {
 
-            setLoading(true);
-            setShow(true);
-            setShowStatus("Error");
-            setShowMessage(showMsjUsu);
+           setLoading(true);
+           setShow(true);
+           setShowStatus("Error");
+           setShowMessage(showMsjUsu);
 
-        }
+       } else {
+
+           setLoading(true);
+           setShow(true);
+           setShowStatus("Error");
+           setShowMessage(showMsjUsu);
+
+       }
+           */
 
 
     }
