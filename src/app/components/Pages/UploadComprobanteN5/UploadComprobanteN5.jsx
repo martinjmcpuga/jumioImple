@@ -47,7 +47,7 @@ function UploadComprobanteN5() {
   const [buttonDown, setButtonDown] = useState(false);
 
   useEffect(() => {
-    setRutaBack('/comprobantedompersonal');
+    setRutaBack('/comprobanteingreso');
   }, []);
 
   const catchButton = (Validate) => {
