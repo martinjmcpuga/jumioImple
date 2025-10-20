@@ -9,11 +9,11 @@ import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styleUploadFile.css";
+import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
+import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
 import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
-import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
-import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -28,12 +28,10 @@ function UploadFile() {
     })();
   }, [])
 
-
-  const { IdJumio, setRutaBack } = useAppContext();
-  const router = useRouter();
-
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { IdJumio, setRutaBack } = useAppContext();
+  const router = useRouter();
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const [showStatus, setShowStatus] = useState(null);
@@ -49,7 +47,7 @@ function UploadFile() {
   const [buttonDown, setButtonDown] = useState(false);
 
   useEffect(() => {
-    setRutaBack('/comprobantedompersonal');
+    setRutaBack('/comprobanteingreso');
   }, []);
 
   const catchButton = (Validate) => {
@@ -91,14 +89,6 @@ function UploadFile() {
     }
   };
 
-  const handleNewImage = () => {
-
-    setShow2(false);
-    catchButton(false);
-
-  }
-
-
   const handleDrop = (event) => {
     setShowErrorFile(false);
     event.preventDefault();
@@ -139,13 +129,6 @@ function UploadFile() {
     setFilesImage([]);
     setContinueWithOutFile(true);
   };
-
-  const handleClose2 = () => {
-    setShow2(false);
-    catchButton(true);
-    setContinueWithOutFile(false);
-  };
-
 
   const handleReloadImage2 = () => {
     setSelectedFile(null);
@@ -431,26 +414,6 @@ function UploadFile() {
           </div>
         </div>
       </div>
-
-      {/* Modal on NewImage */}
-
-      <Modal className="animate__animated animate__fadeIn" show={show2} onHide={handleClose2} animation={true} centered backdrop="static">
-        <Modal.Body className="backGroudModal">
-          <div className="msjTitleModalDiv">{showMessage2}</div>
-        </Modal.Body>
-        <Modal.Footer>
-
-          <button className="buttonRein_P2" onClick={handleNewImage}>
-            <span className="txtButtonRein_P14">Agregar nueva imagen</span>
-          </button>
-          <br />
-
-          <button className="button_P2" onClick={handleClose2}>
-            <span className="txtButton_P2">Continuar</span>
-          </button>
-        </Modal.Footer>
-      </Modal>
-
 
       {/* Mensaje de errores */}
 
