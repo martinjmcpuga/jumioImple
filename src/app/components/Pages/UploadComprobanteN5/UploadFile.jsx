@@ -3,8 +3,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import { uploadFilesService } from "../../Api/uploadFilesService";
-import { validacionTipoComprobanteJumio } from "../../Api/validacionTipoComprobanteJumio";
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -357,6 +355,9 @@ function UploadFile() {
                         </div>
                       )}
 
+                      <div className="space"></div>
+                      <div className="space"></div>
+                      <div className="space"></div>
                       <div className="space"></div>
                     </div>
                   ) : (
