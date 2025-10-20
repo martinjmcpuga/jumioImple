@@ -10,8 +10,7 @@ import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./styleUploadFile.css";
+
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
