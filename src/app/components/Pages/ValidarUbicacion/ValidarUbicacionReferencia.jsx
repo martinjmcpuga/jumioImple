@@ -124,7 +124,7 @@ function ValidarUbicacionReferencia() {
             doc.html(mapContainer.current, {
                 html2canvas: {
                     removeContainer: true,
-                    scale: 1,
+                    scale: 1.2,
                 },
                 margin: 0,
                 x: 0,
