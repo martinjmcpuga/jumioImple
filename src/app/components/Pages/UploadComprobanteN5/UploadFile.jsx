@@ -3,16 +3,17 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
+import { uploadFilesService } from "../../Api/uploadFilesService";
+import { validacionTipoComprobanteJumio } from "../../Api/validacionTipoComprobanteJumio";
 import Modal from "react-bootstrap/Modal";
-import "./styleUploadFile.css";
+import dynamic from 'next/dynamic';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
+import "./styleUploadFile.css";
+import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
 import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
-import { uploadFilesService } from "../../Api/uploadFilesService";
+import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
 import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
-import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -27,7 +28,8 @@ function UploadFile() {
     })();
   }, [])
 
-  const { IdJumio } = useAppContext();
+
+  const { IdJumio, setRutaBack } = useAppContext();
   const router = useRouter();
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -45,6 +47,10 @@ function UploadFile() {
   const [pageNumber, setPageNumber] = useState(1);
   const [filesImage, setFilesImage] = useState([]);
   const [buttonDown, setButtonDown] = useState(false);
+
+  useEffect(() => {
+    setRutaBack('/comprobantedompersonal');
+  }, []);
 
   const catchButton = (Validate) => {
 
@@ -70,6 +76,7 @@ function UploadFile() {
       file.type === "image/png"
     ) {
       if (file.type === "image/jpeg" || file.type === "image/png") {
+        console.log(file)
         catchButton(true);
         setFilesImage([...filesImage, file]);
         setSelectedFile(null);
@@ -91,6 +98,7 @@ function UploadFile() {
 
   }
 
+
   const handleDrop = (event) => {
     setShowErrorFile(false);
     event.preventDefault();
@@ -101,6 +109,7 @@ function UploadFile() {
       file.type === "image/png"
     ) {
       if (file.type === "image/jpeg" || file.type === "image/png") {
+        console.log(file)
         catchButton(true);
         setFilesImage([...filesImage, file]);
         setSelectedFile(null);
@@ -137,6 +146,7 @@ function UploadFile() {
     setContinueWithOutFile(false);
   };
 
+
   const handleReloadImage2 = () => {
     setSelectedFile(null);
 
@@ -154,6 +164,12 @@ function UploadFile() {
     setShow2(true);
     setShowMessage2("¿Deseas agregar otra imagen?");
   }
+
+  const showModalError = (title, message) => {
+    setShowStatus(title);
+    setShowMessage(message);
+    setShow(true);
+  };
 
   const handleReloadImage = async () => {
 
@@ -308,12 +324,14 @@ function UploadFile() {
                           </div>
                         ))}
 
+
                         <div className="buttonCenterUp">
                           <div className="spaceButtonReloadUp">
                           </div>
                         </div>
                         <div className="space"></div>
                       </div>
+
 
                       <div className="space"></div>
                     </div>
@@ -433,11 +451,12 @@ function UploadFile() {
         </Modal.Footer>
       </Modal>
 
+
       {/* Mensaje de errores */}
 
       <Modal show={show} onHide={handleClose} animation={false} centered className="animate__animated animate__fadeIn">
         <Modal.Body className="backGroudModal">
-          <div className="msjTitleModalDiv">Error {showStatus}</div>
+          <div className="msjTitleModalDiv">Error</div>
           <div className="msjErrorModal">{showMessage}</div>
         </Modal.Body>
         <Modal.Footer>
