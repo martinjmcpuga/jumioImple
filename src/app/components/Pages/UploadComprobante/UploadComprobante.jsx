@@ -182,8 +182,6 @@ function UploadComprobante() {
 
       if (responseComprobante.status === 200) {
 
-        console.log(responseComprobante);
-
         sessionStorage.setItem('cp_comprobante', responseComprobante.cp);
         sessionStorage.setItem('documentType', responseComprobante.documentType);
         sessionStorage.setItem('fechaValidaComprobante', responseComprobante.fechaValida);
