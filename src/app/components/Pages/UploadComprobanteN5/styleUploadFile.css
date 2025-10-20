@@ -1,4 +1,14 @@
 
+.textFileSelectUp {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: rgb(32, 38, 61);
+    margin: 0px;
+    padding-top: 20px;
+}
 
 .subtitleTextFileUp {
     font-style: normal;
