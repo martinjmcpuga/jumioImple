@@ -40,7 +40,7 @@ const FechaCita = () => {
 
         const obj = {
           idUbicacion: sessionStorage.getItem("idUbicacion"),
-          id: sessionStorage.getItem("idPerson"),
+          id: sessionStorage.getItem("id_jumio"),
         };
 
         const response = await getHorariosWsaicm(obj);

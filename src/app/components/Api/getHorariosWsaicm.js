@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function getHorariosWsaicm(obj) {
     try {
-        const url = appGlobal.host + "getHorariosWsaicm";
+        const url = appGlobal.host + "getHorariosWsaicm_Jumio";
         const params = {
             method: "POST",
             headers: {
