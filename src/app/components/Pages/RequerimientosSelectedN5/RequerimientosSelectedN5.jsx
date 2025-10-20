@@ -84,8 +84,8 @@ const RequerimientosSelectedN5 = (props) => {
         }
 
         if (responsePerson.comprobante0 === true) {
-          //setIdentificacionFiscal(true);
-          //setComprobanteIngreso(true);
+          setIdentificacionFiscal(true);
+          setComprobanteIngreso(true);
         }
 
         setLoading(false);

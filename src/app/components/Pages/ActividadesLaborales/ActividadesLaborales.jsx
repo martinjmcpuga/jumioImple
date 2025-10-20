@@ -107,8 +107,8 @@ const ActividadesLaborales = () => {
 
         } else if (responsePerson.onActividad === true) {
 
-          const responseHistorialCompleto = await mtUpdateHistorialCompletoJumio(objCons);
-          setBlOnActividad(true);
+          // const responseHistorialCompleto = await mtUpdateHistorialCompletoJumio(objCons);
+          //setBlOnActividad(true);
 
         }
 
