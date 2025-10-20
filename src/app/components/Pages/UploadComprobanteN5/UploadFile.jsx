@@ -5,13 +5,13 @@ import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
 import Modal from "react-bootstrap/Modal";
 import dynamic from 'next/dynamic';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./styleUploadFile.css";
 import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
 import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
 import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
+import "./styleUploadFile.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PDFDocument = dynamic(() => import('react-pdf').then(m => m.Document), { ssr: false });
 const PDFPage = dynamic(() => import('react-pdf').then(m => m.Page), { ssr: false });
@@ -356,9 +356,7 @@ function UploadFile() {
                       )}
 
                       <div className="space"></div>
-                      <div className="space"></div>
-                      <div className="space"></div>
-                      <div className="space"></div>
+
                     </div>
                   ) : (
                     <>
