@@ -3,13 +3,13 @@
 import { useRef, useState, useEffect } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import { useRouter } from 'next/navigation';
-import Modal from "react-bootstrap/Modal";
-import dynamic from 'next/dynamic';
 import { validateComprobanteByQR_Jumio } from "../../Api/validateComprobanteByQR_Jumio";
 import { mtUpdateComprobante0_Jumio } from "../../Api/mtUpdateComprobante0_Jumio";
 import { uploadFilesServiceN5_Jumio } from "../../Api/uploadFilesServiceN5_Jumio";
 import { uploadN5Archivo2_2C_Jumio } from "../../Api/uploadN5Archivo2_2C_Jumio";
 import { validateComprobanteByNameCPV_2C_JumioN5 } from "../../Api/validateComprobanteByNameCPV_2C_JumioN5";
+import Modal from "react-bootstrap/Modal";
+import dynamic from 'next/dynamic';
 import "./styleUploadFile.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
