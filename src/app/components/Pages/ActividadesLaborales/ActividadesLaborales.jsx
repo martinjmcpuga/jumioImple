@@ -95,35 +95,35 @@ const ActividadesLaborales = () => {
   }, []);
 
   // 🔹 Elemento reutilizable para cada actividad
-const ActividadItem = ({ checked }) => (
-  <div className="row">
-    <div className="col-12">
-      <article className="d-flex align-items-center">
-        <div className="textCheck w-100 d-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center">
-            <div className="containerCheck_P28 spaceRadio">
-              <input type="radio" className="rdnSize mt-1" checked={checked} readOnly />
+  const ActividadItem = ({ checked }) => (
+    <div className="row">
+      <div className="col-12">
+        <article className="d-flex align-items-center">
+          <div className="textCheck w-100 d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center">
+              <div className="containerCheck_P28 spaceRadio">
+                <input type="radio" className="rdnSize mt-1" checked={checked} readOnly />
+              </div>
+              <div className="Spacing">Actividad Laboral</div>
             </div>
-            <div className="Spacing">Actividad Laboral</div>
-          </div>
 
-          {/* 🔹 Mostrar solo si no está checked */}
-          {!checked && (
-            <img
-              onClick={handleButtonFiscal}
-              src="assets/arrow_green.svg"
-              alt=""
-              className="Arrow__button--sizing"
-            />
-          )}
-        </div>
-      </article>
+            {/* 🔹 Mostrar solo si no está checked */}
+            {!checked && (
+              <img
+                onClick={handleButtonFiscal}
+                src="assets/arrow_green.svg"
+                alt=""
+                className="Arrow__button--sizing"
+              />
+            )}
+          </div>
+        </article>
+      </div>
+      <br />
+      <br />
+      <hr className="lineSimple" />
     </div>
-    <br />
-    <br />
-    <hr className="lineSimple" />
-  </div>
-);
+  );
 
   return (
     <>

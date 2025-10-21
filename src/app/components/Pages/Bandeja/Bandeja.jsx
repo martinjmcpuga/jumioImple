@@ -179,14 +179,14 @@ const Bandeja = () => {
 
               if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.comprobante0 === true) {
 
-               // setValidateLab(true);
+                setValidateLab(true);
 
               }
 
               if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.cartaCompromiso === true &&
                 responsePersonJumio.contratoIndividual === true) {
 
-               // setValidateLab(true);
+                setValidateLab(true);
 
               }
 
