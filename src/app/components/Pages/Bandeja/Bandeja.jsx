@@ -134,7 +134,7 @@ const Bandeja = () => {
               }
 
               if (responsePerfilCpv.n5BGC === true) {
-               // getPalencaUsersAccounts_Jumio(obj);
+                getPalencaUsersAccounts_Jumio(obj);
               }
 
               if (responsePerfilCpv.auCita === true) {
@@ -179,14 +179,14 @@ const Bandeja = () => {
 
               if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.comprobante0 === true) {
 
-                setValidateLab(true);
+               // setValidateLab(true);
 
               }
 
               if (responsePersonJumio.onHistorialCompleto === true && responsePersonJumio.cartaCompromiso === true &&
                 responsePersonJumio.contratoIndividual === true) {
 
-                setValidateLab(true);
+               // setValidateLab(true);
 
               }
 

@@ -1,53 +1,90 @@
 input {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 .TrabajoActual--color {
-    color: #385AED;
-    font-size: 13px;
-    font-weight: 600;
+  color: #385AED;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .lining {
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 .TrabajoActual {
-    border-radius: 14px;
-    border: 1px solid #E4E4E4;
-    font-size: 13px;
+  border-radius: 14px;
+  border: 1px solid #E4E4E4;
+  font-size: 13px;
 }
 
 .TrabajoActualSelected {
-    border-radius: 14px;
-    border: 1px solid #385AED;
-    background-color: rgba(66, 97, 235, 0.185);
-    font-size: 13px;
+  border-radius: 14px;
+  border: 1px solid #385AED;
+  background-color: rgba(66, 97, 235, 0.185);
+  font-size: 13px;
 }
 
 .RadioSpace {
-    margin-top: 1.2px !important;
-    width: 16px;
-    height: 16px;
-    color: #EDEDED;
+  margin-top: 1.2px !important;
+  width: 16px;
+  height: 16px;
+  color: #EDEDED;
 }
 
+/* === CONTENEDOR PRINCIPAL DE LA ACTIVIDAD === */
 .Container_Actividad {
-    border-radius: 14px;
-    border: 1px dashed #D1D1D1;
-    background: #FFF;
+  border-radius: 14px;
+  border: 1px dashed #D1D1D1;
+  background: #FFF;
 }
 
+/* === CONTENEDOR DE CADA BLOQUE === */
 .containerTrabajo {
-   padding: 10px 0px 10px 0px;
+  padding: 10px 0;
 }
 
+/* === TEXTO DEL BLOQUE === */
 .txtNat_P3Hist {
-    height: 17px;
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-28) var(--unnamed-font-family-inter);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-0c3c2c);
-    font: normal normal 600 14px/28px Inter;
-    letter-spacing: 0px;
-    color: #0C3C2C;
+  height: 17px;
+  font: normal normal 600 14px/28px Inter;
+  letter-spacing: 0px;
+  color: #0C3C2C;
+}
+
+/* === AJUSTES NUEVOS PARA QUE LA FLECHA SE MANTENGA === */
+.textCheck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* texto a la izq, flecha a la der */
+  width: 100%;
+  gap: 8px;
+}
+
+.textCheck .leftZone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Radio button alineado */
+.RadioSpace input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #3cb371; /* verde agradable */
+}
+
+/* === FLECHA VERDE === */
+.Arrow__button--sizing {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  flex-shrink: 0; /* evita que se comprima o desaparezca */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* animación ligera al pasar el mouse */
+.Arrow__button--sizing:hover {
+  transform: translateX(2px);
+  opacity: 0.85;
 }

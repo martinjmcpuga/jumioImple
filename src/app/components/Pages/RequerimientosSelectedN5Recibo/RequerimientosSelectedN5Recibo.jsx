@@ -67,7 +67,7 @@ const RequerimientosSelectedN5Recibo = () => {
         }
 
         if (responsePerson.onHistorialCompleto === true) {
-          setDomicilioParticularRef(true);
+          //setDomicilioParticularRef(true);
         }
 
         setLoading(false);
