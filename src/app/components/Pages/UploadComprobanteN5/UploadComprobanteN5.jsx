@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppContext } from '@/app/context/AppContext';
 import UploadFile from "./UploadFile";
-import './ComprobanteIngreso.css'
 
 const UploadComprobanteN5 = () => {
 
