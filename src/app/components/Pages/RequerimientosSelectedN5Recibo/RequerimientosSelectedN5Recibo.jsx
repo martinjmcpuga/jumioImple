@@ -63,7 +63,7 @@ const RequerimientosSelectedN5Recibo = () => {
       if (responsePerson.status === 200) {
 
         if (responsePerson.aniosExperienciaBol === true) {
-          setDomicilioParticular(true);
+          //setDomicilioParticular(true);
         }
 
         if (responsePerson.onHistorialCompleto === true) {
